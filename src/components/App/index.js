@@ -1,4 +1,5 @@
 // == Import
+import Header from '../Header';
 import Menu from '../Menu';
 import './styles.scss';
 
@@ -6,7 +7,7 @@ import './styles.scss';
 function App() {
   return (
     <div className="app">
-      <p>Futur Header</p>
+      <Header />
       <Menu />
     </div>
   );
