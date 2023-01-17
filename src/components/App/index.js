@@ -1,5 +1,5 @@
 // == Import
-import reactLogo from './react-logo.svg';
+import Menu from '../Menu';
 import './styles.scss';
 
 // == Composant
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="app">
       <p>Futur Header</p>
-      <p>Futur Menu</p>
+      <Menu />
     </div>
   );
 }
