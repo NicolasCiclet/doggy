@@ -1,5 +1,6 @@
 // == Import
 import Header from '../Header';
+import Menu from '../Menu';
 import './styles.scss';
 
 // == Composant
@@ -7,7 +8,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <p>Futur Menu</p>
+      <Menu />
     </div>
   );
 }
