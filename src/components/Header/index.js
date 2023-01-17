@@ -1,5 +1,5 @@
 // == Import
-import headerLogo from './header_logo.jpg';
+import headerLogo from './header_logo.svg';
 import './header.scss';
 
 // == Composant
