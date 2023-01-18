@@ -1,0 +1,31 @@
+.welcome{
+  margin: 0.5rem;
+
+  .welcome_message{
+    margin: 0.5rem;
+    .welcome_message_title{
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+    }
+
+    .welcome_message_content{
+      font-size: 0.8rem;
+    }
+  }
+
+  .welcome_newUser{
+    display: flex;
+    align-items: center;
+
+    .welcome_newUser_content{
+      color :#6558F5;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .welcome_newUser_avatar{
+      max-width: 80px;
+      
+    }
+  }
+}
