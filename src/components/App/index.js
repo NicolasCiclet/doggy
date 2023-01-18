@@ -1,5 +1,6 @@
 // == Import
 import Header from '../Header';
+import MainSection from '../MainSection';
 import Menu from '../Menu';
 import './styles.scss';
 
@@ -9,6 +10,7 @@ function App() {
     <div className="app">
       <Header />
       <Menu />
+      <MainSection />
     </div>
   );
 }
