@@ -5,12 +5,12 @@ import './header.scss';
 // == Composant
 function Header() {
   return (
-    <div className="header">
-      <div className="header_logo">
+    <div className="header-main">
+      <div className="header-logo">
         <h1>dO'ggy</h1>
-        <img className="header_logo_img" src={headerLogo} alt="header logo" />
+        <img className="header-logo-img" src={headerLogo} alt="header logo" />
       </div>
-      <nav className="header_nav">
+      <nav className="header-nav">
         <a href="#">Connexion</a>
         <a href="#">Déconnexion</a>
         <a href="#">Profil</a>

@@ -67,5 +67,10 @@
       "<rootDir>/src",
       "<rootDir>/tests"
     ]
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:O-clock-Jupiter/projet-06-dOggy-front.git",
+  "author": "MarineBourriquen <marinebourriquen@hotmail.com>",
+  "license": "MIT"
 }
