@@ -2,20 +2,22 @@ import PropTypes from 'prop-types';
 
 import { Card, Image } from 'semantic-ui-react';
 
-const OneCard = ({ firstname, city, picture }) => (
+const OneUser = ({ firstname, city, picture, dog }) => (
   <Card className="card">
     <Image src={picture} wrapped ui={false} />
     <Card.Content>
-      <Card.Header>{firstname}</Card.Header>
-      <Card.Meta>{city}</Card.Meta>
+      <p className="card-name">{firstname}</p>
+      <p className="card-info1">{city}</p>
+      <p className="card-info2">{dog}</p>
     </Card.Content>
   </Card>
 );
 
-OneCard.propTypes = {
+OneUser.propTypes = {
   firstname: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
+  dog: PropTypes.string.isRequired,
 };
 
-export default OneCard;
+export default OneUser;

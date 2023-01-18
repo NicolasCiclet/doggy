@@ -1,0 +1,25 @@
+.mainSection {
+  
+  // class défini par defaut par semantic
+  .ui.three.cards {
+    margin: 0.6rem 0.2rem;
+    justify-content: space-between;
+
+    .card {
+      width: calc(33.33333333% - 1em);
+      margin: 0.5rem;
+
+      .content {
+        font-size: 0.8rem;
+        padding: 0.7rem 0.4rem;
+
+        .card-name {
+          font-size: 0.8rem;
+          font-weight: bold;
+        }
+      }
+    }
+
+    
+  }
+}
