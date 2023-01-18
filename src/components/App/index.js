@@ -1,4 +1,5 @@
 // == Import
+import Footer from '../Footer';
 import Header from '../Header';
 import MainSection from '../MainSection';
 import Menu from '../Menu';
@@ -13,6 +14,7 @@ function App() {
       <Menu />
       <Welcome />
       <MainSection />
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,13 @@
+@use 'src/styles/vars';
+
+.footer-main{
+  text-align: right;
+  margin-top: 1rem;
+
+  .footer-link{
+    color: vars.$mainColor;
+    font-size: 0.7rem;
+    text-decoration: underline;
+    padding: 0.5rem;
+  }
+}
