@@ -1,7 +1,7 @@
 import AllCards from './allCards';
 
 const MainSection = () => (
-  <div className="MainSection">
+  <div className="mainSection">
     <AllCards />
   </div>
 );
