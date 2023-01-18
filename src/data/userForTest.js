@@ -3,6 +3,8 @@
 export default [
   {
     id: 1,
+    lat: 46.0538,
+    lng: 6.0052,
     firstname: 'Sylvie',
     lastname: 'Syl',
     gender: 'Female',
@@ -11,6 +13,8 @@ export default [
   },
   {
     id: 2,
+    lat: 46.0541,
+    lng: 6.006,
     firstname: 'Jean',
     lastname: 'Dupont',
     gender: 'male',
@@ -19,6 +23,8 @@ export default [
   },
   {
     id: 3,
+    lat: 46.0535,
+    lng: 6.045,
     firstname: 'Helene',
     lastname: 'Rollen',
     gender: 'Female',
@@ -27,6 +33,8 @@ export default [
   },
   {
     id: 4,
+    lat: 46.0531,
+    lng: 6.004,
     firstname: 'Alain',
     lastname: 'Pierre',
     gender: 'male',
