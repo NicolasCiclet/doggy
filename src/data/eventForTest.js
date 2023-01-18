@@ -1,0 +1,32 @@
+export default [
+  {
+    id: 1,
+    lat: 46.0533,
+    lng: 6.005,
+    name: 'Sentier du rocher',
+    difficulty: 'Facile',
+    date: '15-02-2022',
+    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, odit ut sint voluptate minima blanditiis laboriosam suscipit, quasi cumque molliti',
+    picture: 'https://www.montaigu-vendee.com/wp-content/uploads/sites/2/2019/08/OO-Daniel-Pavageau-limouzinio%C3%A8re-chemin-creux-201711-948x630.jpg',
+  },
+  {
+    id: 2,
+    lat: 46.0536,
+    lng: 6.025,
+    name: 'Chemin des bois',
+    difficulty: 'Moyen',
+    date: '15-02-2022',
+    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, odit ut sint voluptate minima blanditiis laboriosam suscipit, quasi cumque molliti',
+    picture: 'https://www.montaigu-vendee.com/wp-content/uploads/sites/2/2019/08/OO-Daniel-Pavageau-limouzinio%C3%A8re-chemin-creux-201711-948x630.jpg',
+  },
+  {
+    id: 3,
+    lat: 46.0539,
+    lng: 6.035,
+    name: 'Randonnée du lac',
+    difficulty: 'Difficile',
+    date: '15-02-2022',
+    description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, odit ut sint voluptate minima blanditiis laboriosam suscipit, quasi cumque molliti',
+    picture: 'https://www.montaigu-vendee.com/wp-content/uploads/sites/2/2019/08/OO-Daniel-Pavageau-limouzinio%C3%A8re-chemin-creux-201711-948x630.jpg',
+  },
+];
