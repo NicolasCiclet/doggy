@@ -5,7 +5,7 @@ import './header.scss';
 // == Composant
 function Header() {
   return (
-    <div className="header">
+    <div className="header-main">
       <div className="header-logo">
         <h1>dO'ggy</h1>
         <img className="header-logo-img" src={headerLogo} alt="header logo" />

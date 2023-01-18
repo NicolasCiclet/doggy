@@ -1,5 +1,7 @@
+import users from 'src/data/userForTest';
+
 const initialState = {
-  // ici le state initial
+  usersToDisplay: users,
 };
 
 const userReducer = (state = initialState, action = {}) => {
