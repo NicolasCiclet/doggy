@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .menu {
   display: flex;
   background-color: #E0DEFD;
@@ -12,7 +14,7 @@
   }
 
   .menu-link {
-    background-color: #6558F5;
+    background-color: vars.$mainColor;
     color: #fff;
     border-radius: 5px;
     padding: 0.5rem;

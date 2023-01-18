@@ -1,3 +1,5 @@
+@use 'src/styles/vars';
+
 .welcome{
   margin: 0.5rem;
 
@@ -18,7 +20,7 @@
     align-items: center;
 
     .welcome-newUser-content{
-      color :#6558F5;
+      color : vars.$mainColor;
       font-size: 0.7rem;
       font-weight: bold;
     }
