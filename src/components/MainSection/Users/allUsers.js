@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react';
 import OneUser from './oneUser';
 
 const AllUsers = () => {
-  const users = useSelector((state) => state.usersToDisplay);
+  const users = useSelector((state) => state.user.usersToDisplay);
   return (
     <div className="all-users">
       <Card.Group itemsPerRow={3}>
