@@ -19,8 +19,8 @@ const icon2 = L.icon({
 });
 
 const Map = () => {
-  const events = useSelector((state) => state.eventsToDisplay);
-  const users = useSelector((state) => state.usersToDisplay);
+  const events = useSelector((state) => state.event.eventsToDisplay);
+  const users = useSelector((state) => state.user.usersToDisplay);
   return (
     <div className="map-main">
       <MapContainer center={[46.0546, 6.025]} zoom={13} scrollWheelZoom={false}>

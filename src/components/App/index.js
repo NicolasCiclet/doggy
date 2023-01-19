@@ -1,4 +1,7 @@
 // == Import
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCityApi } from '../../actions/city';
 import Footer from '../Footer';
 import Header from '../Header';
 import MainSection from '../MainSection';
@@ -9,6 +12,11 @@ import './styles.scss';
 
 // == Composant
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCityApi());
+  });
   return (
     <div className="app">
       <Header />

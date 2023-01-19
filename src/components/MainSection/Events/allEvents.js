@@ -3,7 +3,7 @@ import { Card } from 'semantic-ui-react';
 import OneEvent from './oneEvent';
 
 const AllEvents = () => {
-  const events = useSelector((state) => state.eventsToDisplay);
+  const events = useSelector((state) => state.event.eventsToDisplay);
   return (
     <div className="all-events">
       <Card.Group itemsPerRow={3}>
