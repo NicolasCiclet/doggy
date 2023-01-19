@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Card, Image } from 'semantic-ui-react';
 
+// I get the props from the spread operator
 const OneUser = ({ firstname, city, picture, dog }) => (
   <Card className="card">
     <Image src={picture} wrapped ui={false} />

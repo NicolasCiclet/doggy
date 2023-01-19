@@ -18,6 +18,7 @@ function App() {
     dispatch(getCityApi());
   });
   return (
+    // Here is the main div, with all components
     <div className="app">
       <Header />
       <Menu />
