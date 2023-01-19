@@ -1,5 +1,6 @@
 @use 'src/styles/vars';
 
+// Mobil first
 .header-main{
   text-align: center;
   width: 100%;
@@ -13,7 +14,7 @@
 
   .header-logo{
     font-weight: bold;
-    padding: 1rem;
+    padding: 0.5rem 0.5rem 0rem 0.5rem;
     background-color: vars.$mainColor;
     color: #fff;
     border-radius: 5px;
@@ -35,5 +36,12 @@
     color: vars.$mainColor;
     text-decoration: underline;
     font-weight: bold;
+  }
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .header-main{
+    border-radius: 10px;
   }
 }

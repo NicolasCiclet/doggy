@@ -1,8 +1,9 @@
 @use 'src/styles/vars';
 
+// Mobil first
 .menu {
   display: flex;
-  background-color: #E0DEFD;
+  background-color: vars.$lightColor;
   padding: 0.6rem 0.3rem;
   align-items: center;
   justify-content: space-around;
@@ -21,5 +22,12 @@
     font-size: 0.8rem;
     font-weight: bold;
     box-shadow: 1px 2px 4px black;
+  }
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .menu{
+    border-radius: 5px;
   }
 }
