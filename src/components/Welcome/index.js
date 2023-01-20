@@ -1,9 +1,27 @@
 // import
-import userAvatar from './user-avatar.png';
+import { useSelector } from 'react-redux';
 import './welcome.scss';
 
-// == Composant
+// == Composant Welocme : this purpose is to display a welcome message and the last user registered
 function Welcome() {
+  // I create my array with all my users
+  const users = useSelector((state) => state.user.usersToDisplay);
+  let lastUser = {};
+
+  // function to find the last user registered, with all the users in argument
+  function findMaxId(allUsers) {
+    // console.log(allUsers);
+    // I select the max id in my array
+    const maxId = (Math.max(...allUsers.map((user) => user.id)));
+    // console.log(maxId);
+    // I find the user that has the max id : he is the last user registered
+    lastUser = allUsers.find((user) => user.id === maxId);
+    // console.log(result);
+    return lastUser;
+  }
+
+  findMaxId(users);
+
   return (
     <div className="welcome">
       <div className="welcome-message">
@@ -14,8 +32,8 @@ function Welcome() {
         </p>
       </div>
       <div className="welcome-newUser">
-        <aside className="welcome-newUser-content">Bienvenue à Jean-Eude, notre dernier membre inscrit !</aside>
-        <img className="welcome-newUser-avatar" src={userAvatar} alt="New user avatar" />
+        <aside className="welcome-newUser-content">Bienvenue à {lastUser.firstname}, notre dernier membre inscrit !</aside>
+        <img className="welcome-newUser-avatar" src={lastUser.picture} alt="New user avatar" />
       </div>
     </div>
   );
