@@ -4,7 +4,7 @@
 .header-main{
   text-align: center;
   width: 100%;
-  height: 20vh;
+  min-height: 30vh;
   background-image: url('./header_bandeau.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -16,7 +16,7 @@
     font-weight: bold;
     padding: 0.5rem 0.5rem 0rem 0.5rem;
     background-color: vars.$mainColor;
-    color: #fff;
+    color: vars.$lightColor;
     border-radius: 5px;
     margin-left: 0.5rem;
     font-size: 1.2rem;
@@ -33,8 +33,8 @@
     display: block;
     font-size: 0.8rem;
     padding: 0.5rem;
-    color: vars.$mainColor;
-    text-decoration: underline;
+    color: vars.$lightColor;
+    //text-decoration: underline;
     font-weight: bold;
   }
 }
