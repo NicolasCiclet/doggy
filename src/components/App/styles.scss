@@ -1,4 +1,14 @@
+// Mobil first
 .app {
   width: 100%;
   margin: 1em auto;
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .app {
+    width: 700px;
+    margin: 1em auto;
+  }
+
 }
