@@ -20,7 +20,12 @@
         }
       }
     }
+  }
+}
 
-    
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .mainSection {
+    width: 60%;
   }
 }

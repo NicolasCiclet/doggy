@@ -8,13 +8,13 @@
     margin: 1rem 0 1rem 0;
     .welcome-message-title{
       font-weight: bold;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       font-size: 1.2rem;
       text-align: center;
     }
 
     .welcome-message-content{
-      font-size: 1rem;
+      font-size: 0.9rem;
       text-align: center;
     }
   }
@@ -33,6 +33,7 @@
 
     .welcome-newUser-avatar{
       max-width: 80px;
+      border-radius: 50px;
       
     }
   }
@@ -44,15 +45,42 @@
     margin: 2rem 0 2rem 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .welcome-message{
       margin: 1rem 1rem 1rem 0;
+      padding: 0 5rem;
       width: 70%;
     }
 
     .welcome-newUser{
       width: 30%;
+
+      .welcome-newUser-content{
+        margin-right: 0.5rem;
+      }
     }
   }
 
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .welcome{
+    width: 100%;
+    .welcome-message{
+      .welcome-message-title{
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .welcome-message-content{
+        font-size: 1.1rem;
+      }
+    }
+    .welcome-newUser{
+      .welcome-newUser-content{
+        font-size: 0.9rem;
+      }
+    }
+  }
 }

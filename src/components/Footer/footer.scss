@@ -12,3 +12,10 @@
     padding: 0.5rem;
   }
 }
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .footer-main {
+    width: 100%;
+  }
+}

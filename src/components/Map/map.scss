@@ -7,3 +7,10 @@
   height: 40vh;
 
 }
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .leaflet-container {
+    width: 35%;
+  }
+}

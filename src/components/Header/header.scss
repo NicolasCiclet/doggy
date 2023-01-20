@@ -45,3 +45,18 @@
     border-radius: 10px;
   }
 }
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .header-main{
+    width: 100%;
+    min-height: 35vh;
+    .header-logo{
+      font-size: 1.5rem;
+    }
+  
+    .header-nav a{
+      font-size: 1rem;
+    }
+  }
+}
