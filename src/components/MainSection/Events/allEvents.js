@@ -7,7 +7,10 @@ const AllEvents = () => {
   return (
     <div className="all-events">
 
+      <h2 className="cards_title">Les événements proches de chez vous</h2>
+
       {/* Card it's from Semantin UI */}
+
       <Card.Group itemsPerRow={3}>
         {
           // I use map and a spread operator to have access to all properties

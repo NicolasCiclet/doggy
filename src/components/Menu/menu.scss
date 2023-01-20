@@ -22,6 +22,10 @@
     font-size: 0.8rem;
     font-weight: bold;
     box-shadow: 1px 2px 4px black;
+
+    &:hover {
+      background-color: vars.$darkColor;
+    }
   }
 }
 
@@ -29,5 +33,19 @@
 @media (min-width: 480px){
   .menu{
     border-radius: 5px;
+  }
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .menu{
+    width: 100%;
+    .menu-para {
+      font-size: 1.1rem;
+    }
+
+    .menu-link {
+      font-size: 1rem;
+    }
   }
 }
