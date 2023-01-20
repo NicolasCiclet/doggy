@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import { Card, Image } from 'semantic-ui-react';
 
+// I get the props from the spread operator
 const OneEvent = ({ name, difficulty, picture, date }) => (
   <Card className="card">
     <Image src={picture} wrapped ui={false} />
@@ -13,6 +14,7 @@ const OneEvent = ({ name, difficulty, picture, date }) => (
   </Card>
 );
 
+// we check each props
 OneEvent.propTypes = {
   name: PropTypes.string.isRequired,
   difficulty: PropTypes.string.isRequired,
