@@ -2,15 +2,25 @@
 // TODO trouver la doc qui contient cette url
 
 // Mobil first
-.leaflet-container {
+.map-main{
   width: 100%;
   height: 40vh;
 
+  .leaflet-container {
+    width: 100%;
+    height: 40vh;
+  }
 }
 
 // Breackpoint for desktop
 @media (min-width: 1000px){
-  .leaflet-container {
-    width: 35%;
+  .map-main{
+    width: 50%;
+
+    .leaflet-container {
+      width: 100%;
+      height: 80vh;
+    }
   }
 }
+

@@ -1,6 +1,5 @@
 // Mobil first
 .mainSection {
-  
   // class défini par defaut par semantic
   .ui.three.cards {
     margin: 0.6rem 0.2rem;
@@ -26,6 +25,6 @@
 // Breackpoint for desktop
 @media (min-width: 1000px){
   .mainSection {
-    width: 60%;
+    width: 40%;
   }
 }
