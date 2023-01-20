@@ -2,9 +2,9 @@
 import { useSelector } from 'react-redux';
 import './welcome.scss';
 
-// == Composant Welocme : this purpose is to display a welcome message and the last user registered
+// == Composant Welcome : this purpose is to display a welcome message and the last user registered
 function Welcome() {
-  // I create my array with all my users
+  // I create my array with all my users and an empty object for my lastUser
   const users = useSelector((state) => state.user.usersToDisplay);
   let lastUser = {};
 

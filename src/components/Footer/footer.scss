@@ -10,5 +10,16 @@
     font-size: 0.7rem;
     text-decoration: underline;
     padding: 0.5rem;
+
+    &:hover {
+      color: vars.$darkColor;
+    }
+  }
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .footer-main {
+    width: 100%;
   }
 }
