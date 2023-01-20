@@ -1,18 +1,54 @@
 // I create const, it's better for autocompletion
-export const ADD_NAME_NEW_USER = 'ADD_NAME_NEW_USER';
-export const ADD_CITY_NEW_USER = 'ADD_CITY_NEW_USER';
 export const ADD_NEW_USER = 'ADD_NEW_USER';
-
-export const addNameNewUser = (name) => ({
-  type: ADD_NAME_NEW_USER,
-  name: name,
-});
-
-export const addCityNewUser = (city) => ({
-  type: ADD_CITY_NEW_USER,
-  city: city,
-});
+export const ADD_LASTNAME_NEW_USER = 'ADD_LASTNAME_NEW_USER';
+export const ADD_FIRSTNAME_NEW_USER = 'ADD_FIRSTNAME_NEW_USER';
+export const ADD_CITY_NEW_USER = 'ADD_CITY_NEW_USER';
+export const ADD_USERNAME_NEW_USER = 'ADD_USERNAME_NEW_USER';
+export const ADD_PASSWORD_NEW_USER = 'ADD_PASSWORD_NEW_USER';
+export const ADD_GENDER_NEW_USER = 'ADD_GENDER_NEW_USER';
+export const ADD_BIRTH_NEW_USER = 'ADD_BIRTH_NEW_USER';
+export const ADD_BIO_NEW_USER = 'ADD_BIO_NEW_USER';
+export const ADD_MAIL_NEW_USER = 'ADD_MAIL_NEW_USER';
 
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
+});
+
+export const addLastnameNewUser = (value) => ({
+  type: ADD_LASTNAME_NEW_USER,
+  newValue: value,
+});
+
+export const addFirstnameNewUser = (value) => ({
+  type: ADD_FIRSTNAME_NEW_USER,
+  newValue: value,
+});
+
+export const addCityNewUser = (value) => ({
+  type: ADD_CITY_NEW_USER,
+  newValue: value,
+});
+export const addUsernameNewUser = (value) => ({
+  type: ADD_USERNAME_NEW_USER,
+  newValue: value,
+});
+export const addPasswordNewUser = (value) => ({
+  type: ADD_PASSWORD_NEW_USER,
+  newValue: value,
+});
+export const addGenderNewUser = (value) => ({
+  type: ADD_GENDER_NEW_USER,
+  newValue: value,
+});
+export const addBirthNewUser = (value) => ({
+  type: ADD_BIRTH_NEW_USER,
+  newValue: value,
+});
+export const addBioNewUser = (value) => ({
+  type: ADD_BIO_NEW_USER,
+  newValue: value,
+});
+export const addMailNewUser = (value) => ({
+  type: ADD_MAIL_NEW_USER,
+  newValue: value,
 });

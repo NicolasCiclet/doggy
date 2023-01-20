@@ -1,71 +1,98 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Form, Input, Select, TextArea } from 'semantic-ui-react';
-import { addCityNewUser, addNameNewUser, addNewUser } from '../../../actions/user';
+import { Button, Form, Input, Message, Select, TextArea } from 'semantic-ui-react';
+import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addLastnameNewUser, addMailNewUser, addNewUser, addPasswordNewUser, addUsernameNewUser } from '../../../actions/user';
 import './register.scss';
 
 const genderOptions = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'o', text: 'Other', value: 'other' },
+  { key: 'h', text: 'Homme', value: 'male' },
+  { key: 'f', text: 'Femme', value: 'female' },
 ];
 
 const Register = () => {
   const dispatch = useDispatch();
-  const name = useSelector((state) => state.user.nameNewUser);
-  const city = useSelector((state) => state.user.cityNewUser);
+  const name = useSelector((state) => state.user.lastnameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
+
   return (
     <>
       <div className="register">
         <h1>Création de compte</h1>
+
         {!userCreate && (
         <Form onSubmit={(event) => {
           event.preventDefault();
-          console.log('submit !');
+          // console.log('submit !');
           dispatch(addNewUser());
         }}
         >
           <Form.Group widths="equal">
             <Form.Field
-              id="form-input-control-first-name"
               control={Input}
-              label="First name"
-              placeholder="First name"
+              placeholder="Nom"
               onChange={(event) => {
-              console.log(`change : ${event.target.value}`);
-                dispatch(addNameNewUser(event.target.value));
+                // console.log(`change : ${event.target.value}`);
+                dispatch(addLastnameNewUser(event.target.value));
               }}
             />
             <Form.Field
-              id="form-input-control-last-name"
               control={Input}
-              label="Ville"
+              placeholder="Prénom"
+              onChange={(event) => {
+                dispatch(addFirstnameNewUser(event.target.value));
+              }}
+            />
+            <Form.Field
+              control={Input}
               placeholder="Ville"
               onChange={(event) => {
-              console.log(`change : ${event.target.value}`);
                 dispatch(addCityNewUser(event.target.value));
+              }}
+            />
+            <Form.Field
+              control={Input}
+              placeholder="Nom d'utilisateur"
+              onChange={(event) => {
+                dispatch(addUsernameNewUser(event.target.value));
+              }}
+            /><Form.Field
+              control={Input}
+              placeholder="Mot de passe"
+              type="password"
+              onChange={(event) => {
+                dispatch(addPasswordNewUser(event.target.value));
               }}
             />
             <Form.Field
               control={Select}
               options={genderOptions}
-              label={{ children: 'Gender', htmlFor: 'form-select-control-gender' }}
               placeholder="Gender"
               search
               searchInput={{ id: 'form-select-control-gender' }}
             />
+            <Form.Field
+              control={Input}
+              placeholder="Date de naissance"
+              type="date"
+              onChange={(event) => {
+                dispatch(addBirthNewUser(event.target.value));
+              }}
+            />
           </Form.Group>
           <Form.Field
-            id="form-textarea-control-opinion"
             control={TextArea}
-            label="Opinion"
-            placeholder="Opinion"
+            placeholder="Un petit mot sur vous..."
+            onChange={(event) => {
+              dispatch(addBioNewUser(event.target.value));
+            }}
           />
           <Form.Field
             id="form-input-control-error-email"
             control={Input}
             label="Email"
             placeholder="joe@schmoe.com"
+            onChange={(event) => {
+              dispatch(addMailNewUser(event.target.value));
+            }}
             error={{
               content: 'Please enter a valid email address',
               pointing: 'below',
@@ -80,11 +107,15 @@ const Register = () => {
         </Form>
         )}
       </div>
+
       {userCreate && (
-        <div>
-          <p>Bienvenue {name}</p>
-          <p>Vous  habitez à {city}</p>
-        </div>
+        <Form success className="register-success">
+          <Message
+            success
+            header="Inscription réussi"
+            content={`Bienvenue ${name}`}
+          />
+        </Form>
       )}
     </>
   );

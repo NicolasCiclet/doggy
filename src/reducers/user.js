@@ -1,25 +1,74 @@
 import users from 'src/data/userForTest';
-import { ADD_CITY_NEW_USER, ADD_NAME_NEW_USER, ADD_NEW_USER } from '../actions/user';
+import { ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_USERNAME_NEW_USER } from '../actions/user';
 
 const initialState = {
   usersToDisplay: users,
-  nameNewUser: '',
+  lastnameNewUser: '',
+  firstnameNewUser: '',
   cityNewUser: '',
+  usernameNewUser: '',
+  passwordNewUser: '',
+  genderNewUser: '',
+  birthNewUser: '',
+  bioNewUser: '',
+  mailNewUser: '',
   userCreate: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case ADD_NAME_NEW_USER:
+    case ADD_LASTNAME_NEW_USER:
       return {
         ...state,
-        nameNewUser: action.name,
+        lastnameNewUser: action.newValue,
+      };
+
+    case ADD_FIRSTNAME_NEW_USER:
+      return {
+        ...state,
+        firstnameNewUser: action.newValue,
       };
 
     case ADD_CITY_NEW_USER:
       return {
         ...state,
-        cityNewUser: action.city,
+        cityNewUser: action.newValue,
+      };
+
+    case ADD_USERNAME_NEW_USER:
+      return {
+        ...state,
+        usernameNewUser: action.newValue,
+      };
+
+    case ADD_PASSWORD_NEW_USER:
+      return {
+        ...state,
+        passwordNewUser: action.newValue,
+      };
+
+    case ADD_GENDER_NEW_USER:
+      return {
+        ...state,
+        genderNewUser: action.newValue,
+      };
+
+    case ADD_BIRTH_NEW_USER:
+      return {
+        ...state,
+        birthNewUser: action.newValue,
+      };
+
+    case ADD_BIO_NEW_USER:
+      return {
+        ...state,
+        bioNewUser: action.newValue,
+      };
+
+    case ADD_MAIL_NEW_USER:
+      return {
+        ...state,
+        mailNewUser: action.newValue,
       };
 
     case ADD_NEW_USER:
