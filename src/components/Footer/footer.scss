@@ -10,6 +10,10 @@
     font-size: 0.7rem;
     text-decoration: underline;
     padding: 0.5rem;
+
+    &:hover {
+      color: vars.$darkColor;
+    }
   }
 }
 

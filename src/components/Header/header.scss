@@ -36,6 +36,10 @@
     color: vars.$lightColor;
     //text-decoration: underline;
     font-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

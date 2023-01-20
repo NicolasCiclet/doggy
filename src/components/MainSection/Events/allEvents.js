@@ -6,6 +6,7 @@ const AllEvents = () => {
   const events = useSelector((state) => state.event.eventsToDisplay);
   return (
     <div className="all-events">
+      <h2 className="cards_title">Les événements proches de chez vous</h2>
       <Card.Group itemsPerRow={3}>
         {
           // je map et j'utilise un spread operator pour avoir acces à toutes les propriètés
