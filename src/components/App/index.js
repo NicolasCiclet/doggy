@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    //dispatch(getCityApi());
+    dispatch(getCityApi());
   });
   return (
     <div className="app">
