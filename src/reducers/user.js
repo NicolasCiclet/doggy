@@ -1,5 +1,5 @@
 import users from 'src/data/userForTest';
-import { ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_USERNAME_NEW_USER } from '../actions/user';
+import { ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_USERNAME_NEW_USER, MAIL_CHECKED } from '../actions/user';
 
 const initialState = {
   usersToDisplay: users,
@@ -12,7 +12,10 @@ const initialState = {
   birthNewUser: '',
   bioNewUser: '',
   mailNewUser: '',
+  latNewUser: '',
+  lngNewUser: '',
   userCreate: false,
+  mailChecked: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -75,6 +78,19 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userCreate: !state.userCreate,
+      };
+
+    case ADD_LATLNG_NEW_USER:
+      return {
+        ...state,
+        latNewUser: action.newLat,
+        lngNewUser: action.newLng,
+      };
+
+    case MAIL_CHECKED:
+      return {
+        ...state,
+        mailChecked: action.newValue,
       };
     default:
       return state;

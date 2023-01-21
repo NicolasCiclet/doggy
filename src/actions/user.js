@@ -1,5 +1,6 @@
 // I create const, it's better for autocompletion
 export const ADD_NEW_USER = 'ADD_NEW_USER';
+export const ADD_LATLNG_NEW_USER = 'ADD_LATLNG_NEW_USER';
 export const ADD_LASTNAME_NEW_USER = 'ADD_LASTNAME_NEW_USER';
 export const ADD_FIRSTNAME_NEW_USER = 'ADD_FIRSTNAME_NEW_USER';
 export const ADD_CITY_NEW_USER = 'ADD_CITY_NEW_USER';
@@ -9,9 +10,16 @@ export const ADD_GENDER_NEW_USER = 'ADD_GENDER_NEW_USER';
 export const ADD_BIRTH_NEW_USER = 'ADD_BIRTH_NEW_USER';
 export const ADD_BIO_NEW_USER = 'ADD_BIO_NEW_USER';
 export const ADD_MAIL_NEW_USER = 'ADD_MAIL_NEW_USER';
+export const MAIL_CHECKED = 'MAIL_CHECKED';
 
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
+});
+
+export const addLatlngNewUser = (lat, lng) => ({
+  type: ADD_LATLNG_NEW_USER,
+  newLat: lat,
+  newLng: lng,
 });
 
 export const addLastnameNewUser = (value) => ({
@@ -50,5 +58,10 @@ export const addBioNewUser = (value) => ({
 });
 export const addMailNewUser = (value) => ({
   type: ADD_MAIL_NEW_USER,
+  newValue: value,
+});
+
+export const mailChecked = (value) => ({
+  type: MAIL_CHECKED,
   newValue: value,
 });

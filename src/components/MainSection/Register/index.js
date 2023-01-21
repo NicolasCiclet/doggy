@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Input, Message, Select, TextArea } from 'semantic-ui-react';
-import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addLastnameNewUser, addMailNewUser, addNewUser, addPasswordNewUser, addUsernameNewUser } from '../../../actions/user';
+import { getCityApi } from '../../../actions/city';
+import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addLastnameNewUser, addMailNewUser, addNewUser, addPasswordNewUser, addUsernameNewUser, mailChecked } from '../../../actions/user';
 import './register.scss';
 
 const genderOptions = [
@@ -12,6 +13,19 @@ const Register = () => {
   const dispatch = useDispatch();
   const name = useSelector((state) => state.user.lastnameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
+  const checkMail = useSelector((state) => state.user.mailNewUser);
+  const mailCheckedCharac = useSelector((state) => state.user.mailChecked);
+
+  const emailCheck = () => {
+    if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(checkMail)) {
+      console.log('Invalid email address');
+      dispatch(mailChecked(false));
+    } else {
+      console.log('good address');
+      dispatch(mailChecked(true));
+      // submit the form
+    }
+  };
 
   return (
     <>
@@ -22,7 +36,11 @@ const Register = () => {
         <Form onSubmit={(event) => {
           event.preventDefault();
           // console.log('submit !');
-          dispatch(addNewUser());
+          emailCheck();
+          if (mailCheckedCharac) {
+            dispatch(addNewUser());
+            dispatch(getCityApi());
+          }
         }}
         >
           <Form.Group widths="equal">
@@ -85,6 +103,19 @@ const Register = () => {
               dispatch(addBioNewUser(event.target.value));
             }}
           />
+          {/* // TODO a continuer */}
+          {!mailCheckedCharac && (
+            <Form.Field
+              id="form-input-control-error-email"
+              control={Input}
+              label="Email"
+              placeholder="joe@schmoe.com"
+              onChange={(event) => {
+                dispatch(addMailNewUser(event.target.value));
+              }}
+            />
+          )}
+          {mailCheckedCharac && (
           <Form.Field
             id="form-input-control-error-email"
             control={Input}
@@ -98,6 +129,7 @@ const Register = () => {
               pointing: 'below',
             }}
           />
+          )}
           <Form.Field
             id="form-button-control-public"
             control={Button}
