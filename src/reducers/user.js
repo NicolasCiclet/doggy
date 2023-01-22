@@ -15,7 +15,7 @@ const initialState = {
   latNewUser: '',
   lngNewUser: '',
   userCreate: false,
-  mailChecked: false,
+  mailChecked: true,
 };
 
 const userReducer = (state = initialState, action = {}) => {

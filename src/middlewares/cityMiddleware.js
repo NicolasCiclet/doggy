@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { GET_CITY_API } from '../actions/city';
-import { addLatlngNewUser } from '../actions/user';
+import { addLatlngNewUser, addNewUser } from '../actions/user';
 
 // API Key
 const APIkey = 'lnxoBaBa1sbt/fQXBRsqqQ==w2DBgrQ5Mka1ykiE';
@@ -24,6 +24,7 @@ const cityMiddleware = (store) => (next) => (action) => {
           const lat = (response.data[0].latitude);
           const lng = (response.data[0].longitude);
           store.dispatch(addLatlngNewUser(lat, lng));
+          store.dispatch(addNewUser());
         })
 
       // What to do in case of error
