@@ -30,8 +30,6 @@ const Register = () => {
           event.preventDefault();
           // console.log('submit !');
           if (emailCheckRegex.validate(checkMail)) {
-            // TODO addNewUser sera a dispatché après recuperation de l'api WIP
-            // dispatch(addNewUser());
             dispatch(getCityApi());
           }
           else {
@@ -40,67 +38,62 @@ const Register = () => {
         }}
         >
           <Form.Group widths="equal">
-            <Form.Field
-              control={Input}
+            <Form.Input
               placeholder="Nom"
               onChange={(event) => {
                 // console.log(`change : ${event.target.value}`);
                 dispatch(addLastnameNewUser(event.target.value));
               }}
             />
-            <Form.Field
-              control={Input}
+            <Form.Input
               placeholder="Prénom"
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
               }}
             />
-            <Form.Field
-              control={Input}
+            <Form.Input
               placeholder="Ville"
               onChange={(event) => {
                 dispatch(addCityNewUser(event.target.value));
               }}
             />
-            <Form.Field
-              control={Input}
-              placeholder="Nom d'utilisateur"
-              onChange={(event) => {
-                dispatch(addUsernameNewUser(event.target.value));
-              }}
-            /><Form.Field
-              control={Input}
-              placeholder="Mot de passe"
-              type="password"
-              onChange={(event) => {
-                dispatch(addPasswordNewUser(event.target.value));
-              }}
-            />
-            <Form.Field
-              control={Select}
-              options={genderOptions}
-              placeholder="Gender"
-              search
-              searchInput={{ id: 'form-select-control-gender' }}
-            />
-            <Form.Field
-              control={Input}
-              placeholder="Date de naissance"
-              type="date"
-              onChange={(event) => {
-                dispatch(addBirthNewUser(event.target.value));
-              }}
-            />
           </Form.Group>
-          <Form.Field
+          <Form.Input
+            placeholder="Nom d'utilisateur"
+            onChange={(event) => {
+              dispatch(addUsernameNewUser(event.target.value));
+            }}
+          />
+          <Form.Input
+            placeholder="Mot de passe"
+            type="password"
+            onChange={(event) => {
+              dispatch(addPasswordNewUser(event.target.value));
+            }}
+          />
+          <Form.Input
+            control={Select}
+            options={genderOptions}
+            placeholder="Gender"
+            search
+            searchInput={{ id: 'form-select-control-gender' }}
+          />
+          <Form.Input
+            placeholder="Date de naissance"
+            type="date"
+            onChange={(event) => {
+              dispatch(addBirthNewUser(event.target.value));
+            }}
+          />
+
+          <Form.Input
             control={TextArea}
             placeholder="Un petit mot sur vous..."
             onChange={(event) => {
               dispatch(addBioNewUser(event.target.value));
             }}
           />
-          <Form.Field
-            control={Input}
+          <Form.Input
             label="Email"
             placeholder="joe@schmoe.com"
             // error={mailCheckedBool ? false : true}
@@ -113,7 +106,7 @@ const Register = () => {
             }}
           />
 
-          <Form.Field
+          <Form.Input
             control={Button}
             content="Confirm"
           />
