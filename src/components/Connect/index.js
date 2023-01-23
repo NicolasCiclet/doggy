@@ -38,7 +38,8 @@ const Connect = () => {
             // on constate que le paramètre identifier est rempli automatiquement avec
             // la valeur qu'on a fournie pour la prop identifier.
             // Et value contient la nouvelle valeur du champ, avec le nouveau caractère saisi
-            console.log(`changeField sur l'e-mail : identifier=${identifier} newValue=${newValue}`);
+            // console.log(`changeField sur l'e-mail : identifier=${identifier}
+            // newValue=${newValue}`);
 
             const action = updateSettingsField(identifier, newValue);
             dispatch(action);

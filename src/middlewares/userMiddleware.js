@@ -1,27 +1,31 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN, saveNickname } from '../actions/user';
+import { SUBMIT_LOGIN, saveAuthData } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
     case SUBMIT_LOGIN:
 
       axios.post(
-        // appel à l'API user pour se logger ? ('http://localhost:3001/login'),
+
+        // appel à l'API user pour se logger : http://localhost/doggy/public/api/user,
         {
-          email: store.user.getState().mailNewUser,
-          password: store.user.getState().passwordNewUser,
+          email: store.getState().user.mailNewUser,
+          password: store.getState().user.passwordNewUser,
         },
-        // pour visualiser la requete envoyée : Dev tool, onglet Network, on regarde
-        // l'onglet "payload" dans le détail de la requête
       )
         .then((response) => {
           // console.log(response.data.pseudo);
 
-          // on veut aller enregistrer le pseudo dans le state => dispatch une action
+          // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
+          // dans le state => dispatch une action
           // (attention au nommage de la variable, pas "action" pour ne pas masquer le
           // paramètre qui porte le même nom) pour le message de bienvenu
-          const actionToDispatch = saveNickname(response.data.username);
+          const actionToDispatch = saveAuthData(
+            response.data.pseudo,
+            response.data.token,
+            response.data.logged,
+          );
           store.dispatch(actionToDispatch);
 
           // On veut avoir accès au profil de l'utilisateur, et aux pages réservées

@@ -13,8 +13,9 @@ export const ADD_MAIL_NEW_USER = 'ADD_MAIL_NEW_USER';
 export const MAIL_CHECKED = 'MAIL_CHECKED';
 // change of one of the fields of the connection form
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
-export const SAVE_NICKNAME = 'SAVE_NICKNAME';
 export const UPDATE_SETTINGS_FIELD = 'UPDATE_SETTINGS_FIELD';
+// save in the state the autenticate informations
+export const SAVE_AUTH_DATA = 'SAVE_AUTH_DATA';
 
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -74,9 +75,11 @@ export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const saveNickname = (nickname) => ({
-  type: SAVE_NICKNAME,
+export const saveAuthData = (nickname, token, isLogged) => ({
+  type: SAVE_AUTH_DATA,
   nickname: nickname,
+  token: token,
+  isLogged: isLogged,
 });
 
 export const updateSettingsField = (identifier, newValue) => ({
