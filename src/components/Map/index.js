@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { FeatureGroup, LayersControl, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 // import module L for the creation of icons
 import L from 'leaflet';

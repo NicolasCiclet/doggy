@@ -14,9 +14,9 @@ import './styles.scss';
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCityApi());
-  });
+  // useEffect(() => {
+  //   dispatch(getCityApi());
+  // });
   return (
     // Here is the main div, with all components
     <div className="app">
