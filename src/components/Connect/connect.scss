@@ -2,16 +2,17 @@
 
 .settings {
   position: fixed;
-  top: 1em;
-  right: 2em;
-  padding: 0.8em;
+  top: 20%;
+ 	left: 37%;
+  padding: 1.5em;
   display: flex;
   background-color: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  z-index: 2;
 
   .settings-form {
     background-color: #fff;
     padding: 1em;
-    margin-left: 0.8em;
 
     .settings-submit {
       background-color: vars.$darkColor;
