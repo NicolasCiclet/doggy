@@ -1,5 +1,9 @@
 import users from 'src/data/userForTest';
-import { ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_USERNAME_NEW_USER, MAIL_CHECKED } from '../actions/user';
+import {
+  SAVE_NICKNAME, ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER,
+  ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER,
+  ADD_PASSWORD_NEW_USER, ADD_USERNAME_NEW_USER, MAIL_CHECKED, UPDATE_SETTINGS_FIELD,
+} from '../actions/user';
 
 const initialState = {
   usersToDisplay: users,
@@ -92,6 +96,27 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         mailChecked: action.newValue,
       };
+
+    case SAVE_NICKNAME:
+      return {
+        ...state,
+        usernameNewUser: action.nickname,
+      };
+
+    case UPDATE_SETTINGS_FIELD:
+      if (action.identifier === 'email') {
+        return {
+          ...state,
+          mailNewUser: action.value,
+        };
+      }
+      // si on arrive à cette ligne, c'est que forcément on n'est pas passé dans le if
+      // => else implicite si on a un return dans le if
+      return {
+        ...state,
+        passwordNewUser: action.value,
+      };
+
     default:
       return state;
   }
