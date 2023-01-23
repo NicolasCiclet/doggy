@@ -1,5 +1,9 @@
 import users from 'src/data/userForTest';
-import { ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_USERNAME_NEW_USER, MAIL_CHECKED } from '../actions/user';
+import {
+  SAVE_AUTH_DATA, ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER,
+  ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER,
+  ADD_PASSWORD_NEW_USER, ADD_USERNAME_NEW_USER, MAIL_CHECKED, UPDATE_SETTINGS_FIELD,
+} from '../actions/user';
 
 const initialState = {
   usersToDisplay: users,
@@ -16,6 +20,8 @@ const initialState = {
   lngNewUser: '',
   userCreate: false,
   mailChecked: true,
+  token: '',
+  logged: false,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -92,6 +98,32 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         mailChecked: action.newValue,
       };
+
+    case SAVE_AUTH_DATA:
+      return {
+        ...state,
+        logged: action.isLogged,
+        token: action.token,
+        usernameNewUser: action.nickname,
+        // sécurité : on efface les identifiants dans le state dès qu'on n'en a plus besoin
+        mailNewuser: '',
+        passwordNewUser: '',
+      };
+
+    case UPDATE_SETTINGS_FIELD:
+      if (action.identifier === 'email') {
+        return {
+          ...state,
+          mailNewUser: action.value,
+        };
+      }
+      // si on arrive à cette ligne, c'est que forcément on n'est pas passé dans le if
+      // => else implicite si on a un return dans le if
+      return {
+        ...state,
+        passwordNewUser: action.value,
+      };
+
     default:
       return state;
   }

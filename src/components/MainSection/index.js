@@ -6,9 +6,9 @@ import Register from './Register';
 
 const MainSection = () => (
   <div className="mainSection">
-    <Register />
-    {/* <AllUsers />
-    <AllEvents /> */}
+    {/* <Register /> */}
+    <AllUsers />
+    <AllEvents />
   </div>
 );
 
