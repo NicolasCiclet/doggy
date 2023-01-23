@@ -1,4 +1,5 @@
 // I create const, it's better for autocompletion
+// USER
 export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const ADD_LATLNG_NEW_USER = 'ADD_LATLNG_NEW_USER';
 export const ADD_LASTNAME_NEW_USER = 'ADD_LASTNAME_NEW_USER';
@@ -10,8 +11,10 @@ export const ADD_GENDER_NEW_USER = 'ADD_GENDER_NEW_USER';
 export const ADD_BIRTH_NEW_USER = 'ADD_BIRTH_NEW_USER';
 export const ADD_BIO_NEW_USER = 'ADD_BIO_NEW_USER';
 export const ADD_MAIL_NEW_USER = 'ADD_MAIL_NEW_USER';
+export const ADD_PHONE_NEW_USER = 'ADD_PHONE_NEW_USER';
 export const MAIL_CHECKED = 'MAIL_CHECKED';
 
+// User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
 });
@@ -58,6 +61,11 @@ export const addBioNewUser = (value) => ({
 });
 export const addMailNewUser = (value) => ({
   type: ADD_MAIL_NEW_USER,
+  newValue: value,
+});
+
+export const addPhoneNewUser = (value) => ({
+  type: ADD_PHONE_NEW_USER,
   newValue: value,
 });
 
