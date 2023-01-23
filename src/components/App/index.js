@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCityApi } from '../../actions/city';
+import Connect from '../Connect';
 import Footer from '../Footer';
 import Header from '../Header';
 import MainSection from '../MainSection';
@@ -23,6 +24,7 @@ function App() {
       <Header />
       <Menu />
       <Welcome />
+      <Connect />
       <Map />
       <MainSection />
       <Footer />

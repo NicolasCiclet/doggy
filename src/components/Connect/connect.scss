@@ -1,0 +1,26 @@
+@use 'src/styles/vars';
+
+.settings {
+  position: fixed;
+  top: 20%;
+ 	left: 37%;
+  padding: 1.5em;
+  display: flex;
+  background-color: rgba(0,0,0,0.4);
+  border-radius: 10px;
+  z-index: 2;
+
+  .settings-form {
+    background-color: #fff;
+    padding: 1em;
+
+    .settings-submit {
+      background-color: vars.$darkColor;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 1rem;
+      font-size: 1.2em;
+    }
+  }
+}
