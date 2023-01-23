@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Input, Message, Select, TextArea } from 'semantic-ui-react';
+import { validate } from 'react-email-validator';
 import { getCityApi } from '../../../actions/city';
-import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addUsernameNewUser, mailChecked } from '../../../actions/user';
+import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addUsernameNewUser, mailChecked } from '../../../actions/user';
 import './register.scss';
 
 const genderOptions = [
-  { key: 'h', text: 'Homme', value: 'male' },
-  { key: 'f', text: 'Femme', value: 'female' },
+  { text: 'Homme', value: 'male' },
+  { text: 'Femme', value: 'female' },
 ];
 
 const Register = () => {
@@ -16,9 +17,8 @@ const Register = () => {
   const checkMail = useSelector((state) => state.user.mailNewUser);
   const mailCheckedBool = useSelector((state) => state.user.mailChecked);
 
-  const emailCheckRegex = require('react-email-validator');
-  emailCheckRegex.validate(checkMail);
-  // console.log(emailCheckRegex.validate(checkMail));
+  validate(checkMail);
+  // console.log(validate(checkMail));
 
   return (
     <>
@@ -29,7 +29,7 @@ const Register = () => {
         <Form onSubmit={(event) => {
           event.preventDefault();
           // console.log('submit !');
-          if (emailCheckRegex.validate(checkMail)) {
+          if (validate(checkMail)) {
             dispatch(getCityApi());
           }
           else {
@@ -40,6 +40,7 @@ const Register = () => {
           <Form.Group widths="equal">
             <Form.Input
               placeholder="Nom"
+              width={5}
               onChange={(event) => {
                 // console.log(`change : ${event.target.value}`);
                 dispatch(addLastnameNewUser(event.target.value));
@@ -47,12 +48,14 @@ const Register = () => {
             />
             <Form.Input
               placeholder="Prénom"
+              width={5}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
               }}
             />
             <Form.Input
               placeholder="Ville"
+              width={5}
               onChange={(event) => {
                 dispatch(addCityNewUser(event.target.value));
               }}
@@ -74,9 +77,14 @@ const Register = () => {
           <Form.Input
             control={Select}
             options={genderOptions}
+            label={{ children: 'Gender', htmlFor: 'form-select-control-gender' }}
             placeholder="Gender"
             search
             searchInput={{ id: 'form-select-control-gender' }}
+            onChange={(event) => {
+              console.log(event);
+              dispatch(addGenderNewUser(event.target.value));
+            }}
           />
           <Form.Input
             placeholder="Date de naissance"
