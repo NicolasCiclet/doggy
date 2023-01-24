@@ -4,6 +4,8 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCityApi } from '../../actions/city';
 import Connect from '../Connect';
+import UserRegister from '../Register/newUser';
+import DogRegister from '../Register/newDog';
 import Footer from '../Footer';
 import Header from '../Header';
 import MainSection from '../MainSection';
@@ -25,7 +27,11 @@ function App() {
       <Header />
       <Menu />
       <Welcome />
-      <Connect />
+      <UserRegister />
+      <DogRegister />
+      <Routes>
+        <Route path="" element={Connect} />
+      </Routes>
       <Map />
       <MainSection />
       <Footer />
