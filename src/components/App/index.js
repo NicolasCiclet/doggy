@@ -1,8 +1,8 @@
 // == Import
 import { Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getCityApi } from '../../actions/city';
+// import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { getCityApi } from '../../actions/city';
 import Connect from '../Connect';
 import UserRegister from '../Register/newUser';
 import DogRegister from '../Register/newDog';
@@ -12,11 +12,17 @@ import MainSection from '../MainSection';
 import Map from '../Map';
 import Menu from '../Menu';
 import Welcome from '../Welcome';
+import Profil from '../Profil';
+import About from '../About';
+import Contacts from '../Contacts';
+import LegalMentions from '../LegalMentions';
 import './styles.scss';
 
 // == Composant
 function App() {
   const dispatch = useDispatch();
+  const logged = useSelector((state) => state.user.logged);
+  // console.log(logged);
 
   // useEffect(() => {
   //   dispatch(getCityApi());
@@ -26,12 +32,16 @@ function App() {
     <div className="app">
       <Header />
       <Menu />
-      <Welcome />
+      {!logged && (<Welcome />)}
+      <Routes>
+        <Route path="/Connect" element={<Connect />} />
+        <Route path="/Profil" element={<Profil />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/Contacts" element={<Contacts />} />
+        <Route path="/LegalMentions" element={<LegalMentions />} />
+      </Routes>
       <UserRegister />
       <DogRegister />
-      <Routes>
-        <Route path="" element={Connect} />
-      </Routes>
       <Map />
       <MainSection />
       <Footer />
