@@ -9,7 +9,6 @@ import DogRegister from '../Register/newDog';
 import Footer from '../Footer';
 import Header from '../Header';
 import MainSection from '../MainSection';
-import Map from '../Map';
 import Menu from '../Menu';
 import Welcome from '../Welcome';
 import Profil from '../Profil';
@@ -34,16 +33,16 @@ function App() {
       <Menu />
       {!logged && (<Welcome />)}
       <Routes>
-        <Route path="/Connect" element={<Connect />} />
+        <Route path="/" element={<MainSection />} />
+        <Route path="/connexion" element={<Connect />} />
+        <Route path="/register" element={<UserRegister />} />
+        <Route path="/register/dog" element={<DogRegister />} />
         <Route path="/Profil" element={<Profil />} />
         <Route path="/About" element={<About />} />
         <Route path="/Contacts" element={<Contacts />} />
         <Route path="/LegalMentions" element={<LegalMentions />} />
       </Routes>
-      <UserRegister />
-      <DogRegister />
-      <Map />
-      <MainSection />
+
       <Footer />
     </div>
   );

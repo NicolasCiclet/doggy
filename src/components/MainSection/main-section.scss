@@ -1,5 +1,18 @@
+@import url("~leaflet/dist/leaflet.css");
 // Mobil first
 .mainSection {
+  .map-main{
+    width: 100%;
+    padding-bottom: 0.7rem;
+    z-index: 1;
+  
+    .leaflet-container {
+      width: 100%;
+      height: 40vh;
+    }
+  }
+
+
   .cards_title{
     font-style: italic;
     font-weight: bold;
@@ -29,8 +42,20 @@
 }
 
 // Breackpoint for desktop
-@media (min-width: 1000px){
-  .mainSection {
-    width: 55%;
-  }
-}
+
+// @media (min-width: 1000px){
+//   .mainSection {
+//     width: 55%;
+
+//     // .map-main{
+//     //   width: 45%;
+//     //   padding-bottom: 0;
+      
+  
+//     //   .leaflet-container {
+//     //     width: 100%;
+//     //     height: 100%;
+//     //   }
+//     // }
+//   }
+// }
