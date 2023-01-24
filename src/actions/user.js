@@ -16,6 +16,7 @@ export const ADD_PHONE_NEW_USER = 'ADD_PHONE_NEW_USER';
 export const CITY_FIND = 'CITY_FIND';
 // change of one of the fields of the connection form
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
+export const SUBMIT_FORM_NEW_USER = 'SUBMIT_FORM_NEW_USER';
 export const UPDATE_SETTINGS_FIELD = 'UPDATE_SETTINGS_FIELD';
 // save in the state the autenticate informations
 export const SAVE_AUTH_DATA = 'SAVE_AUTH_DATA';
@@ -95,4 +96,8 @@ export const updateSettingsField = (identifier, newValue) => ({
   type: UPDATE_SETTINGS_FIELD,
   identifier: identifier,
   value: newValue,
+});
+
+export const submitFormNewUser = () => ({
+  type: SUBMIT_FORM_NEW_USER,
 });

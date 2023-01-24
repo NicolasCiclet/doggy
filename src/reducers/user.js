@@ -19,7 +19,7 @@ const initialState = {
   userCreate: false,
 
   token: '',
-  logged: false,
+  logged: true,
 };
 
 const userReducer = (state = initialState, action = {}) => {
@@ -81,7 +81,7 @@ const userReducer = (state = initialState, action = {}) => {
     case ADD_PHONE_NEW_USER:
       return {
         ...state,
-        mailNewUser: action.newValue,
+        phoneNewUser: action.newValue,
       };
 
     case CITY_FIND:

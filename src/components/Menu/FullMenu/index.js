@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import '../menu.scss';
 
 const FullMenu = () => (
@@ -7,6 +8,12 @@ const FullMenu = () => (
     <a className="menu-link" href="">Balade</a>
     <a className="menu-link" href="">Evènement</a>
     <a className="menu-link" href="">Professionel</a>
+    <NavLink
+      className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+      to="/register"
+    >
+      Rencontre
+    </NavLink>
   </>
 );
 
