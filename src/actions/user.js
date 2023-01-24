@@ -1,5 +1,6 @@
 // I create const, it's better for autocompletion
 // USER
+// add all information of user in the state
 export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const ADD_LATLNG_NEW_USER = 'ADD_LATLNG_NEW_USER';
 export const ADD_LASTNAME_NEW_USER = 'ADD_LASTNAME_NEW_USER';
@@ -12,7 +13,7 @@ export const ADD_BIRTH_NEW_USER = 'ADD_BIRTH_NEW_USER';
 export const ADD_BIO_NEW_USER = 'ADD_BIO_NEW_USER';
 export const ADD_MAIL_NEW_USER = 'ADD_MAIL_NEW_USER';
 export const ADD_PHONE_NEW_USER = 'ADD_PHONE_NEW_USER';
-export const MAIL_CHECKED = 'MAIL_CHECKED';
+export const CITY_FIND = 'CITY_FIND';
 // change of one of the fields of the connection form
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const UPDATE_SETTINGS_FIELD = 'UPDATE_SETTINGS_FIELD';
@@ -74,9 +75,9 @@ export const addPhoneNewUser = (value) => ({
   newValue: value,
 });
 
-export const mailChecked = (value) => ({
-  type: MAIL_CHECKED,
-  newValue: value,
+export const cityFind = (bool) => ({
+  type: CITY_FIND,
+  newValue: bool,
 });
 
 export const submitLogin = () => ({
