@@ -2,13 +2,15 @@ import AllEvents from './Events/allEvents';
 import AllUsers from './Users/allUsers';
 
 import './main-section.scss';
-import Register from './Register';
+import UserRegister from './Register/newUser';
+import DogRegister from './Register/newDog';
 
 const MainSection = () => (
   <div className="mainSection">
-    {/* <Register /> */}
-    <AllUsers />
-    <AllEvents />
+    <UserRegister />
+    <DogRegister />
+    {/* <AllUsers />
+    <AllEvents /> */}
   </div>
 );
 

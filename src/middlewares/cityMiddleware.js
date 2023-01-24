@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { GET_CITY_API } from '../actions/city';
-import { addLatlngNewUser, addNewUser } from '../actions/user';
+import { addLatlngNewUser, addNewUser, cityFind } from '../actions/user';
 
 // API Key
 const APIkey = 'lnxoBaBa1sbt/fQXBRsqqQ==w2DBgrQ5Mka1ykiE';
@@ -30,6 +30,7 @@ const cityMiddleware = (store) => (next) => (action) => {
       // What to do in case of error
         .catch((error) => {
           console.log(error, "la ville n'existe pas");
+          store.dispatch(cityFind(false));
         })
 
       // to do in any case
