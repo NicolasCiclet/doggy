@@ -1,26 +1,26 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN, saveAuthData } from '../actions/user';
+import { SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case SUBMIT_LOGIN:
+    case SUBMIT_FORM_NEW_USER:
 
       axios.post(
         'http://christophe-rialland.vpnuser.lan/doggy/public/api/user/',
         {
-          nickname: 'toto',
-          firstname: 'louis',
-          lastname: 'lastname',
-          gender: 'gender',
-          birthdate: '1984-10-05',
-          bio: 'bio',
-          city: 'city',
+          nickname: store.getState().user.usernameNewUser,
+          firstname: store.getState().user.firstnameNewUser,
+          lastname: store.getState().user.lastnameNewUser,
+          gender: store.getState().user.genderNewUser,
+          birthdate: store.getState().user.birthNewUser,
+          bio: store.getState().user.bioNewUser,
+          city: store.getState().user.cityNewUser,
           location: {
-            latitude: '-1.96',
-            longitude: '47.7',
+            latitude: store.getState().user.latNewUser,
+            longitude: store.getState().user.lngNewUser,
           },
-          phone: '+33602030405',
+          phone: store.getState().user.phoneNewUser,
           email: store.getState().user.mailNewUser,
           password: store.getState().user.passwordNewUser,
         },
