@@ -19,7 +19,7 @@ const initialState = {
   userCreate: false,
 
   token: '',
-  logged: false,
+  logged: true,
 };
 
 const userReducer = (state = initialState, action = {}) => {
