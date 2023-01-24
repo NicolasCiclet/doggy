@@ -41,7 +41,7 @@ const Map = () => {
             <FeatureGroup>
               {/* I map on events to display all markers */}
               {events.map((event) => (
-                <Marker position={[event.lat, event.lng]} icon={icon1}>
+                <Marker position={[event.lat, event.lng]} icon={icon1} key={event.id}>
                   <Popup>
                     {event.name} <br /> {event.difficulty}
                   </Popup>
@@ -53,7 +53,7 @@ const Map = () => {
           <LayersControl.Overlay checked name="Users">
             <FeatureGroup>
               {users.map((user) => (
-                <Marker position={[user.lat, user.lng]} icon={icon2}>
+                <Marker position={[user.lat, user.lng]} icon={icon2} key={user.id}>
                   <Popup>
                     {user.firstname} <br /> {user.gender}
                   </Popup>

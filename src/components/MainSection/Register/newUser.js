@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Message, Select, TextArea } from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
 import { getCityApi } from '../../../actions/city';
-import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addPhoneNewUser, addUsernameNewUser, mailChecked } from '../../../actions/user';
+import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addPhoneNewUser, addUsernameNewUser } from '../../../actions/user';
 import './register.scss';
 
+// options for the input select gender
 const genderOptions = [
   { text: 'Homme', value: 'male' },
   { text: 'Femme', value: 'female' },
@@ -12,38 +13,50 @@ const genderOptions = [
 
 const UserRegister = () => {
   const dispatch = useDispatch();
+
   const name = useSelector((state) => state.user.lastnameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
-  const checkMail = useSelector((state) => state.user.mailNewUser);
-  const mailCheckedBool = useSelector((state) => state.user.mailChecked);
+  const mailUser = useSelector((state) => state.user.mailNewUser);
+  const passwordUser = useSelector((state) => state.user.passwordNewUser);
+  const cityFind = useSelector((state) => state.user.isCityFind);
 
-  validate(checkMail);
-  // console.log(validate(checkMail));
+  /* I use regex to check password, here is an explication of my rules :
+  ^ The password string will start this way and must contain :
+  (?=.*[a-z]) at least 1 lowercase alphabetical character
+  (?=.*[A-Z]) at least 1 uppercase alphabetical character
+  (?=.*[0-9]) at least 1 numeric character
+  (?=.{6,}) 6 characters or longer
+  */
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
+
+  // Validate is come from react-email-validator and use a regex to check mail.
+  validate(mailUser);
+  // console.log(validate(mailUser));
 
   return (
     <>
       <div className="register">
         <h1>Création de compte</h1>
 
+        {/* the form is visible only if userCreate is false */}
         {!userCreate && (
         <Form onSubmit={(event) => {
           event.preventDefault();
-          // console.log('submit !');
-          if (validate(checkMail)) {
+
+          // OnSubmit, mail and password are checked with an and condition.
+          // Only if the condition is true, we send a request to the api
+          if ((validate(mailUser)) && (passwordRegex.test(passwordUser))) {
             dispatch(getCityApi());
-          }
-          else {
-            dispatch(mailChecked(false));
           }
         }}
         >
+          {/* with Form.group we have input on the same line or 1 input by line with responsive */}
           <Form.Group widths="equal">
             <Form.Input
               label="Nom"
               placeholder="Nom"
               width={5}
               onChange={(event) => {
-                // console.log(`change : ${event.target.value}`);
                 dispatch(addLastnameNewUser(event.target.value));
               }}
             />
@@ -59,6 +72,9 @@ const UserRegister = () => {
               label="Ville"
               placeholder="Ville"
               width={5}
+              error={cityFind ? false : {
+                content: 'Ville introuvable, merci d\'indiquer une autre ville',
+              }}
               onChange={(event) => {
                 dispatch(addCityNewUser(event.target.value));
               }}
@@ -68,7 +84,7 @@ const UserRegister = () => {
             <Form.Input
               label="Nom d'utilisateur"
               placeholder="Nom d'utilisateur"
-              width={6}
+              width={5}
               onChange={(event) => {
                 dispatch(addUsernameNewUser(event.target.value));
               }}
@@ -77,10 +93,9 @@ const UserRegister = () => {
               label="Email"
               placeholder="joe@schmoe.com"
               width={6}
-              // error={mailCheckedBool ? false : true}
-              error={mailCheckedBool ? false : {
-                content: 'Please enter a valid email address',
-                pointing: 'below',
+              // I use a ternary condition to show or hide the error message
+              error={validate(mailUser) ? false : {
+                content: 'Merci d\'entrer un email valide',
               }}
               onChange={(event) => {
                 dispatch(addMailNewUser(event.target.value));
@@ -89,7 +104,7 @@ const UserRegister = () => {
             <Form.Input
               label="Téléphone"
               placeholder="Téléphone"
-              width={4}
+              width={5}
               onChange={(event) => {
                 dispatch(addPhoneNewUser(event.target.value));
               }}
@@ -101,6 +116,9 @@ const UserRegister = () => {
               placeholder="Mot de passe"
               width={8}
               type="password"
+              error={(passwordRegex.test(passwordUser)) ? false : {
+                content: ' 6 caractères minimum dont 1 minuscule, 1 majuscule et 1 chiffre',
+              }}
               onChange={(event) => {
                 dispatch(addPasswordNewUser(event.target.value));
               }}
@@ -151,12 +169,13 @@ const UserRegister = () => {
 
           <Form.Input
             control={Button}
-            content="Confirm"
+            content="Valider"
           />
         </Form>
         )}
       </div>
 
+      {/* success message when userCreate is true */}
       {userCreate && (
         <Form success className="register-success">
           <Message

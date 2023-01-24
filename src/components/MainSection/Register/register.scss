@@ -1,12 +1,27 @@
+@use 'src/styles/vars';
+
 .register {
   margin: 1rem;
+  background-color: rgba(243, 243, 243, 0.692);
+  padding: 1.5em;
+  border-radius: 10px;
+  border: 2px solid black;
+    // font-size: 1.2em;
 
+  .ui .button {
+    background-color: vars.$darkColor;
+    color: #fff;
+  }
   &-success {
     margin: 1rem;
   }
 
   h1 {
     text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 1px 2px 2px grey;
   }
   
 }

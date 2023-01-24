@@ -7,11 +7,27 @@ const userMiddleware = (store) => (next) => (action) => {
     case SUBMIT_LOGIN:
 
       axios.post(
-
-        // appel à l'API user pour se logger : http://localhost/doggy/public/api/user,
+        'http://christophe-rialland.vpnuser.lan/doggy/public/api/user/',
         {
+          nickname: 'toto',
+          firstname: 'louis',
+          lastname: 'lastname',
+          gender: 'gender',
+          birthdate: '1984-10-05',
+          bio: 'bio',
+          city: 'city',
+          location: {
+            latitude: '-1.96',
+            longitude: '47.7',
+          },
+          phone: '+33602030405',
           email: store.getState().user.mailNewUser,
           password: store.getState().user.passwordNewUser,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
       )
         .then((response) => {
