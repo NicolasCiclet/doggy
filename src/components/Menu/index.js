@@ -1,17 +1,25 @@
+import { useSelector } from 'react-redux';
 import FullMenu from './FullMenu';
 import LightMenu from './LightMenu';
+
 import './menu.scss';
 
-const Menu = () => (
-  <>
-    {/* Here a condition with logged (true of false) */}
-    <div className="menu">
-      <LightMenu />
-    </div>
-    <div className="menu">
-      <FullMenu />
-    </div>
-  </>
-);
+function Menu() {
+  const logged = useSelector((state) => state.user.logged);
+  return (
+    <>
+      {!logged && (
+      <div className="menu">
+        <LightMenu />
+      </div>
+      )}
+      {logged && (
+      <div className="menu">
+        <FullMenu />
+      </div>
+      )}
+    </>
+  );
+}
 
 export default Menu;
