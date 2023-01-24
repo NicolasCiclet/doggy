@@ -4,6 +4,7 @@ import './menu.scss';
 
 const Menu = () => (
   <>
+    {/* Here a condition with logged (true of false) */}
     <div className="menu">
       <LightMenu />
     </div>

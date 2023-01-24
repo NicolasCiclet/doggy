@@ -3,11 +3,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
+import App from 'src/components/App';
 import store from 'src/store';
 
 // == Import : local
 // Composants
-import App from 'src/components/App';
 
 // == Render
 // 1. Élément React racine (celui qui contient l'ensemble de l'app)
