@@ -6,9 +6,13 @@ import './main-section.scss';
 
 const MainSection = () => (
   <div className="mainSection">
-    <Map />
-    <AllUsers />
-    <AllEvents />
+    <div className="mainSection-map">
+      <Map />
+    </div>
+    <div className="mainSection-users">
+      <AllUsers />
+      {/* <AllEvents /> */}
+    </div>
   </div>
 );
 
