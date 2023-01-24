@@ -105,7 +105,11 @@ const UserRegister = () => {
               label="Téléphone"
               placeholder="Téléphone"
               width={5}
-              onChange={(event) => {
+              // Only numbers are allowed
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
                 dispatch(addPhoneNewUser(event.target.value));
               }}
             />

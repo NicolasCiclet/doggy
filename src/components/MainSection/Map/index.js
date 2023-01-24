@@ -6,8 +6,6 @@ import {
 // import module L for the creation of icons
 import L from 'leaflet';
 
-import './map.scss';
-
 import markerIconYellow from 'src/data/marker-icon-yellow.png';
 import markerIconRed from 'src/data/marker-icon-red.png';
 import { useSelector } from 'react-redux';

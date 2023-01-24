@@ -26,6 +26,11 @@
     &:hover {
       background-color: vars.$darkColor;
     }
+
+    &--active {
+      background-color: vars.$darkColor;
+      color: vars.$lightColor;
+    }
   }
 }
 

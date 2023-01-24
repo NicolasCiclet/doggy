@@ -1,27 +1,46 @@
+@import url("~leaflet/dist/leaflet.css");
 // Mobil first
 .mainSection {
-  .cards_title{
-    font-style: italic;
-    font-weight: bold;
-    margin-left: 1rem;
-    font-size: 0.9rem;
+
+  // MAP section
+  &-map {
+    .map-main {
+      width: 100%;
+      z-index: 1;
+      margin: 1rem 0;
+    
+      .leaflet-container {
+        width: 100%;
+        height: 40vh;
+      }
+    }
   }
-  // class défini par defaut par semantic
-  .ui.three.cards {
-    margin: 0.6rem 0.2rem;
-    justify-content: space-between;
+  
+  // CARDS section
+  &-users {
+    .cards_title{
+      font-style: italic;
+      font-weight: bold;
+      margin-left: 1rem;
+      font-size: 0.9rem;
+    }
+    // Class defined by default by semantic
+    .ui.three.cards {
+      margin: 0.6rem 0.2rem;
+      justify-content: space-between;
 
-    .card {
-      width: calc(33.33333333% - 1em);
-      margin: 0.5rem;
+      .card {
+        width: calc((100%/3) - 1em);
+        margin: 0.5rem;
 
-      .content {
-        font-size: 0.8rem;
-        padding: 0.7rem 0.4rem;
-
-        .card-name {
+        .content {
           font-size: 0.8rem;
-          font-weight: bold;
+          padding: 0.7rem 0.4rem;
+
+          .card-name {
+            font-size: 0.8rem;
+            font-weight: bold;
+          }
         }
       }
     }
@@ -29,8 +48,34 @@
 }
 
 // Breackpoint for desktop
+
 @media (min-width: 1000px){
   .mainSection {
-    width: 55%;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
+    &-map {
+      width: 40%;
+
+      .map-main {
+        padding-left: 0.5rem;
+        .leaflet-container {
+          width: 100%;
+          height: 100vh;
+        }
+      }
+    }
+
+    &-users {
+      width: 60%;
+      .all-users {
+        .cards_title{
+          margin-top: 1rem;
+        }
+      }
+    }
+    
+    
   }
 }
