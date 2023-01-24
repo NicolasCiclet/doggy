@@ -31,7 +31,7 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          // console.log(response.data.pseudo);
+          console.log(response);
 
           // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
           // dans le state => dispatch une action
