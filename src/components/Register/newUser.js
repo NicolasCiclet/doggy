@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Message, Select, TextArea } from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
-import { getCityApi } from '../../../actions/city';
-import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addPhoneNewUser, addUsernameNewUser } from '../../../actions/user';
+import { getCityApi } from '../../actions/city';
+import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addPhoneNewUser, addUsernameNewUser } from '../../actions/user';
 import './register.scss';
 
 // options for the input select gender
