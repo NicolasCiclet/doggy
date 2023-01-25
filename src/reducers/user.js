@@ -109,9 +109,9 @@ const userReducer = (state = initialState, action = {}) => {
     case SAVE_AUTH_DATA:
       return {
         ...state,
-        logged: action.isLogged,
         token: action.token,
-        usernameNewUser: action.nickname,
+        // on passe en status connecté
+        logged: true,
         // sécurité : on efface les identifiants dans le state dès qu'on n'en a plus besoin
         mailNewuser: '',
         passwordNewUser: '',

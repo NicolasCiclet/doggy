@@ -4,6 +4,41 @@ import { SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER } from '../actions/use
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
+    case SUBMIT_LOGIN:
+
+      axios.post(
+        'http://christophe-rialland.vpnuser.lan/doggy/public/api/login_check',
+        {
+          username: store.getState().user.mailNewUser,
+          password: store.getState().user.passwordNewUser,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+
+          // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
+          // dans le state => dispatch une action
+          // (attention au nommage de la variable, pas "action" pour ne pas masquer le
+          // paramètre qui porte le même nom) pour le message de bienvenu
+          const actionToDispatch = saveAuthData(
+            response.data.token,
+          );
+          store.dispatch(actionToDispatch);
+
+          // On veut avoir accès au profil de l'utilisateur, et aux pages réservées
+          // aux personnes connectées => token ?
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
     case SUBMIT_FORM_NEW_USER:
 
       axios.post(

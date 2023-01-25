@@ -88,11 +88,10 @@ export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const saveAuthData = (nickname, token, isLogged) => ({
+export const saveAuthData = (token) => ({
   type: SAVE_AUTH_DATA,
-  nickname: nickname,
   token: token,
-  isLogged: isLogged,
+  // isLogged: isLogged,
 });
 
 export const updateSettingsField = (identifier, newValue) => ({
