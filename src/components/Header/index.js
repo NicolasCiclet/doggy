@@ -27,7 +27,16 @@ function Header() {
         {logged && (
           <>
             <Link to="/">
-              <span className="header-nav" onClick={() => dispatch(logOut())}>Déconnexion</span>
+              <span
+                className="header-nav"
+                onClick={() => {
+                  // At Logout we delete the token in localStorage
+                  dispatch(logOut());
+                  localStorage.removeItem('UserToken');
+                }}
+              >
+                Déconnexion
+              </span>
             </Link>
             <Link to="/Profil">
               <span className="header-nav">Profil</span>
