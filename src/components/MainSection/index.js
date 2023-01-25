@@ -11,7 +11,7 @@ const MainSection = () => (
     </div>
     <div className="mainSection-users">
       <AllUsers />
-      {/* <AllEvents /> */}
+      <AllEvents />
     </div>
   </div>
 );

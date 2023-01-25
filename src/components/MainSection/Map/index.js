@@ -15,14 +15,23 @@ const icon1 = L.icon({
   iconUrl: markerIconYellow,
   iconSize: [30, 35],
 });
+const icon4 = L.icon({
+  iconUrl: markerIconYellow,
+  iconSize: [45, 50],
+});
 const icon2 = L.icon({
   iconUrl: markerIconRed,
   iconSize: [30, 35],
+});
+const icon3 = L.icon({
+  iconUrl: markerIconRed,
+  iconSize: [45, 50],
 });
 
 const Map = () => {
   const events = useSelector((state) => state.event.eventsToDisplay);
   const users = useSelector((state) => state.user.usersToDisplay);
+  const markerSelected = useSelector((state) => state.map.nameSelected);
   return (
     <div className="map-main">
       {/* default position of the map */}
@@ -39,7 +48,11 @@ const Map = () => {
             <FeatureGroup>
               {/* I map on events to display all markers */}
               {events.map((event) => (
-                <Marker position={[event.lat, event.lng]} icon={icon1} key={event.id}>
+                <Marker
+                  position={[event.lat, event.lng]}
+                  icon={(event.name === markerSelected) ? icon4 : icon1}
+                  key={event.id}
+                >
                   <Popup>
                     {event.name} <br /> {event.difficulty}
                   </Popup>
@@ -51,7 +64,12 @@ const Map = () => {
           <LayersControl.Overlay checked name="Users">
             <FeatureGroup>
               {users.map((user) => (
-                <Marker position={[user.lat, user.lng]} icon={icon2} key={user.id}>
+                <Marker
+                // Use a ternary condition to display different icons if the name matches
+                  position={[user.lat, user.lng]}
+                  icon={(user.firstname === markerSelected) ? icon3 : icon2}
+                  key={user.id}
+                >
                   <Popup>
                     {user.firstname} <br /> {user.gender}
                   </Popup>
