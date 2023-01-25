@@ -3,13 +3,13 @@ import './footer.scss';
 
 const Footer = () => (
   <div className="footer-main">
-    <Link to="/About">
+    <Link to="/about">
       <span className="footer-link">A propos</span>
     </Link>
-    <Link to="/Contacts">
+    <Link to="/contact">
       <span className="footer-link">Contacts</span>
     </Link>
-    <Link to="/LegalMentions">
+    <Link to="/mentions">
       <span className="footer-link">Mentions Légales</span>
     </Link>
   </div>

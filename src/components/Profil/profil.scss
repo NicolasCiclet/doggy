@@ -3,12 +3,15 @@
 .profil{
 
   // page de profil avec toutes les info
+  #mon-profil{
+    padding-top: 75px;
+  }
   .profil-section{
     background-color:#EFEDEC;
     box-shadow: 1px 2px 4px black;
     border-radius: 7px;
     padding: 0.5rem;
-    margin: 0.2rem;
+    margin: 0.2rem 0;
     // en-tête avec le titre de la section et les boutons d'édition et de suppression
     .profil-header{
       display: flex;
@@ -18,11 +21,12 @@
         margin-bottom: 1rem;
         font-weight: bold;
         font-size: 1.1rem;
-        text-shadow: 1px 2px 2px grey;
+        text-shadow: 1px 1px 1px grey;
       }
       .profil-buttons{
         .button{
-
+          width:27px;
+          margin-left: 0.4rem;
         }
       }
     }
@@ -60,15 +64,17 @@
 
       .profil-main-infos{
         width: 60%;
-        padding: 0.7rem;
+        padding: 0 0 0.7rem 0.7rem;
 
-        .profil-info-title{
-          font-weight: bold; 
-        }
-
-        .profil-info{
-          display: block;
-          margin-bottom: 0.4rem;
+        .info-block{
+          margin: 0.5rem;
+          .profil-info-title{
+            font-weight: bold; 
+          }
+  
+          .profil-info{
+            display: block;
+          }
         }
       }
 
@@ -84,16 +90,14 @@
     .profil-info-title{
       font-size: 0.9rem;
       font-weight: bold;
-      margin-top: 0.4rem;
     }
 
     .profil-info{
       font-size: 0.9rem;
       display: block;
-      margin-bottom: 0.4rem;
     }
 
-    .new_event{
+    .new-event{
       margin: 2rem 0.5rem 1rem 1rem;
       text-align: right;
 
@@ -117,4 +121,75 @@
       }
     }
   }
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .profil{
+    // page de profil avec toutes les info
+    .profil-section{
+      padding: 1rem;
+      margin: 0.8rem 0;
+
+      // en-tête avec le titre de la section et les boutons d'édition et de suppression
+      .profil-header{
+        .profil-h1{
+          font-size: 1.4rem;
+        }
+      }
+  
+      .profil-h2{
+        font-size: 1.2rem;
+      }
+  
+      // corps de la section avec la photo et les infos
+      .profil-main-message{
+        font-size: 1rem;
+      }
+      
+      .profil-main{
+        font-size: 1rem;
+        margin: 1rem;
+  
+        .profil-main-photo{
+          .profil-photo{
+            max-width: 200px;
+          }
+        }
+  
+        .profil-main-infos{
+          padding: 0 0 0.8rem 0.8rem;
+          
+          .info-block{
+            display: flex;
+
+            .profil-info-title{
+              margin-right: 0.5rem;
+            }
+          }
+          
+        }
+      }
+  
+      .profil-info-title{
+        font-size: 1rem;
+        font-weight: bold;
+      }
+  
+      .profil-info{
+        font-size: 1rem;
+        display: block;
+      }
+      .new-event{
+        .menu-link{
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  
 }

@@ -37,10 +37,10 @@ function App() {
         <Route path="/connexion" element={<Connect />} />
         <Route path="/register" element={<UserRegister />} />
         <Route path="/register/dog" element={<DogRegister />} />
-        <Route path="/Profil" element={<Profil />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Contacts" element={<Contacts />} />
-        <Route path="/LegalMentions" element={<LegalMentions />} />
+        <Route path="/profil" element={<Profil />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contacts />} />
+        <Route path="/mentions" element={<LegalMentions />} />
       </Routes>
 
       <Footer />
