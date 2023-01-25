@@ -28,28 +28,40 @@ const Profil = () => {
       {/* menu avec des ancres menant plus bas dans la page,
       à mettre en menu burger pour le mobil */}
       <div className={`navbar ${showBurgerMenu ? 'show-nav' : 'hide-nav'} `}>
-        <ul className="navbar__links">
-          <li className="navbar__item slideInDown-1">
-            <HashLink smooth to="/Profil#mon-profil">
-              Mon profil
-            </HashLink>
-          </li>
-          <li className="navbar__item slideInDown-2">
-            <HashLink smooth to="/Profil#mes-animaux">
-              Mes animaux
-            </HashLink>
-          </li>
-          <li className="navbar__item slideInDown-3">
-            <HashLink smooth to="/Profil#mes-messages">
-              Mes messages
-            </HashLink>
-          </li>
-          <li className="navbar__item slideInDown-4">
-            <HashLink smooth to="/Profil#mes-événements">
-              Mes événements
-            </HashLink>
-          </li>
-        </ul>
+        <div className="navbar__links">
+          <HashLink
+            className="navbar__item slideInDown-1"
+            smooth
+            to="/Profil#mon-profil"
+            onClick={() => dispatch(showLink())}
+          >
+            Mon profil
+          </HashLink>
+          <HashLink
+            className="navbar__item slideInDown-2"
+            smooth
+            to="/Profil#mes-animaux"
+            onClick={() => dispatch(showLink())}
+          >
+            Mes animaux
+          </HashLink>
+          <HashLink
+            className="navbar__item slideInDown-3"
+            smooth
+            to="/Profil#mes-messages"
+            onClick={() => dispatch(showLink())}
+          >
+            Mes messages
+          </HashLink>
+          <HashLink
+            className="navbar__item slideInDown-4"
+            smooth
+            to="/Profil#mes-événements"
+            onClick={() => dispatch(showLink())}
+          >
+            Mes événements
+          </HashLink>
+        </div>
         <button
           type="button"
           className="navbar__burger"
@@ -66,7 +78,12 @@ const Profil = () => {
             <Link to="/update-profile">
               <img className="button" src={editButton} alt="edit" />
             </Link>
-            <img className="button" src={deleteButton} alt="delete" />
+            <img
+              className="button"
+              src={deleteButton}
+              alt="delete"
+              // onClick={() => dispatch(action qui envoit un requete a api pour supprimer())}
+            />
           </div>
         </div>
         <h2 className="profil-h2">Bonjour {user.firstname} {user.lastname}</h2>
@@ -75,18 +92,30 @@ const Profil = () => {
             <img className="profil-photo" src={user.userPicture} alt="user" />
           </div>
           <div className="profil-main-infos">
-            <h3 className="profil-info-title">Nickname:</h3>
-            <span className="profil-info">{user.nickname}</span>
-            <h3 className="profil-info-title">Adresse mail:</h3>
-            <span className="profil-info">{user.email}</span>
-            <h3 className="profil-info-title">Phone:</h3>
-            <span className="profil-info">{user.phone}</span>
-            <h3 className="profil-info-title">City:</h3>
-            <span className="profil-info">{user.city}</span>
-            <h3 className="profil-info-title">Birthdate:</h3>
-            <span className="profil-info">{user.birthdate}</span>
-            <h3 className="profil-info-title">Gender:</h3>
-            <span className="profil-info">{user.gender}</span>
+            <div className="info-block">
+              <h3 className="profil-info-title">Nickname:</h3>
+              <span className="profil-info">{user.nickname}</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Adresse mail:</h3>
+              <span className="profil-info">{user.email}</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Phone:</h3>
+              <span className="profil-info">{user.phone}</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">City:</h3>
+              <span className="profil-info">{user.city}</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Birthdate:</h3>
+              <span className="profil-info">{user.birthdate}</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Gender:</h3>
+              <span className="profil-info">{user.gender}</span>
+            </div>
           </div>
         </div>
         <h3 className="profil-info-title">Bio:</h3>
@@ -101,7 +130,12 @@ const Profil = () => {
             <Link to="/update-profile">
               <img className="button" src={editButton} alt="edit" />
             </Link>
-            <img className="button" src={deleteButton} alt="delete" />
+            <img
+              className="button"
+              src={deleteButton}
+              alt="delete"
+              // onClick={() => dispatch(action qui envoit un requete a api pour supprimer())}
+            />
           </div>
         </div>
         <div className="profil-main">
@@ -109,16 +143,26 @@ const Profil = () => {
             <img className="profil-photo" src={user.dogPicture} alt="animal" />
           </div>
           <div className="profil-main-infos">
-            <h3 className="profil-info-title">Name:</h3>
-            <span className="profil-info">Name</span>
-            <h3 className="profil-info-title">Breed:</h3>
-            <span className="profil-info">{user.dog}</span>
-            <h3 className="profil-info-title">Sexe:</h3>
-            <span className="profil-info">Sexe</span>
-            <h3 className="profil-info-title">Personality:</h3>
-            <span className="profil-info">Personality</span>
-            <h3 className="profil-info-title">Sterilized</h3>
-            <span className="profil-info">Sterilized</span>
+            <div className="info-block">
+              <h3 className="profil-info-title">Name:</h3>
+              <span className="profil-info">Name</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Breed:</h3>
+              <span className="profil-info">{user.dog}</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Sexe:</h3>
+              <span className="profil-info">Sexe</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Personality:</h3>
+              <span className="profil-info">Personality</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Sterilized:</h3>
+              <span className="profil-info">Sterilized</span>
+            </div>
           </div>
         </div>
       </div>
@@ -142,7 +186,12 @@ const Profil = () => {
             <Link to="/update-profile">
               <img className="button" src={editButton} alt="edit" />
             </Link>
-            <img className="button" src={deleteButton} alt="delete" />
+            <img
+              className="button"
+              src={deleteButton}
+              alt="delete"
+              // onClick={() => dispatch(action qui envoit un requete a api pour supprimer())}
+            />
           </div>
         </div>
         <div className="profil-main">
@@ -150,15 +199,19 @@ const Profil = () => {
             <img className="profil-photo" src={event.picture} alt="evenement" />
           </div>
           <div className="profil-main-infos">
-            <h3 className="profil-info-title">Name:</h3>
-            <span className="profil-info">{event.name}</span>
-            <h3 className="profil-info-title">Date:</h3>
-            <span className="profil-info">{event.date}</span>
+            <div className="info-block">
+              <h3 className="profil-info-title">Name:</h3>
+              <span className="profil-info">{event.name}</span>
+            </div>
+            <div className="info-block">
+              <h3 className="profil-info-title">Date:</h3>
+              <span className="profil-info">{event.date}</span>
+            </div>
           </div>
         </div>
         <h3 className="profil-info-title">Description:</h3>
         <span className="profil-info">{event.description}</span>
-        <div className="new_event">
+        <div className="new-event">
           <NavLink
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
             to="/event/new"
