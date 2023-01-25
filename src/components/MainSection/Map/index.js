@@ -15,6 +15,10 @@ const icon1 = L.icon({
   iconUrl: markerIconYellow,
   iconSize: [30, 35],
 });
+const icon4 = L.icon({
+  iconUrl: markerIconYellow,
+  iconSize: [45, 50],
+});
 const icon2 = L.icon({
   iconUrl: markerIconRed,
   iconSize: [30, 35],
@@ -46,7 +50,7 @@ const Map = () => {
               {events.map((event) => (
                 <Marker
                   position={[event.lat, event.lng]}
-                  icon={icon1}
+                  icon={(event.name === markerSelected) ? icon4 : icon1}
                   key={event.id}
                 >
                   <Popup>
