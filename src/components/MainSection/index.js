@@ -10,7 +10,7 @@ const MainSection = () => (
       <Map />
     </div>
     <div className="mainSection-users">
-      {/* <AllUsers /> */}
+      <AllUsers />
       <AllEvents />
     </div>
   </div>
