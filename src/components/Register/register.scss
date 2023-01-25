@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 .register {
-  margin: auto;
+  margin: 1rem auto;
   background-color: rgba(243, 243, 243, 0.692);
   padding: 1.5em;
   border-radius: 10px;
@@ -14,7 +14,9 @@
     color: #fff;
   }
   &-success {
-    margin: 1rem;
+    margin: 1rem auto;
+    width: 50%;
+    text-align: center;
   }
 
   h1 {

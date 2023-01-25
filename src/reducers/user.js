@@ -1,5 +1,5 @@
 import users from 'src/data/userForTest';
-import { SHOW_LINK, SAVE_AUTH_DATA, ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER, MAIL_CHECKED, UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT } from '../actions/user';
+import { SHOW_LINK, SAVE_AUTH_DATA, ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER, MAIL_CHECKED, UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT, ADD_PICTURE_NEW_USER, ADD_CHECKED_PASSWORD_NEW_USER } from '../actions/user';
 
 const initialState = {
   usersToDisplay: users,
@@ -8,11 +8,13 @@ const initialState = {
   cityNewUser: '',
   usernameNewUser: '',
   passwordNewUser: '',
+  checkedPasswordNewUser: '',
   genderNewUser: '',
   birthNewUser: '',
   bioNewUser: '',
   mailNewUser: '',
   phoneNewUser: '',
+  pictureNewUser: '',
   latNewUser: '',
   lngNewUser: '',
   isCityFind: true,
@@ -57,6 +59,12 @@ const userReducer = (state = initialState, action = {}) => {
         passwordNewUser: action.newValue,
       };
 
+    case ADD_CHECKED_PASSWORD_NEW_USER:
+      return {
+        ...state,
+        checkedPasswordNewUser: action.newValue,
+      };
+
     case ADD_GENDER_NEW_USER:
       return {
         ...state,
@@ -85,6 +93,12 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         phoneNewUser: action.newValue,
+      };
+
+    case ADD_PICTURE_NEW_USER:
+      return {
+        ...state,
+        pictureNewUser: action.newValue,
       };
 
     case CITY_FIND:
