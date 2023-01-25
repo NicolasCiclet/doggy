@@ -1,14 +1,6 @@
+@use 'src/styles/vars';
 // styles Mobil first
 .profil{
-
-  // Les liens de navigation en hashlink
-  .profil-nav{
-    
-    // un lien en particulier
-    .profil-link{
-
-    }
-  }
 
   // page de profil avec toutes les info
   .profil-section{
@@ -23,7 +15,10 @@
       justify-content: space-between;
 
       .profil-h1{
-
+        margin-bottom: 1rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-shadow: 1px 2px 2px grey;
       }
       .profil-buttons{
         .button{
@@ -33,11 +28,24 @@
     }
 
     .profil-h2{
-      font-size: 0.9rem;
-
+      font-size: 1rem;
+      margin: 0 0 0.5rem 0.5rem;
     }
 
     // corps de la section avec la photo et les infos
+    .profil-main-message{
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-end;
+
+      .profil-message{
+        max-width:50px;
+      }
+      .conversation{
+        margin-left: 0.5rem;
+      }
+    }
+    
     .profil-main{
       font-size: 0.9rem;
       display: flex;
@@ -83,6 +91,30 @@
       font-size: 0.9rem;
       display: block;
       margin-bottom: 0.4rem;
+    }
+
+    .new_event{
+      margin: 2rem 0.5rem 1rem 1rem;
+      text-align: right;
+
+      .menu-link {
+        background-color: vars.$mainColor;
+        color: #fff;
+        border-radius: 5px;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+        box-shadow: 1px 2px 4px black;
+    
+        &:hover {
+          background-color: vars.$darkColor;
+        }
+    
+        &--active {
+          background-color: vars.$darkColor;
+          color: vars.$lightColor;
+        }
+      }
     }
   }
 }

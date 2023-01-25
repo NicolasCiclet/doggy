@@ -21,6 +21,8 @@ export const SUBMIT_FORM_NEW_USER = 'SUBMIT_FORM_NEW_USER';
 export const UPDATE_SETTINGS_FIELD = 'UPDATE_SETTINGS_FIELD';
 // save in the state the autenticate informations
 export const SAVE_AUTH_DATA = 'SAVE_AUTH_DATA';
+// Pour afficher le menu burger de la page profil
+export const SHOW_LINK = 'SHOW_LINK';
 
 // User actions
 export const addNewUser = () => ({
@@ -86,11 +88,10 @@ export const submitLogin = () => ({
   type: SUBMIT_LOGIN,
 });
 
-export const saveAuthData = (nickname, token, isLogged) => ({
+export const saveAuthData = (token) => ({
   type: SAVE_AUTH_DATA,
-  nickname: nickname,
   token: token,
-  isLogged: isLogged,
+  // isLogged: isLogged,
 });
 
 export const updateSettingsField = (identifier, newValue) => ({
@@ -105,4 +106,8 @@ export const submitFormNewUser = () => ({
 
 export const logOut = () => ({
   type: LOGOUT,
+});
+
+export const showLink = () => ({
+  type: SHOW_LINK,
 });
