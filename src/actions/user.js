@@ -8,11 +8,13 @@ export const ADD_FIRSTNAME_NEW_USER = 'ADD_FIRSTNAME_NEW_USER';
 export const ADD_CITY_NEW_USER = 'ADD_CITY_NEW_USER';
 export const ADD_USERNAME_NEW_USER = 'ADD_USERNAME_NEW_USER';
 export const ADD_PASSWORD_NEW_USER = 'ADD_PASSWORD_NEW_USER';
+export const ADD_CHECKED_PASSWORD_NEW_USER = 'ADD_CHECKED_PASSWORD_NEW_USER';
 export const ADD_GENDER_NEW_USER = 'ADD_GENDER_NEW_USER';
 export const ADD_BIRTH_NEW_USER = 'ADD_BIRTH_NEW_USER';
 export const ADD_BIO_NEW_USER = 'ADD_BIO_NEW_USER';
 export const ADD_MAIL_NEW_USER = 'ADD_MAIL_NEW_USER';
 export const ADD_PHONE_NEW_USER = 'ADD_PHONE_NEW_USER';
+export const ADD_PICTURE_NEW_USER = 'ADD_PICTURE_NEW_USER';
 export const CITY_FIND = 'CITY_FIND';
 // change of one of the fields of the connection form
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
@@ -57,6 +59,10 @@ export const addPasswordNewUser = (value) => ({
   type: ADD_PASSWORD_NEW_USER,
   newValue: value,
 });
+export const checkedPasswordNewUser = (value) => ({
+  type: ADD_CHECKED_PASSWORD_NEW_USER,
+  newValue: value,
+});
 export const addGenderNewUser = (value) => ({
   type: ADD_GENDER_NEW_USER,
   newValue: value,
@@ -76,6 +82,11 @@ export const addMailNewUser = (value) => ({
 
 export const addPhoneNewUser = (value) => ({
   type: ADD_PHONE_NEW_USER,
+  newValue: value,
+});
+
+export const addPictureNewUser = (value) => ({
+  type: ADD_PICTURE_NEW_USER,
   newValue: value,
 });
 
