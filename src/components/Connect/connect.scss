@@ -1,19 +1,45 @@
 @use 'src/styles/vars';
 
 .settings {
-  position: fixed;
-  top: 20%;
- 	left: 37%;
-  padding: 1.5em;
-  display: flex;
-  background-color: rgba(0,0,0,0.4);
-  border-radius: 10px;
+  width: 80%;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 5px;
   z-index: 2;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
+  .settings-title {
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
   .settings-form {
-    background-color: #fff;
-    padding: 1em;
+    color: rgba(255, 255, 255, 0.8);
+    width: 100%;
 
+
+    .field-connect {
+      margin: 0.8rem 0.4rem;
+
+
+      .input-connect {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0 12px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      .label-connect {
+        margin-top: -1rem;
+      }
+    }
     .settings-submit {
       background-color: vars.$darkColor;
       color: #fff;
@@ -21,6 +47,25 @@
       border-radius: 5px;
       padding: 1rem;
       font-size: 1.2em;
+      width: 100%;
+      margin-top: -5px;
+      text-transform: uppercase;
     }
   }
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .settings {
+    width: 50%;
+    padding: 0.7rem;
+  } 
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .settings {
+    width: 30%;
+    padding: 0.7rem;
+  } 
 }
