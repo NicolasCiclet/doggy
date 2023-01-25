@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER } from '../actions/user';
+import { SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -30,8 +30,8 @@ const userMiddleware = (store) => (next) => (action) => {
           );
           store.dispatch(actionToDispatch);
 
-          // On veut avoir accès au profil de l'utilisateur, et aux pages réservées
-          // aux personnes connectées => token ?
+          // We store in our storage the token
+          localStorage.setItem('UserToken', response.data.token);
         })
         .catch((error) => {
           console.log(error);

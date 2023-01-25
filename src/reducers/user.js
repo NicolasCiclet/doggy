@@ -131,6 +131,7 @@ const userReducer = (state = initialState, action = {}) => {
         passwordNewUser: action.value,
       };
 
+      // when we click on disconnect
     case LOGOUT:
       return {
         ...state,
