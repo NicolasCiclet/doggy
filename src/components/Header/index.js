@@ -29,7 +29,7 @@ function Header() {
             <Link to="/">
               <span className="header-nav" onClick={() => dispatch(logOut())}>Déconnexion</span>
             </Link>
-            <Link to="/Profil">
+            <Link to="/profil">
               <span className="header-nav">Profil</span>
             </Link>
           </>
