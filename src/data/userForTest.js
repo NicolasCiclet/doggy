@@ -11,7 +11,7 @@ export default [
     city: 'Paris',
     lat: 46.0538,
     lng: 6.0052,
-    bio: 'Vive les chiens',
+    bio: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, eum!',
     role: 'user',
     status: 'validé',
     userPicture: 'https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2017/12/detective-avatar-icon-01--840x500.jpg',
