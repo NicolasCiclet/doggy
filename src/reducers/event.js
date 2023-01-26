@@ -1,12 +1,11 @@
 import events from 'src/data/eventForTest';
-import { AUTHOR_NEW_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT } from '../actions/event';
+import { DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT } from '../actions/event';
 
 const initialState = {
   eventsToDisplay: events,
   titleNewEvent: '',
   dateNewEvent: '',
   placeNewEvent: '',
-  authorNewEvent: '',
   describNewEvent: '',
 };
 
@@ -28,12 +27,6 @@ const eventReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         placeNewEvent: action.newValue,
-      };
-
-    case AUTHOR_NEW_EVENT:
-      return {
-        ...state,
-        authorNewEvent: action.newValue,
       };
 
     case DESCRIB_NEW_EVENT:

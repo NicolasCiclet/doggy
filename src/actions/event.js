@@ -2,8 +2,10 @@
 export const TITLE_NEW_EVENT = 'TITLE_NEW_EVENT';
 export const DATE_NEW_EVENT = 'DATE_NEW_EVENT';
 export const PLACE_NEW_EVENT = 'PLACE_NEW_EVENT';
-export const AUTHOR_NEW_EVENT = 'AUTHOR_NEW_EVENT';
 export const DESCRIB_NEW_EVENT = 'DESCRIB_NEW_EVENT';
+
+// Action that sends a new event to the Back
+export const SUBMIT_FORM_NEW_EVENT = 'SUBMIT_FORM_NEW_EVENT';
 
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
@@ -20,12 +22,12 @@ export const placeNewEvent = (value) => ({
   newValue: value,
 });
 
-export const authorNewEvent = (value) => ({
-  type: AUTHOR_NEW_EVENT,
+export const describNewEvent = (value) => ({
+  type: DESCRIB_NEW_EVENT,
   newValue: value,
 });
 
-export const describNewEvent = (value) => ({
-  type: DESCRIB_NEW_EVENT,
+export const submitFormNewEvent = (value) => ({
+  type: SUBMIT_FORM_NEW_EVENT,
   newValue: value,
 });
