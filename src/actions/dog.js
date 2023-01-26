@@ -7,6 +7,8 @@ export const ADD_PERSONNALITY_NEW_DOG = 'ADD_PERSONNALITY_NEW_DOG';
 export const ADD_GENDER_NEW_DOG = 'ADD_GENDER_NEW_DOG';
 export const ADD_BIRTH_NEW_DOG = 'ADD_BIRTH_NEW_DOG';
 export const ADD_STERILIZED_NEW_DOG = 'ADD_STERILIZED_NEW_DOG';
+// add new dog in the BDD
+export const ADD_NEW_DOG = 'ADD_NEW_DOG';
 
 // Dog actions
 export const addNameNewDog = (value) => ({
@@ -37,4 +39,8 @@ export const addBirthNewDog = (value) => ({
 export const addSterilizedNewDog = (value) => ({
   type: ADD_STERILIZED_NEW_DOG,
   newValue: value,
+});
+
+export const addNewDog = () => ({
+  type: ADD_NEW_DOG,
 });

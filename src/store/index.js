@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from 'src/reducers';
 import cityMiddleware from '../middlewares/cityMiddleware';
 import userMiddleware from '../middlewares/userMiddleware';
+import dogMiddleware from '../middlewares/dogMiddleware';
 
 // il nous faut un outil plus puissant qui permet de combiner les dev tools
 // avec autre chose (ici avec des middlewares)
@@ -12,6 +13,7 @@ const enhancers = composeWithDevTools(
   applyMiddleware(
     userMiddleware,
     cityMiddleware,
+    dogMiddleware,
   ),
 );
 
