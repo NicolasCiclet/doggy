@@ -165,6 +165,14 @@ const Profil = () => {
             </div>
           </div>
         </div>
+        <div className="new-event">
+          <NavLink
+            className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
+            to="/register/dog"
+          >
+            Ajouter un animal
+          </NavLink>
+        </div>
       </div>
       <div className="profil-section" id="mes-messages">
         {/* Aller chercher dans la BDD les conversations et faire un map dessus, pour chaque
