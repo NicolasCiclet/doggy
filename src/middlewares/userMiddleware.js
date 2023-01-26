@@ -1,6 +1,7 @@
 import axios from 'axios';
+
 import {
-  DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT,
+  DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -74,11 +75,10 @@ const userMiddleware = (store) => (next) => (action) => {
           // (attention au nommage de la variable, pas "action" pour ne pas masquer le
           // paramètre qui porte le même nom) pour le message de bienvenu
           const actionToDispatch = saveAuthData(
-            response.data.pseudo,
             response.data.token,
-            response.data.logged,
           );
           store.dispatch(actionToDispatch);
+          store.dispatch(addNewUser());
 
           // On veut avoir accès au profil de l'utilisateur, et aux pages réservées
           // aux personnes connectées => token ?
