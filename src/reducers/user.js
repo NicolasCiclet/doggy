@@ -21,7 +21,7 @@ const initialState = {
   userCreate: false,
 
   token: '',
-  logged: true,
+  logged: false,
 
   // pour afficher ou non le menu burger de la page profil
   showLink: false,

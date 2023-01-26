@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
