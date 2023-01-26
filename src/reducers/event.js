@@ -1,5 +1,7 @@
 import events from 'src/data/eventForTest';
-import { SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT } from '../actions/event';
+import {
+  SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT,
+} from '../actions/event';
 
 const initialState = {
   eventsToDisplay: events,
