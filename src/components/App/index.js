@@ -1,7 +1,7 @@
 // == Import
 import { Routes, Route } from 'react-router-dom';
 // import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { getCityApi } from '../../actions/city';
 import Connect from '../Connect';
 import UserRegister from '../Register/newUser';
@@ -17,16 +17,12 @@ import Contacts from '../Contacts';
 import LegalMentions from '../LegalMentions';
 import './styles.scss';
 import NewEvent from '../Register/newEvent';
+import UpdateUser from '../Register/updateUser';
 
 // == Composant
 function App() {
-  const dispatch = useDispatch();
   const logged = useSelector((state) => state.user.logged);
-  // console.log(logged);
 
-  // useEffect(() => {
-  //   dispatch(getCityApi());
-  // });
   return (
     // Here is the main div, with all components
     <div className="app">
@@ -37,6 +33,7 @@ function App() {
         <Route path="/" element={<MainSection />} />
         <Route path="/connexion" element={<Connect />} />
         <Route path="/register" element={<UserRegister />} />
+        <Route path="/update-profile" element={<UpdateUser />} />
         <Route path="/register/dog" element={<DogRegister />} />
         <Route path="/profile" element={<Profil />} />
         <Route path="/about" element={<About />} />
