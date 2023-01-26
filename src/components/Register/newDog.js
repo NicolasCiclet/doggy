@@ -16,7 +16,7 @@ const genderOptions = [
 
 const DogRegister = () => {
   const dispatch = useDispatch();
-  const name = useSelector((state) => state.user.lastnameNewUser);
+  const dogName = useSelector((state) => state.dog.nameNewDog);
   const userCreate = useSelector((state) => state.user.userCreate);
 
   return (
@@ -105,12 +105,13 @@ const DogRegister = () => {
         </Form>
       </div>
 
+      {/* success message when userCreate is true */}
       {userCreate && (
         <Form success className="register-success">
           <Message
             success
-            header="Inscription réussi"
-            content={`Bienvenue ${name}`}
+            header="Ajout réussi"
+            content={`Bienvenue ${dogName}`}
           />
         </Form>
       )}

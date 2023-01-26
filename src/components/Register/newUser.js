@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Message, Select, TextArea } from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
 import { getCityApi } from '../../actions/city';
-import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addPhoneNewUser, addUsernameNewUser } from '../../actions/user';
+import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser } from '../../actions/user';
 import './register.scss';
 
 // options for the input select gender
@@ -18,6 +18,7 @@ const UserRegister = () => {
   const userCreate = useSelector((state) => state.user.userCreate);
   const mailUser = useSelector((state) => state.user.mailNewUser);
   const passwordUser = useSelector((state) => state.user.passwordNewUser);
+  const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);
 
   /* I use regex to check password, here is an explication of my rules :
@@ -35,11 +36,11 @@ const UserRegister = () => {
 
   return (
     <>
+      {/* the form is visible only if userCreate is false */}
+      {!userCreate && (
       <div className="register">
         <h1>Création de compte</h1>
 
-        {/* the form is visible only if userCreate is false */}
-        {!userCreate && (
         <Form onSubmit={(event) => {
           event.preventDefault();
 
@@ -118,10 +119,10 @@ const UserRegister = () => {
             <Form.Input
               label="Mot de passe"
               placeholder="Mot de passe"
-              width={8}
+              width={4}
               type="password"
               error={(passwordRegex.test(passwordUser)) ? false : {
-                content: ' 6 caractères minimum dont 1 minuscule, 1 majuscule et 1 chiffre',
+                content: '6 caractères minimum dont 1 minuscule, 1 majuscule et 1 chiffre',
               }}
               onChange={(event) => {
                 dispatch(addPasswordNewUser(event.target.value));
@@ -130,11 +131,24 @@ const UserRegister = () => {
             <Form.Input
               label="Confirmation Mot de passe"
               placeholder="Confirmez votre mot de passe"
-              width={8}
+              width={4}
               type="password"
-              // onChange={(event) => {
-              //   dispatch(addPasswordNewUser(event.target.value));
-              // }}
+              error={(checkedPasswordUser === passwordUser) ? false : {
+                content: 'Vérifiez votre mot de passe',
+              }}
+              onChange={(event) => {
+                dispatch(checkedPasswordNewUser(event.target.value));
+              }}
+            />
+            <Form.Input
+              label="Photo"
+              // placeholder="Photo"
+              width={7}
+              type="file"
+              onChange={(event) => {
+                dispatch(addPictureNewUser(event.target.files[0]));
+                console.log(event.target.files[0]);
+              }}
             />
           </Form.Group>
           <Form.Group widths="equal">
@@ -176,8 +190,9 @@ const UserRegister = () => {
             content="Valider"
           />
         </Form>
-        )}
+
       </div>
+      )}
 
       {/* success message when userCreate is true */}
       {userCreate && (

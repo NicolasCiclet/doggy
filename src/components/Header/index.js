@@ -38,7 +38,7 @@ function Header() {
                 Déconnexion
               </span>
             </Link>
-            <Link to="/profil">
+            <Link to="/profile">
               <span className="header-nav">Profil</span>
             </Link>
           </>

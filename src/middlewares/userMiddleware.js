@@ -88,6 +88,21 @@ const userMiddleware = (store) => (next) => (action) => {
 
       break;
 
+    case LOGOUT:
+
+      axios.post(
+        'http://christophe-rialland.vpnuser.lan/doggy/public/logout',
+      )
+        .then((response) => {
+          console.log(response);
+          console.log('logout back ok');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
     default:
   }
 
