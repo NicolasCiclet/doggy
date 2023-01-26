@@ -1,16 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Select, TextArea } from 'semantic-ui-react';
 import { dateNewEvent, describNewEvent, placeNewEvent, submitFormNewEvent, titleNewEvent } from '../../actions/event';
 
 import './register.scss';
 
-const placeOptions = [
-  { text: 'Lieu1', value: 'lieu1' },
-  { text: 'Lieu2', value: 'lieu2' },
-];
-
 // New Event FORM
 const NewEvent = () => {
+  // I use map to loop over all our locations, and pass the const to my input select
+  const allPlace = useSelector((state) => state.event.eventsToDisplay);
+  const placeOptions = allPlace.map((place) => (
+    { text: place.name, value: place.id }
+  ));
+
   const dispatch = useDispatch();
   return (
     <div className="register">
