@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { Button, Form, Select, TextArea } from 'semantic-ui-react';
-import { dateNewEvent, describNewEvent, placeNewEvent, submitFormNewEvent, titleNewEvent } from '../../../actions/event';
+import { dateNewEvent, describNewEvent, placeNewEvent, submitFormNewEvent, titleNewEvent } from '../../actions/event';
 
-import './new-event.scss';
+import './register.scss';
 
 const placeOptions = [
   { text: 'Lieu1', value: 'lieu1' },
@@ -13,7 +13,7 @@ const placeOptions = [
 const NewEvent = () => {
   const dispatch = useDispatch();
   return (
-    <div className="add-new-event">
+    <div className="register">
       <h1>Ajouter un évènement</h1>
       <Form onSubmit={(event) => {
         event.preventDefault();

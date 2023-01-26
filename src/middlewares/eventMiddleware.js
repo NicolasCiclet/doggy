@@ -8,10 +8,10 @@ const eventMiddleware = (store) => (next) => (action) => {
       axios.post(
         // 'http://christophe-rialland.vpnuser.lan/doggy/public/api/login_check',
         {
-          title: store.getState().event.titleNewEvent,
-          date: store.getState().event.dateNewEvent,
+          name: store.getState().event.titleNewEvent,
+          event_date: store.getState().event.dateNewEvent,
           place: store.getState().event.placeNewEvent,
-          describ: store.getState().event.describNewEvent,
+          description: store.getState().event.describNewEvent,
         },
         {
           headers: {
