@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Message, Select, TextArea } from 'semantic-ui-react';
-import { addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog,addPersonnalityNewDog, addSterilizedNewDog } from '../../actions/dog';
+import { addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, addNewDog, addPersonnalityNewDog, addSterilizedNewDog } from '../../actions/dog';
 
 import './register.scss';
 
@@ -26,10 +26,8 @@ const DogRegister = () => {
 
         <Form onSubmit={(event) => {
           event.preventDefault();
-          // console.log('submit !');
-          // if (validate(checkMail)) {
-          //   dispatch(getCityApi());
-          // }
+          console.log('submit !');
+          dispatch(addNewDog());
         }}
         >
 
