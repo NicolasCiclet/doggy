@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { showDeleteUser, deleteUser } from '../../../actions/user';
 
-import './userdelete.scss';
+import '../delete.scss';
 
 const Userdelete = () => {
   // Je récupère la valeur deleteConfirm dans le state pour savoir quand afficher ou non ma pop up
@@ -12,12 +12,13 @@ const Userdelete = () => {
     <div>
       {isOpen && (
         <div className="deletePopup">
-          <p>Etes-vous sur de vouloir supprimer ?</p>
+          <p>Etes-vous sur de vouloir supprimer votre profil ?</p>
           <button
             type="button"
             className="delete-yes"
             onClick={() => {
               dispatch(deleteUser());
+              dispatch(showDeleteUser());
             }}
           >
             Oui
