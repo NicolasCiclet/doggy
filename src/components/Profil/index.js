@@ -1,7 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink } from 'react-router-dom';
-import { showLink } from '../../actions/user';
+import { showDelete, showLink } from '../../actions/user';
+
+import { SHOW_DELETE } from '../../actions/user';
 
 import conversation from './conversation.svg';
 import editButton from './edit.svg';
@@ -78,12 +80,14 @@ const Profil = () => {
             <Link to="/update-profile">
               <img className="button" src={editButton} alt="edit" />
             </Link>
-            <img
-              className="button"
-              src={deleteButton}
-              alt="delete"
-              // onClick={() => dispatch(action qui envoit un requete a api pour supprimer())}
-            />
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(showDelete());
+              }}
+            >
+              <img className="button" src={deleteButton} alt="delete" />
+            </button>
           </div>
         </div>
         <h2 className="profil-h2">Bonjour {user.firstname} {user.lastname}</h2>

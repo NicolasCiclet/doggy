@@ -25,6 +25,8 @@ export const UPDATE_SETTINGS_FIELD = 'UPDATE_SETTINGS_FIELD';
 export const SAVE_AUTH_DATA = 'SAVE_AUTH_DATA';
 // Pour afficher le menu burger de la page profil
 export const SHOW_LINK = 'SHOW_LINK';
+// Pour afficher la pop-up delete
+export const SHOW_DELETE = 'SHOW_DELETE';
 
 // User actions
 export const addNewUser = () => ({
@@ -121,4 +123,8 @@ export const logOut = () => ({
 
 export const showLink = () => ({
   type: SHOW_LINK,
+});
+
+export const showDelete = () => ({
+  type: SHOW_DELETE,
 });
