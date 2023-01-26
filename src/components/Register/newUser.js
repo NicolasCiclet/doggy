@@ -1,8 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Form, Message, Select, TextArea } from 'semantic-ui-react';
+import {
+  Button, Form, Message, Select, TextArea,
+} from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
 import { getCityApi } from '../../actions/city';
-import { addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser, addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser, addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser } from '../../actions/user';
+import {
+  addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser,
+  addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser,
+  addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser,
+} from '../../actions/user';
 import './register.scss';
 
 // options for the input select gender
@@ -14,7 +20,7 @@ const genderOptions = [
 const UserRegister = () => {
   const dispatch = useDispatch();
 
-  const name = useSelector((state) => state.user.lastnameNewUser);
+  const name = useSelector((state) => state.user.usernameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
   const mailUser = useSelector((state) => state.user.mailNewUser);
   const passwordUser = useSelector((state) => state.user.passwordNewUser);
@@ -56,7 +62,7 @@ const UserRegister = () => {
             <Form.Input
               label="Nom"
               placeholder="Nom"
-              width={5}
+              // width={5}
               onChange={(event) => {
                 dispatch(addLastnameNewUser(event.target.value));
               }}
@@ -64,7 +70,7 @@ const UserRegister = () => {
             <Form.Input
               label="Prénom"
               placeholder="Prénom"
-              width={5}
+              // width={5}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
               }}
@@ -72,7 +78,7 @@ const UserRegister = () => {
             <Form.Input
               label="Ville"
               placeholder="Ville"
-              width={5}
+              // width={5}
               error={cityFind ? false : {
                 content: 'Ville introuvable, merci d\'indiquer une autre ville',
               }}
@@ -201,6 +207,8 @@ const UserRegister = () => {
             success
             header="Inscription réussi"
             content={`Bienvenue ${name}`}
+            // // {setTimeout(<Navigate to="/error" replace={true} />, 3000)}
+            // {/* <Navigate to="/error" replace={true} /> */}
           />
         </Form>
       )}
