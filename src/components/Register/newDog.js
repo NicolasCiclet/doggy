@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Form, Message, Select, TextArea } from 'semantic-ui-react';
-import { addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, addNewDog, addPersonnalityNewDog, addSterilizedNewDog } from '../../actions/dog';
+import {
+  Button, Form, Message, Select, TextArea,
+} from 'semantic-ui-react';
+import {
+  addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, addNewDog,
+  addPersonnalityNewDog, addSterilizedNewDog,
+} from '../../actions/dog';
 
 import './register.scss';
 

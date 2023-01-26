@@ -1,9 +1,12 @@
 import users from 'src/data/userForTest';
 import {
-  SHOW_LINK, SAVE_AUTH_DATA, ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER, ADD_CITY_NEW_USER,
-  ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER, ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER,
-  ADD_MAIL_NEW_USER, ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER,
-  UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT, ADD_PICTURE_NEW_USER, ADD_CHECKED_PASSWORD_NEW_USER,
+  SHOW_LINK, SAVE_AUTH_DATA, ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER,
+  ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER,
+  ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER,
+  ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER,
+  MAIL_CHECKED, UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT, ADD_PICTURE_NEW_USER,
+  ADD_CHECKED_PASSWORD_NEW_USER,
+  SHOW_DELETE_USER,
 } from '../actions/user';
 
 const initialState = {
@@ -26,7 +29,10 @@ const initialState = {
   userCreate: false,
 
   token: '',
-  logged: true,
+  logged: false,
+
+  // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
+  userDelete: false,
 
   // pour afficher ou non le menu burger de la page profil
   showLink: false,
@@ -164,6 +170,14 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
         showLink: !state.showLink,
+      };
+
+    // Pour afficher la pop-up delete
+    case SHOW_DELETE_USER:
+      return {
+        ...state,
+        // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
+        userDelete: !state.userDelete,
       };
 
     default:

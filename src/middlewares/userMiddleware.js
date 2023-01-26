@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
+  DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -101,6 +101,21 @@ const userMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+
+      break;
+
+    case DELETE_USER:
+      console.log('suppression du user');
+      // axios.delete(
+      // url api fournir par Chrichri,
+      // )
+      //   .then((response) => {
+      //     console.log(response);
+      //     console.log('logout back ok');
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
 
       break;
 

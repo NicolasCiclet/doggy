@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SUBMIT_FORM_NEW_EVENT } from '../actions/event';
+import { DELETE_EVENT, SUBMIT_FORM_NEW_EVENT } from '../actions/event';
 
 const eventMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -25,6 +25,21 @@ const eventMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+
+      break;
+
+    case DELETE_EVENT:
+      console.log('suppression événement');
+      // axios.delete(
+      // url api fournir par Chrichri,
+      // )
+      //   .then((response) => {
+      //     console.log(response);
+      //     console.log('logout back ok');
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
 
       break;
 
