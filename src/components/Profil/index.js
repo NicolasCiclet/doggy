@@ -32,7 +32,7 @@ const Profil = () => {
           <HashLink
             className="navbar__item slideInDown-1"
             smooth
-            to="/Profil#mon-profil"
+            to="/profile#mon-profil"
             onClick={() => dispatch(showLink())}
           >
             Mon profil
@@ -40,7 +40,7 @@ const Profil = () => {
           <HashLink
             className="navbar__item slideInDown-2"
             smooth
-            to="/Profil#mes-animaux"
+            to="/profile#mes-animaux"
             onClick={() => dispatch(showLink())}
           >
             Mes animaux
@@ -48,7 +48,7 @@ const Profil = () => {
           <HashLink
             className="navbar__item slideInDown-3"
             smooth
-            to="/Profil#mes-messages"
+            to="/profile#mes-messages"
             onClick={() => dispatch(showLink())}
           >
             Mes messages
@@ -56,7 +56,7 @@ const Profil = () => {
           <HashLink
             className="navbar__item slideInDown-4"
             smooth
-            to="/Profil#mes-événements"
+            to="/profile#mes-événements"
             onClick={() => dispatch(showLink())}
           >
             Mes événements

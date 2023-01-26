@@ -146,8 +146,8 @@ const UserRegister = () => {
               width={7}
               type="file"
               onChange={(event) => {
-                dispatch(addPictureNewUser(event.target.value));
-                console.log(event.target.value);
+                dispatch(addPictureNewUser(event.target.files[0]));
+                console.log(event.target.files[0]);
               }}
             />
           </Form.Group>

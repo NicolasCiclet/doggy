@@ -14,7 +14,7 @@ const initialState = {
   bioNewUser: '',
   mailNewUser: '',
   phoneNewUser: '',
-  pictureNewUser: '',
+  pictureNewUser: {},
   latNewUser: '',
   lngNewUser: '',
   isCityFind: true,

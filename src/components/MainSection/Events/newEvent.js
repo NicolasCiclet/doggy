@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Button, Form, Select, TextArea } from 'semantic-ui-react';
-import { authorNewEvent, dateNewEvent, describNewEvent, endNewEvent, placeNewEvent, startNewEvent, titleNewEvent } from '../../../actions/event';
+import { authorNewEvent, dateNewEvent, describNewEvent, placeNewEvent, titleNewEvent } from '../../../actions/event';
 
 import './new-event.scss';
 
@@ -20,42 +20,36 @@ const NewEvent = () => {
         console.log('evenement submit');
       }}
       >
-        {/* Input for title */}
-        <Form.Input
-          label="Titre"
-          placeholder="Titre de l'évènement"
-          onChange={(event) => {
-            dispatch(titleNewEvent(event.target.value));
-          }}
-        />
+        <Form.Group widths="equal">
+          {/* Input for title */}
+          <Form.Input
+            label="Titre"
+            placeholder="Titre de l'évènement"
+            width={11}
+            onChange={(event) => {
+              dispatch(titleNewEvent(event.target.value));
+            }}
+          />
+          {/* Input for author */}
+          <Form.Input
+            label="Auteur"
+            placeholder="Auteur"
+            width={5}
+            onChange={(event) => {
+              dispatch(authorNewEvent(event.target.value));
+            }}
+          />
+        </Form.Group>
         {/* Inputs for time */}
         <Form.Group widths="equal">
           <Form.Input
             label="Date"
             placeholder="Date"
-            type="date"
+            type="datetime-local"
             onChange={(event) => {
               dispatch(dateNewEvent(event.target.value));
             }}
           />
-          <Form.Input
-            label="Début"
-            placeholder="Début"
-            type="time"
-            onChange={(event) => {
-              dispatch(startNewEvent(event.target.value));
-            }}
-          />
-          <Form.Input
-            label="Fin"
-            placeholder="Fin"
-            type="time"
-            onChange={(event) => {
-              dispatch(endNewEvent(event.target.value));
-            }}
-          />
-        </Form.Group>
-        <Form.Group widths="equal">
           {/* Input for place */}
           <Form.Input
             control={Select}
@@ -67,15 +61,8 @@ const NewEvent = () => {
               dispatch(placeNewEvent(result.value));
             }}
           />
-          {/* Input for author */}
-          <Form.Input
-            label="Auteur"
-            placeholder="Auteur"
-            onChange={(event) => {
-              dispatch(authorNewEvent(event.target.value));
-            }}
-          />
         </Form.Group>
+
         {/* Input for description */}
         <Form.Input
           className="add-new-event-description"
