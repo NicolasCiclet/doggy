@@ -35,7 +35,7 @@ const Map = () => {
   return (
     <div className="map-main">
       {/* default position of the map */}
-      <MapContainer center={[46.0546, 6.025]} zoom={13} scrollWheelZoom={false}>
+      <MapContainer center={[45.8692, 6.129]} zoom={11} scrollWheelZoom={false}>
         {/* Used to load and display tile layers on the map */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
