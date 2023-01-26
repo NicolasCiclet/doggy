@@ -6,7 +6,7 @@ import {
   ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER,
   MAIL_CHECKED, UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT, ADD_PICTURE_NEW_USER,
   ADD_CHECKED_PASSWORD_NEW_USER,
-  SHOW_DELETE,
+  SHOW_DELETE_USER,
 } from '../actions/user';
 
 const initialState = {
@@ -32,7 +32,7 @@ const initialState = {
   logged: false,
 
   // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
-  deleteConfirm: false,
+  userDelete: false,
 
   // pour afficher ou non le menu burger de la page profil
   showLink: false,
@@ -173,11 +173,11 @@ const userReducer = (state = initialState, action = {}) => {
       };
 
     // Pour afficher la pop-up delete
-    case SHOW_DELETE:
+    case SHOW_DELETE_USER:
       return {
         ...state,
         // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
-        showLink: !state.deleteConfirm,
+        userDelete: !state.userDelete,
       };
 
     default:

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { ADD_NEW_DOG } from '../actions/dog';
+import { DELETE_DOG, ADD_NEW_DOG } from '../actions/dog';
 
 const dogMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -28,6 +28,21 @@ const dogMiddleware = (store) => (next) => (action) => {
         .catch((error) => {
           console.log(error);
         });
+
+      break;
+
+    case DELETE_DOG:
+      console.log('suppression du chien');
+      // axios.delete(
+      // url api fournir par Chrichri,
+      // )
+      //   .then((response) => {
+      //     console.log(response);
+      //     console.log('logout back ok');
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
 
       break;
 

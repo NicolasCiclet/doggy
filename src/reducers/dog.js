@@ -1,4 +1,4 @@
-import { ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG, ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG } from '../actions/dog';
+import { SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG, ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG } from '../actions/dog';
 
 const initialState = {
   nameNewDog: '',
@@ -7,6 +7,9 @@ const initialState = {
   genderNewDog: '',
   birthNewDog: '',
   sterilizedNewDog: '',
+
+  // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
+  dogDelete: false,
 };
 
 const dogReducer = (state = initialState, action = {}) => {
@@ -46,6 +49,14 @@ const dogReducer = (state = initialState, action = {}) => {
         ...state,
         sterilizedNewDog: action.newValue,
       };
+
+    case SHOW_DELETE_DOG:
+      return {
+        ...state,
+        // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
+        dogDelete: !state.dogDelete,
+      };
+
     default:
       return state;
   }

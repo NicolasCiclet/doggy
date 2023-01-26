@@ -9,6 +9,10 @@ export const ADD_BIRTH_NEW_DOG = 'ADD_BIRTH_NEW_DOG';
 export const ADD_STERILIZED_NEW_DOG = 'ADD_STERILIZED_NEW_DOG';
 // add new dog in the BDD
 export const ADD_NEW_DOG = 'ADD_NEW_DOG';
+// Pour afficher la pop-up delete
+export const SHOW_DELETE_DOG = 'SHOW_DELETE_DOG';
+// For delete a user
+export const DELETE_DOG = 'DELETE_DOG';
 
 // Dog actions
 export const addNameNewDog = (value) => ({
@@ -43,4 +47,12 @@ export const addSterilizedNewDog = (value) => ({
 
 export const addNewDog = () => ({
   type: ADD_NEW_DOG,
+});
+
+export const showDeleteDog = () => ({
+  type: SHOW_DELETE_DOG,
+});
+
+export const deleteDog = () => ({
+  type: DELETE_DOG,
 });

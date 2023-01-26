@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { showDeleteUser, deleteUser } from '../../../actions/user';
 
-import './delete.scss';
+import './userdelete.scss';
 
-const Delete = () => {
+const Userdelete = () => {
   // Je récupère la valeur deleteConfirm dans le state pour savoir quand afficher ou non ma pop up
-  const isOpen = useSelector((state) => state.user.deleteConfirm);
-  console.log(isOpen);
+  const isOpen = useSelector((state) => state.user.userDelete);
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +17,7 @@ const Delete = () => {
             type="button"
             className="delete-yes"
             onClick={() => {
-              dispatch(actionQuiSupprimeViaAPI);
+              dispatch(deleteUser());
             }}
           >
             Oui
@@ -26,7 +26,7 @@ const Delete = () => {
             type="button"
             className="delete-no"
             onClick={() => {
-              dispatch(actionQuiChangeisOpenEnFalse);
+              dispatch(showDeleteUser());
             }}
           >
             Non
@@ -37,4 +37,4 @@ const Delete = () => {
   );
 };
 
-export default Delete;
+export default Userdelete;

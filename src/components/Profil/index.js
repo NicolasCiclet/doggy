@@ -1,9 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink } from 'react-router-dom';
-import { showDelete, showLink } from '../../actions/user';
+import { showDeleteUser, showLink } from '../../actions/user';
+import { showDeleteDog } from '../../actions/dog';
+import { showDeleteEvent } from '../../actions/event';
 
-import { SHOW_DELETE } from '../../actions/user';
+import Userdelete from './Userdelete';
+import Dogdelete from './Dogdelete';
+import Eventdelete from './Eventdelete';
 
 import conversation from './conversation.svg';
 import editButton from './edit.svg';
@@ -80,14 +84,15 @@ const Profil = () => {
             <Link to="/update-profile">
               <img className="button" src={editButton} alt="edit" />
             </Link>
-            <button
-              type="button"
+            <img
+              className="button"
+              src={deleteButton}
+              alt="delete"
               onClick={() => {
-                dispatch(showDelete());
+                dispatch(showDeleteUser());
               }}
-            >
-              <img className="button" src={deleteButton} alt="delete" />
-            </button>
+            />
+            <Userdelete />
           </div>
         </div>
         <h2 className="profil-h2">Bonjour {user.firstname} {user.lastname}</h2>
@@ -138,8 +143,11 @@ const Profil = () => {
               className="button"
               src={deleteButton}
               alt="delete"
-              // onClick={() => dispatch(action qui envoit un requete a api pour supprimer())}
+              onClick={() => {
+                dispatch(showDeleteDog());
+              }}
             />
+            <Dogdelete />
           </div>
         </div>
         <div className="profil-main">
@@ -202,8 +210,11 @@ const Profil = () => {
               className="button"
               src={deleteButton}
               alt="delete"
-              // onClick={() => dispatch(action qui envoit un requete a api pour supprimer())}
+              onClick={() => {
+                dispatch(showDeleteEvent());
+              }}
             />
+            <Eventdelete />
           </div>
         </div>
         <div className="profil-main">
