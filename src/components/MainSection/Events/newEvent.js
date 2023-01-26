@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Button, Form, Select, TextArea } from 'semantic-ui-react';
-import { authorNewEvent, dateNewEvent, describNewEvent, placeNewEvent, titleNewEvent } from '../../../actions/event';
+import { dateNewEvent, describNewEvent, placeNewEvent, submitFormNewEvent, titleNewEvent } from '../../../actions/event';
 
 import './new-event.scss';
 
@@ -17,51 +17,38 @@ const NewEvent = () => {
       <h1>Ajouter un évènement</h1>
       <Form onSubmit={(event) => {
         event.preventDefault();
-        console.log('evenement submit');
+        console.log('new evenement submit');
+        dispatch(submitFormNewEvent());
       }}
       >
-        <Form.Group widths="equal">
-          {/* Input for title */}
-          <Form.Input
-            label="Titre"
-            placeholder="Titre de l'évènement"
-            width={11}
-            onChange={(event) => {
-              dispatch(titleNewEvent(event.target.value));
-            }}
-          />
-          {/* Input for author */}
-          <Form.Input
-            label="Auteur"
-            placeholder="Auteur"
-            width={5}
-            onChange={(event) => {
-              dispatch(authorNewEvent(event.target.value));
-            }}
-          />
-        </Form.Group>
+        {/* Input for title */}
+        <Form.Input
+          label="Titre"
+          placeholder="Titre de l'évènement"
+          onChange={(event) => {
+            dispatch(titleNewEvent(event.target.value));
+          }}
+        />
         {/* Inputs for time */}
-        <Form.Group widths="equal">
-          <Form.Input
-            label="Date"
-            placeholder="Date"
-            type="datetime-local"
-            onChange={(event) => {
-              dispatch(dateNewEvent(event.target.value));
-            }}
-          />
-          {/* Input for place */}
-          <Form.Input
-            control={Select}
-            options={placeOptions}
-            label="Lieu"
-            placeholder="Lieu"
-            onChange={(event, result) => {
-              // console.log(`change : ${event.target.value}`);
-              dispatch(placeNewEvent(result.value));
-            }}
-          />
-        </Form.Group>
+        <Form.Input
+          label="Date"
+          placeholder="Date"
+          type="datetime-local"
+          onChange={(event) => {
+            dispatch(dateNewEvent(event.target.value));
+          }}
+        />
+        {/* Input for place */}
+        <Form.Input
+          control={Select}
+          options={placeOptions}
+          label="Lieu"
+          placeholder="Lieu"
+          onChange={(event, result) => {
+            // console.log(`change : ${event.target.value}`);
+            dispatch(placeNewEvent(result.value));
+          }}
+        />
 
         {/* Input for description */}
         <Form.Input
