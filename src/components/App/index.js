@@ -16,7 +16,7 @@ import About from '../About';
 import Contacts from '../Contacts';
 import LegalMentions from '../LegalMentions';
 import './styles.scss';
-import NewEvent from '../MainSection/Events/newEvent';
+import NewEvent from '../Register/newEvent';
 
 // == Composant
 function App() {
