@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
+  SUBMIT_FORM_UPDATE_USER,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -116,6 +117,54 @@ const userMiddleware = (store) => (next) => (action) => {
       //   .catch((error) => {
       //     console.log(error);
       //   });
+
+      break;
+
+    case SUBMIT_FORM_UPDATE_USER:
+      console.log('requete put');
+      axios.put(
+        // url put user donnée par Christophe,
+        {
+          nickname: store.getState().user.usernameNewUser,
+          firstname: store.getState().user.firstnameNewUser,
+          lastname: store.getState().user.lastnameNewUser,
+          gender: store.getState().user.genderNewUser,
+          birthdate: store.getState().user.birthNewUser,
+          bio: store.getState().user.bioNewUser,
+          city: store.getState().user.cityNewUser,
+          location: {
+            latitude: store.getState().user.latNewUser,
+            longitude: store.getState().user.lngNewUser,
+          },
+          phone: store.getState().user.phoneNewUser,
+          email: store.getState().user.mailNewUser,
+          password: store.getState().user.passwordNewUser,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+
+          // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
+          // dans le state => dispatch une action
+          // (attention au nommage de la variable, pas "action" pour ne pas masquer le
+          // paramètre qui porte le même nom) pour le message de bienvenu
+          const actionToDispatch = saveAuthData(
+            response.data.token,
+          );
+          store.dispatch(actionToDispatch);
+          store.dispatch(addNewUser());
+
+          // On veut avoir accès au profil de l'utilisateur, et aux pages réservées
+          // aux personnes connectées => token ?
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       break;
 

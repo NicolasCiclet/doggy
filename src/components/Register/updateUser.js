@@ -3,7 +3,7 @@ import {
   Button, Form, Message, Select, TextArea,
 } from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
-import { getCityApi } from '../../actions/city';
+import { updateCityApi } from '../../actions/city';
 import {
   addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser,
   addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser,
@@ -26,6 +26,11 @@ const UpdateUser = () => {
   const passwordUser = useSelector((state) => state.user.passwordNewUser);
   const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);
+
+  // je vais chercher un user en dur mais normaement on récupérera l'user inscrit via une
+  // requête get/id
+  const users = useSelector((state) => state.user.usersToDisplay);
+  const user = users.find((onUser) => (onUser.id === 1));
 
   /* I use regex to check password, here is an explication of my rules :
   ^ The password string will start this way and must contain :
@@ -53,7 +58,7 @@ const UpdateUser = () => {
           // OnSubmit, mail and password are checked with an and condition.
           // Only if the condition is true, we send a request to the api
           if ((validate(mailUser)) && (passwordRegex.test(passwordUser))) {
-            dispatch(getCityApi());
+            dispatch(updateCityApi());
           }
         }}
         >
@@ -61,7 +66,7 @@ const UpdateUser = () => {
           <Form.Group widths="equal">
             <Form.Input
               label="Nom"
-              placeholder="Nom"
+              placeholder={user.lastname}
               // width={5}
               onChange={(event) => {
                 dispatch(addLastnameNewUser(event.target.value));
@@ -69,7 +74,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Prénom"
-              placeholder="Prénom"
+              placeholder={user.firstname}
               // width={5}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
@@ -77,7 +82,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Ville"
-              placeholder="Ville"
+              placeholder={user.city}
               // width={5}
               error={cityFind ? false : {
                 content: 'Ville introuvable, merci d\'indiquer une autre ville',
@@ -90,7 +95,7 @@ const UpdateUser = () => {
           <Form.Group widths="equal">
             <Form.Input
               label="Nom d'utilisateur"
-              placeholder="Nom d'utilisateur"
+              placeholder={user.nickname}
               width={5}
               onChange={(event) => {
                 dispatch(addUsernameNewUser(event.target.value));
@@ -98,7 +103,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Email"
-              placeholder="joe@schmoe.com"
+              placeholder={user.email}
               width={6}
               // I use a ternary condition to show or hide the error message
               error={validate(mailUser) ? false : {
@@ -110,7 +115,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Téléphone"
-              placeholder="Téléphone"
+              placeholder={user.phone}
               width={5}
               // Only numbers are allowed
               onKeyPress={(event) => {
@@ -123,7 +128,7 @@ const UpdateUser = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
-              label="Mot de passe"
+              label="Nouveau mot de passe"
               placeholder="Mot de passe"
               width={4}
               type="password"
@@ -185,7 +190,7 @@ const UpdateUser = () => {
           <Form.Input
             label="Un petit mot sur vous..."
             control={TextArea}
-            placeholder="Un petit mot sur vous..."
+            placeholder={user.bio}
             onChange={(event) => {
               dispatch(addBioNewUser(event.target.value));
             }}

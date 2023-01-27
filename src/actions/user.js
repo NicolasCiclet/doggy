@@ -27,8 +27,10 @@ export const SAVE_AUTH_DATA = 'SAVE_AUTH_DATA';
 export const SHOW_LINK = 'SHOW_LINK';
 // Pour afficher la pop-up delete
 export const SHOW_DELETE_USER = 'SHOW_DELETE_USER';
-// For delete a user
+// To delete a user
 export const DELETE_USER = 'DELETE_USER';
+// To update user profile with PUT request
+export const SUBMIT_FORM_UPDATE_USER = 'SUBMIT_FORM_UPDATE_USER';
 
 // User actions
 export const addNewUser = () => ({
@@ -133,4 +135,8 @@ export const showDeleteUser = () => ({
 
 export const deleteUser = () => ({
   type: DELETE_USER,
+});
+
+export const submitFormUpdateUser = () => ({
+  type: SUBMIT_FORM_UPDATE_USER,
 });
