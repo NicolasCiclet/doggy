@@ -8,7 +8,7 @@ import {
 const userMiddleware = (store) => (next) => (action) => {
   const connectedEmail = store.getState().user.mailNewUser;
   // eslint-disable-next-line prefer-destructuring
-  const url = store.getState().user.url;
+  const url = store.getState().nav.url;
 
   switch (action.type) {
     case SUBMIT_LOGIN:

@@ -35,9 +35,6 @@ const initialState = {
 
   // pour afficher ou non le menu burger de la page profil
   showLink: false,
-
-  // url de l'api de Christophe
-  url: 'http://christophe-rialland.vpnuser.lan/doggy/public/',
 };
 
 const userReducer = (state = initialState, action = {}) => {
