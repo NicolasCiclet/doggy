@@ -36,6 +36,9 @@ export const GET_USER_INFO = 'GET_USER_INFO';
 // To stock in the state the connected user info
 export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
 
+// To change display message form
+export const IS_MESS_FORM_OPENED = 'IS_MESS_FORM_OPENED';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -176,4 +179,8 @@ export const displayInfoConnectedUser = (
   picture: picture,
   latitude: latitude,
   longitude: longitude,
+});
+
+export const isMessFormOpened = () => ({
+  type: IS_MESS_FORM_OPENED,
 });
