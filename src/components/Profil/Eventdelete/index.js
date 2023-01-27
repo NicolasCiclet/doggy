@@ -13,6 +13,7 @@ const Eventdelete = () => {
       {isOpen && (
         <div className="deletePopup">
           <p>Etes-vous sur de vouloir supprimer votre événement ?</p>
+          <p>Cette action est irréversible !</p>
           <button
             type="button"
             className="delete-yes"
