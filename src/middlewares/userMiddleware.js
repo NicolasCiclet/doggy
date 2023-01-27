@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
-  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO,
+  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -171,6 +171,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_INFO:
+      console.log(connectedEmail);
       axios.get(
         `http://christophe-rialland.vpnuser.lan/doggy/public/api/user/${connectedEmail}`,
         {
@@ -180,7 +181,25 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
+          console.log(response.data.result);
+          const {
+            bio, birthdate, city, email, firstname, gender,
+            id, lastname, nickname, phone, picture,
+          } = response.data.result;
+
+          console.log(bio);
+          console.log(birthdate);
+          console.log(city);
+          console.log(email);
+          console.log(firstname);
+          console.log(gender);
+          console.log(id);
+          console.log(lastname);
+          console.log(nickname);
+          console.log(phone);
+          console.log(picture);
+          store.dispatch(displayInfoConnectedUser(
+            bio, birthdate, city, email, firstname, gender, lastname, nickname, phone, picture));
         })
         .catch((error) => {
           console.log(error);

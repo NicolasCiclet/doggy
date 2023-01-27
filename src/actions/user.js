@@ -33,6 +33,8 @@ export const DELETE_USER = 'DELETE_USER';
 export const SUBMIT_FORM_UPDATE_USER = 'SUBMIT_FORM_UPDATE_USER';
 // To get connected user information in the BDD
 export const GET_USER_INFO = 'GET_USER_INFO';
+// To stock in the state the connected user info
+export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
 
 // User actions
 export const addNewUser = () => ({
@@ -145,4 +147,19 @@ export const submitFormUpdateUser = () => ({
 
 export const getUserInfo = () => ({
   type: GET_USER_INFO,
+});
+
+export const displayInfoConnectedUser = (
+  bio, birthdate, city, email, firstname, gender, lastname, nickname, phone, picture) => ({
+  type: DISPLAY_INFO_CONNECTED_USER,
+  bio: bio,
+  birthdate: birthdate,
+  city: city,
+  email: email,
+  firstname: firstname,
+  gender: gender,
+  lastname: lastname,
+  nickname: nickname,
+  phone: phone,
+  picture: picture,
 });
