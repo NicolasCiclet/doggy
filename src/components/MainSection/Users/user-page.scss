@@ -1,0 +1,182 @@
+@use 'src/styles/vars';
+// styles Mobil first
+.userboard {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+  background-color:#EFEDEC;
+  box-shadow: 1px 2px 4px black;
+  border-radius: 7px;
+  padding: 1rem;
+  // page de profil avec toutes les info
+  
+  &-section {
+    background-color: vars.$lightColor;;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 7px;
+    padding: 0.5rem 0.5rem 1rem;
+    margin: 0 0 1rem;
+    width: 100%;
+    // en-tête avec le titre de la section et les boutons d'édition et de suppression
+    .userboard-header {
+      display: flex;
+      justify-content: space-between;
+
+      .userboard-h1 {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 1px grey;
+      }
+      .userboard-buttons{
+        .button{
+          width:27px;
+          margin-left: 0.4rem;
+        }
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 1rem 0;
+    }
+
+    h3 {
+      font-size: 1rem;
+      // border-bottom: 1px solid grey;
+      // width: 50%;
+
+      &::after {
+        background: grey;
+        content: "";
+        display: block;
+        height: 1px;
+        margin: 0.5rem auto;
+        width: 6vw;
+      }
+      // &:last-child::after {
+      //   display: none;
+      // }
+    }
+
+    // corps de la section avec la photo et les infos
+    
+    .userboard-main {
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+
+        .userboard-main-photo{
+          width: 100%;
+          border-radius: 50px;
+
+          .userboard-photo {
+            width: 100%;
+          }
+        }
+      }
+
+
+    }
+
+    &-info-title {
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    &-info {
+      font-size: 0.9rem;
+      display: block;
+    }
+
+    &-bio {
+      margin: 1.5rem auto;
+      padding: 0.5rem;
+      box-shadow: 0px 0px 5px black;
+      border-radius: 7px;
+      width: 80%;
+      background-color: vars.$mainColor;
+      font-style: italic;
+    }
+
+    &-contact {
+      background-color: vars.$mainColor;
+      color: #fff;
+      border-radius: 5px;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+      box-shadow: 1px 2px 4px black;
+    }
+
+    
+  }
+
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .userboard {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    background-color:#EFEDEC;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 7px;
+    // page de profil avec toutes les info
+    
+    &-section {
+      background-color: vars.$lightColor;;
+      box-shadow: 1px 2px 4px black;
+      border-radius: 7px;
+      
+      margin: 0 0 1rem;
+      width: 48%;
+  }  
+}
+}
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .userboard {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    background-color:#EFEDEC;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 7px;
+    // page de profil avec toutes les info
+    
+    &-section {
+      background-color: vars.$lightColor;;
+      box-shadow: 1px 2px 4px black;
+      border-radius: 7px;
+      
+      margin: 0 0 1rem;
+      width: 37%;
+  } 
+  &-section-desktop{
+    background-color: vars.$lightColor;;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 7px;
+    
+    margin: 0 0 1rem;
+    width: 62%;
+
+    .userboard-main-photo{
+      width: 100%;
+      border-radius: 50px;
+
+      .userboard-photo {
+        width: 80%;
+      }
+    
+  } 
+}
+}
+}
