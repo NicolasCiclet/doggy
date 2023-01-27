@@ -7,12 +7,14 @@ import {
 
 const userMiddleware = (store) => (next) => (action) => {
   const connectedEmail = store.getState().user.mailNewUser;
+  // eslint-disable-next-line prefer-destructuring
+  const url = store.getState().user.url;
 
   switch (action.type) {
     case SUBMIT_LOGIN:
 
       axios.post(
-        'http://christophe-rialland.vpnuser.lan/doggy/public/api/login_check',
+        `${url}api/login_check`,
         {
           username: store.getState().user.mailNewUser,
           password: store.getState().user.passwordNewUser,
@@ -47,7 +49,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case SUBMIT_FORM_NEW_USER:
 
       axios.post(
-        'http://christophe-rialland.vpnuser.lan/doggy/public/api/user/',
+        `${url}api/user/`,
         {
           nickname: store.getState().user.usernameNewUser,
           firstname: store.getState().user.firstnameNewUser,
@@ -95,7 +97,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case LOGOUT:
 
       axios.post(
-        'http://christophe-rialland.vpnuser.lan/doggy/public/logout',
+        `${url}logout`,
       )
         .then((response) => {
           console.log(response);
@@ -173,7 +175,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case GET_USER_INFO:
       console.log(connectedEmail);
       axios.get(
-        `http://christophe-rialland.vpnuser.lan/doggy/public/api/user/${connectedEmail}`,
+        `${url}api/user/${connectedEmail}`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -186,20 +188,22 @@ const userMiddleware = (store) => (next) => (action) => {
             bio, birthdate, city, email, firstname, gender,
             id, lastname, nickname, phone, picture,
           } = response.data.result;
+          const { latitude, longitude } = response.data.result.location;
 
-          console.log(bio);
-          console.log(birthdate);
-          console.log(city);
-          console.log(email);
-          console.log(firstname);
-          console.log(gender);
-          console.log(id);
-          console.log(lastname);
-          console.log(nickname);
-          console.log(phone);
-          console.log(picture);
           store.dispatch(displayInfoConnectedUser(
-            bio, birthdate, city, email, firstname, gender, lastname, nickname, phone, picture));
+            bio,
+            birthdate,
+            city,
+            email,
+            firstname,
+            gender,
+            lastname,
+            nickname,
+            phone,
+            picture,
+            latitude,
+            longitude,
+          ));
         })
         .catch((error) => {
           console.log(error);

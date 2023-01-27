@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import {
   Button, Form, Message, Select, TextArea,
 } from 'semantic-ui-react';
@@ -19,6 +21,14 @@ const genderOptions = [
 
 const UpdateUser = () => {
   const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.user.logged);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogged) {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   const name = useSelector((state) => state.user.usernameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
@@ -27,10 +37,15 @@ const UpdateUser = () => {
   const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);
 
-  // je vais chercher un user en dur mais normaement on récupérera l'user inscrit via une
-  // requête get/id
-  const users = useSelector((state) => state.user.usersToDisplay);
-  const user = users.find((onUser) => (onUser.id === 1));
+  // To get connected user infos that are save in the state
+  const lastname = useSelector((state) => state.user.lastnameNewUser);
+  const firstname = useSelector((state) => state.user.firstnameNewUser);
+  const city = useSelector((state) => state.user.cityNewUser);
+  const nickname = useSelector((state) => state.user.usernameNewUser);
+  const birthdate = useSelector((state) => state.user.birthNewUser);
+  const bio = useSelector((state) => state.user.bioNewUser);
+  const mail = useSelector((state) => state.user.mailNewUser);
+  const phone = useSelector((state) => state.user.phoneNewUser);
 
   /* I use regex to check password, here is an explication of my rules :
   ^ The password string will start this way and must contain :
@@ -66,7 +81,7 @@ const UpdateUser = () => {
           <Form.Group widths="equal">
             <Form.Input
               label="Nom"
-              placeholder={user.lastname}
+              placeholder={lastname}
               // width={5}
               onChange={(event) => {
                 dispatch(addLastnameNewUser(event.target.value));
@@ -74,7 +89,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Prénom"
-              placeholder={user.firstname}
+              placeholder={firstname}
               // width={5}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
@@ -82,7 +97,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Ville"
-              placeholder={user.city}
+              placeholder={city}
               // width={5}
               error={cityFind ? false : {
                 content: 'Ville introuvable, merci d\'indiquer une autre ville',
@@ -95,7 +110,7 @@ const UpdateUser = () => {
           <Form.Group widths="equal">
             <Form.Input
               label="Nom d'utilisateur"
-              placeholder={user.nickname}
+              placeholder={nickname}
               width={5}
               onChange={(event) => {
                 dispatch(addUsernameNewUser(event.target.value));
@@ -103,7 +118,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Email"
-              placeholder={user.email}
+              placeholder={mail}
               width={6}
               // I use a ternary condition to show or hide the error message
               error={validate(mailUser) ? false : {
@@ -115,7 +130,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Téléphone"
-              placeholder={user.phone}
+              placeholder={phone}
               width={5}
               // Only numbers are allowed
               onKeyPress={(event) => {
@@ -179,7 +194,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Date de naissance"
-              placeholder="Date de naissance"
+              placeholder={birthdate}
               width={8}
               type="date"
               onChange={(event) => {
@@ -190,7 +205,7 @@ const UpdateUser = () => {
           <Form.Input
             label="Un petit mot sur vous..."
             control={TextArea}
-            placeholder={user.bio}
+            placeholder={bio}
             onChange={(event) => {
               dispatch(addBioNewUser(event.target.value));
             }}

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { showDeleteUser, showLink, getUserInfo } from '../../actions/user';
 import { showDeleteDog } from '../../actions/dog';
@@ -23,6 +23,7 @@ import './nav.css';
 const Profil = () => {
   // burger-menu
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const showBurgerMenu = useSelector((state) => state.user.showLink);
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
@@ -31,6 +32,9 @@ const Profil = () => {
   useEffect(() => {
     if (isLogged) {
       dispatch(getUserInfo());
+    }
+    else {
+      navigate('/');
     }
   }, [isLogged]);
 
