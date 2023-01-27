@@ -1,3 +1,7 @@
+import photo1 from './promener-chien.jpg';
+import photo2 from './promener-chien2.jpg';
+import photo3 from './promener-chien3.jpg';
+
 export default [
   {
     id: 1,
@@ -14,7 +18,7 @@ export default [
     bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, itaque optio nostrum blanditiis, eos odio nemo modi minima soluta ullam officia voluptatibus hic voluptates fugit. Voluptatem dolor impedit ullam aut!',
     role: 'user',
     status: 'validé',
-    userPicture: 'https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2017/12/detective-avatar-icon-01--840x500.jpg',
+    userPicture: photo2,
     dog: 'Jack Russell',
     dogPicture: 'https://www.akc.org/wp-content/uploads/2017/11/GettyImages-187066830.jpg',
   },
@@ -33,7 +37,7 @@ export default [
     bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, itaque optio nostrum blanditiis, eos odio nemo modi minima soluta ullam officia voluptatibus hic voluptates fugit. Voluptatem dolor impedit ullam aut!',
     role: 'user',
     status: 'validé',
-    userPicture: 'https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2017/12/detective-avatar-icon-01--840x500.jpg',
+    userPicture: photo3,
     dog: 'Labrador',
     dogPicture: 'https://www.akc.org/wp-content/uploads/2017/11/GettyImages-187066830.jpg',
   },
@@ -52,7 +56,7 @@ export default [
     bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, itaque optio nostrum blanditiis, eos odio nemo modi minima soluta ullam officia voluptatibus hic voluptates fugit. Voluptatem dolor impedit ullam aut!',
     role: 'user',
     status: 'validé',
-    userPicture: 'https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2017/12/detective-avatar-icon-01--840x500.jpg',
+    userPicture: photo1,
     dog: 'Fox Terrier',
     dogPicture: 'https://www.akc.org/wp-content/uploads/2017/11/GettyImages-187066830.jpg',
   },
@@ -71,7 +75,7 @@ export default [
     bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, itaque optio nostrum blanditiis, eos odio nemo modi minima soluta ullam officia voluptatibus hic voluptates fugit. Voluptatem dolor impedit ullam aut!',
     role: 'user',
     status: 'validé',
-    userPicture: 'https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2017/12/detective-avatar-icon-01--840x500.jpg',
+    userPicture: photo2,
     dog: 'Husky',
     dogPicture: 'https://www.akc.org/wp-content/uploads/2017/11/GettyImages-187066830.jpg',
   },
