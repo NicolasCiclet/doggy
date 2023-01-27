@@ -5,7 +5,7 @@
 
     .register {
       width: 100%;
-      min-width: 50px;
+      min-width: 100px;
     }
     
   }
@@ -20,7 +20,7 @@
   padding: 1rem;
   // page de profil avec toutes les info
   
-  &-section {
+  &-leftsection, &-rightsection {
     background-color: vars.$lightColor;;
     box-shadow: 1px 2px 4px black;
     border-radius: 7px;
@@ -120,36 +120,50 @@
   }
 
 
-// Breackpoint for tablet
-@media (min-width: 480px){
-  .userboard {
+// // Breackpoint for tablet
+// @media (min-width: 480px){
+//   .userboard {
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    text-align: center;
-    background-color:#EFEDEC;
-    box-shadow: 1px 2px 4px black;
-    border-radius: 7px;
+//     display: flex;
+//     text-align: center;
+//     background-color:#EFEDEC;
+//     box-shadow: 1px 2px 4px black;
+//     border-radius: 7px;
 
-    // page de profil avec toutes les info
+//     // page de profil avec toutes les info
     
-    &-section {
-      background-color: vars.$lightColor;;
-      box-shadow: 1px 2px 4px black;
-      border-radius: 7px;
+//     &-section {
+//       background-color: vars.$lightColor;;
+//       box-shadow: 1px 2px 4px black;
+//       border-radius: 7px;
       
-      margin: 0 0 1rem;
-      width: 48%;
-  }  
-}
-}
+//       margin: 0 0 1rem;
+//       width: 100%;
+
+//       .userboard-main {
+//         font-size: 0.9rem;
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+    
+//           .userboard-main-photo{
+//             width: 90%;
+//             border-radius: 50px;
+//             margin: auto;
+    
+//             .userboard-photo {
+//               width: 100%;
+//             }
+//           }
+//         }
+//   } 
+// }
+// }
 // Breackpoint for desktop
 @media (min-width: 1000px){
   .userboard {
-
+    // position: relative;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     text-align: center;
     background-color:#EFEDEC;
@@ -157,31 +171,39 @@
     border-radius: 7px;
     // page de profil avec toutes les info
     
-    &-section {
+    &-leftsection {
       background-color: vars.$lightColor;;
       box-shadow: 1px 2px 4px black;
       border-radius: 7px;
-      
       margin: 0 0 1rem;
       width: 37%;
-  } 
-  &-section-desktop{
-    background-color: vars.$lightColor;;
-    box-shadow: 1px 2px 4px black;
-    border-radius: 7px;
+      position: sticky;
+      top: 5px;
+      height: 100vh;
+  }
     
-    margin: 0 0 1rem;
-    width: 62%;
-
-    .userboard-main-photo{
-      width: 100%;
-      border-radius: 50px;
-
-      .userboard-photo {
-        width: 80%;
-      }
+  
+    &-rightsection-desktop {
+      width: 62%;
+      .userboard-section-desktop{
+        background-color: vars.$lightColor;;
+        box-shadow: 1px 2px 4px black;
+        border-radius: 7px;
+        width: 100%;
+        margin: 0 0 1rem;
+        
     
-  } 
-}
+        .userboard-main-photo{
+          width: 100%;
+          border-radius: 50px;
+    
+          .userboard-photo {
+            width: 80%;
+          }
+        
+      } 
+    }
+    }
+  
 }
 }
