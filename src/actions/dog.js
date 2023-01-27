@@ -11,8 +11,10 @@ export const ADD_STERILIZED_NEW_DOG = 'ADD_STERILIZED_NEW_DOG';
 export const ADD_NEW_DOG = 'ADD_NEW_DOG';
 // Pour afficher la pop-up delete
 export const SHOW_DELETE_DOG = 'SHOW_DELETE_DOG';
-// For delete a user
+// To delete a dog
 export const DELETE_DOG = 'DELETE_DOG';
+// To update a dog
+export const UPDATE_DOG = 'UPDATE_DOG';
 
 // Dog actions
 export const addNameNewDog = (value) => ({
@@ -55,4 +57,8 @@ export const showDeleteDog = () => ({
 
 export const deleteDog = () => ({
   type: DELETE_DOG,
+});
+
+export const updateDog = () => ({
+  type: UPDATE_DOG,
 });

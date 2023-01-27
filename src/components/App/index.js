@@ -18,6 +18,8 @@ import LegalMentions from '../LegalMentions';
 import './styles.scss';
 import NewEvent from '../Register/newEvent';
 import UpdateUser from '../Register/updateUser';
+import UpdateDog from '../Register/updateDog';
+import UpdateEvent from '../Register/updateEvent';
 
 // == Composant
 function App() {
@@ -33,7 +35,9 @@ function App() {
         <Route path="/" element={<MainSection />} />
         <Route path="/connexion" element={<Connect />} />
         <Route path="/register" element={<UserRegister />} />
-        <Route path="/update-profile" element={<UpdateUser />} />
+        <Route path="/profile/update/user" element={<UpdateUser />} />
+        <Route path="/profile/update/animal" element={<UpdateDog />} />
+        <Route path="/profile/update/event" element={<UpdateEvent />} />
         <Route path="/register/dog" element={<DogRegister />} />
         <Route path="/profile" element={<Profil />} />
         <Route path="/about" element={<About />} />

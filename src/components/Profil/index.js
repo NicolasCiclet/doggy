@@ -81,7 +81,7 @@ const Profil = () => {
         <div className="profil-header">
           <h1 className="profil-h1">Mon profil</h1>
           <div className="profil-buttons">
-            <Link to="/update-profile">
+            <Link to="/profile/update/user">
               <img className="button" src={editButton} alt="edit" />
             </Link>
             <img
@@ -136,7 +136,7 @@ const Profil = () => {
         <div className="profil-header">
           <h1 className="profil-h1">Mes animaux</h1>
           <div className="profil-buttons">
-            <Link to="/update-profile">
+            <Link to="/profile/update/animal">
               <img className="button" src={editButton} alt="edit" />
             </Link>
             <img
@@ -203,7 +203,7 @@ const Profil = () => {
         <div className="profil-header">
           <h1 className="profil-h1">Mes événements</h1>
           <div className="profil-buttons">
-            <Link to="/update-profile">
+            <Link to="/profile/update/event">
               <img className="button" src={editButton} alt="edit" />
             </Link>
             <img
