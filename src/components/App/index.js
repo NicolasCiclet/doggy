@@ -34,6 +34,10 @@ function App() {
       {!logged && (<Welcome />)}
       <Routes>
         <Route path="/" element={<MainSection />} />
+        <Route path="/meeting" element={<MainSection />} />
+        <Route path="/event" element={<MainSection />} />
+        <Route path="/walk" element={<MainSection />} />
+        <Route path="/professional" element={<MainSection />} />
         <Route path="/connexion" element={<Connect />} />
         <Route path="/register" element={<UserRegister />} />
         <Route path="/profile/update/user" element={<UpdateUser />} />
