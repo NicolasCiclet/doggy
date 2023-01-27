@@ -5,8 +5,9 @@
   - store information in the state to know if we are authenticate.
   - adapt the display: return to the home page with a welcome message.
 */
-
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 import Field from 'src/components/Connect/Field';
 
@@ -17,9 +18,17 @@ import './connect.scss';
 
 const Connect = () => {
   // I set up my controlled fields for mail and password
+  const isLogged = useSelector((state) => state.user.logged);
+  const navigate = useNavigate();
   const emailValue = useSelector((state) => state.user.mailNewUser);
   const passwordValue = useSelector((state) => state.user.passwordNewUser);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isLogged) {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   return (
     <>

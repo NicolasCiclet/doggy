@@ -5,8 +5,7 @@ import {
   ADD_LASTNAME_NEW_USER, ADD_LATLNG_NEW_USER, ADD_MAIL_NEW_USER,
   ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER,
   MAIL_CHECKED, UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT, ADD_PICTURE_NEW_USER,
-  ADD_CHECKED_PASSWORD_NEW_USER,
-  SHOW_DELETE_USER,
+  ADD_CHECKED_PASSWORD_NEW_USER, SHOW_DELETE_USER, DISPLAY_INFO_CONNECTED_USER,
 } from '../actions/user';
 
 const initialState = {
@@ -172,12 +171,28 @@ const userReducer = (state = initialState, action = {}) => {
         showLink: !state.showLink,
       };
 
-    // Pour afficher la pop-up delete
+    // To display the popup delete
     case SHOW_DELETE_USER:
       return {
         ...state,
         // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
         userDelete: !state.userDelete,
+      };
+
+    // To save the connected user info in the state
+    case DISPLAY_INFO_CONNECTED_USER:
+      return {
+        ...state,
+        lastnameNewUser: action.lastname,
+        firstnameNewUser: action.firstname,
+        cityNewUser: action.city,
+        usernameNewUser: action.nickname,
+        genderNewUser: action.gender,
+        birthNewUser: action.birthdate,
+        bioNewUser: action.bio,
+        mailNewUser: action.email,
+        phoneNewUser: action.phone,
+        pictureNewUser: action.picture,
       };
 
     default:

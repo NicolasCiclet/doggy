@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DELETE_EVENT, SUBMIT_FORM_NEW_EVENT } from '../actions/event';
+import { DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT } from '../actions/event';
 
 const eventMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
@@ -40,6 +40,31 @@ const eventMiddleware = (store) => (next) => (action) => {
       //   .catch((error) => {
       //     console.log(error);
       //   });
+
+      break;
+
+    case SUBMIT_FORM_UPDATE_EVENT:
+      console.log('requete put');
+      axios.put(
+        // url donnée par christophe,
+        {
+          name: store.getState().event.titleNewEvent,
+          event_date: store.getState().event.dateNewEvent,
+          place: store.getState().event.placeNewEvent,
+          description: store.getState().event.describNewEvent,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       break;
 

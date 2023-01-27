@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink } from 'react-router-dom';
-import { showDeleteUser, showLink } from '../../actions/user';
+import { useEffect } from 'react';
+import { showDeleteUser, showLink, getUserInfo } from '../../actions/user';
 import { showDeleteDog } from '../../actions/dog';
 import { showDeleteEvent } from '../../actions/event';
 
@@ -23,9 +24,28 @@ const Profil = () => {
   // burger-menu
   const dispatch = useDispatch();
   const showBurgerMenu = useSelector((state) => state.user.showLink);
+  // I checked if the user is connected
+  const isLogged = useSelector((state) => state.user.logged);
 
-  const users = useSelector((state) => state.user.usersToDisplay);
-  const user = users.find((onUser) => (onUser.id === 1));
+  // If the user is connected, I get his info in BDD using his email
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(getUserInfo());
+    }
+  }, [isLogged]);
+
+  // To get connected user infos that are save in the state
+  const lastname = useSelector((state) => state.user.lastnameNewUser);
+  const firstname = useSelector((state) => state.user.firstnameNewUser);
+  const city = useSelector((state) => state.user.cityNewUser);
+  const nickname = useSelector((state) => state.user.usernameNewUser);
+  const gender = useSelector((state) => state.user.genderNewUser);
+  const birthdate = useSelector((state) => state.user.birthNewUser);
+  const bio = useSelector((state) => state.user.bioNewUser);
+  const mail = useSelector((state) => state.user.mailNewUser);
+  const phone = useSelector((state) => state.user.phoneNewUser);
+  const picture = useSelector((state) => state.user.pictureNewUse);
+
   const events = useSelector((state) => state.event.eventsToDisplay);
   const event = events.find((onEvent) => (onEvent.id === 1));
 
@@ -81,7 +101,7 @@ const Profil = () => {
         <div className="profil-header">
           <h1 className="profil-h1">Mon profil</h1>
           <div className="profil-buttons">
-            <Link to="/update-profile">
+            <Link to="/profile/update/user">
               <img className="button" src={editButton} alt="edit" />
             </Link>
             <img
@@ -95,40 +115,40 @@ const Profil = () => {
             <Userdelete />
           </div>
         </div>
-        <h2 className="profil-h2">Bonjour {user.firstname} {user.lastname}</h2>
+        <h2 className="profil-h2">Bonjour {firstname} {lastname}</h2>
         <div className="profil-main">
           <div className="profil-main-photo">
-            <img className="profil-photo" src={user.userPicture} alt="user" />
+            <img className="profil-photo" src={picture} alt="user" />
           </div>
           <div className="profil-main-infos">
             <div className="info-block">
               <h3 className="profil-info-title">Nickname:</h3>
-              <span className="profil-info">{user.nickname}</span>
+              <span className="profil-info">{nickname}</span>
             </div>
             <div className="info-block">
               <h3 className="profil-info-title">Adresse mail:</h3>
-              <span className="profil-info">{user.email}</span>
+              <span className="profil-info">{mail}</span>
             </div>
             <div className="info-block">
               <h3 className="profil-info-title">Phone:</h3>
-              <span className="profil-info">{user.phone}</span>
+              <span className="profil-info">{phone}</span>
             </div>
             <div className="info-block">
               <h3 className="profil-info-title">City:</h3>
-              <span className="profil-info">{user.city}</span>
+              <span className="profil-info">{city}</span>
             </div>
             <div className="info-block">
               <h3 className="profil-info-title">Birthdate:</h3>
-              <span className="profil-info">{user.birthdate}</span>
+              <span className="profil-info">{birthdate}</span>
             </div>
             <div className="info-block">
               <h3 className="profil-info-title">Gender:</h3>
-              <span className="profil-info">{user.gender}</span>
+              <span className="profil-info">{gender}</span>
             </div>
           </div>
         </div>
         <h3 className="profil-info-title">Bio:</h3>
-        <span className="profil-info">{user.bio}</span>
+        <span className="profil-info">{bio}</span>
       </div>
       <div className="profil-section" id="mes-animaux">
         {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
@@ -136,7 +156,7 @@ const Profil = () => {
         <div className="profil-header">
           <h1 className="profil-h1">Mes animaux</h1>
           <div className="profil-buttons">
-            <Link to="/update-profile">
+            <Link to="/profile/update/animal">
               <img className="button" src={editButton} alt="edit" />
             </Link>
             <img
@@ -152,7 +172,7 @@ const Profil = () => {
         </div>
         <div className="profil-main">
           <div className="profil-main-photo">
-            <img className="profil-photo" src={user.dogPicture} alt="animal" />
+            <img className="profil-photo" src={picture} alt="animal" />
           </div>
           <div className="profil-main-infos">
             <div className="info-block">
@@ -161,7 +181,7 @@ const Profil = () => {
             </div>
             <div className="info-block">
               <h3 className="profil-info-title">Breed:</h3>
-              <span className="profil-info">{user.dog}</span>
+              <span className="profil-info">Breed</span>
             </div>
             <div className="info-block">
               <h3 className="profil-info-title">Sexe:</h3>
@@ -203,7 +223,7 @@ const Profil = () => {
         <div className="profil-header">
           <h1 className="profil-h1">Mes événements</h1>
           <div className="profil-buttons">
-            <Link to="/update-profile">
+            <Link to="/profile/update/event">
               <img className="button" src={editButton} alt="edit" />
             </Link>
             <img

@@ -12,6 +12,9 @@ export const SHOW_DELETE_EVENT = 'SHOW_DELETE_EVENT';
 // To delete a event
 export const DELETE_EVENT = 'DELETE_EVENT';
 
+// Action that sends a update event to the Back
+export const SUBMIT_FORM_UPDATE_EVENT = 'SUBMIT_FORM_UPDATE_EVENT';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -43,4 +46,9 @@ export const showDeleteEvent = () => ({
 
 export const deleteEvent = () => ({
   type: DELETE_EVENT,
+});
+
+export const submitFormUpdateEvent = (value) => ({
+  type: SUBMIT_FORM_UPDATE_EVENT,
+  newValue: value,
 });
