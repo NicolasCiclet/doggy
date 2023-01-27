@@ -192,7 +192,7 @@ const userReducer = (state = initialState, action = {}) => {
         bioNewUser: action.bio,
         mailNewUser: action.email,
         phoneNewUser: action.phone,
-        pictureNewUser: action.picture,
+        pictureNewUser: `http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${action.picture}`,
       };
 
     default:
