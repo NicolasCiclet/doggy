@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import {
   Button, Form, Select, TextArea,
 } from 'semantic-ui-react';
@@ -10,6 +12,14 @@ import './register.scss';
 
 // New Event FORM
 const NewEvent = () => {
+  const isLogged = useSelector((state) => state.user.logged);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogged) {
+      navigate('/');
+    }
+  }, [isLogged]);
   // waiting to get the current event with the api, we use a false event
   const events = useSelector((state) => state.event.eventsToDisplay);
   const currentEvent = events.find((onEvent) => (onEvent.id === 1));

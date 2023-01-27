@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import {
   Button, Form, Message, Select, TextArea,
 } from 'semantic-ui-react';
@@ -23,6 +25,15 @@ const UpdateDog = () => {
   const dispatch = useDispatch();
   const dogName = useSelector((state) => state.dog.nameNewDog);
   const userCreate = useSelector((state) => state.user.userCreate);
+
+  const isLogged = useSelector((state) => state.user.logged);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLogged) {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   // ! Récupérer le chien concerné et mettre ses infos en placeholder
 

@@ -150,7 +150,19 @@ export const getUserInfo = () => ({
 });
 
 export const displayInfoConnectedUser = (
-  bio, birthdate, city, email, firstname, gender, lastname, nickname, phone, picture) => ({
+  bio,
+  birthdate,
+  city,
+  email,
+  firstname,
+  gender,
+  lastname,
+  nickname,
+  phone,
+  picture,
+  latitude,
+  longitude,
+) => ({
   type: DISPLAY_INFO_CONNECTED_USER,
   bio: bio,
   birthdate: birthdate,
@@ -162,4 +174,6 @@ export const displayInfoConnectedUser = (
   nickname: nickname,
   phone: phone,
   picture: picture,
+  latitude: latitude,
+  longitude: longitude,
 });
