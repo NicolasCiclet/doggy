@@ -2,13 +2,17 @@
 /* eslint-disable arrow-body-style */
 
 /**
- *  on trouve la recette voulue dans la liste des recettes
- * @param {Array} users - toutes les recettes
- * @param {string} searchedId - le slug de la recette recherchée
- * @return {Object} - La recette trouvée
+ *
+ * @param {Array} users - all users
+ * @param {string} searchedId - userId
+ * @return {Object} - user find
  */
+
+// with this function I pass 2 arguments (the array and the id)
+// I use find on array to find the user that matches with this id
 export function findUser(users, searchedId) {
   const user = users.find((testedUser) => {
+    // eslint-disable-next-line eqeqeq
     return testedUser.id == searchedId;
   });
   return user;

@@ -1,6 +1,14 @@
 @use 'src/styles/vars';
 // styles Mobil first
 .userboard {
+  .new-message {
+
+    .register {
+      width: 100%;
+      min-width: 50px;
+    }
+    
+  }
 
   display: flex;
   flex-wrap: wrap;
@@ -127,6 +135,7 @@
     background-color:#EFEDEC;
     box-shadow: 1px 2px 4px black;
     border-radius: 7px;
+
     // page de profil avec toutes les info
     
     &-section {

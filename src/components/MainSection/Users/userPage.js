@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { findUser } from '../../../selectors/user';
+import NewMessage from '../../Register/newMessage';
 
 import './user-page.scss';
 
@@ -35,6 +36,7 @@ const UserPage = () => {
             <blockquote className="userboard-bio">{user.bio}</blockquote>
 
             <a className="userboard-contact" href="">Me Contacter</a>
+            <NewMessage />
           </div>
         </div>
       </div>
