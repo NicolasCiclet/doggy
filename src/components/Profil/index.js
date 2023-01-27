@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink } from 'react-router-dom';
-import { showDeleteUser, showLink } from '../../actions/user';
+import { useEffect } from 'react';
+import { showDeleteUser, showLink, getUserInfo } from '../../actions/user';
 import { showDeleteDog } from '../../actions/dog';
 import { showDeleteEvent } from '../../actions/event';
 
@@ -23,11 +24,20 @@ const Profil = () => {
   // burger-menu
   const dispatch = useDispatch();
   const showBurgerMenu = useSelector((state) => state.user.showLink);
+  // I checked if the user is connected
+  const isLogged = useSelector((state) => state.user.logged);
 
   const users = useSelector((state) => state.user.usersToDisplay);
   const user = users.find((onUser) => (onUser.id === 1));
   const events = useSelector((state) => state.event.eventsToDisplay);
   const event = events.find((onEvent) => (onEvent.id === 1));
+
+  // If the user is connected, I get his info in BDD using his email
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(getUserInfo);
+    }
+  }, [isLogged]);
 
   return (
     <div className="profil">

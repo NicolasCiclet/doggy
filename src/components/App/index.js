@@ -1,7 +1,7 @@
 // == Import
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import { getCityApi } from '../../actions/city';
+
 import Connect from '../Connect';
 import UserRegister from '../Register/newUser';
 import DogRegister from '../Register/newDog';

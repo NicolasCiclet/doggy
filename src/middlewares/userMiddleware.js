@@ -2,10 +2,12 @@ import axios from 'axios';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
-  SUBMIT_FORM_UPDATE_USER,
+  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
+  const connectedEmail = store.getState().user.mailNewUser;
+
   switch (action.type) {
     case SUBMIT_LOGIN:
 
@@ -161,6 +163,24 @@ const userMiddleware = (store) => (next) => (action) => {
 
           // On veut avoir accès au profil de l'utilisateur, et aux pages réservées
           // aux personnes connectées => token ?
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
+    case GET_USER_INFO:
+      axios.get(
+        `http://christophe-rialland.vpnuser.lan/doggy/public/api/user/${connectedEmail}`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
         })
         .catch((error) => {
           console.log(error);

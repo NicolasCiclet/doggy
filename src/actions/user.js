@@ -31,6 +31,8 @@ export const SHOW_DELETE_USER = 'SHOW_DELETE_USER';
 export const DELETE_USER = 'DELETE_USER';
 // To update user profile with PUT request
 export const SUBMIT_FORM_UPDATE_USER = 'SUBMIT_FORM_UPDATE_USER';
+// To get connected user information in the BDD
+export const GET_USER_INFO = 'GET_USER_INFO';
 
 // User actions
 export const addNewUser = () => ({
@@ -139,4 +141,8 @@ export const deleteUser = () => ({
 
 export const submitFormUpdateUser = () => ({
   type: SUBMIT_FORM_UPDATE_USER,
+});
+
+export const getUserInfo = () => ({
+  type: GET_USER_INFO,
 });
