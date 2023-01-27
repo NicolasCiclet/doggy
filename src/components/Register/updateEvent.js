@@ -3,13 +3,17 @@ import {
   Button, Form, Select, TextArea,
 } from 'semantic-ui-react';
 import {
-  dateNewEvent, describNewEvent, placeNewEvent, submitFormNewEvent, titleNewEvent,
+  dateNewEvent, describNewEvent, placeNewEvent, submitFormUpdateEvent, titleNewEvent,
 } from '../../actions/event';
 
 import './register.scss';
 
 // New Event FORM
 const NewEvent = () => {
+  // waiting to get the current event with the api, we use a false event
+  const events = useSelector((state) => state.event.eventsToDisplay);
+  const currentEvent = events.find((onEvent) => (onEvent.id === 1));
+
   // I use map to loop over all our locations, and pass the const to my input select
   const allPlace = useSelector((state) => state.event.eventsToDisplay);
   const placeOptions = allPlace.map((place) => (
@@ -19,17 +23,17 @@ const NewEvent = () => {
   const dispatch = useDispatch();
   return (
     <div className="register">
-      <h1>Ajouter un évènement</h1>
+      <h1>Modifier mon évènement</h1>
       <Form onSubmit={(event) => {
         event.preventDefault();
         console.log('new evenement submit');
-        dispatch(submitFormNewEvent());
+        dispatch(submitFormUpdateEvent());
       }}
       >
         {/* Input for title */}
         <Form.Input
           label="Titre"
-          placeholder="Titre de l'évènement"
+          placeholder={currentEvent.name}
           onChange={(event) => {
             dispatch(titleNewEvent(event.target.value));
           }}
@@ -60,7 +64,7 @@ const NewEvent = () => {
           className="add-new-event-description"
           label="Description de l'évènement"
           control={TextArea}
-          placeholder="Description de l'évènement"
+          placeholder={currentEvent.description}
           onChange={(event) => {
             dispatch(describNewEvent(event.target.value));
           }}
