@@ -1,3 +1,5 @@
+import { CHANGE_MAIN } from '../actions/nav';
+
 const initialState = {
   // url de l'api de Christophe
   url: 'http://christophe-rialland.vpnuser.lan/doggy/public/',
@@ -8,10 +10,10 @@ const initialState = {
 
 const navReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case ADD_LASTNAME_NEW_USER:
+    case CHANGE_MAIN:
       return {
         ...state,
-        lastnameNewUser: action.newValue,
+        main: action.newValue,
       };
 
     default:
