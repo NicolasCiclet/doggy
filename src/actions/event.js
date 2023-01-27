@@ -7,6 +7,11 @@ export const DESCRIB_NEW_EVENT = 'DESCRIB_NEW_EVENT';
 // Action that sends a new event to the Back
 export const SUBMIT_FORM_NEW_EVENT = 'SUBMIT_FORM_NEW_EVENT';
 
+// To display the pop-up delete
+export const SHOW_DELETE_EVENT = 'SHOW_DELETE_EVENT';
+// To delete a event
+export const DELETE_EVENT = 'DELETE_EVENT';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -30,4 +35,12 @@ export const describNewEvent = (value) => ({
 export const submitFormNewEvent = (value) => ({
   type: SUBMIT_FORM_NEW_EVENT,
   newValue: value,
+});
+
+export const showDeleteEvent = () => ({
+  type: SHOW_DELETE_EVENT,
+});
+
+export const deleteEvent = () => ({
+  type: DELETE_EVENT,
 });

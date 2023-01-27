@@ -12,7 +12,6 @@ import Field from 'src/components/Connect/Field';
 
 import { submitLogin, updateSettingsField } from '../../actions/user';
 import MainSection from '../MainSection';
-import Welcome from '../Welcome';
 
 import './connect.scss';
 
