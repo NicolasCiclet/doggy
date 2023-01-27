@@ -3,6 +3,7 @@ import AllUsers from './Users/allUsers';
 import Map from './Map';
 
 import './main-section.scss';
+// import RandomUser from './Users/randomUser';
 
 const MainSection = () => (
   <div className="mainSection">
@@ -12,6 +13,7 @@ const MainSection = () => (
     <div className="mainSection-users">
       <AllUsers />
       <AllEvents />
+      {/* <RandomUser /> */}
     </div>
   </div>
 );
