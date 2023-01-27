@@ -10,6 +10,7 @@ import {
   addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser,
 } from '../../actions/user';
 import './register.scss';
+import { Navigate } from 'react-router-dom';
 
 // options for the input select gender
 const genderOptions = [
@@ -207,8 +208,6 @@ const UserRegister = () => {
             success
             header="Inscription réussi"
             content={`Bienvenue ${name}`}
-            // // {setTimeout(<Navigate to="/error" replace={true} />, 3000)}
-            // {/* <Navigate to="/error" replace={true} /> */}
           />
         </Form>
       )}
