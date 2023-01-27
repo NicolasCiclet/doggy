@@ -21,7 +21,7 @@ const NewMessage = () => {
           <Form.Input
             className="add-new-event-description"
             control={TextArea}
-            placeholder="Description de l'évènement"
+            placeholder="Votre message..."
             // onChange={(event) => {
             //   dispatch(describNewEvent(event.target.value));
             // }}

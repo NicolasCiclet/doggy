@@ -1,5 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { isMessFormOpened } from '../../../actions/user';
 
 import { findUser } from '../../../selectors/user';
 import NewMessage from '../../Register/newMessage';
@@ -10,6 +12,8 @@ import './user-page.scss';
 const UserPage = () => {
   const { id } = useParams();
   const user = useSelector((state) => findUser(state.user.usersToDisplay, id));
+  const isFormOpen = useSelector((state) => state.user.messFormOpen);
+  const dispatch = useDispatch();
   // console.log(user);
   // console.log(useSelector((state) => state.user.usersToDisplay));
   return (
@@ -35,8 +39,15 @@ const UserPage = () => {
 
             <blockquote className="userboard-bio">{user.bio}</blockquote>
 
-            <a className="userboard-contact" href="">Me Contacter</a>
-            <NewMessage />
+            <button
+              type="button"
+              className="userboard-contact"
+              href=""
+              onClick={() => dispatch(isMessFormOpened())}
+            >
+              {!isFormOpen ? 'Me Contacter' : 'Annuler'}
+            </button>
+            {isFormOpen && <NewMessage />}
           </div>
         </div>
       </div>
