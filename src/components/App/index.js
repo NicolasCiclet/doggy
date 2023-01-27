@@ -15,8 +15,10 @@ import Profil from '../Profil';
 import About from '../About';
 import Contacts from '../Contacts';
 import LegalMentions from '../LegalMentions';
+
 import './styles.scss';
 import NewEvent from '../Register/newEvent';
+import UserPage from '../MainSection/Users/userPage';
 
 // == Composant
 function App() {
@@ -43,6 +45,7 @@ function App() {
         <Route path="/contact" element={<Contacts />} />
         <Route path="/mentions" element={<LegalMentions />} />
         <Route path="/event/new" element={<NewEvent />} />
+        <Route path="/user/:id" element={<UserPage />} />
       </Routes>
 
       <Footer />
