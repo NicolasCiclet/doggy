@@ -1,0 +1,17 @@
+.loader {
+  width: 50%;
+  margin: auto;
+  position: relative;
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+
+  &-info {
+    position: absolute;
+    bottom: 8%;
+    left: 20%;
+    right: 20%;
+  }
+}

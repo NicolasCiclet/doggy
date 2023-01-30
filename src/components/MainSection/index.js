@@ -19,8 +19,13 @@ const MainSection = () => {
       <div className="mainSection-users">
         {isLogged && (main === 'meeting') && (<AllUsers />)}
         {isLogged && (main === 'event') && (<AllEvents />)}
+
+        {(main === '') && <RandomUser />}
+        {(main === '') && <RandomEvent />}
+
         {main === '' && (<RandomUser />)}
         {main === '' && (<RandomEvent />)}
+
       </div>
     </div>
   );
