@@ -45,6 +45,9 @@ export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
 // To change display message form
 export const IS_MESS_FORM_OPENED = 'IS_MESS_FORM_OPENED';
 
+// To change display LOADER
+export const DISPLAY_LOADER = 'DISPLAY_LOADER';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -198,4 +201,8 @@ export const displayInfoConnectedUser = (
 
 export const isMessFormOpened = () => ({
   type: IS_MESS_FORM_OPENED,
+});
+
+export const displayLoader = () => ({
+  type: DISPLAY_LOADER,
 });

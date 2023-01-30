@@ -6,7 +6,7 @@ import {
   ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER,
   UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT, ADD_PICTURE_NEW_USER,
   ADD_CHECKED_PASSWORD_NEW_USER, SHOW_DELETE_USER, DISPLAY_INFO_CONNECTED_USER,
-  IS_MESS_FORM_OPENED, DISPLAY_RANDOM_USER_INFO,
+  IS_MESS_FORM_OPENED, DISPLAY_RANDOM_USER_INFO, DISPLAY_LOADER,
 } from '../actions/user';
 
 const initialState = {
@@ -40,6 +40,8 @@ const initialState = {
 
   // change display of new message form
   messFormOpen: false,
+
+  dislpayLoader: false,
 
 };
 
@@ -213,8 +215,14 @@ const userReducer = (state = initialState, action = {}) => {
     case IS_MESS_FORM_OPENED:
       return {
         ...state,
-        // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
         messFormOpen: !state.messFormOpen,
+      };
+
+      // To display or hidden loader
+    case DISPLAY_LOADER:
+      return {
+        ...state,
+        dislpayLoader: !state.dislpayLoader,
       };
 
     default:

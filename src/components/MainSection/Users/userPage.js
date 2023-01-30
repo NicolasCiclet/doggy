@@ -13,7 +13,7 @@ const UserPage = () => {
   const user = useSelector((state) => findUser(state.user.usersToDisplay, id));
   const isFormOpen = useSelector((state) => state.user.messFormOpen);
 
-  //TODO a modifier avec l'apel a l'api back
+  // TODO a modifier avec l'apel a l'api back
   const events = useSelector((state) => state.event.eventsToDisplay);
   const event = events.find((onEvent) => (onEvent.id === 1));
   const dispatch = useDispatch();

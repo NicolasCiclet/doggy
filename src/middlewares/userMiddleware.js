@@ -2,7 +2,8 @@ import axios from 'axios';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
-  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser, GET_RANDOM_USER_INFO, displayRandomUserInfo,
+  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
+  GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -12,6 +13,7 @@ const userMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case SUBMIT_LOGIN:
+      store.dispatch(displayLoader());
 
       axios.post(
         `${url}api/login_check`,
@@ -27,6 +29,7 @@ const userMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          store.dispatch(displayLoader());
 
           // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
           // dans le state => dispatch une action

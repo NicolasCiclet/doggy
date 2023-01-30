@@ -7,12 +7,15 @@ import { Carousel } from 'react-responsive-carousel';
 
 import { useDispatch, useSelector } from 'react-redux';
 
+import imageParDefaut from 'src/data/femme_chien1.jpg';
+
 import './random.scss';
 
 const RandomUser = () => {
   // const users = useSelector((state) => state.user.usersToDisplay);
   const users = useSelector((state) => state.user.randomUsersToDisplay);
   const url = useSelector((state) => state.nav.url);
+  
 
   // const dispatch = useDispatch();
   // console.log(user);
@@ -32,7 +35,10 @@ const RandomUser = () => {
       >
         {users.map((user) => (
           <div key={user.id}>
-            <img src={`${url}assets/images/${user.picture}`} alt="" />
+            <img
+              src={`${url}assets/images/${user.picture}`}
+              alt=""
+            />
             <div className="overlay">
               <h2 className="overlay__title">{user.firstname}</h2>
               <p className="overlay__text">{user.bio}</p>

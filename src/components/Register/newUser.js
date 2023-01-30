@@ -63,7 +63,7 @@ const UserRegister = () => {
             <Form.Input
               label="Nom"
               placeholder="Nom"
-              // width={5}
+              width={5}
               onChange={(event) => {
                 dispatch(addLastnameNewUser(event.target.value));
               }}
@@ -71,7 +71,7 @@ const UserRegister = () => {
             <Form.Input
               label="Prénom"
               placeholder="Prénom"
-              // width={5}
+              width={5}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
               }}
@@ -79,7 +79,7 @@ const UserRegister = () => {
             <Form.Input
               label="Ville"
               placeholder="Ville"
-              // width={5}
+              width={5}
               error={cityFind ? false : {
                 content: 'Ville introuvable, merci d\'indiquer une autre ville',
               }}
@@ -126,7 +126,7 @@ const UserRegister = () => {
             <Form.Input
               label="Mot de passe"
               placeholder="Mot de passe"
-              width={4}
+              width={8}
               type="password"
               error={(passwordRegex.test(passwordUser)) ? false : {
                 content: '6 caractères minimum dont 1 minuscule, 1 majuscule et 1 chiffre',
@@ -138,7 +138,7 @@ const UserRegister = () => {
             <Form.Input
               label="Confirmation Mot de passe"
               placeholder="Confirmez votre mot de passe"
-              width={4}
+              width={8}
               type="password"
               error={(checkedPasswordUser === passwordUser) ? false : {
                 content: 'Vérifiez votre mot de passe',
@@ -147,17 +147,17 @@ const UserRegister = () => {
                 dispatch(checkedPasswordNewUser(event.target.value));
               }}
             />
-            <Form.Input
-              label="Photo"
-              // placeholder="Photo"
-              width={7}
-              type="file"
-              onChange={(event) => {
-                dispatch(addPictureNewUser(event.target.files[0]));
-                console.log(event.target.files[0]);
-              }}
-            />
           </Form.Group>
+          <Form.Input
+            label="Photo"
+            // placeholder="Photo"
+            width={7}
+            type="file"
+            onChange={(event) => {
+              dispatch(addPictureNewUser(event.target.files[0]));
+              console.log(event.target.files[0]);
+            }}
+          />
           <Form.Group widths="equal">
             <Form.Input
               control={Select}
