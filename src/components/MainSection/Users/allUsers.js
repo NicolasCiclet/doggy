@@ -3,6 +3,8 @@ import { Card } from 'semantic-ui-react';
 import OneUser from './oneUser';
 
 const AllUsers = () => {
+  // Get all users in the BDD
+  
   const users = useSelector((state) => state.user.usersToDisplay);
   return (
     <div className="all-users">
