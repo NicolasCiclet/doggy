@@ -23,10 +23,9 @@
   // CARDS section
   &-users {
     .cards_title{
-      font-style: italic;
       font-weight: bold;
-      margin-left: 1rem;
-      font-size: 0.9rem;
+      margin-bottom: 0 0 1rem 1rem;
+      text-decoration: underline;
     }
     // Class defined by default by semantic
     .ui.three.cards {
@@ -82,7 +81,7 @@
       width: 60%;
       .all-users {
         .cards_title{
-          margin-top: 1rem;
+          margin: 1rem;
         }
       }
     }
