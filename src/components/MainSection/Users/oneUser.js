@@ -20,7 +20,7 @@ const OneUser = (
       onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image
-        src={picture}
+        src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${picture}`}
         wrapped
         ui={false}
       />
