@@ -216,7 +216,6 @@ const userMiddleware = (store) => (next) => (action) => {
 
       break;
 
-
     case GET_RANDOM_USER_INFO:
       console.log('RANDOM USER API BACK');
       axios.get(
@@ -267,7 +266,6 @@ const userMiddleware = (store) => (next) => (action) => {
           const allUsers = response.data.results;
           console.log(allUsers);
           store.dispatch(stockUsers(allUsers));
-
         })
         .catch((error) => {
           console.log(error);
