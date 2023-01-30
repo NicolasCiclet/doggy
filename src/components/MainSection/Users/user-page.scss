@@ -73,10 +73,11 @@
 
         .userboard-main-photo{
           width: 100%;
-          border-radius: 50px;
+          margin: 1rem 0.5rem;
 
           .userboard-photo {
-            width: 100%;
+            width: 80%;
+            border-radius: 50px;
           }
         }
       }
@@ -92,6 +93,7 @@
     &-info {
       font-size: 0.9rem;
       display: block;
+      margin: 0.5rem;
     }
 
     &-bio {
