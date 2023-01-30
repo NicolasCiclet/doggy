@@ -34,10 +34,6 @@ const UserPage = () => {
 
             <h2 className="userboard-info">{user.firstname}</h2>
 
-            <h3 className="userboard-info">{user.email}</h3>
-
-            <h3 className="userboard-info">{user.phone}</h3>
-
             <h3 className="userboard-info">{user.city}</h3>
 
             <blockquote className="userboard-bio">{user.bio}</blockquote>

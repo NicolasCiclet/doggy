@@ -6,8 +6,6 @@ import OneUser from './oneUser';
 
 const AllUsers = () => {
   // Get all users in the BDD
-
-  
   // const users = useSelector((state) => state.user.usersToDisplay);
 
   const dispatch = useDispatch();

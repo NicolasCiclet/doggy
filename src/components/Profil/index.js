@@ -53,7 +53,7 @@ const Profil = () => {
   const events = useSelector((state) => state.event.eventsToDisplay);
   const event = events.find((onEvent) => (onEvent.id === 1));
 
-  const url = useSelector((state) => state.nav.url);
+  // const url = useSelector((state) => state.nav.url);
 
   return (
     <div className="profil">

@@ -1,0 +1,64 @@
+@use 'src/styles/vars';
+
+// style for Mobil
+.new-message{
+  text-align: center;
+  box-shadow: 1px 2px 4px black;
+  border-radius: 7px;
+  padding: 1rem 1rem 1rem 1rem;
+  margin: 1rem;
+  font-size: 1.2rem;
+  background-color: white;
+  position: fixed;
+  top: 25%;
+  right: 5%;
+  
+  
+  .register {
+    margin: auto;
+    background-color:#EFEDEC;
+    box-shadow: 1px 2px 4px black;
+    padding: 1.5em;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 70%;
+    min-width: 400px;
+      // font-size: 1.2em;
+  
+    .ui .button {
+      background-color: vars.$darkColor;
+      color: #fff;
+    }
+    &-success {
+      margin: 1rem auto;
+      width: 50%;
+      text-align: center;
+    }
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-shadow: 1px 2px 2px grey;
+    }
+    
+  }
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .new-message{
+    position: fixed;
+    right: 25%;
+    width: 50%;
+  }
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .new-message{
+    position: fixed;
+    right: 25%;
+  }
+}
