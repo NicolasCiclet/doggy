@@ -124,7 +124,7 @@ const Profil = () => {
         <h2 className="profil-h2">Bonjour {firstname} {lastname}</h2>
         <div className="profil-main">
           <div className="profil-main-photo">
-            <img className="profil-photo" src={picture} alt="user" />
+            <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${picture}`} alt="user" />
           </div>
           <div className="profil-main-infos">
             <div className="info-block">

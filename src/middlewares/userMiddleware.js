@@ -2,8 +2,10 @@ import axios from 'axios';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
+
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
-  GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader,
+  GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS, stockUsers,
+
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -52,7 +54,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case SUBMIT_FORM_NEW_USER:
 
       axios.post(
-        `${url}api/user/`,
+        `${url}api/users/`,
         {
           nickname: store.getState().user.usernameNewUser,
           firstname: store.getState().user.firstnameNewUser,
@@ -214,6 +216,7 @@ const userMiddleware = (store) => (next) => (action) => {
 
       break;
 
+
     case GET_RANDOM_USER_INFO:
       console.log('RANDOM USER API BACK');
       axios.get(
@@ -242,6 +245,23 @@ const userMiddleware = (store) => (next) => (action) => {
           //   latitude,
           //   longitude,
           // ));
+
+    case GET_ALL_USERS:
+      console.log('récupérer tous les users');
+
+      axios.get(
+        `${url}api/users/`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          const allUsers = response.data.results;
+          console.log(allUsers);
+          store.dispatch(stockUsers(allUsers));
+
         })
         .catch((error) => {
           console.log(error);
