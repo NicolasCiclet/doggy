@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Select, TextArea } from 'semantic-ui-react';
 
-import './register.scss';
+import './message.scss';
 
 // New Message FORM
 const NewMessage = () => {
