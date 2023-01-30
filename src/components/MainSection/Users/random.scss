@@ -1,7 +1,20 @@
+h1 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
 .carousel {
   position: relative;
 }
 
+.carousel .slide img {
+  width: 100vh;
+  height: 50vh;
+  // The replaced content is sized to maintain its aspect ratio
+  object-fit: cover;
+}
+ // Thumb container
 .carousel .thumbs {
   display: flex;
   justify-content: center;
@@ -9,10 +22,13 @@
   padding: 10px;
 }
 
+// One thumb
 .carousel .thumb {
   margin: 0 5px;
   cursor: pointer;
 }
+
+// Container with description on the picture
 .carousel .overlay {
   width: 80%;
   position: absolute;
@@ -29,11 +45,12 @@
   margin: 0.8rem 0 1rem;
 }
 
-@media screen and (max-width:600px){
+// @media screen and (max-width:600px){
   .carousel .slide img {
     width: 100vh;
     height: 40vh;
+    // The replaced content is sized to maintain its aspect ratio
     object-fit: cover;
   }
   
-}
+// }

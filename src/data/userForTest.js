@@ -1,6 +1,7 @@
-import photo1 from './promener-chien.jpg';
-import photo2 from './promener-chien2.jpg';
-import photo3 from './promener-chien3.jpg';
+import photo1 from './femme_chien1.jpg';
+import photo2 from './femme_chien2.jpg';
+import photo3 from './homme_chien1.jpg';
+import photo4 from './homme_chien2.jpg';
 
 export default [
   {
@@ -75,7 +76,7 @@ export default [
     bio: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem, itaque optio nostrum blanditiis, eos odio nemo modi minima soluta ullam officia voluptatibus hic voluptates fugit. Voluptatem dolor impedit ullam aut!',
     role: 'user',
     status: 'validé',
-    userPicture: photo2,
+    userPicture: photo4,
     dog: 'Husky',
     dogPicture: 'https://www.akc.org/wp-content/uploads/2017/11/GettyImages-187066830.jpg',
   },

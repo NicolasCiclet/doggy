@@ -6,7 +6,11 @@ import { Card, Image } from 'semantic-ui-react';
 import { isSelected } from '../../../actions/map';
 
 // I get the props from the spread operator
-const OneUser = ({ firstname, city, userPicture, dog, dogPicture, id }) => {
+const OneUser = (
+  {
+    firstname, city, userPicture, dog, dogPicture, id,
+  },
+) => {
   const dispatch = useDispatch();
   return (
     <Card
