@@ -19,8 +19,8 @@ const MainSection = () => {
       <div className="mainSection-users">
         {isLogged && (main === 'meeting') && (<AllUsers />)}
         {isLogged && (main === 'event') && (<AllEvents />)}
-        {!isLogged && <RandomUser />}
-        {!isLogged && <RandomEvent />}
+        {main === '' && <RandomUser />}
+        {main === '' && <RandomEvent />}
       </div>
     </div>
   );

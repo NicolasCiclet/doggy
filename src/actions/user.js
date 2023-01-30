@@ -33,6 +33,12 @@ export const DELETE_USER = 'DELETE_USER';
 export const SUBMIT_FORM_UPDATE_USER = 'SUBMIT_FORM_UPDATE_USER';
 // To get connected user information in the BDD
 export const GET_USER_INFO = 'GET_USER_INFO';
+
+// To get RANDOM user information for carousel, from api back
+export const GET_RANDOM_USER_INFO = 'GET_RANDOM_USER_INFO';
+// To put RANDOM user information for carousel, in state
+export const DISPLAY_RANDOM_USER_INFO = 'DISPLAY_RANDOM_USER_INFO';
+
 // To stock in the state the connected user info
 export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
 
@@ -150,6 +156,15 @@ export const submitFormUpdateUser = () => ({
 
 export const getUserInfo = () => ({
   type: GET_USER_INFO,
+});
+
+export const getRandomUserInfo = () => ({
+  type: GET_RANDOM_USER_INFO,
+});
+
+export const displayRandomUserInfo = (value) => ({
+  type: DISPLAY_RANDOM_USER_INFO,
+  value: value,
 });
 
 export const displayInfoConnectedUser = (

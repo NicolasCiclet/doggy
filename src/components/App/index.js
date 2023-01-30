@@ -1,6 +1,7 @@
 // == Import
 import { Routes, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 import Connect from '../Connect';
 import UserRegister from '../Register/newUser';
@@ -21,11 +22,15 @@ import UpdateUser from '../Register/updateUser';
 import UpdateDog from '../Register/updateDog';
 import UpdateEvent from '../Register/updateEvent';
 import UserPage from '../MainSection/Users/userPage';
+import { getRandomUserInfo } from '../../actions/user';
 
 // == Composant
 function App() {
   const logged = useSelector((state) => state.user.logged);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRandomUserInfo());
+  }, []);
   return (
     // Here is the main div, with all components
     <div className="app">

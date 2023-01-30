@@ -48,10 +48,12 @@ const Profil = () => {
   const bio = useSelector((state) => state.user.bioNewUser);
   const mail = useSelector((state) => state.user.mailNewUser);
   const phone = useSelector((state) => state.user.phoneNewUser);
-  const picture = useSelector((state) => state.user.pictureNewUse);
+  const picture = useSelector((state) => state.user.pictureNewUser);
 
   const events = useSelector((state) => state.event.eventsToDisplay);
   const event = events.find((onEvent) => (onEvent.id === 1));
+
+  const url = useSelector((state) => state.nav.url);
 
   return (
     <div className="profil">

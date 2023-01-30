@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
-  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
+  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser, GET_RANDOM_USER_INFO, displayRandomUserInfo,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -175,7 +175,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case GET_USER_INFO:
       console.log(connectedEmail);
       axios.get(
-        `${url}api/user/${connectedEmail}`,
+        `${url}api/users/${connectedEmail}`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -204,6 +204,41 @@ const userMiddleware = (store) => (next) => (action) => {
             latitude,
             longitude,
           ));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
+    case GET_RANDOM_USER_INFO:
+      console.log('RANDOM USER API BACK');
+      axios.get(
+        `${url}api/users/random/3`,
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${store.getState().user.token}`,
+        //   },
+        // },
+      )
+        .then((response) => {
+          console.log(response.data.results);
+          // const {
+          //   firstname, lastname, nickname, bio, city, picture,
+          // } = response.data.results;
+          // const { latitude, longitude } = response.data.results.location;
+
+          store.dispatch(displayRandomUserInfo(response.data.results));
+          // store.dispatch(displayRandomUserInfo(
+          //   bio,
+          //   city,
+          //   firstname,
+          //   lastname,
+          //   nickname,
+          //   picture,
+          //   latitude,
+          //   longitude,
+          // ));
         })
         .catch((error) => {
           console.log(error);

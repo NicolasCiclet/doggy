@@ -10,7 +10,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import './random.scss';
 
 const RandomUser = () => {
-  const users = useSelector((state) => state.user.usersToDisplay);
+  // const users = useSelector((state) => state.user.usersToDisplay);
+  const users = useSelector((state) => state.user.randomUsersToDisplay);
+  const url = useSelector((state) => state.nav.url);
 
   // const dispatch = useDispatch();
   // console.log(user);
@@ -30,7 +32,7 @@ const RandomUser = () => {
       >
         {users.map((user) => (
           <div key={user.id}>
-            <img src={user.userPicture} alt="" />
+            <img src={`${url}assets/images/${user.picture}`} alt="" />
             <div className="overlay">
               <h2 className="overlay__title">{user.firstname}</h2>
               <p className="overlay__text">{user.bio}</p>
