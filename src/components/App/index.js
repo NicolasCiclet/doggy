@@ -22,6 +22,7 @@ import UpdateUser from '../Register/updateUser';
 import UpdateDog from '../Register/updateDog';
 import UpdateEvent from '../Register/updateEvent';
 import UserPage from '../MainSection/Users/userPage';
+import EventPage from '../MainSection/Events/eventPage';
 import { getRandomUserInfo } from '../../actions/user';
 import Loader from '../MainSection/Loader';
 
@@ -58,6 +59,7 @@ function App() {
         <Route path="/mentions" element={<LegalMentions />} />
         <Route path="/event/new" element={<NewEvent />} />
         <Route path="/user/:id" element={<UserPage />} />
+        <Route path="/event/:id" element={<EventPage />} />
       </Routes>
 
       <Footer />
