@@ -1,4 +1,5 @@
 @import url("~leaflet/dist/leaflet.css");
+
 // Mobil first
 .mainSection {
 
@@ -46,6 +47,10 @@
           }
         }
       }
+    }
+
+    .random {
+      margin: 1rem;
     }
   }
 }

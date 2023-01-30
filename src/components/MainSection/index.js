@@ -4,6 +4,8 @@ import AllUsers from './Users/allUsers';
 import Map from './Map';
 
 import './main-section.scss';
+import RandomUser from './Users/randomUser';
+import RandomEvent from './Events/randomEvent';
 
 const MainSection = () => {
   const main = useSelector((state) => state.nav.main);
@@ -17,6 +19,8 @@ const MainSection = () => {
       <div className="mainSection-users">
         {isLogged && (main === 'meeting') && (<AllUsers />)}
         {isLogged && (main === 'event') && (<AllEvents />)}
+        {!isLogged && <RandomUser />}
+        {!isLogged && <RandomEvent />}
       </div>
     </div>
   );
