@@ -35,9 +35,12 @@ export const SUBMIT_FORM_UPDATE_USER = 'SUBMIT_FORM_UPDATE_USER';
 export const GET_USER_INFO = 'GET_USER_INFO';
 // To stock in the state the connected user info
 export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
-
 // To change display message form
 export const IS_MESS_FORM_OPENED = 'IS_MESS_FORM_OPENED';
+// action to get all users of the BDD
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+// action to stock the users in the state
+export const STOCK_USERS = 'STOCK_USERS';
 
 // User actions
 export const addNewUser = () => ({
@@ -183,4 +186,13 @@ export const displayInfoConnectedUser = (
 
 export const isMessFormOpened = () => ({
   type: IS_MESS_FORM_OPENED,
+});
+
+export const getAllusers = () => ({
+  type: GET_ALL_USERS,
+});
+
+export const stockUsers = (users) => ({
+  type: STOCK_USERS,
+  users: users,
 });
