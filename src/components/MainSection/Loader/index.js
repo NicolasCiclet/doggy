@@ -8,7 +8,6 @@ const Loader = () => (
       Veuillez patienter svp...
     </p>
   </div>
-  
 );
 
 export default Loader;
