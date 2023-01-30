@@ -8,7 +8,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneUser = (
   {
-    firstname, city, userPicture, dog, dogPicture, id,
+    firstname, city, picture, dog, dogPicture, id,
   },
 ) => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const OneUser = (
       onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image
-        src={userPicture}
+        src={picture}
         wrapped
         ui={false}
       />
@@ -39,7 +39,7 @@ const OneUser = (
 OneUser.propTypes = {
   firstname: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  userPicture: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
   dogPicture: PropTypes.string.isRequired,
   dog: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
