@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
-  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser, GET_ALL_USERS,
+  SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser, GET_ALL_USERS, stockUsers,
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
@@ -225,6 +225,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           const allUsers = response.data.results;
           console.log(allUsers);
+          store.dispatch(stockUsers(allUsers));
         })
         .catch((error) => {
           console.log(error);

@@ -11,7 +11,7 @@ const AllUsers = () => {
     dispatch(getAllusers());
   }, []);
 
-  const users = useSelector((state) => state.user.usersToDisplay);
+  const users = useSelector((state) => state.user.usersApi);
   return (
     <div className="all-users">
       <h2 className="cards_title">Les amis potentiels proches de chez vous</h2>

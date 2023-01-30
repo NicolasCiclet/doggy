@@ -6,10 +6,12 @@ import {
   ADD_NEW_USER, ADD_PASSWORD_NEW_USER, ADD_PHONE_NEW_USER, ADD_USERNAME_NEW_USER,
   UPDATE_SETTINGS_FIELD, CITY_FIND, LOGOUT, ADD_PICTURE_NEW_USER,
   ADD_CHECKED_PASSWORD_NEW_USER, SHOW_DELETE_USER, DISPLAY_INFO_CONNECTED_USER, IS_MESS_FORM_OPENED,
+  STOCK_USERS,
 } from '../actions/user';
 
 const initialState = {
   usersToDisplay: users,
+  usersApi: [],
   lastnameNewUser: '',
   firstnameNewUser: '',
   cityNewUser: '',
@@ -207,6 +209,13 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
         messFormOpen: !state.messFormOpen,
+      };
+
+    // To stock all users of the BDD in the state
+    case STOCK_USERS:
+      return {
+        ...state,
+        usersApi: action.users,
       };
 
     default:
