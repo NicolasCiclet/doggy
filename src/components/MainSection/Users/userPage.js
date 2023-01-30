@@ -10,7 +10,7 @@ import './user-page.scss';
 // I get the props from the spread operator
 const UserPage = () => {
   const { id } = useParams();
-  const user = useSelector((state) => findUser(state.user.usersToDisplay, id));
+  const user = useSelector((state) => findUser(state.user.usersApi, id));
   const isFormOpen = useSelector((state) => state.user.messFormOpen);
 
   // TODO a modifier avec l'apel a l'api back
@@ -28,7 +28,7 @@ const UserPage = () => {
         </div>
         <div className="userboard-main">
           <div className="userboard-main-photo">
-            <img className="userboard-photo" src={user.userPicture} alt="user" />
+            <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${user.picture}`} alt="user" />
           </div>
           <div className="userboard-main-infos">
 
