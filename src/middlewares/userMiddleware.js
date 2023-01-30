@@ -245,6 +245,12 @@ const userMiddleware = (store) => (next) => (action) => {
           //   latitude,
           //   longitude,
           // ));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
 
     case GET_ALL_USERS:
       console.log('récupérer tous les users');
