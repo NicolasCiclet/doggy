@@ -33,6 +33,12 @@ export const DELETE_USER = 'DELETE_USER';
 export const SUBMIT_FORM_UPDATE_USER = 'SUBMIT_FORM_UPDATE_USER';
 // To get connected user information in the BDD
 export const GET_USER_INFO = 'GET_USER_INFO';
+
+// To get RANDOM user information for carousel, from api back
+export const GET_RANDOM_USER_INFO = 'GET_RANDOM_USER_INFO';
+// To put RANDOM user information for carousel, in state
+export const DISPLAY_RANDOM_USER_INFO = 'DISPLAY_RANDOM_USER_INFO';
+
 // To stock in the state the connected user info
 export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
 // To change display message form
@@ -41,6 +47,9 @@ export const IS_MESS_FORM_OPENED = 'IS_MESS_FORM_OPENED';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 // action to stock the users in the state
 export const STOCK_USERS = 'STOCK_USERS';
+
+// To change display LOADER
+export const DISPLAY_LOADER = 'DISPLAY_LOADER';
 
 // User actions
 export const addNewUser = () => ({
@@ -155,6 +164,15 @@ export const getUserInfo = () => ({
   type: GET_USER_INFO,
 });
 
+export const getRandomUserInfo = () => ({
+  type: GET_RANDOM_USER_INFO,
+});
+
+export const displayRandomUserInfo = (value) => ({
+  type: DISPLAY_RANDOM_USER_INFO,
+  value: value,
+});
+
 export const displayInfoConnectedUser = (
   bio,
   birthdate,
@@ -188,6 +206,10 @@ export const isMessFormOpened = () => ({
   type: IS_MESS_FORM_OPENED,
 });
 
+
+export const displayLoader = () => ({
+  type: DISPLAY_LOADER,
+
 export const getAllusers = () => ({
   type: GET_ALL_USERS,
 });
@@ -195,4 +217,5 @@ export const getAllusers = () => ({
 export const stockUsers = (users) => ({
   type: STOCK_USERS,
   users: users,
+
 });

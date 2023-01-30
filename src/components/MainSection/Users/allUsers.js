@@ -6,12 +6,17 @@ import OneUser from './oneUser';
 
 const AllUsers = () => {
   // Get all users in the BDD
+
+  
+  const users = useSelector((state) => state.user.usersToDisplay);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllusers());
   }, []);
 
   const users = useSelector((state) => state.user.usersApi);
+
   return (
     <div className="all-users">
       <h2 className="cards_title">Les amis potentiels proches de chez vous</h2>
