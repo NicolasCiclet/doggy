@@ -224,12 +224,12 @@ const userReducer = (state = initialState, action = {}) => {
         messFormOpen: !state.messFormOpen,
       };
 
-
       // To display or hidden loader
     case DISPLAY_LOADER:
       return {
         ...state,
         dislpayLoader: !state.dislpayLoader,
+      };
 
     // To stock all users of the BDD in the state
     case STOCK_USERS:

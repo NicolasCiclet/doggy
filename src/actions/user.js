@@ -206,9 +206,9 @@ export const isMessFormOpened = () => ({
   type: IS_MESS_FORM_OPENED,
 });
 
-
 export const displayLoader = () => ({
   type: DISPLAY_LOADER,
+});
 
 export const getAllusers = () => ({
   type: GET_ALL_USERS,
