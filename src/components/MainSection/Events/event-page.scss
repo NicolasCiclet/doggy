@@ -1,0 +1,120 @@
+@use 'src/styles/vars';
+// styles Mobil first
+.eventboard {
+  text-align: center;
+  background-color:#EFEDEC;
+  box-shadow: 1px 2px 4px black;
+  border-radius: 7px;
+  padding: 1rem;
+
+  .eventboard-container{
+    background-color: vars.$lightColor;;
+    box-shadow: 1px 2px 4px black;
+    border-radius: 7px;
+    padding: 0.5rem 0.5rem 1rem;
+    margin: 0 0 1rem;
+    width: 100%;
+  
+    // en-tête avec le titre de la section et les boutons d'édition et de suppression
+    .eventboard-header {
+
+      .eventboard-h1 {
+        margin: 1rem;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-shadow: 1px 1px 1px grey;
+        text-decoration: none;
+      }
+    }
+
+    h2 {
+      margin-top: 0.5rem;
+      font-weight: 700;
+      font-size: 1rem;
+      // border-bottom: 1px solid grey;
+      // width: 50%;
+
+      &::after {
+        background: grey;
+        content: "";
+        display: block;
+        height: 1px;
+        margin: 0.5rem auto;
+        width: 6vw;
+      }
+      // &:last-child::after {
+      //   display: none;
+      // }
+    }
+
+    // corps de la section avec la photo et les infos
+
+    .eventboard-main {
+      font-size: 0.9rem;
+
+      .eventboard-main-photo{
+        width: 100%;
+        margin: 1rem 0.5rem;
+
+        .eventboard-photo {
+          width: 80%;
+          border-radius: 50px;
+        }
+      }
+    }
+  }
+
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .eventboard {
+  
+    .eventboard-container{
+      .eventboard-header{
+        .eventboard-h1{
+          font-size: 1.5rem;
+        }
+      }
+  
+      // corps de la section avec la photo et les infos
+      .eventboard-main {
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+  
+        .eventboard-main-photo{
+          width: 50%;
+          margin: 1rem 0.5rem;
+  
+          .eventboard-photo {
+            width: 80%;
+            border-radius: 50px;
+          }
+        }
+
+        .eventboard-main-infos{
+          width: 50%;
+
+          h2 {
+            margin-top: 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            // border-bottom: 1px solid grey;
+            // width: 50%;
+      
+            &::after {
+              background: grey;
+              content: "";
+              display: block;
+              height: 1px;
+              margin: 0.5rem auto;
+              width: 6vw;
+            }
+          }
+        }
+      }
+    }
+  
+  }
+}
