@@ -52,9 +52,9 @@ const Profil = () => {
   const phone = useSelector((state) => state.user.phoneNewUser);
   const picture = useSelector((state) => state.user.pictureNewUser);
 
-  const events = useSelector((state) => state.event.currentEvents);
-  console.log(events);
-  const animals = useSelector((state) => state.dog.currentAnimals);
+  const events = useSelector((state) => state.event.connectedEvents);
+  // console.log(events);
+  const animals = useSelector((state) => state.dog.connectedAnimals);
   console.log(animals);
 
   // const url = useSelector((state) => state.nav.url);
