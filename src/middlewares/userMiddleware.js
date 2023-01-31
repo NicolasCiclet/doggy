@@ -9,7 +9,6 @@ import {
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
-  const connectedEmail = store.getState().user.mailNewUser;
   // eslint-disable-next-line prefer-destructuring
   const url = store.getState().nav.url;
 
@@ -179,7 +178,6 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_INFO:
-      console.log(connectedEmail);
       axios.get(
         `${url}api/users/current`,
         {

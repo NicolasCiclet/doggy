@@ -15,6 +15,11 @@ export const DELETE_EVENT = 'DELETE_EVENT';
 // Action that sends a update event to the Back
 export const SUBMIT_FORM_UPDATE_EVENT = 'SUBMIT_FORM_UPDATE_EVENT';
 
+// To get connected user events
+export const GET_CONNECTED_EVENTS = 'GET_CONNECTED_EVENTS';
+// To stock connected user events in the state
+export const STOCK_CONNECTED_EVENTS = 'STOCK_CONNECTED_EVENTS';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -51,4 +56,13 @@ export const deleteEvent = () => ({
 export const submitFormUpdateEvent = (value) => ({
   type: SUBMIT_FORM_UPDATE_EVENT,
   newValue: value,
+});
+
+export const getConnectedEvents = () => ({
+  type: GET_CONNECTED_EVENTS,
+});
+
+export const stockConnectedEvents = (events) => ({
+  type: STOCK_CONNECTED_EVENTS,
+  events: events,
 });

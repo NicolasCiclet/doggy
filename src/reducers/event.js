@@ -1,10 +1,12 @@
 import events from 'src/data/eventForTest';
 import {
   SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT,
+  STOCK_CONNECTED_EVENTS,
 } from '../actions/event';
 
 const initialState = {
   eventsToDisplay: events,
+  currentEvents: [],
   titleNewEvent: '',
   dateNewEvent: '',
   placeNewEvent: '',
@@ -47,6 +49,13 @@ const eventReducer = (state = initialState, action = {}) => {
         // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
         eventDelete: !state.eventDelete,
       };
+
+    case STOCK_CONNECTED_EVENTS:
+      return {
+        ...state,
+        currentEvents: action.events,
+      };
+
     default:
       return state;
   }

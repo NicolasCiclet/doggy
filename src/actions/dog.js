@@ -15,6 +15,10 @@ export const SHOW_DELETE_DOG = 'SHOW_DELETE_DOG';
 export const DELETE_DOG = 'DELETE_DOG';
 // To update a dog
 export const UPDATE_DOG = 'UPDATE_DOG';
+// To get animals of connected user
+export const GET_CONNECTED_ANIMALS = 'GET_CONNECTED_ANIMALS';
+// To stock animals of connected user info in the state
+export const STOCK_CONNECTED_ANIMALS = 'STOCK_CONNECTED_ANIMALS';
 
 // Dog actions
 export const addNameNewDog = (value) => ({
@@ -61,4 +65,13 @@ export const deleteDog = () => ({
 
 export const updateDog = () => ({
   type: UPDATE_DOG,
+});
+
+export const getConnectedAnimals = () => ({
+  type: GET_CONNECTED_ANIMALS,
+});
+
+export const stockConnectedAnimals = (animals) => ({
+  type: STOCK_CONNECTED_ANIMALS,
+  animals: animals,
 });
