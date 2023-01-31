@@ -3,7 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import { showDeleteUser, showLink, getUserInfo } from '../../actions/user';
-import { showDeleteDog } from '../../actions/dog';
+import { getConnectedAnimals, showDeleteDog } from '../../actions/dog';
 import { showDeleteEvent } from '../../actions/event';
 
 import Userdelete from './Userdelete';
@@ -32,6 +32,7 @@ const Profil = () => {
   useEffect(() => {
     if (isLogged) {
       dispatch(getUserInfo());
+      dispatch(getConnectedAnimals());
     }
     else {
       navigate('/');
