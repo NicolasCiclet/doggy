@@ -180,7 +180,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case GET_USER_INFO:
       console.log(connectedEmail);
       axios.get(
-        `${url}api/users/${connectedEmail}`,
+        `${url}api/users/current`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -188,12 +188,12 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response.data.result);
+          console.log(response.data);
           const {
             bio, birthdate, city, email, firstname, gender,
             id, lastname, nickname, phone, picture,
-          } = response.data.result;
-          const { latitude, longitude } = response.data.result.location;
+          } = response.data.result[0];
+          const { latitude, longitude } = response.data.result[0].location;
 
           store.dispatch(displayInfoConnectedUser(
             bio,

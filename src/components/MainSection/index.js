@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import AllEvents from './Events/allEvents';
 import AllUsers from './Users/allUsers';
 import Map from './Map';
@@ -6,10 +7,19 @@ import Map from './Map';
 import './main-section.scss';
 import RandomUser from './Users/randomUser';
 import RandomEvent from './Events/randomEvent';
+import { getUserInfo } from '../../actions/user';
 
 const MainSection = () => {
+  const dispatch = useDispatch();
   const main = useSelector((state) => state.nav.main);
   const isLogged = useSelector((state) => state.user.logged);
+
+  // If the user is connected, I get his info in BDD using his email
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(getUserInfo());
+    }
+  }, []);
 
   return (
     <div className="mainSection">
