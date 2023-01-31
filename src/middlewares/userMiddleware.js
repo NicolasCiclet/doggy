@@ -9,7 +9,6 @@ import {
 } from '../actions/user';
 
 const userMiddleware = (store) => (next) => (action) => {
-  const connectedEmail = store.getState().user.mailNewUser;
   // eslint-disable-next-line prefer-destructuring
   const url = store.getState().nav.url;
 
@@ -178,9 +177,8 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_USER_INFO:
-      console.log(connectedEmail);
       axios.get(
-        `${url}api/users/${connectedEmail}`,
+        `${url}api/users/current`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -192,8 +190,8 @@ const userMiddleware = (store) => (next) => (action) => {
           const {
             bio, birthdate, city, email, firstname, gender,
             id, lastname, nickname, phone, picture,
-          } = response.data.result;
-          const { latitude, longitude } = response.data.result.location;
+          } = response.data.result[0];
+          const { latitude, longitude } = response.data.result[0].location;
 
           store.dispatch(displayInfoConnectedUser(
             bio,
