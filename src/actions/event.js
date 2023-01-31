@@ -20,6 +20,11 @@ export const GET_CONNECTED_EVENTS = 'GET_CONNECTED_EVENTS';
 // To stock connected user events in the state
 export const STOCK_CONNECTED_EVENTS = 'STOCK_CONNECTED_EVENTS';
 
+// To get all events of the BDD
+export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
+// To stock them in the state
+export const STOCK_ALL_EVENTS = 'STOCK_ALL_EVENTS';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -64,5 +69,14 @@ export const getConnectedEvents = () => ({
 
 export const stockConnectedEvents = (events) => ({
   type: STOCK_CONNECTED_EVENTS,
+  events: events,
+});
+
+export const getAllEvents = () => ({
+  type: GET_ALL_EVENTS,
+});
+
+export const stockAllEvents = (events) => ({
+  type: STOCK_ALL_EVENTS,
   events: events,
 });
