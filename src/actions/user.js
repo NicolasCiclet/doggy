@@ -55,6 +55,9 @@ export const STOCK_ID_WATCHED_USER = 'STOCK_ID_WATCHED_USER';
 // To change display LOADER
 export const DISPLAY_LOADER = 'DISPLAY_LOADER';
 
+// To show or hide error message connexion
+export const ERROR_CONNEXION = 'ERROR_CONNEXION';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -228,4 +231,7 @@ export const stockUsers = (users) => ({
 export const stockIdWatchedUser = (id) => ({
   type: STOCK_ID_WATCHED_USER,
   id: id,
+
+export const errorConnexion = () => ({
+  type: ERROR_CONNEXION,
 });

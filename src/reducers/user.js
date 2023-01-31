@@ -8,7 +8,7 @@ import {
 
   ADD_CHECKED_PASSWORD_NEW_USER, SHOW_DELETE_USER, DISPLAY_INFO_CONNECTED_USER,
   IS_MESS_FORM_OPENED, DISPLAY_RANDOM_USER_INFO, DISPLAY_LOADER, STOCK_USERS,
-  STOCK_ID_WATCHED_USER,
+  STOCK_ID_WATCHED_USER, ERROR_CONNEXION,
 
 } from '../actions/user';
 
@@ -35,7 +35,10 @@ const initialState = {
   lngNewUser: 6.129,
   nbrAnimal: '',
   isCityFind: true,
+
   userCreate: false,
+
+  errorConnexion: false,
 
   token: '',
   logged: false,
@@ -244,7 +247,12 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         usersApi: action.users,
+      };
 
+    case ERROR_CONNEXION:
+      return {
+        ...state,
+        errorConnexion: !action.errorConnexion,
       };
 
     // To stock id of watched user in the state
