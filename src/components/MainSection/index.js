@@ -25,9 +25,6 @@ const MainSection = () => {
         {(main === '') && <RandomUser />}
         {(main === '') && <RandomEvent />}
 
-        {main === '' && (<RandomUser />)}
-        {main === '' && (<RandomEvent />)}
-
       </div>
     </div>
   );
