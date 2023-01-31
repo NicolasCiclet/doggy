@@ -22,13 +22,23 @@ const Connect = () => {
   const navigate = useNavigate();
   const emailValue = useSelector((state) => state.user.mailNewUser);
   const passwordValue = useSelector((state) => state.user.passwordNewUser);
+
+  // to check the number of animals in the user
+  const nbrAnimal = useSelector((state) => state.user.nbrAnimal);
+
   const dispatch = useDispatch();
 
+  // condition if user is logged and has at least one animal
   useEffect(() => {
-    if (isLogged) {
+    if (isLogged && (nbrAnimal > 0)) {
       navigate('/');
     }
-  }, [isLogged]);
+    // condition if user is logged but doesn't have any pets yet
+    // He's redirected to the form for adding an animal
+    else if (isLogged && (nbrAnimal === 0)) {
+      navigate('/register/dog');
+    }
+  }, [nbrAnimal]);
 
   return (
     <>
