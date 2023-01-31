@@ -4,7 +4,8 @@ import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
 
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
-  GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS, stockUsers, getUserInfo,
+  GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS,
+  stockUsers, getUserInfo, errorConnexion,
 
 } from '../actions/user';
 
@@ -47,6 +48,8 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(displayLoader());
+          store.dispatch(errorConnexion());
         });
 
       break;
