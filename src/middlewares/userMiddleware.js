@@ -193,6 +193,7 @@ const userMiddleware = (store) => (next) => (action) => {
             id, lastname, nickname, phone, picture,
           } = response.data.result[0];
           const { latitude, longitude } = response.data.result[0].location;
+          const { nbrAnimal } = response.data.result;
 
           store.dispatch(displayInfoConnectedUser(
             bio,
@@ -207,6 +208,7 @@ const userMiddleware = (store) => (next) => (action) => {
             picture,
             latitude,
             longitude,
+            nbrAnimal,
           ));
         })
         .catch((error) => {

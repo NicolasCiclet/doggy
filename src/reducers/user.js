@@ -30,8 +30,9 @@ const initialState = {
   mailNewUser: '',
   phoneNewUser: '',
   pictureNewUser: [],
-  latNewUser: 48.8692,
+  latNewUser: 45.8692,
   lngNewUser: 6.129,
+  nbrAnimal: '',
   isCityFind: true,
   userCreate: false,
 
@@ -174,6 +175,8 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         logged: !state.logged,
+        nbrAnimal: '',
+        mailNewUser: '',
       };
 
     // Pour afficher le menu burger dans le page profil
@@ -215,6 +218,7 @@ const userReducer = (state = initialState, action = {}) => {
         pictureNewUser: action.picture,
         latNewUser: action.latitude,
         lngNewUser: action.longitude,
+        nbrAnimal: action.nbrAnimal,
       };
 
       // To display new message form
