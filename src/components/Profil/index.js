@@ -51,8 +51,10 @@ const Profil = () => {
   const phone = useSelector((state) => state.user.phoneNewUser);
   const picture = useSelector((state) => state.user.pictureNewUser);
 
-  const events = useSelector((state) => state.event.eventsToDisplay);
-  const event = events.find((onEvent) => (onEvent.id === 1));
+  const events = useSelector((state) => state.event.currentEvents);
+  console.log(events);
+  const animals = useSelector((state) => state.dog.currentAnimals);
+  console.log(animals);
 
   // const url = useSelector((state) => state.nav.url);
 
@@ -177,33 +179,35 @@ const Profil = () => {
             <Dogdelete />
           </div>
         </div>
-        <div className="profil-main">
-          <div className="profil-main-photo">
-            <img className="profil-photo" src={picture} alt="animal" />
+        { animals.map((animal) => (
+          <div className="profil-main">
+            <div className="profil-main-photo">
+              <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${animal.picture}`} alt="animal" />
+            </div>
+            <div className="profil-main-infos">
+              <div className="info-block">
+                <h3 className="profil-info-title">Name:</h3>
+                <span className="profil-info">{animal.name}</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Breed:</h3>
+                <span className="profil-info">Breed</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Sexe:</h3>
+                <span className="profil-info">Sexe</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Personality:</h3>
+                <span className="profil-info">Personality</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Sterilized:</h3>
+                <span className="profil-info">Sterilized</span>
+              </div>
+            </div>
           </div>
-          <div className="profil-main-infos">
-            <div className="info-block">
-              <h3 className="profil-info-title">Name:</h3>
-              <span className="profil-info">Name</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Breed:</h3>
-              <span className="profil-info">Breed</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Sexe:</h3>
-              <span className="profil-info">Sexe</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Personality:</h3>
-              <span className="profil-info">Personality</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Sterilized:</h3>
-              <span className="profil-info">Sterilized</span>
-            </div>
-          </div>
-        </div>
+        ))}
         <div className="new-event">
           <NavLink
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
@@ -244,23 +248,27 @@ const Profil = () => {
             <Eventdelete />
           </div>
         </div>
-        <div className="profil-main">
-          <div className="profil-main-photo">
-            <img className="profil-photo" src={event.picture} alt="evenement" />
-          </div>
-          <div className="profil-main-infos">
-            <div className="info-block">
-              <h3 className="profil-info-title">Name:</h3>
-              <span className="profil-info">{event.name}</span>
+        { events.map((onEvent) => (
+          <>
+            <div className="profil-main">
+              <div className="profil-main-photo">
+                <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${onEvent.picture}`} alt="evenement" />
+              </div>
+              <div className="profil-main-infos">
+                <div className="info-block">
+                  <h3 className="profil-info-title">Name:</h3>
+                  <span className="profil-info">{onEvent.name}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Date:</h3>
+                  <span className="profil-info">date</span>
+                </div>
+              </div>
             </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Date:</h3>
-              <span className="profil-info">{event.date}</span>
-            </div>
-          </div>
-        </div>
-        <h3 className="profil-info-title">Description:</h3>
-        <span className="profil-info">{event.description}</span>
+            <h3 className="profil-info-title">Description:</h3>
+            <span className="profil-info">{onEvent.description}</span>
+          </>
+        ))}
         <div className="new-event">
           <NavLink
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
