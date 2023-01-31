@@ -41,7 +41,7 @@ const initialState = {
   errorConnexion: false,
 
   token: '',
-  logged: false,
+  logged: true,
 
   // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
   userDelete: false,

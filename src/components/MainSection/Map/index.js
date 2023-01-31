@@ -9,6 +9,7 @@ import L from 'leaflet';
 import markerIconYellow from 'src/data/marker-icon-yellow.png';
 import markerIconRed from 'src/data/marker-icon-red.png';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // Icon creation
 const icon1 = L.icon({
@@ -31,7 +32,7 @@ const icon3 = L.icon({
 const Map = () => {
   // const dispatch = useDispatch();
   const events = useSelector((state) => state.event.eventsToDisplay);
-  const users = useSelector((state) => state.user.usersToDisplay);
+  const users = useSelector((state) => state.user.usersApi);
   const markerSelected = useSelector((state) => state.map.nameSelected);
 
   // Get the location to zoom on the user
@@ -102,12 +103,14 @@ const Map = () => {
               {users.map((user) => (
                 <Marker
                 // Use a ternary condition to display different icons if the name matches
-                  position={[user.lat, user.lng]}
-                  icon={(user.firstname === markerSelected) ? icon3 : icon2}
+                  position={[user.location.latitude, user.location.longitude]}
+                  icon={(user.lastname === markerSelected) ? icon3 : icon2}
                   key={user.id}
                 >
                   <Popup>
-                    {user.firstname} <br /> {user.gender}
+                    <Link to={`/user/${user.id}`}>
+                      {user.firstname} <br /> {user.nickname}
+                    </Link>
                   </Popup>
                 </Marker>
               ))}
