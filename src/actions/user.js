@@ -231,6 +231,7 @@ export const stockUsers = (users) => ({
 export const stockIdWatchedUser = (id) => ({
   type: STOCK_ID_WATCHED_USER,
   id: id,
+});
 
 export const errorConnexion = () => ({
   type: ERROR_CONNEXION,
