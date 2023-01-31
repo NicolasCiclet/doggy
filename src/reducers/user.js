@@ -29,9 +29,9 @@ const initialState = {
   bioNewUser: '',
   mailNewUser: '',
   phoneNewUser: '',
-  pictureNewUser: {},
-  latNewUser: '',
-  lngNewUser: '',
+  pictureNewUser: [],
+  latNewUser: 48.8692,
+  lngNewUser: 6.129,
   isCityFind: true,
   userCreate: false,
 

@@ -186,7 +186,7 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response.data.result);
+          console.log(response.data);
           const {
             bio, birthdate, city, email, firstname, gender,
             id, lastname, nickname, phone, picture,
