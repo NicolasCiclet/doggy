@@ -29,14 +29,14 @@ const Profil = () => {
   const isLogged = useSelector((state) => state.user.logged);
 
   // If the user is connected, I get his info in BDD using his email
-  useEffect(() => {
-    if (isLogged) {
-      dispatch(getUserInfo());
-    }
-    else {
-      navigate('/');
-    }
-  }, [isLogged]);
+  // useEffect(() => {
+  //   if (isLogged) {
+  //     dispatch(getUserInfo());
+  //   }
+  //   else {
+  //     navigate('/');
+  //   }
+  // }, [isLogged]);
 
   // To get connected user infos that are save in the state
   const lastname = useSelector((state) => state.user.lastnameNewUser);
