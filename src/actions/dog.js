@@ -20,6 +20,11 @@ export const GET_CONNECTED_ANIMALS = 'GET_CONNECTED_ANIMALS';
 // To stock animals of connected user info in the state
 export const STOCK_CONNECTED_ANIMALS = 'STOCK_CONNECTED_ANIMALS';
 
+// To get user animals
+export const GET_USER_ANIMALS = 'GET_USER_ANIMALS';
+// To stock user animals in the state
+export const STOCK_USER_ANIMALS = 'STOCK_USER_ANIMALS';
+
 // Dog actions
 export const addNameNewDog = (value) => ({
   type: ADD_NAME_NEW_DOG,
@@ -73,5 +78,14 @@ export const getConnectedAnimals = () => ({
 
 export const stockConnectedAnimals = (animals) => ({
   type: STOCK_CONNECTED_ANIMALS,
+  animals: animals,
+});
+
+export const getUserAnimals = () => ({
+  type: GET_USER_ANIMALS,
+});
+
+export const stockUserAnimals = (animals) => ({
+  type: STOCK_USER_ANIMALS,
   animals: animals,
 });

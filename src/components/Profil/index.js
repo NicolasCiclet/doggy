@@ -53,9 +53,9 @@ const Profil = () => {
   const picture = useSelector((state) => state.user.pictureNewUser);
 
   const events = useSelector((state) => state.event.currentEvents);
-  console.log(events);
+  // console.log(events);
   const animals = useSelector((state) => state.dog.currentAnimals);
-  console.log(animals);
+  // console.log(animals);
 
   // const url = useSelector((state) => state.nav.url);
 

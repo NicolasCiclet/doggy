@@ -43,10 +43,14 @@ export const DISPLAY_RANDOM_USER_INFO = 'DISPLAY_RANDOM_USER_INFO';
 export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
 // To change display message form
 export const IS_MESS_FORM_OPENED = 'IS_MESS_FORM_OPENED';
+
 // action to get all users of the BDD
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 // action to stock the users in the state
 export const STOCK_USERS = 'STOCK_USERS';
+
+// stock the id of the watched user
+export const STOCK_ID_WATCHED_USER = 'STOCK_ID_WATCHED_USER';
 
 // To change display LOADER
 export const DISPLAY_LOADER = 'DISPLAY_LOADER';
@@ -223,6 +227,10 @@ export const stockUsers = (users) => ({
   type: STOCK_USERS,
   users: users,
 });
+
+export const stockIdWatchedUser = (id) => ({
+  type: STOCK_ID_WATCHED_USER,
+  id: id,
 
 export const errorConnexion = () => ({
   type: ERROR_CONNEXION,

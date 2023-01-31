@@ -1,24 +1,42 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { isMessFormOpened } from '../../../actions/user';
+import { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { isMessFormOpened, stockIdWatchedUser } from '../../../actions/user';
 
 import { findUser } from '../../../selectors/user';
 import NewMessage from '../../Register/newMessage';
 
 import './user-page.scss';
+import { getUserAnimals } from '../../../actions/dog';
+import { getUserEvents } from '../../../actions/event';
 
 // I get the props from the spread operator
 const UserPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // The watched user
   const { id } = useParams();
   const user = useSelector((state) => findUser(state.user.usersApi, id));
   const isFormOpen = useSelector((state) => state.user.messFormOpen);
+  // I checked if the user is connected
+  const isLogged = useSelector((state) => state.user.logged);
 
-  // TODO a modifier avec l'apel a l'api back
-  const events = useSelector((state) => state.event.eventsToDisplay);
-  const event = events.find((onEvent) => (onEvent.id === 1));
-  const dispatch = useDispatch();
-  // console.log(user);
-  // console.log(useSelector((state) => state.user.usersToDisplay));
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(stockIdWatchedUser(user.id));
+      dispatch(getUserAnimals());
+      dispatch(getUserEvents());
+    }
+    else {
+      navigate('/');
+    }
+  }, [isLogged]);
+
+  // animals of the user watched
+  const userAnimals = useSelector((state) => state.dog.watchAnimals);
+  // events of the user watched
+  const userEvents = useSelector((state) => state.event.watchEvents);
+
   return (
     <div className="userboard">
       <div className="userboard-leftsection">
@@ -51,82 +69,59 @@ const UserPage = () => {
         </div>
       </div>
       <section className="userboard-rightsection-desktop">
+
         <div className="userboard-rightsection" id="mes-animaux">
-          {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
-          et faire un map dessus */}
           <div className="userboard-header">
             <h1 className="userboard-h1">Mes animaux</h1>
           </div>
-          <div className="userboard-main">
-            <div className="userboard-main-photo">
-              <img className="userboard-photo" src={user.dogPicture} alt="animal" />
+          { userAnimals.map((animal) => (
+            <div key={animal.id} className="userboard-main">
+              <div className="userboard-main-photo">
+                <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${animal.picture}`} alt="animal" />
+              </div>
+              <div className="userboard-main-infos">
+
+                <h3 className="userboard-info">{animal.name}</h3>
+
+                <h3 className="userboard-info">{animal.species}</h3>
+
+                <h3 className="userboard-info">{animal.gender}</h3>
+
+                <h3 className="userboard-info">{animal.sterilized}</h3>
+
+                <blockquote className="userboard-bio">{animal.personality}</blockquote>
+              </div>
             </div>
-            <div className="userboard-main-infos">
-
-              <h3 className="userboard-info">Name</h3>
-
-              <h3 className="userboard-info">{user.dog}</h3>
-
-              <h3 className="userboard-info">Sexe</h3>
-
-              <h3 className="userboard-info">Personality</h3>
-
-              <h3 className="userboard-info">Sterilized</h3>
-
-              <blockquote className="userboard-bio">Je suis très sociable, j'adore les autre chiens et même les chats. Je déborde d'énergie pour de longues balades.</blockquote>
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="userboard-rightsection" id="mes-animaux">
-          {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
-          et faire un map dessus */}
-          <div className="userboard-header">
-            <h1 className="userboard-h1">Mes animaux</h1>
-          </div>
-          <div className="userboard-main">
-            <div className="userboard-main-photo">
-              <img className="userboard-photo" src={user.dogPicture} alt="animal" />
-            </div>
-            <div className="userboard-main-infos">
 
-              <h3 className="userboard-info">Name</h3>
-
-              <h3 className="userboard-info">{user.dog}</h3>
-
-              <h3 className="userboard-info">Sexe</h3>
-
-              <h3 className="userboard-info">Personality</h3>
-
-              <h3 className="userboard-info">Sterilized</h3>
-
-              <blockquote className="userboard-bio">Je suis très sociable, j'adore les autre chiens et même les chats. Je déborde d'énergie pour de longues balades.</blockquote>
-            </div>
-          </div>
-        </div>
         <div className="userboard-rightsection" id="mes-événements">
-          {/* Aller chercher dans la BDD les événements liés à l'utilisateur
-          et faire un map dessus */}
           <div className="userboard-header">
             <h1 className="userboard-h1">Mes événements</h1>
           </div>
-          <div className="userboard-main">
-            <div className="userboard-main-photo">
-              <img className="userboard-photo" src={event.picture} alt="evenement" />
-            </div>
-            <div className="userboard-main-infos">
+          { userEvents.map((event) => (
+            <>
+              <div key={event.id} className="userboard-main">
+                <div className="userboard-main-photo">
+                  <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${event.picture}`} alt="evenement" />
+                </div>
+                <div className="userboard-main-infos">
 
-              <h3 className="userboard-info-title">Name:</h3>
-              <span className="userboard-info">{event.name}</span>
+                  <h3 className="userboard-info-title">Name:</h3>
+                  <span className="userboard-info">{event.name}</span>
 
-              <h3 className="userboard-info-title">Date:</h3>
-              <span className="userboard-info">{event.date}</span>
+                  <h3 className="userboard-info-title">Date:</h3>
+                  <span className="userboard-info">{event.eventDate}</span>
 
-            </div>
-          </div>
-          <h3 className="userboard-info-title">Description:</h3>
-          <span className="userboard-info">{event.description}</span>
+                </div>
+              </div>
+              <h3 className="userboard-info-title">Description:</h3>
+              <span className="userboard-info">{event.description}</span>
+            </>
+          ))}
 
         </div>
+
       </section>
     </div>
   );

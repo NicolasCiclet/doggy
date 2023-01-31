@@ -1,10 +1,12 @@
 import {
   SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG,
   ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG, STOCK_CONNECTED_ANIMALS,
+  STOCK_USER_ANIMALS,
 } from '../actions/dog';
 
 const initialState = {
-  currentAnimals: [],
+  connectedAnimals: [],
+  watchAnimals: [],
   nameNewDog: '',
   breedNewDog: '',
   personnalityNewDog: '',
@@ -61,10 +63,18 @@ const dogReducer = (state = initialState, action = {}) => {
         dogDelete: !state.dogDelete,
       };
 
+    // Animals of the connected user
     case STOCK_CONNECTED_ANIMALS:
       return {
         ...state,
-        currentAnimals: action.animals,
+        connectedAnimals: action.animals,
+      };
+
+    // Animals of the watched user
+    case STOCK_USER_ANIMALS:
+      return {
+        ...state,
+        watchAnimals: action.animals,
       };
 
     default:
