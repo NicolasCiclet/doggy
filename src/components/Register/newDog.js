@@ -107,7 +107,7 @@ const DogRegister = () => {
               control={Button}
               content="Valider"
             /> */}
-            <Button control={Button} animated='fade'>
+            <Button control={Button} animated="fade">
               <Button.Content visible>Valider</Button.Content>
               <Button.Content hidden>Valider</Button.Content>
             </Button>
