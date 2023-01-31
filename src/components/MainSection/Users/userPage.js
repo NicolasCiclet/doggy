@@ -13,6 +13,7 @@ import { getUserAnimals } from '../../../actions/dog';
 const UserPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // The watched user
   const { id } = useParams();
   const user = useSelector((state) => findUser(state.user.usersApi, id));
   const isFormOpen = useSelector((state) => state.user.messFormOpen);
@@ -29,10 +30,12 @@ const UserPage = () => {
     }
   }, [isLogged]);
 
+  // animals of the user watched
+  const userAnimals = useSelector((state) => state.dog.watchAnimals);
+  // events of the user watched
   const events = useSelector((state) => state.event.eventsToDisplay);
   const event = events.find((onEvent) => (onEvent.id === 1));
-  // console.log(user);
-  // console.log(useSelector((state) => state.user.usersToDisplay));
+
   return (
     <div className="userboard">
       <div className="userboard-leftsection">
@@ -65,58 +68,34 @@ const UserPage = () => {
         </div>
       </div>
       <section className="userboard-rightsection-desktop">
+
         <div className="userboard-rightsection" id="mes-animaux">
           {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
           et faire un map dessus */}
           <div className="userboard-header">
             <h1 className="userboard-h1">Mes animaux</h1>
           </div>
-          <div className="userboard-main">
-            <div className="userboard-main-photo">
-              <img className="userboard-photo" src={user.dogPicture} alt="animal" />
+          { userAnimals.map((animal) => (
+            <div className="userboard-main">
+              <div className="userboard-main-photo">
+                <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${animal.picture}`} alt="animal" />
+              </div>
+              <div className="userboard-main-infos">
+
+                <h3 className="userboard-info">{animal.name}</h3>
+
+                <h3 className="userboard-info">{animal.species}</h3>
+
+                <h3 className="userboard-info">{animal.gender}</h3>
+
+                <h3 className="userboard-info">{animal.sterilized}</h3>
+
+                <blockquote className="userboard-bio">{animal.personality}</blockquote>
+              </div>
             </div>
-            <div className="userboard-main-infos">
-
-              <h3 className="userboard-info">Name</h3>
-
-              <h3 className="userboard-info">{user.dog}</h3>
-
-              <h3 className="userboard-info">Sexe</h3>
-
-              <h3 className="userboard-info">Personality</h3>
-
-              <h3 className="userboard-info">Sterilized</h3>
-
-              <blockquote className="userboard-bio">Je suis très sociable, j'adore les autre chiens et même les chats. Je déborde d'énergie pour de longues balades.</blockquote>
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="userboard-rightsection" id="mes-animaux">
-          {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
-          et faire un map dessus */}
-          <div className="userboard-header">
-            <h1 className="userboard-h1">Mes animaux</h1>
-          </div>
-          <div className="userboard-main">
-            <div className="userboard-main-photo">
-              <img className="userboard-photo" src={user.dogPicture} alt="animal" />
-            </div>
-            <div className="userboard-main-infos">
 
-              <h3 className="userboard-info">Name</h3>
-
-              <h3 className="userboard-info">{user.dog}</h3>
-
-              <h3 className="userboard-info">Sexe</h3>
-
-              <h3 className="userboard-info">Personality</h3>
-
-              <h3 className="userboard-info">Sterilized</h3>
-
-              <blockquote className="userboard-bio">Je suis très sociable, j'adore les autre chiens et même les chats. Je déborde d'énergie pour de longues balades.</blockquote>
-            </div>
-          </div>
-        </div>
         <div className="userboard-rightsection" id="mes-événements">
           {/* Aller chercher dans la BDD les événements liés à l'utilisateur
           et faire un map dessus */}
@@ -141,6 +120,7 @@ const UserPage = () => {
           <span className="userboard-info">{event.description}</span>
 
         </div>
+
       </section>
     </div>
   );
