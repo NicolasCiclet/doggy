@@ -25,6 +25,11 @@ export const GET_ALL_EVENTS = 'GET_ALL_EVENTS';
 // To stock them in the state
 export const STOCK_ALL_EVENTS = 'STOCK_ALL_EVENTS';
 
+// To get watched user events
+export const GET_USER_EVENTS = 'GET_USER_EVENTS';
+// To stock them in the state
+export const STOCK_USER_EVENTS = 'STOCK_USER_EVENTS';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -78,5 +83,14 @@ export const getAllEvents = () => ({
 
 export const stockAllEvents = (events) => ({
   type: STOCK_ALL_EVENTS,
+  events: events,
+});
+
+export const getUserEvents = () => ({
+  type: GET_USER_EVENTS,
+});
+
+export const stockUserEvents = (events) => ({
+  type: STOCK_USER_EVENTS,
   events: events,
 });

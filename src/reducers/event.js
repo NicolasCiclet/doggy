@@ -1,12 +1,13 @@
 import events from 'src/data/eventForTest';
 import {
   SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT,
-  STOCK_CONNECTED_EVENTS,
+  STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS,
 } from '../actions/event';
 
 const initialState = {
   eventsToDisplay: events,
-  currentEvents: [],
+  connectedEvents: [],
+  watchEvents: [],
   titleNewEvent: '',
   dateNewEvent: '',
   placeNewEvent: '',
@@ -53,7 +54,13 @@ const eventReducer = (state = initialState, action = {}) => {
     case STOCK_CONNECTED_EVENTS:
       return {
         ...state,
-        currentEvents: action.events,
+        connectedEvents: action.events,
+      };
+
+    case STOCK_USER_EVENTS:
+      return {
+        ...state,
+        watchEvents: action.events,
       };
 
     default:

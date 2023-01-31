@@ -8,6 +8,7 @@ import NewMessage from '../../Register/newMessage';
 
 import './user-page.scss';
 import { getUserAnimals } from '../../../actions/dog';
+import { getUserEvents } from '../../../actions/event';
 
 // I get the props from the spread operator
 const UserPage = () => {
@@ -24,6 +25,7 @@ const UserPage = () => {
     if (isLogged) {
       dispatch(stockIdWatchedUser(user.id));
       dispatch(getUserAnimals());
+      dispatch(getUserEvents());
     }
     else {
       navigate('/');
@@ -33,8 +35,7 @@ const UserPage = () => {
   // animals of the user watched
   const userAnimals = useSelector((state) => state.dog.watchAnimals);
   // events of the user watched
-  const events = useSelector((state) => state.event.eventsToDisplay);
-  const event = events.find((onEvent) => (onEvent.id === 1));
+  const userEvents = useSelector((state) => state.event.watchEvents);
 
   return (
     <div className="userboard">
@@ -70,13 +71,11 @@ const UserPage = () => {
       <section className="userboard-rightsection-desktop">
 
         <div className="userboard-rightsection" id="mes-animaux">
-          {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
-          et faire un map dessus */}
           <div className="userboard-header">
             <h1 className="userboard-h1">Mes animaux</h1>
           </div>
           { userAnimals.map((animal) => (
-            <div className="userboard-main">
+            <div key={animal.id} className="userboard-main">
               <div className="userboard-main-photo">
                 <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${animal.picture}`} alt="animal" />
               </div>
@@ -97,27 +96,29 @@ const UserPage = () => {
         </div>
 
         <div className="userboard-rightsection" id="mes-événements">
-          {/* Aller chercher dans la BDD les événements liés à l'utilisateur
-          et faire un map dessus */}
           <div className="userboard-header">
             <h1 className="userboard-h1">Mes événements</h1>
           </div>
-          <div className="userboard-main">
-            <div className="userboard-main-photo">
-              <img className="userboard-photo" src={event.picture} alt="evenement" />
-            </div>
-            <div className="userboard-main-infos">
+          { userEvents.map((event) => (
+            <>
+              <div key={event.id} className="userboard-main">
+                <div className="userboard-main-photo">
+                  <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${event.picture}`} alt="evenement" />
+                </div>
+                <div className="userboard-main-infos">
 
-              <h3 className="userboard-info-title">Name:</h3>
-              <span className="userboard-info">{event.name}</span>
+                  <h3 className="userboard-info-title">Name:</h3>
+                  <span className="userboard-info">{event.name}</span>
 
-              <h3 className="userboard-info-title">Date:</h3>
-              <span className="userboard-info">{event.date}</span>
+                  <h3 className="userboard-info-title">Date:</h3>
+                  <span className="userboard-info">{event.eventDate}</span>
 
-            </div>
-          </div>
-          <h3 className="userboard-info-title">Description:</h3>
-          <span className="userboard-info">{event.description}</span>
+                </div>
+              </div>
+              <h3 className="userboard-info-title">Description:</h3>
+              <span className="userboard-info">{event.description}</span>
+            </>
+          ))}
 
         </div>
 
