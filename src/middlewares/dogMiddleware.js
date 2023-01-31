@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {
-  UPDATE_DOG, DELETE_DOG, ADD_NEW_DOG, GET_CONNECTED_ANIMALS,
+  UPDATE_DOG, DELETE_DOG, ADD_NEW_DOG, GET_CONNECTED_ANIMALS, stockConnectedAnimals,
 } from '../actions/dog';
 
 const dogMiddleware = (store) => (next) => (action) => {
@@ -89,7 +89,9 @@ const dogMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
+          const currentAnimals = response.data.animals;
+          console.log(currentAnimals);
+          store.dispatch(stockConnectedAnimals(currentAnimals));
         })
         .catch((error) => {
           console.log(error);

@@ -1,9 +1,10 @@
 import {
   SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG,
-  ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG,
+  ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG, STOCK_CONNECTED_ANIMALS,
 } from '../actions/dog';
 
 const initialState = {
+  currentAnimals: [],
   nameNewDog: '',
   breedNewDog: '',
   personnalityNewDog: '',
@@ -58,6 +59,12 @@ const dogReducer = (state = initialState, action = {}) => {
         ...state,
         // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
         dogDelete: !state.dogDelete,
+      };
+
+    case STOCK_CONNECTED_ANIMALS:
+      return {
+        ...state,
+        currentAnimals: action.animals,
       };
 
     default:
