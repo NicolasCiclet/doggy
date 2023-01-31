@@ -4,7 +4,7 @@ import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
 
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
-  GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS, stockUsers,
+  GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS, stockUsers, getUserInfo,
 
 } from '../actions/user';
 
@@ -41,6 +41,7 @@ const userMiddleware = (store) => (next) => (action) => {
             response.data.token,
           );
           store.dispatch(actionToDispatch);
+          store.dispatch(getUserInfo());
 
           // We store in our storage the token
           localStorage.setItem('UserToken', response.data.token);
