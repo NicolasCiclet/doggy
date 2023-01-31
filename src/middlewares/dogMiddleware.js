@@ -23,6 +23,7 @@ const dogMiddleware = (store) => (next) => (action) => {
         },
         {
           headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
             'Content-Type': 'application/json',
           },
         },

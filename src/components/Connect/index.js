@@ -26,6 +26,8 @@ const Connect = () => {
   // to check the number of animals in the user
   const nbrAnimal = useSelector((state) => state.user.nbrAnimal);
 
+  const errorConnexion = useSelector((state) => state.user.errorConnexion);
+
   const dispatch = useDispatch();
 
   // condition if user is logged and has at least one animal
@@ -43,6 +45,7 @@ const Connect = () => {
   return (
     <>
       <div className="settings">
+        {errorConnexion && <h1 className="settings-title-error">Veuillez vérifier vos identifiants</h1>}
         <h1 className="settings-title">Connexion</h1>
         <form
           className="settings-form"

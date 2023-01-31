@@ -17,6 +17,17 @@
     font-size: 1.3rem;
     font-weight: 700;
   }
+
+  .settings-title-error {
+    color: #ff4b33e0;
+    border: solid 1.5px #ffa296ed;
+    border-radius: 3px;
+    padding: 0.5rem;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 0.5rem;
+    background-color: #F5CCBA;
+  }
   .settings-form {
     color: rgba(255, 255, 255, 0.8);
     width: 100%;
