@@ -29,6 +29,7 @@ const Profil = () => {
   const isLogged = useSelector((state) => state.user.logged);
 
   // If the user is connected, I get his info in BDD using his email
+
   useEffect(() => {
     if (isLogged) {
       dispatch(getConnectedAnimals());
