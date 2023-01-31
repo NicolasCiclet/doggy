@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  Button, Form, Message, Select, TextArea,
+  Button, Form, Icon, Message, Select, TextArea,
 } from 'semantic-ui-react';
 import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, addNewDog,
@@ -102,12 +102,31 @@ const DogRegister = () => {
               }}
             />
           </Form.Group>
-
-          <Form.Input
-            control={Button}
-            content="Valider"
-          />
+          <Form.Group>
+            {/* <Form.Input
+              control={Button}
+              content="Valider"
+            /> */}
+            <Button control={Button} animated="fade">
+              <Button.Content visible>Valider</Button.Content>
+              <Button.Content hidden>Valider</Button.Content>
+            </Button>
+            <Button
+              animated
+              color="red"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              {/* // cancel button and return to previous page */}
+              <Button.Content visible>Annuler</Button.Content>
+              <Button.Content hidden>
+                <Icon name="arrow left" />
+              </Button.Content>
+            </Button>
+          </Form.Group>
         </Form>
+
       </div>
 
       {/* success message when userCreate is true */}
