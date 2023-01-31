@@ -1,22 +1,36 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { isMessFormOpened } from '../../../actions/user';
+import { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { isMessFormOpened, stockIdWatchedUser } from '../../../actions/user';
 
 import { findUser } from '../../../selectors/user';
 import NewMessage from '../../Register/newMessage';
 
 import './user-page.scss';
+import { getUserAnimals } from '../../../actions/dog';
 
 // I get the props from the spread operator
 const UserPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams();
   const user = useSelector((state) => findUser(state.user.usersApi, id));
   const isFormOpen = useSelector((state) => state.user.messFormOpen);
+  // I checked if the user is connected
+  const isLogged = useSelector((state) => state.user.logged);
 
-  // TODO a modifier avec l'apel a l'api back
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(stockIdWatchedUser(user.id));
+      dispatch(getUserAnimals());
+    }
+    else {
+      navigate('/');
+    }
+  }, [isLogged]);
+
   const events = useSelector((state) => state.event.eventsToDisplay);
   const event = events.find((onEvent) => (onEvent.id === 1));
-  const dispatch = useDispatch();
   // console.log(user);
   // console.log(useSelector((state) => state.user.usersToDisplay));
   return (

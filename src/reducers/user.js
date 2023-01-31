@@ -8,6 +8,7 @@ import {
 
   ADD_CHECKED_PASSWORD_NEW_USER, SHOW_DELETE_USER, DISPLAY_INFO_CONNECTED_USER,
   IS_MESS_FORM_OPENED, DISPLAY_RANDOM_USER_INFO, DISPLAY_LOADER, STOCK_USERS,
+  STOCK_ID_WATCHED_USER,
 
 } from '../actions/user';
 
@@ -49,6 +50,9 @@ const initialState = {
   messFormOpen: false,
 
   dislpayLoader: false,
+
+  // id of watched user
+  watchId: 0,
 
 };
 
@@ -241,6 +245,13 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         usersApi: action.users,
 
+      };
+
+    // To stock id of watched user in the state
+    case STOCK_ID_WATCHED_USER:
+      return {
+        ...state,
+        watchId: action.id,
       };
 
     default:

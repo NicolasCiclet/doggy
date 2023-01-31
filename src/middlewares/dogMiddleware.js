@@ -2,11 +2,13 @@ import axios from 'axios';
 
 import {
   UPDATE_DOG, DELETE_DOG, ADD_NEW_DOG, GET_CONNECTED_ANIMALS, stockConnectedAnimals,
+  GET_USER_ANIMALS, stockUserAnimals,
 } from '../actions/dog';
 
 const dogMiddleware = (store) => (next) => (action) => {
   // eslint-disable-next-line prefer-destructuring
   const url = store.getState().nav.url;
+  const id = store.getState().user.watchId;
 
   switch (action.type) {
     case ADD_NEW_DOG:
@@ -92,6 +94,27 @@ const dogMiddleware = (store) => (next) => (action) => {
           const currentAnimals = response.data.animals;
           // console.log(currentAnimals);
           store.dispatch(stockConnectedAnimals(currentAnimals));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
+    case GET_USER_ANIMALS:
+
+      axios.get(
+        `${url}api/users/${id}/animals`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          const userAnimals = response.data.animals;
+          console.log(userAnimals);
+          store.dispatch(stockUserAnimals(userAnimals));
         })
         .catch((error) => {
           console.log(error);
