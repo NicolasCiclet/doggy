@@ -1,7 +1,13 @@
 import axios from 'axios';
-import { DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT } from '../actions/event';
+import {
+  DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT, GET_CONNECTED_EVENTS,
+  stockConnectedEvents,
+} from '../actions/event';
 
 const eventMiddleware = (store) => (next) => (action) => {
+  // eslint-disable-next-line prefer-destructuring
+  const url = store.getState().nav.url;
+
   switch (action.type) {
     case SUBMIT_FORM_NEW_EVENT:
 
@@ -61,6 +67,27 @@ const eventMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
+    case GET_CONNECTED_EVENTS:
+
+      axios.get(
+        `${url}api/users/events`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          const currentEvents = response.data.events;
+          // console.log(currentEvents);
+          store.dispatch(stockConnectedEvents(currentEvents));
         })
         .catch((error) => {
           console.log(error);

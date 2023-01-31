@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { showDeleteUser, showLink, getUserInfo } from '../../actions/user';
+import { showDeleteUser, showLink } from '../../actions/user';
 import { getConnectedAnimals, showDeleteDog } from '../../actions/dog';
-import { showDeleteEvent } from '../../actions/event';
+import { getConnectedEvents, showDeleteEvent } from '../../actions/event';
 
 import Userdelete from './Userdelete';
 import Dogdelete from './Dogdelete';
@@ -31,8 +31,8 @@ const Profil = () => {
   // If the user is connected, I get his info in BDD using his email
   useEffect(() => {
     if (isLogged) {
-      dispatch(getUserInfo());
       dispatch(getConnectedAnimals());
+      dispatch(getConnectedEvents());
     }
     else {
       navigate('/');

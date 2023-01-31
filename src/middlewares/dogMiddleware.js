@@ -90,7 +90,7 @@ const dogMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           const currentAnimals = response.data.animals;
-          console.log(currentAnimals);
+          // console.log(currentAnimals);
           store.dispatch(stockConnectedAnimals(currentAnimals));
         })
         .catch((error) => {
