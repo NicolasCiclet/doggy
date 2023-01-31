@@ -27,6 +27,7 @@ const Profil = () => {
   const showBurgerMenu = useSelector((state) => state.user.showLink);
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
+  console.log(isLogged);
 
   // If the user is connected, I get his info in BDD using his email
 
@@ -53,7 +54,11 @@ const Profil = () => {
   const picture = useSelector((state) => state.user.pictureNewUser);
 
   const events = useSelector((state) => state.event.connectedEvents);
+<<<<<<< HEAD
+  console.log(events);
+=======
   // console.log(events);
+>>>>>>> dev
   const animals = useSelector((state) => state.dog.connectedAnimals);
   console.log(animals);
 
@@ -181,30 +186,30 @@ const Profil = () => {
           </div>
         </div>
         { animals.map((animal) => (
-          <div className="profil-main">
+          <div key={animal.id} className="profil-main">
             <div className="profil-main-photo">
               <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${animal.picture}`} alt="animal" />
             </div>
             <div className="profil-main-infos">
               <div className="info-block">
-                <h3 className="profil-info-title">Name:</h3>
+                <h3 className="profil-info-title">Nom:</h3>
                 <span className="profil-info">{animal.name}</span>
               </div>
               <div className="info-block">
-                <h3 className="profil-info-title">Breed:</h3>
-                <span className="profil-info">Breed</span>
+                <h3 className="profil-info-title">Race:</h3>
+                <span className="profil-info">{animal.species}</span>
               </div>
               <div className="info-block">
                 <h3 className="profil-info-title">Sexe:</h3>
-                <span className="profil-info">Sexe</span>
+                <span className="profil-info">{animal.gender}</span>
               </div>
               <div className="info-block">
-                <h3 className="profil-info-title">Personality:</h3>
-                <span className="profil-info">Personality</span>
+                <h3 className="profil-info-title">Stérilisé:</h3>
+                <span className="profil-info">{animal.sterilized}</span>
               </div>
               <div className="info-block">
-                <h3 className="profil-info-title">Sterilized:</h3>
-                <span className="profil-info">Sterilized</span>
+                <h3 className="profil-info-title">Personnalité:</h3>
+                <span className="profil-info">{animal.personality}</span>
               </div>
             </div>
           </div>
@@ -250,25 +255,25 @@ const Profil = () => {
           </div>
         </div>
         { events.map((onEvent) => (
-          <>
+          <div key={onEvent.id}>
             <div className="profil-main">
               <div className="profil-main-photo">
                 <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${onEvent.picture}`} alt="evenement" />
               </div>
               <div className="profil-main-infos">
                 <div className="info-block">
-                  <h3 className="profil-info-title">Name:</h3>
+                  <h3 className="profil-info-title">Nom:</h3>
                   <span className="profil-info">{onEvent.name}</span>
                 </div>
                 <div className="info-block">
                   <h3 className="profil-info-title">Date:</h3>
-                  <span className="profil-info">date</span>
+                  <span className="profil-info">{onEvent.eventDate}</span>
                 </div>
               </div>
             </div>
             <h3 className="profil-info-title">Description:</h3>
             <span className="profil-info">{onEvent.description}</span>
-          </>
+          </div>
         ))}
         <div className="new-event">
           <NavLink
