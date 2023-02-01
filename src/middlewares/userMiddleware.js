@@ -135,7 +135,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case SUBMIT_FORM_UPDATE_USER:
       console.log('requete put');
       axios.put(
-        // url put user donnée par Christophe,
+        `${url}api/users/current`,
         {
           nickname: store.getState().user.usernameNewUser,
           firstname: store.getState().user.firstnameNewUser,
@@ -151,28 +151,17 @@ const userMiddleware = (store) => (next) => (action) => {
           phone: store.getState().user.phoneNewUser,
           email: store.getState().user.mailNewUser,
           password: store.getState().user.passwordNewUser,
+          picture: 'users/user9.png',
         },
         {
           headers: {
-            'Content-Type': 'application/json',
+            Authorization: `Bearer ${store.getState().user.token}`,
           },
         },
       )
         .then((response) => {
           console.log(response);
-
-          // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
-          // dans le state => dispatch une action
-          // (attention au nommage de la variable, pas "action" pour ne pas masquer le
-          // paramètre qui porte le même nom) pour le message de bienvenu
-          const actionToDispatch = saveAuthData(
-            response.data.token,
-          );
-          store.dispatch(actionToDispatch);
-          store.dispatch(addNewUser());
-
-          // On veut avoir accès au profil de l'utilisateur, et aux pages réservées
-          // aux personnes connectées => token ?
+          console.log('user well modified');
         })
         .catch((error) => {
           console.log(error);
@@ -205,6 +194,7 @@ const userMiddleware = (store) => (next) => (action) => {
             email,
             firstname,
             gender,
+            id,
             lastname,
             nickname,
             phone,

@@ -21,6 +21,7 @@ const initialState = {
 
   lastnameNewUser: '',
   firstnameNewUser: '',
+  idNewUser: 0,
   cityNewUser: '',
   usernameNewUser: '',
   passwordNewUser: '',
@@ -218,6 +219,7 @@ const userReducer = (state = initialState, action = {}) => {
         cityNewUser: action.city,
         usernameNewUser: action.nickname,
         genderNewUser: action.gender,
+        idNewUser: action.id,
         birthNewUser: action.birthdate,
         bioNewUser: action.bio,
         mailNewUser: action.email,

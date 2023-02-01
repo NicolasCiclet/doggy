@@ -52,6 +52,7 @@ const Profil = () => {
   const mail = useSelector((state) => state.user.mailNewUser);
   const phone = useSelector((state) => state.user.phoneNewUser);
   const picture = useSelector((state) => state.user.pictureNewUser);
+  const id = useSelector((state) => state.user.idNewUser);
 
   const events = useSelector((state) => state.event.connectedEvents);
   // console.log(events);
@@ -149,7 +150,7 @@ const Profil = () => {
             </div>
           </div>
           <div className="profil-buttons">
-            <Link to="/profile/update/user">
+            <Link to={`/profile/update/user/${id}`}>
               <img className="button" src={editButton} alt="edit" />
             </Link>
             <img

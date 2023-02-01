@@ -50,7 +50,7 @@ function App() {
         <Route path="/professional" element={<MainSection />} />
         <Route path="/connexion" element={<Connect />} />
         <Route path="/register" element={<UserRegister />} />
-        <Route path="/profile/update/user" element={<UpdateUser />} />
+        <Route path="/profile/update/user/:id" element={<UpdateUser />} />
         <Route path="/profile/update/animal/:id" element={<UpdateDog />} />
         <Route path="/profile/update/event/:id" element={<UpdateEvent />} />
         <Route path="/register/dog" element={<DogRegister />} />

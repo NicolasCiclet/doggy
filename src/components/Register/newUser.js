@@ -10,7 +10,6 @@ import {
   addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser,
 } from '../../actions/user';
 import './register.scss';
-import { Navigate } from 'react-router-dom';
 
 // options for the input select gender
 const genderOptions = [
