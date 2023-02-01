@@ -14,6 +14,7 @@ const initialState = {
   genderNewDog: '',
   birthNewDog: '',
   sterilizedNewDog: '',
+  pictureNewDog: 'animals/default.png',
 
   // only use to show or hide succes message
   newDogCreated: false,

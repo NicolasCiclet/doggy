@@ -13,8 +13,8 @@ import { findUser } from '../../selectors/user';
 import './register.scss';
 
 const sterilizedOptions = [
-  { text: 'Oui', value: 'yes' },
-  { text: 'Non', value: 'no' },
+  { text: 'Oui', value: true },
+  { text: 'Non', value: false },
 ];
 
 const genderOptions = [
@@ -28,7 +28,7 @@ const UpdateDog = () => {
   // to get the dog that has to be modified
   const { id } = useParams();
   const currentAnimal = useSelector((state) => findUser(state.dog.connectedAnimals, id));
-  console.log(currentAnimal);
+  // console.log(currentAnimal);
 
   const dogName = useSelector((state) => state.dog.nameNewDog);
   const userCreate = useSelector((state) => state.user.userCreate);
