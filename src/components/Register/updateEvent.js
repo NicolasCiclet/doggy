@@ -95,9 +95,9 @@ const NewEvent = () => {
           {/* Input for description */}
           <Form.Input
             className="add-new-event-description"
-            label={currentEvent.description}
+            label="Description de l'événement"
             control={TextArea}
-            placeholder="Description de l'évènement"
+            placeholder={currentEvent.description}
             onChange={(event) => {
               dispatch(describNewEvent(event.target.value));
             }}
