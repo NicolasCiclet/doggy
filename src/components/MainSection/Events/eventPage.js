@@ -8,7 +8,8 @@ import './event-page.scss';
 // I get the props from the spread operator
 const EventPage = () => {
   const { id } = useParams();
-  const event = useSelector((state) => findUser(state.event.eventsToDisplay, id));
+  const url = useSelector((state) => state.nav.url);
+  const event = useSelector((state) => findUser(state.event.eventsApi, id));
 
   return (
     <div className="eventboard">
@@ -18,18 +19,16 @@ const EventPage = () => {
         </div>
         <div className="eventboard-main">
           <div className="eventboard-main-photo">
-            <img className="eventboard-photo" src={event.picture} alt="evenement" />
+            <img className="eventboard-photo" src={`${url}assets/images/${event.picture}`} alt="evenement" />
           </div>
           <div className="eventboard-main-infos">
 
-            <h2 className="eventboard-info-title">Difficulté:</h2>
-            <span className="eventboard-info">{event.difficulty}</span>
-
-            <h2 className="eventboard-info-title">Date:</h2>
-            <span className="eventboard-info">{event.date}</span>
-
             <h2 className="eventboard-info-title">Description:</h2>
             <span className="eventboard-info">{event.description}</span>
+
+            <h2 className="eventboard-info-title">Date:</h2>
+            <span className="eventboard-info">{event.eventDate}</span>
+
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Card, Image } from 'semantic-ui-react';
@@ -12,6 +12,7 @@ const OneUser = (
   },
 ) => {
   const dispatch = useDispatch();
+  const url = useSelector((state) => state.nav.url);
   return (
     <Card
       className="card"
@@ -20,7 +21,7 @@ const OneUser = (
       onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image
-        src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${picture}`}
+        src={`${url}assets/images/${picture}`}
         wrapped
         ui={false}
       />
