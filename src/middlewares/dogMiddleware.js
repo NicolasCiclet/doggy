@@ -15,7 +15,7 @@ const dogMiddleware = (store) => (next) => (action) => {
       console.log('demande d\'ajout du chien');
 
       axios.post(
-        'http://christophe-rialland.vpnuser.lan/doggy/public/api/animals/',
+        `${url}api/animals/`,
         {
           name: store.getState().dog.nameNewDog,
           species: store.getState().dog.breedNewDog,
