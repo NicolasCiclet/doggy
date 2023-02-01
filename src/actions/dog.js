@@ -28,6 +28,9 @@ export const STOCK_USER_ANIMALS = 'STOCK_USER_ANIMALS';
 // To confirm user animals has been created
 export const NEW_DOG_CREATED = 'NEW_DOG_CREATED';
 
+// To stock id of update dog
+export const STOCK_ID_UPDATE_DOG = 'STOCK_ID_UPDATE_DOG';
+
 // Dog actions
 export const addNameNewDog = (value) => ({
   type: ADD_NAME_NEW_DOG,
@@ -95,4 +98,9 @@ export const stockUserAnimals = (animals) => ({
 
 export const newDogCreated = () => ({
   type: NEW_DOG_CREATED,
+});
+
+export const stockIdUpdateDog = (id) => ({
+  type: STOCK_ID_UPDATE_DOG,
+  id: id,
 });

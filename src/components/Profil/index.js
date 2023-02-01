@@ -55,6 +55,7 @@ const Profil = () => {
 
   const events = useSelector((state) => state.event.connectedEvents);
   // console.log(events);
+
   const animals = useSelector((state) => state.dog.connectedAnimals);
   console.log(animals);
 
@@ -109,8 +110,44 @@ const Profil = () => {
       </div>
       <div className="profil-section" id="mon-profil">
         {/* Afficher les infos du user connecté */}
+        <h1 className="profil-h1">Mon profil</h1>
+        <h2 className="profil-h2">Bonjour {firstname} {lastname}</h2>
         <div className="profil-header">
-          <h1 className="profil-h1">Mon profil</h1>
+          <div className="profil-main">
+            <div className="profil-main-photo">
+              <img className="profil-photo" src={`${url}assets/images/${picture}`} alt="user" />
+            </div>
+            <div className="profil-main-infos">
+              <div className="info-block">
+                <h3 className="profil-info-title">Nickname:</h3>
+                <span className="profil-info">{nickname}</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Adresse mail:</h3>
+                <span className="profil-info">{mail}</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Phone:</h3>
+                <span className="profil-info">{phone}</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">City:</h3>
+                <span className="profil-info">{city}</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Birthdate:</h3>
+                <span className="profil-info">{birthdate}</span>
+              </div>
+              <div className="info-block">
+                <h3 className="profil-info-title">Gender:</h3>
+                <span className="profil-info">{gender}</span>
+              </div>
+              <div className="info-block-line">
+                <h3 className="profil-info-title">Bio:</h3>
+                <span className="profil-info">{bio}</span>
+              </div>
+            </div>
+          </div>
           <div className="profil-buttons">
             <Link to="/profile/update/user">
               <img className="button" src={editButton} alt="edit" />
@@ -126,87 +163,51 @@ const Profil = () => {
             <Userdelete />
           </div>
         </div>
-        <h2 className="profil-h2">Bonjour {firstname} {lastname}</h2>
-        <div className="profil-main">
-          <div className="profil-main-photo">
-            <img className="profil-photo" src={`${url}assets/images/${picture}`} alt="user" />
-          </div>
-          <div className="profil-main-infos">
-            <div className="info-block">
-              <h3 className="profil-info-title">Nickname:</h3>
-              <span className="profil-info">{nickname}</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Adresse mail:</h3>
-              <span className="profil-info">{mail}</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Phone:</h3>
-              <span className="profil-info">{phone}</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">City:</h3>
-              <span className="profil-info">{city}</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Birthdate:</h3>
-              <span className="profil-info">{birthdate}</span>
-            </div>
-            <div className="info-block">
-              <h3 className="profil-info-title">Gender:</h3>
-              <span className="profil-info">{gender}</span>
-            </div>
-          </div>
-        </div>
-        <h3 className="profil-info-title">Bio:</h3>
-        <span className="profil-info">{bio}</span>
       </div>
       <div className="profil-section" id="mes-animaux">
-        {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
-        et faire un map dessus */}
-        <div className="profil-header">
-          <h1 className="profil-h1">Mes animaux</h1>
-          <div className="profil-buttons">
-            <Link to="/profile/update/animal">
-              <img className="button" src={editButton} alt="edit" />
-            </Link>
-            <img
-              className="button"
-              src={deleteButton}
-              alt="delete"
-              onClick={() => {
-                dispatch(showDeleteDog());
-              }}
-            />
-            <Dogdelete />
-          </div>
-        </div>
+        <h1 className="profil-h1">Mes animaux</h1>
         { animals.map((animal) => (
-          <div key={animal.id} className="profil-main">
-            <div className="profil-main-photo">
-              <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
+          <div key={animal.id} className="profil-header">
+            <div className="profil-main">
+              <div className="profil-main-photo">
+                <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
+              </div>
+              <div className="profil-main-infos">
+                <div className="info-block">
+                  <h3 className="profil-info-title">Nom:</h3>
+                  <span className="profil-info">{animal.name}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Race:</h3>
+                  <span className="profil-info">{animal.species}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Sexe:</h3>
+                  <span className="profil-info">{animal.gender}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Stérilisé:</h3>
+                  <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
+                </div>
+                <div className="info-block-line">
+                  <h3 className="profil-info-title">Personnalité:</h3>
+                  <span className="profil-info">{animal.personality}</span>
+                </div>
+              </div>
             </div>
-            <div className="profil-main-infos">
-              <div className="info-block">
-                <h3 className="profil-info-title">Nom:</h3>
-                <span className="profil-info">{animal.name}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Race:</h3>
-                <span className="profil-info">{animal.species}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Sexe:</h3>
-                <span className="profil-info">{animal.gender}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Stérilisé:</h3>
-                <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Personnalité:</h3>
-                <span className="profil-info">{animal.personality}</span>
-              </div>
+            <div className="profil-buttons">
+              <Link to={`/profile/update/animal/${animal.id}`}>
+                <img className="button" src={editButton} alt="edit" />
+              </Link>
+              <img
+                className="button"
+                src={deleteButton}
+                alt="delete"
+                onClick={() => {
+                  dispatch(showDeleteDog());
+                }}
+              />
+              <Dogdelete />
             </div>
           </div>
         ))}
@@ -233,25 +234,9 @@ const Profil = () => {
       <div className="profil-section" id="mes-événements">
         {/* Aller chercher dans la BDD les événements liés à l'utilisateur
         et faire un map dessus */}
-        <div className="profil-header">
-          <h1 className="profil-h1">Mes événements</h1>
-          <div className="profil-buttons">
-            <Link to="/profile/update/event">
-              <img className="button" src={editButton} alt="edit" />
-            </Link>
-            <img
-              className="button"
-              src={deleteButton}
-              alt="delete"
-              onClick={() => {
-                dispatch(showDeleteEvent());
-              }}
-            />
-            <Eventdelete />
-          </div>
-        </div>
+        <h1 className="profil-h1">Mes événements</h1>
         { events.map((onEvent) => (
-          <div key={onEvent.id}>
+          <div key={onEvent.id} className="profil-header">
             <div className="profil-main">
               <div className="profil-main-photo">
                 <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${onEvent.picture}`} alt="evenement" />
@@ -265,10 +250,26 @@ const Profil = () => {
                   <h3 className="profil-info-title">Date:</h3>
                   <span className="profil-info">{onEvent.eventDate}</span>
                 </div>
+                <div className="info-block-line">
+                  <h3 className="profil-info-title">Description:</h3>
+                  <span className="profil-info">{onEvent.description}</span>
+                </div>
               </div>
             </div>
-            <h3 className="profil-info-title">Description:</h3>
-            <span className="profil-info">{onEvent.description}</span>
+            <div className="profil-buttons">
+              <Link to={`/profile/update/event/${onEvent.id}`}>
+                <img className="button" src={editButton} alt="edit" />
+              </Link>
+              <img
+                className="button"
+                src={deleteButton}
+                alt="delete"
+                onClick={() => {
+                  dispatch(showDeleteEvent());
+                }}
+              />
+              <Eventdelete />
+            </div>
           </div>
         ))}
         <div className="new-event">

@@ -9,6 +9,7 @@ const dogMiddleware = (store) => (next) => (action) => {
   // eslint-disable-next-line prefer-destructuring
   const url = store.getState().nav.url;
   const id = store.getState().user.watchId;
+  const animalId = store.getState().dog.updateId;
 
   switch (action.type) {
     case ADD_NEW_DOG:
@@ -63,14 +64,15 @@ const dogMiddleware = (store) => (next) => (action) => {
     case UPDATE_DOG:
       console.log('requete put');
       axios.put(
-        // url donnée par christophe,
+        `${url}api/animals/${animalId}`,
         {
           name: store.getState().dog.nameNewDog,
-          breed: store.getState().dog.breedNewDog,
+          species: store.getState().dog.breedNewDog,
           gender: store.getState().dog.genderNewDog,
-          sterilized: store.getState().dog.sterilizedNewDog,
           birthdate: store.getState().dog.birthNewDog,
           personality: store.getState().dog.personnalityNewDog,
+          sterilized: store.getState().dog.sterilizedNewDog,
+          picture: store.getState().dog.pictureNewDog,
         },
         {
           headers: {
@@ -80,6 +82,9 @@ const dogMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          console.log('chien modifié avec succes');
+          // Use to add a success message
+          store.dispatch(newDogCreated());
         })
         .catch((error) => {
           console.log(error);

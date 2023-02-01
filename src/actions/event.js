@@ -33,6 +33,9 @@ export const STOCK_USER_EVENTS = 'STOCK_USER_EVENTS';
 // To confirm user event has been created
 export const NEW_EVENT_CREATED = 'NEW_EVENT_CREATED';
 
+// To stock id of update event
+export const STOCK_ID_UPDATE_EVENT = 'STOCK_ID_UPDATE_EVENT';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -100,4 +103,9 @@ export const stockUserEvents = (events) => ({
 
 export const newEventCreated = () => ({
   type: NEW_EVENT_CREATED,
+});
+
+export const stockIdUpdateEvent = (id) => ({
+  type: STOCK_ID_UPDATE_EVENT,
+  id: id,
 });

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
   DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT, GET_CONNECTED_EVENTS,
-  stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS, newEventCreated, stockAllEvents,
+  stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS, newEventCreated,
+  stockAllEvents,
 } from '../actions/event';
 import { displayLoader } from '../actions/user';
 
@@ -9,6 +10,7 @@ const eventMiddleware = (store) => (next) => (action) => {
   // eslint-disable-next-line prefer-destructuring
   const url = store.getState().nav.url;
   const id = store.getState().user.watchId;
+  const eventId = store.getState().event.updateId;
 
   switch (action.type) {
     case SUBMIT_FORM_NEW_EVENT:
@@ -59,12 +61,12 @@ const eventMiddleware = (store) => (next) => (action) => {
     case SUBMIT_FORM_UPDATE_EVENT:
       console.log('requete put');
       axios.put(
-        // url donnée par christophe,
+        `${url}api/events/${eventId}`,
         {
           name: store.getState().event.titleNewEvent,
-          event_date: store.getState().event.dateNewEvent,
-          place: store.getState().event.placeNewEvent,
           description: store.getState().event.describNewEvent,
+          eventDate: store.getState().event.dateNewEvent,
+          picture: store.getState().event.pictureNewEvent,
         },
         {
           headers: {
@@ -74,6 +76,9 @@ const eventMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          console.log('event créé avec succes');
+          // Use to add a success message
+          store.dispatch(newEventCreated());
         })
         .catch((error) => {
           console.log(error);

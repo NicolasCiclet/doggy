@@ -51,8 +51,8 @@ function App() {
         <Route path="/connexion" element={<Connect />} />
         <Route path="/register" element={<UserRegister />} />
         <Route path="/profile/update/user" element={<UpdateUser />} />
-        <Route path="/profile/update/animal" element={<UpdateDog />} />
-        <Route path="/profile/update/event" element={<UpdateEvent />} />
+        <Route path="/profile/update/animal/:id" element={<UpdateDog />} />
+        <Route path="/profile/update/event/:id" element={<UpdateEvent />} />
         <Route path="/register/dog" element={<DogRegister />} />
         <Route path="/profile" element={<Profil />} />
         <Route path="/about" element={<About />} />

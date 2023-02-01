@@ -1,7 +1,7 @@
 import {
   SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG,
   ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG, STOCK_CONNECTED_ANIMALS,
-  STOCK_USER_ANIMALS,
+  STOCK_USER_ANIMALS, STOCK_ID_UPDATE_DOG,
   NEW_DOG_CREATED,
 } from '../actions/dog';
 
@@ -14,12 +14,16 @@ const initialState = {
   genderNewDog: '',
   birthNewDog: '',
   sterilizedNewDog: '',
+  pictureNewDog: 'animals/default.png',
 
   // only use to show or hide succes message
   newDogCreated: false,
 
   // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
   dogDelete: false,
+
+  // update or delete dog id
+  updateId: 0,
 };
 
 const dogReducer = (state = initialState, action = {}) => {
@@ -86,6 +90,13 @@ const dogReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         newDogCreated: !state.newDogCreated,
+      };
+
+    // Update dog
+    case STOCK_ID_UPDATE_DOG:
+      return {
+        ...state,
+        updateId: action.id,
       };
 
     default:
