@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
   DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT, GET_CONNECTED_EVENTS,
-  stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS,
+  stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS, newEventCreated,
 } from '../actions/event';
 
 const eventMiddleware = (store) => (next) => (action) => {
@@ -11,14 +11,15 @@ const eventMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case SUBMIT_FORM_NEW_EVENT:
+      console.log('envoi requete creation event');
 
       axios.post(
-        // 'http://christophe-rialland.vpnuser.lan/doggy/public/api/login_check',
+        'http://christophe-rialland.vpnuser.lan/doggy/public/api/events/',
         {
           name: store.getState().event.titleNewEvent,
-          event_date: store.getState().event.dateNewEvent,
-          place: store.getState().event.placeNewEvent,
           description: store.getState().event.describNewEvent,
+          eventDate: store.getState().event.dateNewEvent,
+          picture: 'events/default.svg',
         },
         {
           headers: {
@@ -28,9 +29,13 @@ const eventMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          console.log('event créé avec succes');
+          // Use to add a success message
+          store.dispatch(newEventCreated());
         })
         .catch((error) => {
           console.log(error);
+          console.log('erreur event non créé');
         });
 
       break;

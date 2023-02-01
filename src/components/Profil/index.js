@@ -54,11 +54,12 @@ const Profil = () => {
   const picture = useSelector((state) => state.user.pictureNewUser);
 
   const events = useSelector((state) => state.event.connectedEvents);
-  console.log(events);
+  // console.log(events);
+
   const animals = useSelector((state) => state.dog.connectedAnimals);
   console.log(animals);
 
-  // const url = useSelector((state) => state.nav.url);
+  const url = useSelector((state) => state.nav.url);
 
   return (
     <div className="profil">
@@ -129,7 +130,7 @@ const Profil = () => {
         <h2 className="profil-h2">Bonjour {firstname} {lastname}</h2>
         <div className="profil-main">
           <div className="profil-main-photo">
-            <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${picture}`} alt="user" />
+            <img className="profil-photo" src={`${url}assets/images/${picture}`} alt="user" />
           </div>
           <div className="profil-main-infos">
             <div className="info-block">
@@ -184,7 +185,7 @@ const Profil = () => {
         { animals.map((animal) => (
           <div key={animal.id} className="profil-main">
             <div className="profil-main-photo">
-              <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${animal.picture}`} alt="animal" />
+              <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
             </div>
             <div className="profil-main-infos">
               <div className="info-block">
@@ -201,7 +202,7 @@ const Profil = () => {
               </div>
               <div className="info-block">
                 <h3 className="profil-info-title">Stérilisé:</h3>
-                <span className="profil-info">{animal.sterilized}</span>
+                <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
               </div>
               <div className="info-block">
                 <h3 className="profil-info-title">Personnalité:</h3>

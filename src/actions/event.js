@@ -30,6 +30,9 @@ export const GET_USER_EVENTS = 'GET_USER_EVENTS';
 // To stock them in the state
 export const STOCK_USER_EVENTS = 'STOCK_USER_EVENTS';
 
+// To confirm user event has been created
+export const NEW_EVENT_CREATED = 'NEW_EVENT_CREATED';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -93,4 +96,8 @@ export const getUserEvents = () => ({
 export const stockUserEvents = (events) => ({
   type: STOCK_USER_EVENTS,
   events: events,
+});
+
+export const newEventCreated = () => ({
+  type: NEW_EVENT_CREATED,
 });

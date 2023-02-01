@@ -1,17 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Button, Form, Icon, Message, Select, TextArea,
 } from 'semantic-ui-react';
 import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, addNewDog,
-  addPersonnalityNewDog, addSterilizedNewDog,
+  addPersonnalityNewDog, addSterilizedNewDog, newDogCreated,
 } from '../../actions/dog';
 
 import './register.scss';
 
 const sterilizedOptions = [
-  { text: 'Oui', value: 'yes' },
-  { text: 'Non', value: 'no' },
+  { text: 'Oui', value: true },
+  { text: 'Non', value: false },
 ];
 
 const genderOptions = [
@@ -21,11 +22,26 @@ const genderOptions = [
 
 const DogRegister = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const dogName = useSelector((state) => state.dog.nameNewDog);
-  const userCreate = useSelector((state) => state.user.userCreate);
+  const dogCreate = useSelector((state) => state.dog.newDogCreated);
 
   return (
     <>
+      {/* success message when dogCreate is true */}
+      {dogCreate && (
+      <Form success className="register-success">
+        <Message
+          success
+          header="Chien ajouté avec succès"
+          content={`Bienvenue ${dogName}`}
+          onDismiss={() => {
+            dispatch(newDogCreated());
+            navigate('/profile');
+          }}
+        />
+      </Form>
+      )}
       <div className="register">
         <h1>Ajouter un chien</h1>
 
@@ -129,16 +145,6 @@ const DogRegister = () => {
 
       </div>
 
-      {/* success message when userCreate is true */}
-      {userCreate && (
-        <Form success className="register-success">
-          <Message
-            success
-            header="Ajout réussi"
-            content={`Bienvenue ${dogName}`}
-          />
-        </Form>
-      )}
     </>
   );
 };

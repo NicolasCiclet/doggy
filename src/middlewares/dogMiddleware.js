@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
   UPDATE_DOG, DELETE_DOG, ADD_NEW_DOG, GET_CONNECTED_ANIMALS, stockConnectedAnimals,
-  GET_USER_ANIMALS, stockUserAnimals,
+  GET_USER_ANIMALS, stockUserAnimals, newDogCreated,
 } from '../actions/dog';
 
 const dogMiddleware = (store) => (next) => (action) => {
@@ -12,16 +12,18 @@ const dogMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case ADD_NEW_DOG:
+      console.log('demande d\'ajout du chien');
 
       axios.post(
-        'http://christophe-rialland.vpnuser.lan/doggy/public/api/animal/',
+        `${url}api/animals/`,
         {
           name: store.getState().dog.nameNewDog,
-          breed: store.getState().dog.breedNewDog,
+          species: store.getState().dog.breedNewDog,
           gender: store.getState().dog.genderNewDog,
-          sterilized: store.getState().dog.sterilizedNewDog,
           birthdate: store.getState().dog.birthNewDog,
           personality: store.getState().dog.personnalityNewDog,
+          sterilized: store.getState().dog.sterilizedNewDog,
+          picture: 'animals/default.png',
         },
         {
           headers: {
@@ -32,9 +34,13 @@ const dogMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          console.log('chien ajouté avec succes');
+          // Use to add a success message
+          store.dispatch(newDogCreated());
         })
         .catch((error) => {
           console.log(error);
+          console.log('erreur le chien n\'a pas été ajouté');
         });
 
       break;

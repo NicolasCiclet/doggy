@@ -1,7 +1,7 @@
 import events from 'src/data/eventForTest';
 import {
   SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT,
-  STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS,
+  STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS, NEW_EVENT_CREATED,
 } from '../actions/event';
 
 const initialState = {
@@ -12,6 +12,9 @@ const initialState = {
   dateNewEvent: '',
   placeNewEvent: '',
   describNewEvent: '',
+
+  // only use to show or hide succes message
+  newEventCreated: false,
 
   // To display or not the delete pop-up
   eventDelete: false,
@@ -61,6 +64,13 @@ const eventReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         watchEvents: action.events,
+      };
+
+      // when new event is created, value pass true
+    case NEW_EVENT_CREATED:
+      return {
+        ...state,
+        newEventCreated: !state.newEventCreated,
       };
 
     default:
