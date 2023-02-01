@@ -6,6 +6,7 @@ import eventReducer from './event';
 import dogReducer from './dog';
 import mapReducer from './map';
 import navReducer from './nav';
+import proReducer from './pro';
 
 const rootReducer = combineReducers({
   city: cityReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   dog: dogReducer,
   map: mapReducer,
   nav: navReducer,
+  pro: proReducer,
 });
 
 export default rootReducer;

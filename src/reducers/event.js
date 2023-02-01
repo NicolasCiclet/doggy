@@ -1,13 +1,17 @@
 import events from 'src/data/eventForTest';
 import {
   SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT,
-  STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS, NEW_EVENT_CREATED,
+  STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS, NEW_EVENT_CREATED, STOCK_ALL_EVENTS,
 } from '../actions/event';
 
 const initialState = {
   eventsToDisplay: events,
+  // all events
+  eventsApi: [],
+
   connectedEvents: [],
   watchEvents: [],
+
   titleNewEvent: '',
   dateNewEvent: '',
   placeNewEvent: '',
@@ -52,6 +56,13 @@ const eventReducer = (state = initialState, action = {}) => {
         ...state,
         // modification(s) d'info(s) du state, ici on va chercher dans le payload de l'action
         eventDelete: !state.eventDelete,
+      };
+
+      // stock all events from API back
+    case STOCK_ALL_EVENTS:
+      return {
+        ...state,
+        eventsApi: action.events,
       };
 
     case STOCK_CONNECTED_EVENTS:

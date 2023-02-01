@@ -4,9 +4,10 @@ import AllEvents from './Events/allEvents';
 import AllUsers from './Users/allUsers';
 import Map from './Map';
 
-import './main-section.scss';
 import RandomUser from './Users/randomUser';
 import RandomEvent from './Events/randomEvent';
+import AllPro from './Professional/allPro';
+import './main-section.scss';
 
 const MainSection = () => {
   // const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const MainSection = () => {
       <div className="mainSection-users">
         {isLogged && (main === 'meeting') && (<AllUsers />)}
         {isLogged && (main === 'event') && (<AllEvents />)}
+        {isLogged && (main === 'professional') && (<AllPro />)}
 
         {(main === '') && <RandomUser />}
         {(main === '') && <RandomEvent />}

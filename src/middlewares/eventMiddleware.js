@@ -1,8 +1,9 @@
 import axios from 'axios';
 import {
   DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT, GET_CONNECTED_EVENTS,
-  stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS, newEventCreated,
+  stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS, newEventCreated, stockAllEvents,
 } from '../actions/event';
+import { displayLoader } from '../actions/user';
 
 const eventMiddleware = (store) => (next) => (action) => {
   // eslint-disable-next-line prefer-destructuring
@@ -103,8 +104,10 @@ const eventMiddleware = (store) => (next) => (action) => {
 
     case GET_ALL_EVENTS:
 
+      store.dispatch(displayLoader());
+
       axios.get(
-        // `${url}api/events`,
+        `${url}api/events`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
@@ -112,10 +115,15 @@ const eventMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
+          store.dispatch(displayLoader());
+          console.log(response.data.results);
+          console.log('all events recup');
+          const allEvents = response.data.results;
+          store.dispatch(stockAllEvents(allEvents));
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(displayLoader());
         });
 
       break;
