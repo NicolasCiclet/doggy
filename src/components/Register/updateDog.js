@@ -27,6 +27,7 @@ const UpdateDog = () => {
 
   // to get the dog that has to be modified
   const { id } = useParams();
+  // This function has been created for user, but it can be used in the same way for another entity
   const currentAnimal = useSelector((state) => findUser(state.dog.connectedAnimals, id));
   // console.log(currentAnimal);
 

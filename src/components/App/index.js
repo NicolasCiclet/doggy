@@ -26,6 +26,7 @@ import EventPage from '../MainSection/Events/eventPage';
 import { getRandomUserInfo } from '../../actions/user';
 import Loader from '../MainSection/Loader';
 import ProPage from '../MainSection/Professional/proPage';
+import WalkPage from '../MainSection/Walks/walkPage';
 
 // == Composant
 function App() {
@@ -62,6 +63,7 @@ function App() {
         <Route path="/user/:id" element={<UserPage />} />
         <Route path="/event/:id" element={<EventPage />} />
         <Route path="/professional/:id" element={<ProPage />} />
+        <Route path="/walk/:id" element={<WalkPage />} />
       </Routes>
 
       <Footer />

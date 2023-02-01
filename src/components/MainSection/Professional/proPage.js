@@ -3,12 +3,11 @@ import { useParams } from 'react-router-dom';
 
 import { findUser } from '../../../selectors/user';
 
-import './pro-page.scss';
-
 // I get the props from the spread operator
 const ProPage = () => {
   const { id } = useParams();
   const url = useSelector((state) => state.nav.url);
+  // This function has been created for user, but it can be used in the same way for another entity
   const professional = useSelector((state) => findUser(state.pro.professionalsApi, id));
   console.log(professional);
 

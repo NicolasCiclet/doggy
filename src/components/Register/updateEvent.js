@@ -22,6 +22,7 @@ const NewEvent = () => {
 
   // to get the event that has to be modified
   const { id } = useParams();
+  // This function has been created for user, but it can be used in the same way for another entity
   const currentEvent = useSelector((state) => findUser(state.event.connectedEvents, id));
   // console.log(currentEvent);
 

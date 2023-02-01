@@ -7,6 +7,7 @@ import dogReducer from './dog';
 import mapReducer from './map';
 import navReducer from './nav';
 import proReducer from './pro';
+import walkReducer from './walk';
 
 const rootReducer = combineReducers({
   city: cityReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   map: mapReducer,
   nav: navReducer,
   pro: proReducer,
+  walk: walkReducer,
 });
 
 export default rootReducer;
