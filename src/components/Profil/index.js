@@ -201,7 +201,7 @@ const Profil = () => {
               </div>
               <div className="info-block">
                 <h3 className="profil-info-title">Stérilisé:</h3>
-                <span className="profil-info">{animal.sterilized}</span>
+                <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
               </div>
               <div className="info-block">
                 <h3 className="profil-info-title">Personnalité:</h3>

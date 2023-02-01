@@ -2,6 +2,7 @@ import {
   SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG,
   ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG, STOCK_CONNECTED_ANIMALS,
   STOCK_USER_ANIMALS,
+  NEW_DOG_CREATED,
 } from '../actions/dog';
 
 const initialState = {
@@ -13,6 +14,9 @@ const initialState = {
   genderNewDog: '',
   birthNewDog: '',
   sterilizedNewDog: '',
+
+  // only use to show or hide succes message
+  newDogCreated: false,
 
   // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
   dogDelete: false,
@@ -75,6 +79,13 @@ const dogReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         watchAnimals: action.animals,
+      };
+
+      // when new dig is created, value pass true
+    case NEW_DOG_CREATED:
+      return {
+        ...state,
+        newDogCreated: !state.newDogCreated,
       };
 
     default:
