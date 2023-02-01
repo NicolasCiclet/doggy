@@ -151,7 +151,7 @@ const userMiddleware = (store) => (next) => (action) => {
           phone: store.getState().user.phoneNewUser,
           email: store.getState().user.mailNewUser,
           password: store.getState().user.passwordNewUser,
-          picture: 'users/user9.png',
+          picture: 'users/default.png',
         },
         {
           headers: {
@@ -162,6 +162,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           console.log('user well modified');
+          store.dispatch(addNewUser());
         })
         .catch((error) => {
           console.log(error);
