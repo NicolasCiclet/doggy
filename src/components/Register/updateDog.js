@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react';
 import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, updateDog,
-  addPersonnalityNewDog, addSterilizedNewDog,
+  addPersonnalityNewDog, addSterilizedNewDog, stockIdUpdateDog,
 } from '../../actions/dog';
 import { findUser } from '../../selectors/user';
 
@@ -37,7 +37,10 @@ const UpdateDog = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLogged) {
+    if (isLogged) {
+      dispatch(stockIdUpdateDog(currentAnimal.id));
+    }
+    else {
       navigate('/');
     }
   }, [isLogged]);
