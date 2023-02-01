@@ -12,23 +12,67 @@ width: 100%;
     border-radius: 7px;
     padding: 0.5rem;
     margin: 0.2rem 0;
+
+    .profil-h1{
+      margin-bottom: 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-shadow: 1px 1px 1px grey;
+    }
     // en-tête avec le titre de la section et les boutons d'édition et de suppression
     .profil-header{
       display: flex;
       justify-content: space-between;
 
-      .profil-h1{
-        margin-bottom: 1rem;
-        font-weight: bold;
-        font-size: 1.1rem;
-        text-shadow: 1px 1px 1px grey;
-      }
       .profil-buttons{
+        width: 60px;
         .button{
           width:27px;
           margin-left: 0.4rem;
         }
       }
+
+      .profil-main{
+        font-size: 0.9rem;
+        display: flex;
+  
+        .profil-main-photo{
+          width: 40%;
+          .profil-photo{
+            width: 100%;
+            border-radius: 50px;
+          }
+        }
+  
+        .profil-main-infos{
+          width: 60%;
+          padding: 0 0 0.7rem 0.7rem;
+  
+          .info-block{
+            margin: 0.5rem;
+            .profil-info-title{
+              font-weight: bold; 
+            }
+    
+            .profil-info{
+              display: block;
+            }
+          }
+
+          .info-block-line{
+            display: flex;
+            flex-direction: column;
+            margin: 0.5rem;
+
+            .profil-info-title{
+              font-weight: bold; 
+            }
+    
+            .profil-info{
+              display: block;
+            }
+          }
+        }
     }
 
     .profil-h2{
@@ -50,33 +94,7 @@ width: 100%;
       }
     }
     
-    .profil-main{
-      font-size: 0.9rem;
-      display: flex;
-
-      .profil-main-photo{
-        width: 40%;
-        .profil-photo{
-          width: 100%;
-          border-radius: 50px;
-        }
-      }
-
-      .profil-main-infos{
-        width: 60%;
-        padding: 0 0 0.7rem 0.7rem;
-
-        .info-block{
-          margin: 0.5rem;
-          .profil-info-title{
-            font-weight: bold; 
-          }
-  
-          .profil-info{
-            display: block;
-          }
-        }
-      }
+    
 
       .profil-message{
 
@@ -131,11 +149,13 @@ width: 100%;
       padding: 1rem;
       margin: 0.8rem 0;
 
+      .profil-h1{
+        font-size: 1.4rem;
+      }
+
       // en-tête avec le titre de la section et les boutons d'édition et de suppression
       .profil-header{
-        .profil-h1{
-          font-size: 1.4rem;
-        }
+        
       }
   
       .profil-h2{

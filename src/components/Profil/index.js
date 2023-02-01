@@ -163,51 +163,49 @@ const Profil = () => {
         <span className="profil-info">{bio}</span>
       </div>
       <div className="profil-section" id="mes-animaux">
-        {/* Aller chercher dans la BDD les animaux liés à l'utilisateur
-        et faire un map dessus */}
-        <div className="profil-header">
-          <h1 className="profil-h1">Mes animaux</h1>
-          <div className="profil-buttons">
-            <Link to="/profile/update/animal">
-              <img className="button" src={editButton} alt="edit" />
-            </Link>
-            <img
-              className="button"
-              src={deleteButton}
-              alt="delete"
-              onClick={() => {
-                dispatch(showDeleteDog());
-              }}
-            />
-            <Dogdelete />
-          </div>
-        </div>
+        <h1 className="profil-h1">Mes animaux</h1>
         { animals.map((animal) => (
-          <div key={animal.id} className="profil-main">
-            <div className="profil-main-photo">
-              <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
+          <div key={animal.id} className="profil-header">
+            <div className="profil-main">
+              <div className="profil-main-photo">
+                <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
+              </div>
+              <div className="profil-main-infos">
+                <div className="info-block">
+                  <h3 className="profil-info-title">Nom:</h3>
+                  <span className="profil-info">{animal.name}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Race:</h3>
+                  <span className="profil-info">{animal.species}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Sexe:</h3>
+                  <span className="profil-info">{animal.gender}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Stérilisé:</h3>
+                  <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
+                </div>
+                <div className="info-block-line">
+                  <h3 className="profil-info-title">Personnalité:</h3>
+                  <span className="profil-info">{animal.personality}</span>
+                </div>
+              </div>
             </div>
-            <div className="profil-main-infos">
-              <div className="info-block">
-                <h3 className="profil-info-title">Nom:</h3>
-                <span className="profil-info">{animal.name}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Race:</h3>
-                <span className="profil-info">{animal.species}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Sexe:</h3>
-                <span className="profil-info">{animal.gender}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Stérilisé:</h3>
-                <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
-              </div>
-              <div className="info-block">
-                <h3 className="profil-info-title">Personnalité:</h3>
-                <span className="profil-info">{animal.personality}</span>
-              </div>
+            <div className="profil-buttons">
+              <Link to="/profile/update/animal">
+                <img className="button" src={editButton} alt="edit" />
+              </Link>
+              <img
+                className="button"
+                src={deleteButton}
+                alt="delete"
+                onClick={() => {
+                  dispatch(showDeleteDog());
+                }}
+              />
+              <Dogdelete />
             </div>
           </div>
         ))}
