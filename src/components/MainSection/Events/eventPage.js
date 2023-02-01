@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
@@ -10,6 +11,9 @@ const EventPage = () => {
   const { id } = useParams();
   const url = useSelector((state) => state.nav.url);
   const event = useSelector((state) => findUser(state.event.eventsApi, id));
+
+  const date = event.eventDate;
+  const frenchDate = moment(date).locale('fr').format('LLLL');
 
   return (
     <div className="eventboard">
@@ -27,7 +31,7 @@ const EventPage = () => {
             <span className="eventboard-info">{event.description}</span>
 
             <h2 className="eventboard-info-title">Date:</h2>
-            <span className="eventboard-info">{event.eventDate}</span>
+            <span className="eventboard-info">{frenchDate}</span>
 
           </div>
         </div>
