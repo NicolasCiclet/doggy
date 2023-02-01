@@ -6,9 +6,9 @@ import { Card, Image } from 'semantic-ui-react';
 import { isSelected } from '../../../actions/map';
 
 // I get the props from the spread operator
-const OneUser = (
+const OnePro = (
   {
-    firstname, city, picture, dog, dogPicture, id, lastname,
+    city, picture, id, name,
   },
 ) => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const OneUser = (
     <Card
       className="card"
       // when user mouse enter or leave card, action is dispatched, and maker on map zoom
-      onMouseEnter={() => dispatch(isSelected(lastname))}
-      onMouseLeave={() => dispatch(isSelected(''))}
+      // onMouseEnter={() => dispatch(isSelected(lastname))}
+      // onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image
         src={`${url}assets/images/${picture}`}
@@ -26,25 +26,20 @@ const OneUser = (
         ui={false}
       />
       <Card.Content>
-        <Link to={`/user/${id}`}>
-          <p className="card-name">{firstname}</p>
+        <Link to={`/professional/${id}`}>
+          <p className="card-name">{name}</p>
           <p className="card-info1">{city}</p>
-          <p className="card-info2">{dog}</p>
         </Link>
       </Card.Content>
-      <Image src={dogPicture} wrapped ui={false} />
     </Card>
   );
 };
 
-OneUser.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
+OnePro.propTypes = {
+  name: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
-  dogPicture: PropTypes.string.isRequired,
-  dog: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
 };
 
-export default OneUser;
+export default OnePro;

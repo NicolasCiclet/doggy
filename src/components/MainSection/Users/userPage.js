@@ -87,7 +87,7 @@ const UserPage = () => {
 
                 <h3 className="userboard-info">{animal.gender}</h3>
 
-                <h3 className="userboard-info">{animal.sterilized}</h3>
+                <h3 className="userboard-info">{animal.sterilized ? 'Stérilisé' : 'Non stérilisé'}</h3>
 
                 <blockquote className="userboard-bio">{animal.personality}</blockquote>
               </div>

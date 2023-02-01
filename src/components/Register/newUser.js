@@ -63,7 +63,6 @@ const UserRegister = () => {
             <Form.Input
               label="Nom"
               placeholder="Nom"
-              width={5}
               onChange={(event) => {
                 dispatch(addLastnameNewUser(event.target.value));
               }}
@@ -71,15 +70,22 @@ const UserRegister = () => {
             <Form.Input
               label="Prénom"
               placeholder="Prénom"
-              width={5}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
+              }}
+            />
+          </Form.Group>
+          <Form.Group widths="equal">
+            <Form.Input
+              label="Nom d'utilisateur"
+              placeholder="Nom d'utilisateur"
+              onChange={(event) => {
+                dispatch(addUsernameNewUser(event.target.value));
               }}
             />
             <Form.Input
               label="Ville"
               placeholder="Ville"
-              width={5}
               error={cityFind ? false : {
                 content: 'Ville introuvable, merci d\'indiquer une autre ville',
               }}
@@ -90,17 +96,8 @@ const UserRegister = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
-              label="Nom d'utilisateur"
-              placeholder="Nom d'utilisateur"
-              width={5}
-              onChange={(event) => {
-                dispatch(addUsernameNewUser(event.target.value));
-              }}
-            />
-            <Form.Input
               label="Email"
               placeholder="joe@schmoe.com"
-              width={6}
               // I use a ternary condition to show or hide the error message
               error={validate(mailUser) ? false : {
                 content: 'Merci d\'entrer un email valide',
@@ -112,7 +109,6 @@ const UserRegister = () => {
             <Form.Input
               label="Téléphone"
               placeholder="Téléphone"
-              width={5}
               // Only numbers are allowed
               onKeyPress={(event) => {
                 if (!/[0-9]/.test(event.key)) {
@@ -126,7 +122,6 @@ const UserRegister = () => {
             <Form.Input
               label="Mot de passe"
               placeholder="Mot de passe"
-              width={8}
               type="password"
               error={(passwordRegex.test(passwordUser)) ? false : {
                 content: '6 caractères minimum dont 1 minuscule, 1 majuscule et 1 chiffre',
@@ -138,7 +133,6 @@ const UserRegister = () => {
             <Form.Input
               label="Confirmation Mot de passe"
               placeholder="Confirmez votre mot de passe"
-              width={8}
               type="password"
               error={(checkedPasswordUser === passwordUser) ? false : {
                 content: 'Vérifiez votre mot de passe',
@@ -164,9 +158,6 @@ const UserRegister = () => {
               options={genderOptions}
               label="Genre"
               placeholder="Genre"
-              width={8}
-              // search
-              // searchInput={{ id: 'form-select-control-gender' }}
               // Find solution here https://stackoverflow.com/questions/68496963/how-to-passe-value-from-dropdown-made-by-semantic-ui-in-react
               onChange={(event, result) => {
                 // console.log(result.value);
@@ -176,7 +167,6 @@ const UserRegister = () => {
             <Form.Input
               label="Date de naissance"
               placeholder="Date de naissance"
-              width={8}
               type="date"
               onChange={(event) => {
                 dispatch(addBirthNewUser(event.target.value));

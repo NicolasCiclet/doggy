@@ -20,6 +20,10 @@
   border-radius: 7px;
   padding: 1rem;
   // page de profil avec toutes les info
+
+  &-rightsection-desktop {
+    width: 100%;
+  }
   
   &-leftsection, &-rightsection {
     background-color: vars.$lightColor;;
