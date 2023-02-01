@@ -25,7 +25,7 @@ width: 100%;
       justify-content: space-between;
 
       .profil-buttons{
-        width: 60px;
+        width: 10%;
         .button{
           width:27px;
           margin-left: 0.4rem;
@@ -33,11 +33,12 @@ width: 100%;
       }
 
       .profil-main{
+        width: 90%;
         font-size: 0.9rem;
         display: flex;
   
         .profil-main-photo{
-          width: 40%;
+          width: 30%;
           .profil-photo{
             width: 100%;
             border-radius: 50px;
@@ -45,7 +46,7 @@ width: 100%;
         }
   
         .profil-main-infos{
-          width: 60%;
+          width: 70%;
           padding: 0 0 0.7rem 0.7rem;
   
           .info-block{
@@ -103,6 +104,7 @@ width: 100%;
 
       }
 
+      
     }
 
     .profil-info-title{
