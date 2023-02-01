@@ -2,11 +2,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import {
-  Button, Form, Message, Select, TextArea,
+  Button, Form, Icon, Message, Select, TextArea,
 } from 'semantic-ui-react';
 import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, updateDog,
-  addPersonnalityNewDog, addSterilizedNewDog, stockIdUpdateDog,
+  addPersonnalityNewDog, addSterilizedNewDog, stockIdUpdateDog, newDogCreated,
 } from '../../actions/dog';
 import { findUser } from '../../selectors/user';
 
@@ -31,7 +31,7 @@ const UpdateDog = () => {
   // console.log(currentAnimal);
 
   const dogName = useSelector((state) => state.dog.nameNewDog);
-  const userCreate = useSelector((state) => state.user.userCreate);
+  const dogCreate = useSelector((state) => state.dog.newDogCreated);
 
   const isLogged = useSelector((state) => state.user.logged);
   const navigate = useNavigate();
@@ -47,6 +47,19 @@ const UpdateDog = () => {
 
   return (
     <>
+      {/* success message when dogCreate is true */}
+      {dogCreate && (
+      <Form success className="register-success">
+        <Message
+          success
+          header={`${dogName} modifié avec succès`}
+          onDismiss={() => {
+            dispatch(newDogCreated());
+            navigate('/profile');
+          }}
+        />
+      </Form>
+      )}
       <div className="register">
         <h1>Modifier {currentAnimal.name}</h1>
 
@@ -123,24 +136,33 @@ const UpdateDog = () => {
               }}
             />
           </Form.Group>
-
-          <Form.Input
-            control={Button}
-            content="Valider"
-          />
+          <Form.Group>
+            {/* <Form.Input
+              control={Button}
+              content="Valider"
+            /> */}
+            <Button control={Button} animated="fade">
+              <Button.Content visible>Valider</Button.Content>
+              <Button.Content hidden>Valider</Button.Content>
+            </Button>
+            <Button
+              animated
+              color="red"
+              onClick={() => {
+                window.history.back();
+              }}
+            >
+              {/* // cancel button and return to previous page */}
+              <Button.Content visible>Annuler</Button.Content>
+              <Button.Content hidden>
+                <Icon name="arrow left" />
+              </Button.Content>
+            </Button>
+          </Form.Group>
         </Form>
+
       </div>
 
-      {/* success message when userCreate is true */}
-      {userCreate && (
-        <Form success className="register-success">
-          <Message
-            success
-            header="Ajout réussi"
-            content={`Bienvenue ${dogName}`}
-          />
-        </Form>
-      )}
     </>
   );
 };

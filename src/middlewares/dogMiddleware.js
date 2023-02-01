@@ -82,6 +82,9 @@ const dogMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
+          console.log('chien modifié avec succes');
+          // Use to add a success message
+          store.dispatch(newDogCreated());
         })
         .catch((error) => {
           console.log(error);
