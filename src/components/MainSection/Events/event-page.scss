@@ -6,6 +6,7 @@
   box-shadow: 1px 2px 4px black;
   border-radius: 7px;
   padding: 1rem;
+  width: 100%;
 
   .eventboard-container{
     background-color: vars.$lightColor;;
@@ -54,7 +55,8 @@
 
       .eventboard-main-photo{
         width: 100%;
-        margin: 1rem 0.5rem;
+        margin: 1rem auto;
+        max-width: 350px;
 
         .eventboard-photo {
           width: 80%;

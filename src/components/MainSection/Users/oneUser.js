@@ -41,9 +41,9 @@ OneUser.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  dogPicture: PropTypes.string.isRequired,
-  dog: PropTypes.string.isRequired,
+  picture: PropTypes.string,
+  dogPicture: PropTypes.string,
+  dog: PropTypes.string,
   id: PropTypes.number.isRequired,
 };
 

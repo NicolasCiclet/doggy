@@ -9,6 +9,7 @@ import NewMessage from '../../Register/newMessage';
 import './user-page.scss';
 import { getUserAnimals } from '../../../actions/dog';
 import { getUserEvents } from '../../../actions/event';
+import moment from 'moment';
 
 // I get the props from the spread operator
 const UserPage = () => {
@@ -20,6 +21,9 @@ const UserPage = () => {
   const isFormOpen = useSelector((state) => state.user.messFormOpen);
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
+
+  const date = event.eventDate;
+  const frenchDate = moment(date).locale('fr').format('LLLL');
 
   useEffect(() => {
     if (isLogged) {
@@ -111,7 +115,7 @@ const UserPage = () => {
                   <span className="userboard-info">{event.name}</span>
 
                   <h3 className="userboard-info-title">Date:</h3>
-                  <span className="userboard-info">{event.eventDate}</span>
+                  <span className="userboard-info">{moment(event.event).locale('fr').format('LLLL')}</span>
 
                 </div>
               </div>
