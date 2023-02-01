@@ -196,7 +196,7 @@ const Profil = () => {
               </div>
             </div>
             <div className="profil-buttons">
-              <Link to="/profile/update/animal">
+              <Link to={`/profile/update/animal/${animal.id}`}>
                 <img className="button" src={editButton} alt="edit" />
               </Link>
               <img
@@ -257,7 +257,7 @@ const Profil = () => {
               </div>
             </div>
             <div className="profil-buttons">
-              <Link to="/profile/update/event">
+              <Link to={`/profile/update/event/${onEvent.id}`}>
                 <img className="button" src={editButton} alt="edit" />
               </Link>
               <img

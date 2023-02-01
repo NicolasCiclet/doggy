@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import {
   Button, Form, Message, Select, TextArea,
@@ -8,6 +8,7 @@ import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, updateDog,
   addPersonnalityNewDog, addSterilizedNewDog,
 } from '../../actions/dog';
+import { findUser } from '../../selectors/user';
 
 import './register.scss';
 
@@ -23,6 +24,12 @@ const genderOptions = [
 
 const UpdateDog = () => {
   const dispatch = useDispatch();
+
+  // to get the dog that has to be modified
+  const { id } = useParams();
+  const currentAnimal = useSelector((state) => findUser(state.dog.connectedAnimals, id));
+  console.log(currentAnimal);
+
   const dogName = useSelector((state) => state.dog.nameNewDog);
   const userCreate = useSelector((state) => state.user.userCreate);
 
@@ -35,12 +42,10 @@ const UpdateDog = () => {
     }
   }, [isLogged]);
 
-  // ! Récupérer le chien concerné et mettre ses infos en placeholder
-
   return (
     <>
       <div className="register">
-        <h1>Modifier mon chien</h1>
+        <h1>Modifier {currentAnimal.name}</h1>
 
         <Form onSubmit={(event) => {
           event.preventDefault();
@@ -52,7 +57,7 @@ const UpdateDog = () => {
           <Form.Group widths="equal">
             <Form.Input
               label="Nom"
-              placeholder="Nom"
+              placeholder={currentAnimal.name}
               width={5}
               onChange={(event) => {
                 // console.log(`change : ${event.target.value}`);
@@ -61,7 +66,7 @@ const UpdateDog = () => {
             />
             <Form.Input
               label="Race"
-              placeholder="Race"
+              placeholder={currentAnimal.species}
               width={5}
               onChange={(event) => {
                 dispatch(addBreedNewDog(event.target.value));
@@ -72,7 +77,7 @@ const UpdateDog = () => {
             <Form.Input
               label="Personnalité"
               control={TextArea}
-              placeholder="Personnalité"
+              placeholder={currentAnimal.personality}
               width={8}
               onChange={(event) => {
                 dispatch(addPersonnalityNewDog(event.target.value));
