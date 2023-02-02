@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import moment from 'moment';
 import { useParams, useNavigate } from 'react-router-dom';
 import { isMessFormOpened, stockIdWatchedUser } from '../../../actions/user';
 
@@ -9,7 +10,6 @@ import NewMessage from '../../Register/newMessage';
 import './user-page.scss';
 import { getUserAnimals } from '../../../actions/dog';
 import { getUserEvents } from '../../../actions/event';
-import moment from 'moment';
 
 // I get the props from the spread operator
 const UserPage = () => {

@@ -27,6 +27,8 @@ export const STOCK_USER_ANIMALS = 'STOCK_USER_ANIMALS';
 
 // To confirm user animals has been created
 export const NEW_DOG_CREATED = 'NEW_DOG_CREATED';
+// To confirm user animals has been deleted
+export const NEW_DOG_DELETED = 'NEW_DOG_DELETED';
 
 // To stock id of update dog
 export const STOCK_ID_UPDATE_DOG = 'STOCK_ID_UPDATE_DOG';
@@ -103,4 +105,8 @@ export const newDogCreated = () => ({
 export const stockIdUpdateDog = (id) => ({
   type: STOCK_ID_UPDATE_DOG,
   id: id,
+});
+
+export const newDogDeleted = () => ({
+  type: NEW_DOG_DELETED,
 });
