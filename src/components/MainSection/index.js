@@ -8,7 +8,7 @@ import RandomUser from './Users/randomUser';
 import RandomEvent from './Events/randomEvent';
 import AllPro from './Professional/allPro';
 import './main-section.scss';
-import AllWalks from './Walks/allWalks';
+import AllItineraries from './Itineraries/allItineraries';
 
 const MainSection = () => {
   // const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const MainSection = () => {
         {isLogged && (main === 'meeting') && (<AllUsers />)}
         {isLogged && (main === 'event') && (<AllEvents />)}
         {isLogged && (main === 'professional') && (<AllPro />)}
-        {isLogged && (main === 'walk') && (<AllWalks />)}
+        {isLogged && (main === 'itinerary') && (<AllItineraries />)}
 
         {(main === '') && <RandomUser />}
         {(main === '') && <RandomEvent />}

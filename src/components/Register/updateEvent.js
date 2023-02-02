@@ -9,17 +9,12 @@ import {
   titleNewEvent, stockIdUpdateEvent,
 } from '../../actions/event';
 import { findUser } from '../../selectors/user';
+import { getAllItineraries } from '../../actions/itinerary';
 
 import './register.scss';
 
 // New Event FORM
 const NewEvent = () => {
-  // I use map to loop over all our locations, and pass the const to my input select
-  const allPlace = useSelector((state) => state.event.eventsToDisplay);
-  const placeOptions = allPlace.map((place) => (
-    { text: place.name, value: place.id }
-  ));
-
   // to get the event that has to be modified
   const { id } = useParams();
   // This function has been created for user, but it can be used in the same way for another entity
@@ -35,11 +30,19 @@ const NewEvent = () => {
   useEffect(() => {
     if (isLogged) {
       dispatch(stockIdUpdateEvent(currentEvent.id));
+      dispatch(getAllItineraries());
     }
     else {
       navigate('/');
     }
   }, [isLogged]);
+
+  // I use map to loop over all our locations, and pass the const to my input select
+  const allPlace = useSelector((state) => (state.itinerary.itinerariesApi));
+  // console.log(allPlace);
+  const placeOptions = allPlace.map((place) => (
+    { text: place.name, value: place.id }
+  ));
 
   return (
     <>

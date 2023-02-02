@@ -18,8 +18,8 @@ const FullMenu = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
-        to="/walk"
-        onClick={() => dispatch(changeMain('walk'))}
+        to="/itinerary"
+        onClick={() => dispatch(changeMain('itinerary'))}
       >
         Balade
       </NavLink>

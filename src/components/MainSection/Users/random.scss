@@ -30,15 +30,17 @@ h1 {
 
 // Container with description on the picture
 .carousel .overlay {
-  width: 80%;
+  width: 75%;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 10%;
   padding: 0.4rem 1.5rem;
-  text-align: left;
+  text-align: center;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
+  font-size: 0.7rem;
+  border-radius: 10px;
 
 }
 .carousel .overlay__title {

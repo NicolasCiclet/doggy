@@ -1,25 +1,41 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Button, Form, Message, Select, TextArea,
 } from 'semantic-ui-react';
 import {
-  dateNewEvent, describNewEvent, newEventCreated, placeNewEvent, submitFormNewEvent, titleNewEvent,
+  dateNewEvent, describNewEvent, newEventCreated, placeNewEvent,
+  submitFormNewEvent, titleNewEvent,
 } from '../../actions/event';
 
 import './register.scss';
+import { getAllItineraries } from '../../actions/itinerary';
 
 // New Event FORM
 const NewEvent = () => {
-  // I use map to loop over all our locations, and pass the const to my input select
-  const allPlace = useSelector((state) => state.event.eventsToDisplay);
-  const placeOptions = allPlace.map((place) => (
-    { text: place.name, value: place.id }
-  ));
+  const isLogged = useSelector((state) => state.user.logged);
   const eventCreate = useSelector((state) => state.event.newEventCreated);
   const eventName = useSelector((state) => state.event.titleNewEvent);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isLogged) {
+      dispatch(getAllItineraries());
+    }
+    else {
+      navigate('/');
+    }
+  }, [isLogged]);
+
+  // I use map to loop over all our locations, and pass the const to my input select
+  const allPlace = useSelector((state) => (state.itinerary.itinerariesApi));
+  // console.log(allPlace);
+  const placeOptions = allPlace.map((place) => (
+    { text: place.name, value: place.id }
+  ));
+
   return (
     <>
       {/* success message when eventCreate is true */}

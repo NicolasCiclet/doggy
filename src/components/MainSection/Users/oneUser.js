@@ -26,7 +26,16 @@ const OneUser = (
         ui={false}
       />
       <Card.Content>
-        <Link to={`/user/${id}`}>
+        <Link
+          to={`/user/${id}`}
+          onClick={() => {
+            window.scrollTo({
+              top: 150,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
           <p className="card-name">{firstname}</p>
           <p className="card-info1">{city}</p>
           <p className="card-info2">{dog}</p>

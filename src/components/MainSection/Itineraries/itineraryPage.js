@@ -5,20 +5,20 @@ import picture from 'src/data/chien-rando.jpg';
 
 import { findUser } from '../../../selectors/user';
 
-// import './walk-page.scss';
+// import './itinerary-page.scss';
 
 // I get the props from the spread operator
-const WalkPage = () => {
+const ItineraryPage = () => {
   const { id } = useParams();
   const url = useSelector((state) => state.nav.url);
   // This function has been created for user, but it can be used in the same way for another entity
-  const walk = useSelector((state) => findUser(state.walk.walksApi, id));
+  const itinerary = useSelector((state) => findUser(state.itinerary.itinerariesApi, id));
 
   return (
     <div className="eventboard">
       <div className="eventboard-container">
         <div className="eventboard-header">
-          <h1 className="eventboard-h1">{walk.name}</h1>
+          <h1 className="eventboard-h1">{itinerary.name}</h1>
         </div>
         <div className="eventboard-main">
           <div className="eventboard-main-photo">
@@ -27,10 +27,10 @@ const WalkPage = () => {
           <div className="eventboard-main-infos">
 
             <h2 className="eventboard-info-title">Description:</h2>
-            <span className="eventboard-info">{walk.description}</span>
+            <span className="eventboard-info">{itinerary.description}</span>
 
             <h2 className="eventboard-info-title">Longueur:</h2>
-            <span className="eventboard-info">{walk.length}</span>
+            <span className="eventboard-info">{itinerary.length}</span>
 
           </div>
         </div>
@@ -39,4 +39,4 @@ const WalkPage = () => {
   );
 };
 
-export default WalkPage;
+export default ItineraryPage;

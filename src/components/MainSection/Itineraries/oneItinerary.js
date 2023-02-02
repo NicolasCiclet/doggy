@@ -8,7 +8,7 @@ import { Card, Image } from 'semantic-ui-react';
 import { isSelected } from '../../../actions/map';
 
 // I get the props from the spread operator
-const OneWalk = (
+const OneItinerary = (
   {
     description, id, length, name,
   },
@@ -23,7 +23,7 @@ const OneWalk = (
     >
       <Image src={picture} wrapped ui={false} />
       <Card.Content>
-        <Link to={`/walk/${id}`}>
+        <Link to={`/itinerary/${id}`}>
           <p className="card-name">{name}</p>
           <p className="card-info1">{description}</p>
           <p className="card-info2">{length}</p>
@@ -34,11 +34,11 @@ const OneWalk = (
 };
 
 // we check each props
-OneWalk.propTypes = {
+OneItinerary.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  length: PropTypes.string.isRequired,
+  length: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
 };
 
-export default OneWalk;
+export default OneItinerary;

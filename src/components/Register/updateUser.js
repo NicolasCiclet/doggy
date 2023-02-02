@@ -8,7 +8,7 @@ import { validate } from 'react-email-validator';
 import { updateCityApi } from '../../actions/city';
 import {
   addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser,
-  addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser,
+  addGenderNewUser, addLastnameNewUser, addMailNewUser, addNewUser, addPasswordNewUser,
   addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser,
 } from '../../actions/user';
 import './register.scss';
@@ -30,7 +30,6 @@ const UpdateUser = () => {
     }
   }, [isLogged]);
 
-  const name = useSelector((state) => state.user.usernameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
   const mailUser = useSelector((state) => state.user.mailNewUser);
   const passwordUser = useSelector((state) => state.user.passwordNewUser);
@@ -62,6 +61,19 @@ const UpdateUser = () => {
 
   return (
     <>
+      {/* success message when eventCreate is true */}
+      {userCreate && (
+        <Form success className="register-success">
+          <Message
+            success
+            header="Profil modifié avec succès"
+            onDismiss={() => {
+              dispatch(addNewUser());
+              navigate('/profile');
+            }}
+          />
+        </Form>
+      )}
       {/* the form is visible only if userCreate is false */}
       {!userCreate && (
       <div className="register">
@@ -218,19 +230,6 @@ const UpdateUser = () => {
         </Form>
 
       </div>
-      )}
-
-      {/* success message when userCreate is true */}
-      {userCreate && (
-        <Form success className="register-success">
-          <Message
-            success
-            header="Inscription réussi"
-            content={`Bienvenue ${name}`}
-            // // {setTimeout(<Navigate to="/error" replace={true} />, 3000)}
-            // {/* <Navigate to="/error" replace={true} /> */}
-          />
-        </Form>
       )}
     </>
   );

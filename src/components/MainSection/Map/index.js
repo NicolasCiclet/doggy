@@ -32,7 +32,7 @@ const icon3 = L.icon({
 const Map = () => {
   // const dispatch = useDispatch();
   // const events = useSelector((state) => state.event.eventsToDisplay);
-  const walks = useSelector((state) => state.walk.walksApi);
+  const itineraries = useSelector((state) => state.itinerary.itinerariesApi);
   const users = useSelector((state) => state.user.usersApi);
   const markerSelected = useSelector((state) => state.map.nameSelected);
 
@@ -76,19 +76,19 @@ const Map = () => {
 
           <LayersControl.Overlay
           // I get the name of the page to show or hide the markers
-            checked={main === 'walk'}
-            name="Walks"
+            checked={main === 'itinerary'}
+            name="Itineraries"
           >
             <FeatureGroup>
               {/* I map on events to display all markers */}
-              {walks.map((walk) => (
+              {itineraries.map((itinerary) => (
                 <Marker
-                  position={[walk.location.latitude, walk.location.longitude]}
-                  icon={(walk.name === markerSelected) ? icon4 : icon1}
-                  key={walk.id}
+                  position={[itinerary.location.latitude, itinerary.location.longitude]}
+                  icon={(itinerary.name === markerSelected) ? icon4 : icon1}
+                  key={itinerary.id}
                 >
                   <Popup>
-                    {walk.name}
+                    {itinerary.name}
                   </Popup>
                 </Marker>
               ))}

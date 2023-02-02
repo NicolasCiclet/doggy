@@ -26,7 +26,7 @@ import EventPage from '../MainSection/Events/eventPage';
 import { getRandomUserInfo } from '../../actions/user';
 import Loader from '../MainSection/Loader';
 import ProPage from '../MainSection/Professional/proPage';
-import WalkPage from '../MainSection/Walks/walkPage';
+import ItineraryPage from '../MainSection/Itineraries/itineraryPage';
 
 // == Composant
 function App() {
@@ -47,11 +47,11 @@ function App() {
         <Route path="/" element={<MainSection />} />
         <Route path="/meeting" element={<MainSection />} />
         <Route path="/event" element={<MainSection />} />
-        <Route path="/walk" element={<MainSection />} />
+        <Route path="/itinerary" element={<MainSection />} />
         <Route path="/professional" element={<MainSection />} />
         <Route path="/connexion" element={<Connect />} />
         <Route path="/register" element={<UserRegister />} />
-        <Route path="/profile/update/user" element={<UpdateUser />} />
+        <Route path="/profile/update/user/:id" element={<UpdateUser />} />
         <Route path="/profile/update/animal/:id" element={<UpdateDog />} />
         <Route path="/profile/update/event/:id" element={<UpdateEvent />} />
         <Route path="/register/dog" element={<DogRegister />} />
@@ -63,7 +63,7 @@ function App() {
         <Route path="/user/:id" element={<UserPage />} />
         <Route path="/event/:id" element={<EventPage />} />
         <Route path="/professional/:id" element={<ProPage />} />
-        <Route path="/walk/:id" element={<WalkPage />} />
+        <Route path="/itinerary/:id" element={<ItineraryPage />} />
       </Routes>
 
       <Footer />

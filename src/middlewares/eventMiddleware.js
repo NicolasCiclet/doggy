@@ -23,6 +23,7 @@ const eventMiddleware = (store) => (next) => (action) => {
           description: store.getState().event.describNewEvent,
           eventDate: store.getState().event.dateNewEvent,
           picture: 'events/default.svg',
+          itinerary: store.getState().event.placeNewEvent,
         },
         {
           headers: {
@@ -67,6 +68,7 @@ const eventMiddleware = (store) => (next) => (action) => {
           description: store.getState().event.describNewEvent,
           eventDate: store.getState().event.dateNewEvent,
           picture: store.getState().event.pictureNewEvent,
+          itinerary: store.getState().event.placeNewEvent,
         },
         {
           headers: {

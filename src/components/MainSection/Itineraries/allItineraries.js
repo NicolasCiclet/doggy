@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Card } from 'semantic-ui-react';
-import { getAllWalk } from '../../../actions/walk';
-import OneWalk from './oneWalk';
+import { getAllItineraries } from '../../../actions/itinerary';
+import OneItinerary from './oneItinerary';
 
-const AllWalks = () => {
+const AllItineraries = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllWalk());
+    dispatch(getAllItineraries());
   }, []);
 
-  const walks = useSelector((state) => state.walk.walksApi);
+  const itineraries = useSelector((state) => state.itinerary.itinerariesApi);
   return (
     <div className="all-users">
       <h2 className="cards_title">Les balades proches de chez vous</h2>
@@ -20,8 +20,8 @@ const AllWalks = () => {
       <Card.Group itemsPerRow={3}>
         {
           // I use map and a spread operator to have access to all properties
-          walks.map((walk) => (
-            <OneWalk key={walk.id} {...walk} />
+          itineraries.map((itinerary) => (
+            <OneItinerary key={itinerary.id} {...itinerary} />
           ))
         }
       </Card.Group>
@@ -29,4 +29,4 @@ const AllWalks = () => {
   );
 };
 
-export default AllWalks;
+export default AllItineraries;
