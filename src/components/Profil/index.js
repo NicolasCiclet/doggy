@@ -2,9 +2,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import { Form, Message } from 'semantic-ui-react';
 import { showDeleteUser, showLink } from '../../actions/user';
-import { getConnectedAnimals, showDeleteDog } from '../../actions/dog';
-import { getConnectedEvents, showDeleteEvent } from '../../actions/event';
+import {
+  getConnectedAnimals, showDeleteDog, stockIdUpdateDog, newDogDeleted,
+} from '../../actions/dog';
+import {
+  getConnectedEvents, showDeleteEvent, stockIdUpdateEvent, newEventDeleted,
+} from '../../actions/event';
 
 import Userdelete from './Userdelete';
 import Dogdelete from './Dogdelete';
@@ -28,6 +33,9 @@ const Profil = () => {
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
   console.log(isLogged);
+  // To know if a dog or a event as been deleted
+  const dogDeleted = useSelector((state) => state.dog.dogDeleted);
+  const eventDeleted = useSelector((state) => state.event.eventDeleted);
 
   // If the user is connected, I get his info in BDD using his email
 
@@ -39,7 +47,7 @@ const Profil = () => {
     else {
       navigate('/');
     }
-  }, [isLogged]);
+  }, [isLogged, dogDeleted, eventDeleted]);
 
   // To get connected user infos that are save in the state
   const lastname = useSelector((state) => state.user.lastnameNewUser);
@@ -167,51 +175,68 @@ const Profil = () => {
       </div>
       <div className="profil-section" id="mes-animaux">
         <h1 className="profil-h1">Mes animaux</h1>
-        { animals.map((animal) => (
-          <div key={animal.id} className="profil-header">
-            <div className="profil-main">
-              <div className="profil-main-photo">
-                <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
+        {dogDeleted && (
+          <Form success className="register-success">
+            <Message
+              success
+              header="Animal supprimé avec succès"
+              onDismiss={() => {
+                dispatch(newDogDeleted());
+                navigate('/profile');
+              }}
+            />
+          </Form>
+        )}
+        {!dogDeleted && (
+          <>
+            { animals.map((animal) => (
+              <div key={animal.id} className="profil-header">
+                <div className="profil-main">
+                  <div className="profil-main-photo">
+                    <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
+                  </div>
+                  <div className="profil-main-infos">
+                    <div className="info-block">
+                      <h3 className="profil-info-title">Nom:</h3>
+                      <span className="profil-info">{animal.name}</span>
+                    </div>
+                    <div className="info-block">
+                      <h3 className="profil-info-title">Race:</h3>
+                      <span className="profil-info">{animal.species}</span>
+                    </div>
+                    <div className="info-block">
+                      <h3 className="profil-info-title">Sexe:</h3>
+                      <span className="profil-info">{animal.gender}</span>
+                    </div>
+                    <div className="info-block">
+                      <h3 className="profil-info-title">Stérilisé:</h3>
+                      <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
+                    </div>
+                    <div className="info-block-line">
+                      <h3 className="profil-info-title">Personnalité:</h3>
+                      <span className="profil-info">{animal.personality}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="profil-buttons">
+                  <Link to={`/profile/update/animal/${animal.id}`}>
+                    <img className="button" src={editButton} alt="edit" />
+                  </Link>
+                  <img
+                    className="button"
+                    src={deleteButton}
+                    alt="delete"
+                    onClick={() => {
+                      dispatch(stockIdUpdateDog(animal.id));
+                      dispatch(showDeleteDog());
+                    }}
+                  />
+                  <Dogdelete />
+                </div>
               </div>
-              <div className="profil-main-infos">
-                <div className="info-block">
-                  <h3 className="profil-info-title">Nom:</h3>
-                  <span className="profil-info">{animal.name}</span>
-                </div>
-                <div className="info-block">
-                  <h3 className="profil-info-title">Race:</h3>
-                  <span className="profil-info">{animal.species}</span>
-                </div>
-                <div className="info-block">
-                  <h3 className="profil-info-title">Sexe:</h3>
-                  <span className="profil-info">{animal.gender}</span>
-                </div>
-                <div className="info-block">
-                  <h3 className="profil-info-title">Stérilisé:</h3>
-                  <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
-                </div>
-                <div className="info-block-line">
-                  <h3 className="profil-info-title">Personnalité:</h3>
-                  <span className="profil-info">{animal.personality}</span>
-                </div>
-              </div>
-            </div>
-            <div className="profil-buttons">
-              <Link to={`/profile/update/animal/${animal.id}`}>
-                <img className="button" src={editButton} alt="edit" />
-              </Link>
-              <img
-                className="button"
-                src={deleteButton}
-                alt="delete"
-                onClick={() => {
-                  dispatch(showDeleteDog());
-                }}
-              />
-              <Dogdelete />
-            </div>
-          </div>
-        ))}
+            ))}
+          </>
+        )}
         <div className="new-event">
           <NavLink
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
@@ -236,43 +261,60 @@ const Profil = () => {
         {/* Aller chercher dans la BDD les événements liés à l'utilisateur
         et faire un map dessus */}
         <h1 className="profil-h1">Mes événements</h1>
-        { events.map((onEvent) => (
-          <div key={onEvent.id} className="profil-header">
-            <div className="profil-main">
-              <div className="profil-main-photo">
-                <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${onEvent.picture}`} alt="evenement" />
+        {eventDeleted && (
+          <Form success className="register-success">
+            <Message
+              success
+              header="Evenement supprimé avec succès"
+              onDismiss={() => {
+                dispatch(newEventDeleted());
+                navigate('/profile');
+              }}
+            />
+          </Form>
+        )}
+        {!eventDeleted && (
+          <>
+            { events.map((onEvent) => (
+              <div key={onEvent.id} className="profil-header">
+                <div className="profil-main">
+                  <div className="profil-main-photo">
+                    <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${onEvent.picture}`} alt="evenement" />
+                  </div>
+                  <div className="profil-main-infos">
+                    <div className="info-block">
+                      <h3 className="profil-info-title">Nom:</h3>
+                      <span className="profil-info">{onEvent.name}</span>
+                    </div>
+                    <div className="info-block">
+                      <h3 className="profil-info-title">Date:</h3>
+                      <span className="profil-info">{onEvent.eventDate}</span>
+                    </div>
+                    <div className="info-block-line">
+                      <h3 className="profil-info-title">Description:</h3>
+                      <span className="profil-info">{onEvent.description}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="profil-buttons">
+                  <Link to={`/profile/update/event/${onEvent.id}`}>
+                    <img className="button" src={editButton} alt="edit" />
+                  </Link>
+                  <img
+                    className="button"
+                    src={deleteButton}
+                    alt="delete"
+                    onClick={() => {
+                      dispatch(stockIdUpdateEvent(onEvent.id));
+                      dispatch(showDeleteEvent());
+                    }}
+                  />
+                  <Eventdelete />
+                </div>
               </div>
-              <div className="profil-main-infos">
-                <div className="info-block">
-                  <h3 className="profil-info-title">Nom:</h3>
-                  <span className="profil-info">{onEvent.name}</span>
-                </div>
-                <div className="info-block">
-                  <h3 className="profil-info-title">Date:</h3>
-                  <span className="profil-info">{onEvent.eventDate}</span>
-                </div>
-                <div className="info-block-line">
-                  <h3 className="profil-info-title">Description:</h3>
-                  <span className="profil-info">{onEvent.description}</span>
-                </div>
-              </div>
-            </div>
-            <div className="profil-buttons">
-              <Link to={`/profile/update/event/${onEvent.id}`}>
-                <img className="button" src={editButton} alt="edit" />
-              </Link>
-              <img
-                className="button"
-                src={deleteButton}
-                alt="delete"
-                onClick={() => {
-                  dispatch(showDeleteEvent());
-                }}
-              />
-              <Eventdelete />
-            </div>
-          </div>
-        ))}
+            ))}
+          </>
+        )}
         <div className="new-event">
           <NavLink
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}

@@ -2,7 +2,7 @@ import events from 'src/data/eventForTest';
 import {
   SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT,
   STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS, NEW_EVENT_CREATED, STOCK_ALL_EVENTS,
-  STOCK_ID_UPDATE_EVENT,
+  STOCK_ID_UPDATE_EVENT, NEW_EVENT_DELETED,
 } from '../actions/event';
 
 const initialState = {
@@ -24,6 +24,9 @@ const initialState = {
 
   // To display or not the delete pop-up
   eventDelete: false,
+
+  // only use to show or hide succes message when event is delete
+  eventDeleted: false,
 
   // update or delete event id
   updateId: 0,
@@ -93,6 +96,12 @@ const eventReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         updateId: action.id,
+      };
+
+    case NEW_EVENT_DELETED:
+      return {
+        ...state,
+        eventDeleted: !state.eventDeleted,
       };
 
     default:

@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT, GET_CONNECTED_EVENTS,
   stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS, newEventCreated,
-  stockAllEvents,
+  stockAllEvents, newEventDeleted,
 } from '../actions/event';
 import { displayLoader } from '../actions/user';
 
@@ -45,17 +45,24 @@ const eventMiddleware = (store) => (next) => (action) => {
       break;
 
     case DELETE_EVENT:
-      console.log('suppression événement');
-      // axios.delete(
-      // url api fournir par Chrichri,
-      // )
-      //   .then((response) => {
-      //     console.log(response);
-      //     console.log('logout back ok');
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
+      console.log('suppression event');
+      axios.delete(
+        `${url}api/events/${eventId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+          console.log('événement supprimé avec succes');
+          // Use to add a delete message
+          store.dispatch(newEventDeleted());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       break;
 

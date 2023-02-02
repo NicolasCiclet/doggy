@@ -2,7 +2,7 @@ import {
   SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG,
   ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG, STOCK_CONNECTED_ANIMALS,
   STOCK_USER_ANIMALS, STOCK_ID_UPDATE_DOG,
-  NEW_DOG_CREATED,
+  NEW_DOG_CREATED, NEW_DOG_DELETED,
 } from '../actions/dog';
 
 const initialState = {
@@ -18,6 +18,9 @@ const initialState = {
 
   // only use to show or hide succes message
   newDogCreated: false,
+
+  // only use to show or hide succes message
+  dogDeleted: false,
 
   // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
   dogDelete: false,
@@ -97,6 +100,13 @@ const dogReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         updateId: action.id,
+      };
+
+      // when new dog is deleted, value pass true
+    case NEW_DOG_DELETED:
+      return {
+        ...state,
+        dogDeleted: !state.dogDeleted,
       };
 
     default:

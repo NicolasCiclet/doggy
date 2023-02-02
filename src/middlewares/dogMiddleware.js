@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
   UPDATE_DOG, DELETE_DOG, ADD_NEW_DOG, GET_CONNECTED_ANIMALS, stockConnectedAnimals,
-  GET_USER_ANIMALS, stockUserAnimals, newDogCreated,
+  GET_USER_ANIMALS, stockUserAnimals, newDogCreated, newDogDeleted,
 } from '../actions/dog';
 
 const dogMiddleware = (store) => (next) => (action) => {
@@ -48,16 +48,23 @@ const dogMiddleware = (store) => (next) => (action) => {
 
     case DELETE_DOG:
       console.log('suppression du chien');
-      // axios.delete(
-      // url api fournir par Chrichri,
-      // )
-      //   .then((response) => {
-      //     console.log(response);
-      //     console.log('logout back ok');
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
+      axios.delete(
+        `${url}api/animals/${animalId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+          console.log('chien supprimé avec succes');
+          // Use to add a delete message
+          store.dispatch(newDogDeleted());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       break;
 
