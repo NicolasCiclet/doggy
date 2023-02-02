@@ -15,6 +15,7 @@ import { submitLogin, updateSettingsField } from '../../actions/user';
 import MainSection from '../MainSection';
 
 import './connect.scss';
+import { showError } from '../../actions/nav';
 
 const Connect = () => {
   // I set up my controlled fields for mail and password
@@ -52,6 +53,7 @@ const Connect = () => {
           onSubmit={(event) => {
             event.preventDefault();
             dispatch(submitLogin());
+            dispatch(showError(false));
           }}
         >
           <Field

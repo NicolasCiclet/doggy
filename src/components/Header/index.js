@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import headerLogo from './header_logo.svg';
 import './header.scss';
 import { logOut } from '../../actions/user';
-import { changeMain } from '../../actions/nav';
+import { changeMain, showError } from '../../actions/nav';
 
 // == Composant
 function Header() {
@@ -12,10 +12,14 @@ function Header() {
   const logged = useSelector((state) => state.user.logged);
 
   return (
+
     <div className="header-main">
       <Link
         to="/"
-        onClick={() => dispatch(changeMain(''))}
+        onClick={() => {
+          dispatch(changeMain(''));
+          dispatch(showError(false));
+        }}
       >
         <div className="header-logo">
           <h1>dO'ggy</h1>
@@ -50,6 +54,7 @@ function Header() {
         )}
       </div>
     </div>
+    
   );
 }
 
