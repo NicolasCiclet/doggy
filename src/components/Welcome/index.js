@@ -1,9 +1,13 @@
 // import
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Form, Message } from 'semantic-ui-react';
+import { userDeleted } from '../../actions/user';
 import './welcome.scss';
 
 // == Composant Welcome : this purpose is to display a welcome message and the last user registered
 function Welcome() {
+  const dispatch = useDispatch();
+  const userDelete = useSelector((state) => state.user.userDeleted);
   // I create my array with all my users and an empty object for my lastUser
   const users = useSelector((state) => state.user.usersToDisplay);
   let lastUser = {};
@@ -23,19 +27,32 @@ function Welcome() {
   findMaxId(users);
 
   return (
-    <div className="welcome">
-      <div className="welcome-message">
-        <h2 className="welcome-message-title">Bienvenue sur dO'ggy</h2>
-        <p className="welcome-message-content">
-          Découvrez les chemins de promenades à côté de chez vous
-          et rencontrez d'autres passionnés avec qui échanger lors de moments de partage.
-        </p>
+    <>
+      { userDelete && (
+        <Form success className="register-success">
+          <Message
+            success
+            header="Profil supprimé avec succès"
+            onDismiss={() => {
+              dispatch(userDeleted());
+            }}
+          />
+        </Form>
+      )}
+      <div className="welcome">
+        <div className="welcome-message">
+          <h2 className="welcome-message-title">Bienvenue sur dO'ggy</h2>
+          <p className="welcome-message-content">
+            Découvrez les chemins de promenades à côté de chez vous
+            et rencontrez d'autres passionnés avec qui échanger lors de moments de partage.
+          </p>
+        </div>
+        <div className="welcome-newUser">
+          <aside className="welcome-newUser-content">Bienvenue à {lastUser.firstname}, notre dernier membre inscrit !</aside>
+          <img className="welcome-newUser-avatar" src={lastUser.userPicture} alt="New user avatar" />
+        </div>
       </div>
-      <div className="welcome-newUser">
-        <aside className="welcome-newUser-content">Bienvenue à {lastUser.firstname}, notre dernier membre inscrit !</aside>
-        <img className="welcome-newUser-avatar" src={lastUser.userPicture} alt="New user avatar" />
-      </div>
-    </div>
+    </>
   );
 }
 

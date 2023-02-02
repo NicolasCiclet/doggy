@@ -58,6 +58,9 @@ export const DISPLAY_LOADER = 'DISPLAY_LOADER';
 // To show or hide error message connexion
 export const ERROR_CONNEXION = 'ERROR_CONNEXION';
 
+// When user profil is deleted
+export const USER_DELETED = 'USER_DELETED';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -237,4 +240,8 @@ export const stockIdWatchedUser = (id) => ({
 
 export const errorConnexion = () => ({
   type: ERROR_CONNEXION,
+});
+
+export const userDeleted = () => ({
+  type: USER_DELETED,
 });

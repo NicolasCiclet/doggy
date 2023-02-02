@@ -33,7 +33,7 @@ const Profil = () => {
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
   console.log(isLogged);
-  // To know if a dog or a event as been deleted
+  // To know if a dog, a event or a user as been deleted
   const dogDeleted = useSelector((state) => state.dog.dogDeleted);
   const eventDeleted = useSelector((state) => state.event.eventDeleted);
 

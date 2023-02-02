@@ -8,7 +8,7 @@ import {
 
   ADD_CHECKED_PASSWORD_NEW_USER, SHOW_DELETE_USER, DISPLAY_INFO_CONNECTED_USER,
   IS_MESS_FORM_OPENED, DISPLAY_RANDOM_USER_INFO, DISPLAY_LOADER, STOCK_USERS,
-  STOCK_ID_WATCHED_USER, ERROR_CONNEXION,
+  STOCK_ID_WATCHED_USER, ERROR_CONNEXION, USER_DELETED,
 
 } from '../actions/user';
 
@@ -46,6 +46,9 @@ const initialState = {
 
   // pour afficher ou non la pop up de demande de confirmation pour la suppression dans le profil
   userDelete: false,
+
+  // To display the succes message when a user is deleted and logout him
+  userDeleted: false,
 
   // pour afficher ou non le menu burger de la page profil
   showLink: false,
@@ -262,6 +265,13 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         watchId: action.id,
+      };
+
+    // To display the succes message when a user is deleted and logout him
+    case USER_DELETED:
+      return {
+        ...state,
+        userDeleted: !state.userDeleted,
       };
 
     default:

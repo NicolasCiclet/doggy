@@ -5,7 +5,7 @@ import {
 
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
   GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS,
-  stockUsers, getUserInfo, errorConnexion,
+  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut,
 
 } from '../actions/user';
 
@@ -118,17 +118,25 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case DELETE_USER:
-      console.log('suppression du user');
-      // axios.delete(
-      // url api fournir par Chrichri,
-      // )
-      //   .then((response) => {
-      //     console.log(response);
-      //     console.log('logout back ok');
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //   });
+      console.log('suppression du compte réussie');
+      axios.delete(
+        `${url}api/users/current`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response);
+          console.log('suppression du compte réussie');
+          // Use to add a delete message
+          store.dispatch(userDeleted());
+          store.dispatch(logOut());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       break;
 
