@@ -32,6 +32,8 @@ export const STOCK_USER_EVENTS = 'STOCK_USER_EVENTS';
 
 // To confirm user event has been created
 export const NEW_EVENT_CREATED = 'NEW_EVENT_CREATED';
+// To confirm user event has been deleted
+export const NEW_EVENT_DELETED = 'NEW_EVENT_DELETED';
 
 // To stock id of update event
 export const STOCK_ID_UPDATE_EVENT = 'STOCK_ID_UPDATE_EVENT';
@@ -108,4 +110,8 @@ export const newEventCreated = () => ({
 export const stockIdUpdateEvent = (id) => ({
   type: STOCK_ID_UPDATE_EVENT,
   id: id,
+});
+
+export const newEventDeleted = () => ({
+  type: NEW_EVENT_DELETED,
 });
