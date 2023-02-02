@@ -8,6 +8,7 @@
  * @return {Object} - user find
  */
 
+// This function has been created for user, but it can be used in the same way for another entity
 // with this function I pass 2 arguments (the array and the id)
 // I use find on array to find the user that matches with this id
 export function findUser(users, searchedId) {

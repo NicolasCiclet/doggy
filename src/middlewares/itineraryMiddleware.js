@@ -7,7 +7,9 @@ const itineraryMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case GET_ALL_ITINERARIES:
+      console.log('appel api back itineraires');
 
+      // I send the request
       axios.get(
         `${url}api/itineraries/`,
         {
@@ -16,14 +18,21 @@ const itineraryMiddleware = (store) => (next) => (action) => {
           },
         },
       )
+      // Wait for the response
         .then((response) => {
           console.log(response.data.results);
-          console.log('all events recup');
+          console.log('all itineraries recup');
           const allItineraries = response.data.results;
           store.dispatch(stockAllItineraries(allItineraries));
         })
+        // What to do in case of error
         .catch((error) => {
           console.log(error);
+          console.log('itineraire non trouvé');
+        })
+
+        // to do in any case
+        .finally(() => {
         });
 
       break;

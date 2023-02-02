@@ -18,7 +18,7 @@ const icon1 = L.icon({
 });
 const icon4 = L.icon({
   iconUrl: markerIconYellow,
-  iconSize: [45, 50],
+  iconSize: [45, 53],
 });
 const icon2 = L.icon({
   iconUrl: markerIconRed,
@@ -26,12 +26,13 @@ const icon2 = L.icon({
 });
 const icon3 = L.icon({
   iconUrl: markerIconRed,
-  iconSize: [45, 50],
+  iconSize: [45, 53],
 });
 
 const Map = () => {
   // const dispatch = useDispatch();
-  const events = useSelector((state) => state.event.eventsToDisplay);
+  // const events = useSelector((state) => state.event.eventsToDisplay);
+  const itineraries = useSelector((state) => state.itinerary.itinerariesApi);
   const users = useSelector((state) => state.user.usersApi);
   const markerSelected = useSelector((state) => state.map.nameSelected);
 
@@ -75,19 +76,19 @@ const Map = () => {
 
           <LayersControl.Overlay
           // I get the name of the page to show or hide the markers
-            checked={main === 'event'}
-            name="Events"
+            checked={main === 'itinerary'}
+            name="Itineraries"
           >
             <FeatureGroup>
               {/* I map on events to display all markers */}
-              {events.map((event) => (
+              {itineraries.map((itinerary) => (
                 <Marker
-                  position={[event.lat, event.lng]}
-                  icon={(event.name === markerSelected) ? icon4 : icon1}
-                  key={event.id}
+                  position={[itinerary.location.latitude, itinerary.location.longitude]}
+                  icon={(itinerary.name === markerSelected) ? icon4 : icon1}
+                  key={itinerary.id}
                 >
                   <Popup>
-                    {event.name} <br /> {event.difficulty}
+                    {itinerary.name}
                   </Popup>
                 </Marker>
               ))}
