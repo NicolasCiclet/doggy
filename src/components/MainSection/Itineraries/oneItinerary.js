@@ -23,7 +23,16 @@ const OneItinerary = (
     >
       <Image src={picture} wrapped ui={false} />
       <Card.Content>
-        <Link to={`/itinerary/${id}`}>
+        <Link
+          to={`/itinerary/${id}`}
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
           <p className="card-name">{name}</p>
           <p className="card-info1">{description}</p>
           <p className="card-info2">{length}</p>
