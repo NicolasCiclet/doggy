@@ -26,7 +26,16 @@ const OneEvent = (
     >
       <Image src={`${url}assets/images/${picture}`} wrapped ui={false} />
       <Card.Content>
-        <Link to={`/event/${id}`}>
+        <Link
+          to={`/event/${id}`}
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
           <p className="card-name">{name}</p>
           <p className="card-info1">{description}</p>
           <p className="card-info2">{frenchDate}</p>

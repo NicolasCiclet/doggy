@@ -26,7 +26,16 @@ const OnePro = (
         ui={false}
       />
       <Card.Content>
-        <Link to={`/professional/${id}`}>
+        <Link
+          to={`/professional/${id}`}
+          onClick={() => {
+            window.scrollTo({
+              top: 0,
+              left: 0,
+              behavior: 'smooth',
+            });
+          }}
+        >
           <p className="card-name">{name}</p>
           <p className="card-info1">{city}</p>
         </Link>

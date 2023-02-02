@@ -88,7 +88,9 @@ const Map = () => {
                   key={itinerary.id}
                 >
                   <Popup>
-                    {itinerary.name}
+                    <Link to={`/itinerary/${itinerary.id}`}>
+                      {itinerary.name}
+                    </Link>
                   </Popup>
                 </Marker>
               ))}
