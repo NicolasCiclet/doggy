@@ -20,7 +20,7 @@ const navReducer = (state = initialState, action = {}) => {
     case SHOW_ERROR:
       return {
         ...state,
-        showError: !state.showError,
+        showError: action.value,
       };
 
     default:

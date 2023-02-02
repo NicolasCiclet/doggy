@@ -18,7 +18,7 @@ function Header() {
         to="/"
         onClick={() => {
           dispatch(changeMain(''));
-          dispatch(showError());
+          dispatch(showError(false));
         }}
       >
         <div className="header-logo">

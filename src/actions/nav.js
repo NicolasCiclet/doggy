@@ -11,6 +11,7 @@ export const changeMain = (value) => ({
 });
 
 // action to show or hide error 404 page
-export const showError = () => ({
+export const showError = (bool) => ({
   type: SHOW_ERROR,
+  value: bool,
 });

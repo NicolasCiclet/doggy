@@ -7,7 +7,7 @@ import './error.scss';
 const Error = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(showError());
+    dispatch(showError(true));
   }, []);
   return (
     <div className="error-page">
