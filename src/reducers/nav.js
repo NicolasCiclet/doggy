@@ -1,4 +1,4 @@
-import { CHANGE_MAIN } from '../actions/nav';
+import { CHANGE_MAIN, SHOW_ERROR } from '../actions/nav';
 
 const initialState = {
   // url de l'api de Christophe
@@ -6,6 +6,7 @@ const initialState = {
 
   // To display the differents mains section
   main: '',
+  showError: false,
 };
 
 const navReducer = (state = initialState, action = {}) => {
@@ -14,6 +15,12 @@ const navReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         main: action.newValue,
+      };
+
+    case SHOW_ERROR:
+      return {
+        ...state,
+        showError: !state.showError,
       };
 
     default:
