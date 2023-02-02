@@ -1,0 +1,116 @@
+@use 'src/styles/vars';
+
+.about{
+  text-align: center;
+
+  .about-content{
+    .about-content-h1{
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: vars.$darkColor;
+      margin:1.5rem auto;
+    }
+    .about-content-h2{
+      margin:1.5rem auto;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.1rem;
+      color: vars.$darkColor;
+    }
+    .about-content-p{
+      margin:1rem auto;
+      .heart{
+        font-size: 2rem;
+        padding: 0 .5rem;
+        animation: beat 1s infinite, cameleonize 15s infinite ;
+      }
+    }
+  }
+
+  .about-photo{
+    padding: 0.2rem;
+    margin: auto 1rem;
+    
+    .about-photo-img{
+      width: 100%;
+      border-radius: 7px;
+    }
+  }
+}
+
+strong{
+  font-weight: 700;
+}
+
+li{
+  margin: 0.3rem auto;
+}
+
+@keyframes cameleonize {
+  0%,55% {
+      color: yellowgreen;
+  }
+
+  15%, 45% {
+      color: #F0F;
+  }
+
+  25%,65% {
+      color: #00ccff;
+  }
+
+  35%, 100% {
+      color: yellow;
+  }
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .about{
+    .about-content{
+      .about-content-h1{
+        font-size: 1.7rem;
+        margin:2rem auto;
+      }
+      .about-content-h2{
+        margin:2rem auto 1.5rem auto;
+        font-size: 1.4rem;
+      }
+      .about-content-p{
+        font-size: 1.1rem;
+        margin: 1.3rem auto;
+      }
+    }
+  }
+  
+  li{
+    margin: 0.5rem auto;
+  }
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .about{
+    display: flex;
+    text-align: left;
+  
+    .about-content{
+      width: 50%;
+      .about-content-h1{
+        text-align: center;
+      }
+      .about-content-h2{
+        text-align: center;
+      }
+    }
+  
+    .about-photo{
+      width: 50%;
+    }
+  }
+  
+  li{
+    margin: 0.7rem auto;
+  }
+}
