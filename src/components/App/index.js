@@ -27,11 +27,13 @@ import { getRandomUserInfo } from '../../actions/user';
 import Loader from '../MainSection/Loader';
 import ProPage from '../MainSection/Professional/proPage';
 import ItineraryPage from '../MainSection/Itineraries/itineraryPage';
+import Error from '../Error';
 
 // == Composant
 function App() {
   const logged = useSelector((state) => state.user.logged);
   const loader = useSelector((state) => state.user.dislpayLoader);
+  const isError = useSelector((state) => state.nav.showError);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRandomUserInfo());
@@ -40,9 +42,10 @@ function App() {
     // Here is the main div, with all components
     <div className="app">
       <Header />
-      <Menu />
+      {!isError && <Menu />}
       {loader && (<Loader />)}
-      {!logged && (<Welcome />)}
+      {(!logged && !isError) && (<Welcome />)}
+
       <Routes>
         <Route path="/" element={<MainSection />} />
         <Route path="/meeting" element={<MainSection />} />
@@ -64,6 +67,7 @@ function App() {
         <Route path="/event/:id" element={<EventPage />} />
         <Route path="/professional/:id" element={<ProPage />} />
         <Route path="/itinerary/:id" element={<ItineraryPage />} />
+        <Route path="*" element={<Error />} />
       </Routes>
 
       <Footer />
