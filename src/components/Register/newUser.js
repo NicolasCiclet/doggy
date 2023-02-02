@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
-  Button, Form, Message, Select, TextArea,
+  Button, Form, Select, TextArea,
 } from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
 import { getCityApi } from '../../actions/city';
@@ -19,13 +21,19 @@ const genderOptions = [
 
 const UserRegister = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const name = useSelector((state) => state.user.usernameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
   const mailUser = useSelector((state) => state.user.mailNewUser);
   const passwordUser = useSelector((state) => state.user.passwordNewUser);
   const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);
+
+  useEffect(() => {
+    if (userCreate) {
+      navigate('/');
+    }
+  }, [userCreate]);
 
   /* I use regex to check password, here is an explication of my rules :
   ^ The password string will start this way and must contain :
@@ -188,17 +196,6 @@ const UserRegister = () => {
         </Form>
 
       </div>
-      )}
-
-      {/* success message when userCreate is true */}
-      {userCreate && (
-        <Form success className="register-success">
-          <Message
-            success
-            header="Inscription réussi"
-            content={`Bienvenue ${name}`}
-          />
-        </Form>
       )}
     </>
   );

@@ -1,13 +1,15 @@
 // import
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Message } from 'semantic-ui-react';
-import { userDeleted } from '../../actions/user';
+import { addNewUser, userDeleted } from '../../actions/user';
 import './welcome.scss';
 
 // == Composant Welcome : this purpose is to display a welcome message and the last user registered
 function Welcome() {
   const dispatch = useDispatch();
   const userDelete = useSelector((state) => state.user.userDeleted);
+  const name = useSelector((state) => state.user.usernameNewUser);
+  const userCreate = useSelector((state) => state.user.userCreate);
   // I create my array with all my users and an empty object for my lastUser
   const users = useSelector((state) => state.user.usersToDisplay);
   let lastUser = {};
@@ -28,6 +30,19 @@ function Welcome() {
 
   return (
     <>
+      {/* success message when userCreate is true */}
+      {userCreate && (
+        <Form success className="register-success">
+          <Message
+            success
+            header={`Inscription Réussie - Bienvenue ${name}`}
+            content="Vous pouvez maintenant vous connecter"
+            onDismiss={() => {
+              dispatch(addNewUser());
+            }}
+          />
+        </Form>
+      )}
       { userDelete && (
         <Form success className="register-success">
           <Message
