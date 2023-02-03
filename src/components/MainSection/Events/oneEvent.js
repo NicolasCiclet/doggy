@@ -47,7 +47,6 @@ const OneEvent = (
 // we check each props
 OneEvent.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
   eventDate: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,

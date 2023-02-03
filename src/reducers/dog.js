@@ -2,7 +2,7 @@ import {
   SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG,
   ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG, STOCK_CONNECTED_ANIMALS,
   STOCK_USER_ANIMALS, STOCK_ID_UPDATE_DOG,
-  NEW_DOG_CREATED, NEW_DOG_DELETED,
+  NEW_DOG_CREATED, NEW_DOG_DELETED, CHANGE_SEXE_DOG,
 } from '../actions/dog';
 
 const initialState = {
@@ -27,6 +27,9 @@ const initialState = {
 
   // update or delete dog id
   updateId: 0,
+
+  // to filter on the dog gender
+  dogGender: '',
 };
 
 const dogReducer = (state = initialState, action = {}) => {
@@ -107,6 +110,12 @@ const dogReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         dogDeleted: !state.dogDeleted,
+      };
+
+    case CHANGE_SEXE_DOG:
+      return {
+        ...state,
+        dogGender: action.gender,
       };
 
     default:

@@ -61,6 +61,9 @@ const initialState = {
   // id of watched user
   watchId: 0,
 
+  // to open or close filter window
+  showFilter: true,
+
 };
 
 const userReducer = (state = initialState, action = {}) => {
