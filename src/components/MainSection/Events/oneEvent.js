@@ -9,7 +9,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneEvent = (
   {
-    description, id, eventDate, name, picture,
+    id, eventDate, name, picture,
   },
 ) => {
   const dispatch = useDispatch();
@@ -37,7 +37,6 @@ const OneEvent = (
           }}
         >
           <p className="card-name">{name}</p>
-          <p className="card-info1">{description}</p>
           <p className="card-info2">{frenchDate}</p>
         </Link>
       </Card.Content>
