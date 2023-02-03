@@ -72,6 +72,11 @@ h2{
   }
 }
 
+.filter-or{
+  margin-left: 3rem;
+  font-weight: bold;
+}
+
 .filter{
   background-color: #EFEDEC;
   border-radius: 10px;
@@ -90,8 +95,11 @@ h2{
       padding: 0.8rem;
     }
   }
+
   .filter-options{
     display: flex;
+    align-items: baseline;
+    justify-content: space-around;
 
     .filter-option{
       width: 25%;
