@@ -1,9 +1,11 @@
-import { STOCK_ALL_ITINERARIES } from '../actions/itinerary';
+import { STOCK_ALL_ITINERARIES, CHANGE_DIFFICULTY } from '../actions/itinerary';
 
 const initialState = {
   // all itineraries
   itinerariesApi: [],
 
+  // filter on difficulty
+  difficulty: '',
 };
 
 const itinerariesReducer = (state = initialState, action = {}) => {
@@ -12,6 +14,12 @@ const itinerariesReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         itinerariesApi: action.allItineraries,
+      };
+
+    case CHANGE_DIFFICULTY:
+      return {
+        ...state,
+        difficulty: action.difficulty,
       };
 
     default:
