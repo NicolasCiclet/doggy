@@ -1,10 +1,13 @@
+import PropTypes from 'prop-types';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Form, Select, TextArea } from 'semantic-ui-react';
+import { userSendMessage } from '../../actions/message';
 
 import './message.scss';
 
 // New Message FORM
-const NewMessage = () => {
+const NewMessage = ({ idUser }) => {
   const dispatch = useDispatch();
   return (
     <section className="new-message">
@@ -22,9 +25,9 @@ const NewMessage = () => {
             className="add-new-event-description"
             control={TextArea}
             placeholder="Votre message..."
-            // onChange={(event) => {
-            //   dispatch(describNewEvent(event.target.value));
-            // }}
+            onChange={(event) => {
+              dispatch(userSendMessage(event.target.value, idUser));
+            }}
           />
           {/* Input for submit */}
           <Form.Input
@@ -36,6 +39,10 @@ const NewMessage = () => {
       </div>
     </section>
   );
+};
+
+NewMessage.propTypes = {
+  idUser: PropTypes.number.isRequired,
 };
 
 export default NewMessage;

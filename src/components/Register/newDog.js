@@ -54,6 +54,7 @@ const DogRegister = () => {
 
           <Form.Group widths="equal">
             <Form.Input
+              required
               label="Nom"
               placeholder="Nom"
               width={5}
@@ -82,6 +83,7 @@ const DogRegister = () => {
               }}
             />
             <Form.Input
+              required
               control={Select}
               options={genderOptions}
               label="Genre"

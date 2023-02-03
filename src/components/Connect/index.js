@@ -86,7 +86,7 @@ const Connect = () => {
           <button type="submit" className="settings-submit">Login</button>
         </form>
       </div>
-      <MainSection />
+      {/* <MainSection /> */}
     </>
   );
 };

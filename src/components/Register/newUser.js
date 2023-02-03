@@ -68,6 +68,7 @@ const UserRegister = () => {
           {/* with Form.group we have input on the same line or 1 input by line with responsive */}
           <Form.Group widths="equal">
             <Form.Input
+              required
               label="Nom"
               placeholder="Nom"
               onChange={(event) => {
@@ -75,6 +76,7 @@ const UserRegister = () => {
               }}
             />
             <Form.Input
+              required
               label="Prénom"
               placeholder="Prénom"
               onChange={(event) => {
@@ -84,6 +86,7 @@ const UserRegister = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
+              required
               label="Nom d'utilisateur"
               placeholder="Nom d'utilisateur"
               onChange={(event) => {
@@ -91,6 +94,7 @@ const UserRegister = () => {
               }}
             />
             <Form.Input
+              required
               label="Ville"
               placeholder="Ville"
               error={cityFind ? false : {
@@ -103,6 +107,7 @@ const UserRegister = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
+              required
               label="Email"
               placeholder="joe@schmoe.com"
               // I use a ternary condition to show or hide the error message
@@ -127,6 +132,7 @@ const UserRegister = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
+              required
               label="Mot de passe"
               placeholder="Mot de passe"
               type="password"
@@ -138,6 +144,7 @@ const UserRegister = () => {
               }}
             />
             <Form.Input
+              required
               label="Confirmation Mot de passe"
               placeholder="Confirmez votre mot de passe"
               type="password"
@@ -188,8 +195,9 @@ const UserRegister = () => {
               dispatch(addBioNewUser(event.target.value));
             }}
           />
-
+          <Form.Checkbox label="J'accepte les termes et conditions" />
           <Form.Input
+            required
             control={Button}
             content="Valider"
           />

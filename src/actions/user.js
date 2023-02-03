@@ -61,6 +61,7 @@ export const ERROR_CONNEXION = 'ERROR_CONNEXION';
 // When user profil is deleted
 export const USER_DELETED = 'USER_DELETED';
 
+//
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,

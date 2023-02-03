@@ -8,6 +8,7 @@ import mapReducer from './map';
 import navReducer from './nav';
 import proReducer from './pro';
 import itineraryReducer from './itinerary';
+import messageReducer from './message';
 
 const rootReducer = combineReducers({
   city: cityReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   nav: navReducer,
   pro: proReducer,
   itinerary: itineraryReducer,
+  message: messageReducer,
 });
 
 export default rootReducer;
