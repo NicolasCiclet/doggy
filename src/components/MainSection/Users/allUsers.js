@@ -23,13 +23,13 @@ const AllUsers = () => {
   const filter = useSelector((state) => state.user.showFilter);
   // user gender save in the state and modified by filter
   const gender = useSelector((state) => state.user.userGender);
-  console.log(gender);
+  // console.log(gender);
 
   // filter on users by dog gender
   if (gender !== '') {
     // eslint-disable-next-line max-len
     users = users.filter((user) => (user.gender === gender));
-    console.log(users);
+    // console.log(users);
   }
 
   return (
@@ -66,10 +66,10 @@ const AllUsers = () => {
               radio
               label="Homme"
               name="checkboxRadioGroup"
-              value="Mâle"
-              checked={gender === 'Mâle'}
+              value="Homme"
+              checked={gender === 'Homme'}
               onChange={() => {
-                dispatch(changeSexeUser('Mâle'));
+                dispatch(changeSexeUser('Homme'));
               }}
             />
           </Form.Field>
@@ -78,10 +78,22 @@ const AllUsers = () => {
               radio
               label="Femme"
               name="checkboxRadioGroup"
-              value="Femelle"
-              checked={gender === 'Femelle'}
+              value="Femme"
+              checked={gender === 'Femme'}
               onChange={() => {
-                dispatch(changeSexeUser('Femelle'));
+                dispatch(changeSexeUser('Femme'));
+              }}
+            />
+          </Form.Field>
+          <Form.Field className="filter-option">
+            <Checkbox
+              radio
+              label="Autre"
+              name="checkboxRadioGroup"
+              value="Autre"
+              checked={gender === 'Autre'}
+              onChange={() => {
+                dispatch(changeSexeUser('Autre'));
               }}
             />
           </Form.Field>

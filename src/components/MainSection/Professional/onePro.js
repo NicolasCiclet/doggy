@@ -8,7 +8,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OnePro = (
   {
-    city, picture, id, name,
+    city, picture, id, name, category,
   },
 ) => {
   const dispatch = useDispatch();
@@ -37,6 +37,7 @@ const OnePro = (
           }}
         >
           <p className="card-name">{name}</p>
+          <p className="card-name">{category.name}</p>
           <p className="card-info1">{city}</p>
         </Link>
       </Card.Content>
@@ -49,6 +50,7 @@ OnePro.propTypes = {
   city: PropTypes.string.isRequired,
   picture: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  category: PropTypes.object.isRequired,
 };
 
 export default OnePro;
