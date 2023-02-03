@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, Form, Select, TextArea } from 'semantic-ui-react';
+import { useDispatch } from 'react-redux';
+import { Button, Form, TextArea } from 'semantic-ui-react';
 import { userSendMessage } from '../../actions/message';
 
 import './message.scss';

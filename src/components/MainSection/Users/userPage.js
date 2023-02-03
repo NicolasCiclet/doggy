@@ -22,9 +22,6 @@ const UserPage = () => {
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
 
-  const date = event.eventDate;
-  const frenchDate = moment(date).locale('fr').format('LLLL');
-
   useEffect(() => {
     if (isLogged) {
       dispatch(stockIdWatchedUser(user.id));
