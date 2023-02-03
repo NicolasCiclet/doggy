@@ -55,8 +55,21 @@
   }
 }
 
+
 h2{
   margin-bottom: 1rem;
+}
+
+.all-users{
+  .filter-button{
+    margin-left: 1rem;
+  }
+}
+
+.all-events{
+  .filter-button{
+    margin-left: 1rem;
+  }
 }
 
 .filter{
@@ -81,7 +94,7 @@ h2{
     display: flex;
 
     .filter-option{
-      width: 33%;
+      width: 25%;
     }
   }
 }

@@ -31,6 +31,7 @@ const AllEvents = () => {
       <h2 className="cards_title">Les événements proches de chez vous</h2>
       {!filter && (
       <Button
+        className="filter-button"
         type="button"
         onClick={() => {
           dispatch(showEventFilter());
@@ -87,6 +88,18 @@ const AllEvents = () => {
               checked={difficulty === 'Difficile'}
               onChange={() => {
                 dispatch(changeEventDifficulty('Difficile'));
+              }}
+            />
+          </Form.Field>
+          <Form.Field className="filter-option">
+            <Checkbox
+              radio
+              label="Tous"
+              name="checkboxRadioGroup"
+              value=""
+              checked={difficulty === ''}
+              onChange={() => {
+                dispatch(changeEventDifficulty(''));
               }}
             />
           </Form.Field>

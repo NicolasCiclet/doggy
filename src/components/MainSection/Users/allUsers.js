@@ -39,6 +39,7 @@ const AllUsers = () => {
       {!filter && (
       <Button
         type="button"
+        className="filter-button"
         onClick={() => {
           dispatch(showUserFilter());
         }}
@@ -94,6 +95,18 @@ const AllUsers = () => {
               checked={gender === 'Autre'}
               onChange={() => {
                 dispatch(changeSexeUser('Autre'));
+              }}
+            />
+          </Form.Field>
+          <Form.Field className="filter-option">
+            <Checkbox
+              radio
+              label="Tous"
+              name="checkboxRadioGroup"
+              value=""
+              checked={gender === ''}
+              onChange={() => {
+                dispatch(changeSexeUser(''));
               }}
             />
           </Form.Field>
