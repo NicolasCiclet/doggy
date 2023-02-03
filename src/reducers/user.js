@@ -61,6 +61,11 @@ const initialState = {
   // id of watched user
   watchId: 0,
 
+  // Info for form contact us
+  contactName: '',
+  contactMail: '',
+  contactMessage: '',
+
 };
 
 const userReducer = (state = initialState, action = {}) => {
