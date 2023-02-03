@@ -9,6 +9,7 @@ import eventMiddleware from '../middlewares/eventMiddleware';
 import dogMiddleware from '../middlewares/dogMiddleware';
 import proMiddleware from '../middlewares/proMiddleware';
 import itineraryMiddleware from '../middlewares/itineraryMiddleware';
+import messageMiddleware from '../middlewares/messageMiddleware';
 
 // il nous faut un outil plus puissant qui permet de combiner les dev tools
 // avec autre chose (ici avec des middlewares)
@@ -20,6 +21,7 @@ const enhancers = composeWithDevTools(
     dogMiddleware,
     proMiddleware,
     itineraryMiddleware,
+    messageMiddleware,
   ),
 );
 

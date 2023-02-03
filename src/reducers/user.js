@@ -67,6 +67,11 @@ const initialState = {
   // to filter on the user gender
   userGender: '',
 
+  // Info for form contact us
+  contactName: '',
+  contactMail: '',
+  contactMessage: '',
+
 };
 
 const userReducer = (state = initialState, action = {}) => {

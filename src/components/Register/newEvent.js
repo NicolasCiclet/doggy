@@ -62,6 +62,7 @@ const NewEvent = () => {
         >
           {/* Input for title */}
           <Form.Input
+            required
             label="Titre"
             placeholder="Titre de l'évènement"
             onChange={(event) => {
@@ -70,6 +71,7 @@ const NewEvent = () => {
           />
           {/* Inputs for time */}
           <Form.Input
+            required
             label="Date"
             placeholder="Date"
             type="datetime-local"

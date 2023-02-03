@@ -56,4 +56,10 @@ OneUser.propTypes = {
   id: PropTypes.number.isRequired,
 };
 
+OneUser.defaultProps = {
+  picture: '',
+  dogPicture: '',
+  dog: '',
+};
+
 export default OneUser;
