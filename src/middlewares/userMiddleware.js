@@ -246,7 +246,7 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log('récupérer tous les users');
 
       axios.get(
-        `${url}api/users/`,
+        `${url}api/users/family`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,

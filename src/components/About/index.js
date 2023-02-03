@@ -11,8 +11,9 @@ const About = () => (
       </p>
       <h2 className="about-content-h2">dO'ggy : pourquoi ?</h2>
       <p className="about-content-p">
-        Lorsqu'on acquiert un chien, on se retrouve face à nombre de <strong>problématiques </strong>
-        et responsabilités en termes <strong>d'éducation et de soin</strong>.
+        Lorsqu'on acquiert un chien, on se retrouve face à nombre de
+        <strong> problématiques</strong> et responsabilités en termes
+        <strong> d'éducation et de soin</strong>.
       </p>
       <p>
         On peut se sentir seul et démuni face à certaines d'entre elles, comme la sociabilisation

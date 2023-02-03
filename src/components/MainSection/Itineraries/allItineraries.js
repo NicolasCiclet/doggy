@@ -11,6 +11,7 @@ const AllItineraries = () => {
   }, []);
 
   const itineraries = useSelector((state) => state.itinerary.itinerariesApi);
+  console.log(itineraries);
   return (
     <div className="all-users">
       <h2 className="cards_title">Les balades proches de chez vous</h2>
