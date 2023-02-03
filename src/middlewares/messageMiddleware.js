@@ -15,7 +15,7 @@ const messageMiddleware = (store) => (next) => (action) => {
         {
           title: 'test de titre en dur',
           content: store.getState().message.userNewMessage,
-          destinataire: store.getState().message.userId,
+          recipient: store.getState().message.userId,
         },
         {
           headers: {
