@@ -33,6 +33,9 @@ export const NEW_DOG_DELETED = 'NEW_DOG_DELETED';
 // To stock id of update dog
 export const STOCK_ID_UPDATE_DOG = 'STOCK_ID_UPDATE_DOG';
 
+// To change the value of dog gender in the state
+export const CHANGE_SEXE_DOG = 'CHANGE_SEXE_DOG';
+
 // Dog actions
 export const addNameNewDog = (value) => ({
   type: ADD_NAME_NEW_DOG,
@@ -109,4 +112,9 @@ export const stockIdUpdateDog = (id) => ({
 
 export const newDogDeleted = () => ({
   type: NEW_DOG_DELETED,
+});
+
+export const changeSexeDog = (gender) => ({
+  type: CHANGE_SEXE_DOG,
+  gender: gender,
 });

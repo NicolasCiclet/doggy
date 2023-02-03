@@ -35,6 +35,7 @@ const AllItineraries = () => {
       <h2 className="cards_title">Les balades proches de chez vous</h2>
       {!filter && (
       <Button
+        className="filter-button"
         type="button"
         onClick={() => {
           dispatch(showFilter());
@@ -91,6 +92,18 @@ const AllItineraries = () => {
               checked={difficulty === 'Difficile'}
               onChange={() => {
                 dispatch(changeDifficulty('Difficile'));
+              }}
+            />
+          </Form.Field>
+          <Form.Field className="filter-option">
+            <Checkbox
+              radio
+              label="Tous"
+              name="checkboxRadioGroup"
+              value=""
+              checked={difficulty === ''}
+              onChange={() => {
+                dispatch(changeDifficulty(''));
               }}
             />
           </Form.Field>

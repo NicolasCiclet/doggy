@@ -9,7 +9,7 @@ const ProPage = () => {
   const url = useSelector((state) => state.nav.url);
   // This function has been created for user, but it can be used in the same way for another entity
   const professional = useSelector((state) => findUser(state.pro.professionalsApi, id));
-  console.log(professional);
+  // console.log(professional);
 
   return (
     <div className="eventboard">
@@ -23,8 +23,12 @@ const ProPage = () => {
           </div>
           <div className="eventboard-main-infos">
 
-            {/* <h2 className="eventboard-info-title">Description:</h2>
-            <span className="eventboard-info">{professional.description}</span> */}
+            <h2 className="eventboard-info-title">Profession:</h2>
+            <span className="eventboard-info">{professional.category.name} -</span>
+            <span className="eventboard-info"> {professional.category.description}</span>
+
+            <h2 className="eventboard-info-title">Ville:</h2>
+            <span className="eventboard-info">{professional.city}</span>
 
           </div>
         </div>

@@ -55,8 +55,21 @@
   }
 }
 
+
 h2{
   margin-bottom: 1rem;
+}
+
+.all-users{
+  .filter-button{
+    margin-left: 1rem;
+  }
+}
+
+.all-events{
+  .filter-button{
+    margin-left: 1rem;
+  }
 }
 
 .filter{
@@ -70,7 +83,7 @@ h2{
     justify-content: space-between;
     font-size: 1rem;
     font-weight: 700;
-    padding: 0.5rem 0 1rem 0;
+    padding: 0.5rem 0 0.5rem 0;
 
     .filter-button{
       border-radius: 60px;
@@ -81,7 +94,7 @@ h2{
     display: flex;
 
     .filter-option{
-      width: 33%;
+      width: 25%;
     }
   }
 }

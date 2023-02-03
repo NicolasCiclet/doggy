@@ -61,7 +61,12 @@ export const ERROR_CONNEXION = 'ERROR_CONNEXION';
 // When user profil is deleted
 export const USER_DELETED = 'USER_DELETED';
 
-//
+// To change the value of user gender in the state
+export const CHANGE_SEXE_USER = 'CHANGE_SEXE_USER';
+
+// To open the filter window
+export const SHOW_USER_FILTER = 'SHOW_USER_FILTER';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -245,4 +250,13 @@ export const errorConnexion = () => ({
 
 export const userDeleted = () => ({
   type: USER_DELETED,
+});
+
+export const changeSexeUser = (gender) => ({
+  type: CHANGE_SEXE_USER,
+  gender: gender,
+});
+
+export const showUserFilter = () => ({
+  type: SHOW_USER_FILTER,
 });

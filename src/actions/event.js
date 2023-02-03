@@ -38,6 +38,12 @@ export const NEW_EVENT_DELETED = 'NEW_EVENT_DELETED';
 // To stock id of update event
 export const STOCK_ID_UPDATE_EVENT = 'STOCK_ID_UPDATE_EVENT';
 
+// To change the value of event difficulty in the state
+export const CHANGE_EVENT_DIFFICULTY = 'CHANGE_EVENT_DIFFICULTY';
+
+// To open the filter window
+export const SHOW_EVENT_FILTER = 'SHOW_EVENT_FILTER';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -114,4 +120,13 @@ export const stockIdUpdateEvent = (id) => ({
 
 export const newEventDeleted = () => ({
   type: NEW_EVENT_DELETED,
+});
+
+export const changeEventDifficulty = (difficulty) => ({
+  type: CHANGE_EVENT_DIFFICULTY,
+  difficulty: difficulty,
+});
+
+export const showEventFilter = () => ({
+  type: SHOW_EVENT_FILTER,
 });
