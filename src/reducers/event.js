@@ -3,6 +3,7 @@ import {
   SHOW_DELETE_EVENT, DATE_NEW_EVENT, DESCRIB_NEW_EVENT, PLACE_NEW_EVENT, TITLE_NEW_EVENT,
   STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS, NEW_EVENT_CREATED, STOCK_ALL_EVENTS,
   STOCK_ID_UPDATE_EVENT, NEW_EVENT_DELETED, CHANGE_EVENT_DIFFICULTY, SHOW_EVENT_FILTER,
+  CHANGE_EVENT_ITINERARY,
 } from '../actions/event';
 
 const initialState = {
@@ -33,6 +34,9 @@ const initialState = {
 
   // filter on difficulty of the event
   difficulty: '',
+
+  // filter on itinerary name of the event
+  itinerary: '',
 
   // To open or close the filter window
   showFilter: false,
@@ -114,6 +118,12 @@ const eventReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         difficulty: action.difficulty,
+      };
+
+    case CHANGE_EVENT_ITINERARY:
+      return {
+        ...state,
+        itinerary: action.itinerary,
       };
 
     case SHOW_EVENT_FILTER:

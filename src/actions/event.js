@@ -41,6 +41,9 @@ export const STOCK_ID_UPDATE_EVENT = 'STOCK_ID_UPDATE_EVENT';
 // To change the value of event difficulty in the state
 export const CHANGE_EVENT_DIFFICULTY = 'CHANGE_EVENT_DIFFICULTY';
 
+// To change the value of event itinerary in the state
+export const CHANGE_EVENT_ITINERARY = 'CHANGE_EVENT_ITINERARY';
+
 // To open the filter window
 export const SHOW_EVENT_FILTER = 'SHOW_EVENT_FILTER';
 
@@ -125,6 +128,11 @@ export const newEventDeleted = () => ({
 export const changeEventDifficulty = (difficulty) => ({
   type: CHANGE_EVENT_DIFFICULTY,
   difficulty: difficulty,
+});
+
+export const changeEventItinerary = (itinerary) => ({
+  type: CHANGE_EVENT_ITINERARY,
+  itinerary: itinerary,
 });
 
 export const showEventFilter = () => ({
