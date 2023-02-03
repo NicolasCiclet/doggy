@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import picture from 'src/data/chien-rando.jpg';
@@ -10,7 +10,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneItinerary = (
   {
-    description, id, length, name,
+    difficulty, id, length, name,
   },
 ) => {
   const dispatch = useDispatch();
@@ -34,8 +34,8 @@ const OneItinerary = (
           }}
         >
           <p className="card-name">{name}</p>
-          <p className="card-info1">{description}</p>
-          <p className="card-info2">{length}</p>
+          <p className="card-info1">{difficulty.name}</p>
+          <p className="card-info2">{length} m</p>
         </Link>
       </Card.Content>
     </Card>
@@ -45,9 +45,9 @@ const OneItinerary = (
 // we check each props
 OneItinerary.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
+  difficulty: PropTypes.object.isRequired,
 };
 
 export default OneItinerary;

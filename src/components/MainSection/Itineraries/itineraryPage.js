@@ -10,7 +10,6 @@ import { findUser } from '../../../selectors/user';
 // I get the props from the spread operator
 const ItineraryPage = () => {
   const { id } = useParams();
-  const url = useSelector((state) => state.nav.url);
   // This function has been created for user, but it can be used in the same way for another entity
   const itinerary = useSelector((state) => findUser(state.itinerary.itinerariesApi, id));
 
@@ -26,11 +25,15 @@ const ItineraryPage = () => {
           </div>
           <div className="eventboard-main-infos">
 
+            <h2 className="eventboard-info-title">Difficulté:</h2>
+            <span className="eventboard-info">{itinerary.difficulty.name} -</span>
+            <span className="eventboard-info"> {itinerary.difficulty.description}</span>
+
             <h2 className="eventboard-info-title">Description:</h2>
             <span className="eventboard-info">{itinerary.description}</span>
 
             <h2 className="eventboard-info-title">Longueur:</h2>
-            <span className="eventboard-info">{itinerary.length}</span>
+            <span className="eventboard-info">{itinerary.length} m</span>
 
           </div>
         </div>
