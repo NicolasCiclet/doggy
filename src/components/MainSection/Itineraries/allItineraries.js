@@ -10,10 +10,19 @@ const AllItineraries = () => {
     dispatch(getAllItineraries());
   }, []);
 
-  const itineraries = useSelector((state) => state.itinerary.itinerariesApi);
+  // All initeraries
+  let itineraries = useSelector((state) => state.itinerary.itinerariesApi);
   console.log(itineraries);
 
+  // difficulty save in the state and modified by filter
   const difficulty = useSelector((state) => state.itinerary.difficulty);
+
+  // filter on itineraries by difficulty
+  if (difficulty !== '') {
+    // eslint-disable-next-line max-len
+    itineraries = itineraries.filter((itinerary) => (itinerary.difficulty.name === difficulty));
+    console.log(itineraries);
+  }
 
   return (
     <>
@@ -25,36 +34,36 @@ const AllItineraries = () => {
           <Form.Field>
             <Checkbox
               radio
-              label="facile"
+              label="Facile"
               name="checkboxRadioGroup"
               value="facile"
-              checked={difficulty === 'facile'}
+              checked={difficulty === 'Facile'}
               onChange={() => {
-                dispatch(changeDifficulty('facile'));
+                dispatch(changeDifficulty('Facile'));
               }}
             />
           </Form.Field>
           <Form.Field>
             <Checkbox
               radio
-              label="moyen"
+              label="Moyen"
               name="checkboxRadioGroup"
               value="moyen"
-              checked={difficulty === 'moyen'}
+              checked={difficulty === 'Moyen'}
               onChange={() => {
-                dispatch(changeDifficulty('moyen'));
+                dispatch(changeDifficulty('Moyen'));
               }}
             />
           </Form.Field>
           <Form.Field>
             <Checkbox
               radio
-              label="difficile"
+              label="Difficile"
               name="checkboxRadioGroup"
               value="difficile"
-              checked={difficulty === 'difficile'}
+              checked={difficulty === 'Difficile'}
               onChange={() => {
-                dispatch(changeDifficulty('difficile'));
+                dispatch(changeDifficulty('Difficile'));
               }}
             />
           </Form.Field>
