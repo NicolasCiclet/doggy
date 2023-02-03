@@ -1,4 +1,4 @@
-import { STOCK_ALL_ITINERARIES, CHANGE_DIFFICULTY } from '../actions/itinerary';
+import { STOCK_ALL_ITINERARIES, CHANGE_DIFFICULTY, SHOW_FILTER } from '../actions/itinerary';
 
 const initialState = {
   // all itineraries
@@ -6,6 +6,9 @@ const initialState = {
 
   // filter on difficulty
   difficulty: '',
+
+  // To open or close the filter window
+  showFilter: false,
 };
 
 const itinerariesReducer = (state = initialState, action = {}) => {
@@ -20,6 +23,12 @@ const itinerariesReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         difficulty: action.difficulty,
+      };
+
+    case SHOW_FILTER:
+      return {
+        ...state,
+        showFilter: !state.showFilter,
       };
 
     default:
