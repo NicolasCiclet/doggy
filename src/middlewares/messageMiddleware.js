@@ -7,31 +7,27 @@ const messageMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case POST_USER_MESSAGE:
-      console.log('appel api back conversations');
+      console.log('appel api back messages');
 
       // I send the request
       axios.post(
-        `${url}api/conversations/`,
+        `${url}api/messages/`,
+        {
+          title: 'test de titre en dur',
+          content: store.getState().message.userNewMessage,
+          destinataire: store.getState().message.userId,
+        },
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
           },
-        },
-        {
-          message: {
-            title: 'test de titre en dur',
-            content: store.getState().message.userNewMessage,
-          },
-        },
-        {
-          destinataire: store.getState().message.userId,
         },
       )
       // Wait for the response
         .then((response) => {
           console.log(response);
           console.log('message envoyé');
-          // const allConversations = response.data.results;
+          // const allMessages = response.data.results;
           store.dispatch(isMessageSend());
         })
         // What to do in case of error
