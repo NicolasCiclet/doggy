@@ -65,7 +65,7 @@ const UserPage = () => {
             >
               {!isFormOpen ? 'Me Contacter' : 'Annuler'}
             </button>
-            {isFormOpen && <NewMessage idUser={user.id} />}
+            {isFormOpen && <NewMessage idUser={user.id} nameUser={user.firstname} />}
           </div>
         </div>
       </div>
