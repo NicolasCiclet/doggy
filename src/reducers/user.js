@@ -8,8 +8,8 @@ import {
 
   ADD_CHECKED_PASSWORD_NEW_USER, SHOW_DELETE_USER, DISPLAY_INFO_CONNECTED_USER,
   IS_MESS_FORM_OPENED, DISPLAY_RANDOM_USER_INFO, DISPLAY_LOADER, STOCK_USERS,
-  STOCK_ID_WATCHED_USER, ERROR_CONNEXION, USER_DELETED,
-
+  STOCK_ID_WATCHED_USER, ERROR_CONNEXION, USER_DELETED, CHANGE_SEXE_USER,
+  SHOW_USER_FILTER,
 } from '../actions/user';
 
 const initialState = {
@@ -62,7 +62,10 @@ const initialState = {
   watchId: 0,
 
   // to open or close filter window
-  showFilter: true,
+  showFilter: false,
+
+  // to filter on the user gender
+  userGender: '',
 
 };
 
@@ -275,6 +278,18 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         userDeleted: !state.userDeleted,
+      };
+
+    case CHANGE_SEXE_USER:
+      return {
+        ...state,
+        userGender: action.gender,
+      };
+
+    case SHOW_USER_FILTER:
+      return {
+        ...state,
+        showFilter: !state.showFilter,
       };
 
     default:

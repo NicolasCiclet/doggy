@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Card, Form, Checkbox, Button,
 } from 'semantic-ui-react';
-import { getAllusers } from '../../../actions/user';
-import { changeSexeDog } from '../../../actions/dog';
+import { getAllusers, changeSexeUser, showUserFilter } from '../../../actions/user';
 import OneUser from './oneUser';
 
 const AllUsers = () => {
@@ -16,11 +15,22 @@ const AllUsers = () => {
     dispatch(getAllusers());
   }, []);
 
-  const users = useSelector((state) => state.user.usersApi);
-  console.log(users);
-  const filter = useSelector((state) => state.user.showFilter);
-  // const sexeDog = useSelector((state) => state.user.usersApi.animals.gender);
+  // All users
+  let users = useSelector((state) => state.user.usersApi);
+  // console.log(users);
 
+  // To open ou close the filter window
+  const filter = useSelector((state) => state.user.showFilter);
+  // user gender save in the state and modified by filter
+  const gender = useSelector((state) => state.user.userGender);
+  console.log(gender);
+
+  // filter on users by dog gender
+  if (gender !== '') {
+    // eslint-disable-next-line max-len
+    users = users.filter((user) => (user.gender === gender));
+    console.log(users);
+  }
 
   return (
     <div className="all-users">
@@ -30,7 +40,7 @@ const AllUsers = () => {
       <Button
         type="button"
         onClick={() => {
-          // dispatch(showFilter());
+          dispatch(showUserFilter());
         }}
       >
         Filtre
@@ -39,12 +49,12 @@ const AllUsers = () => {
       {filter && (
       <div className="filter">
         <div className="filter-title">
-          <p>Sexe du chien:</p>
+          <p>Genre:</p>
           <Button
             type="button"
             className="filter-button"
             onClick={() => {
-            //  dispatch(showFilter());
+              dispatch(showUserFilter());
             }}
           >
             X
@@ -54,24 +64,24 @@ const AllUsers = () => {
           <Form.Field className="filter-option">
             <Checkbox
               radio
-              label="Male"
+              label="Homme"
               name="checkboxRadioGroup"
-              value="Male"
-              checked={sexeDog === 'Male'}
+              value="Mâle"
+              checked={gender === 'Mâle'}
               onChange={() => {
-                dispatch(changeSexeDog('Male'));
+                dispatch(changeSexeUser('Mâle'));
               }}
             />
           </Form.Field>
           <Form.Field className="filter-option">
             <Checkbox
               radio
-              label="Femelle"
+              label="Femme"
               name="checkboxRadioGroup"
               value="Femelle"
-              checked={sexeDog === 'Femelle'}
+              checked={gender === 'Femelle'}
               onChange={() => {
-                dispatch(changeSexeDog('Femelle'));
+                dispatch(changeSexeUser('Femelle'));
               }}
             />
           </Form.Field>
