@@ -1,7 +1,8 @@
-import { STOCK_ALL_PRO } from '../actions/pro';
+import { STOCK_ALL_CATEGORIES, STOCK_ALL_PRO } from '../actions/pro';
 
 const initialState = {
   professionalsApi: [],
+  categoriesApi: [],
 };
 
 const proReducer = (state = initialState, action = {}) => {
@@ -10,6 +11,12 @@ const proReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         professionalsApi: action.pro,
+      };
+
+    case STOCK_ALL_CATEGORIES:
+      return {
+        ...state,
+        categoriesApi: action.categories,
       };
 
     default:
