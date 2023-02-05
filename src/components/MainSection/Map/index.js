@@ -162,7 +162,7 @@ const Map = () => {
           <LayersControl.Overlay
           // I get the name of the page to show or hide the markers
             checked={main === 'professional'}
-            name="Events"
+            name="professionals"
           >
             <FeatureGroup>
               {professionals.map((professional) => (
