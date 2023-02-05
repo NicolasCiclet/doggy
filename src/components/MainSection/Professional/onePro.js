@@ -17,8 +17,8 @@ const OnePro = (
     <Card
       className="card"
       // when user mouse enter or leave card, action is dispatched, and maker on map zoom
-      // onMouseEnter={() => dispatch(isSelected(lastname))}
-      // onMouseLeave={() => dispatch(isSelected(''))}
+      onMouseEnter={() => dispatch(isSelected(name))}
+      onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image
         src={`${url}assets/images/${picture}`}
