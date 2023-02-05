@@ -8,6 +8,7 @@ import L from 'leaflet';
 
 import markerIconYellow from 'src/data/marker-icon-yellow.png';
 import markerIconRed from 'src/data/marker-icon-red.png';
+import markerIconBlack from 'src/data/marker-icon-black.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -28,12 +29,21 @@ const icon3 = L.icon({
   iconUrl: markerIconRed,
   iconSize: [45, 53],
 });
+const icon5 = L.icon({
+  iconUrl: markerIconBlack,
+  iconSize: [30, 35],
+});
+const icon6 = L.icon({
+  iconUrl: markerIconBlack,
+  iconSize: [45, 53],
+});
 
 const Map = () => {
   // const dispatch = useDispatch();
   // const events = useSelector((state) => state.event.eventsToDisplay);
   const itineraries = useSelector((state) => state.itinerary.itinerariesApi);
   const users = useSelector((state) => state.user.usersApi);
+  const events = useSelector((state) => state.event.eventsApi);
   const markerSelected = useSelector((state) => state.map.nameSelected);
 
   // Get the location to zoom on the user
@@ -113,6 +123,29 @@ const Map = () => {
                   <Popup>
                     <Link to={`/user/${user.id}`}>
                       {user.firstname} <br /> {user.nickname}
+                    </Link>
+                  </Popup>
+                </Marker>
+              ))}
+            </FeatureGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay
+          // I get the name of the page to show or hide the markers
+            checked={main === 'event'}
+            name="Events"
+          >
+            <FeatureGroup>
+              {events.map((event) => (
+                <Marker
+                // Use a ternary condition to display different icons if the name matches
+                  position={[event.location.latitude, event.location.longitude]}
+                  icon={(event.name === markerSelected) ? icon6 : icon5}
+                  key={event.id}
+                >
+                  <Popup>
+                    <Link to={`/event/${event.id}`}>
+                      {event.name}
                     </Link>
                   </Popup>
                 </Marker>
