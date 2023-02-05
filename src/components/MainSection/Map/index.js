@@ -9,6 +9,7 @@ import L from 'leaflet';
 import markerIconYellow from 'src/data/marker-icon-yellow.png';
 import markerIconRed from 'src/data/marker-icon-red.png';
 import markerIconBlack from 'src/data/marker-icon-black.png';
+import markerIconBlue from 'src/data/marker-icon-blue.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -37,13 +38,20 @@ const icon6 = L.icon({
   iconUrl: markerIconBlack,
   iconSize: [45, 53],
 });
+const icon7 = L.icon({
+  iconUrl: markerIconBlue,
+  iconSize: [30, 35],
+});
+const icon8 = L.icon({
+  iconUrl: markerIconBlue,
+  iconSize: [45, 53],
+});
 
 const Map = () => {
-  // const dispatch = useDispatch();
-  // const events = useSelector((state) => state.event.eventsToDisplay);
   const itineraries = useSelector((state) => state.itinerary.itinerariesApi);
   const users = useSelector((state) => state.user.usersApi);
   const events = useSelector((state) => state.event.eventsApi);
+  const professionals = useSelector((state) => state.pro.professionalsApi);
   const markerSelected = useSelector((state) => state.map.nameSelected);
 
   // Get the location to zoom on the user
@@ -70,8 +78,6 @@ const Map = () => {
         key={latUser}
         center={center}
         // center={[45.8692, 6.129]}
-        // center={(latUser === '' || lngUser === '') ? [48.8692, 6.129] : [latUser, lngUser]}
-        // center={!haveLocation ? [48.8692, 6.129] : [latUser, lngUser]}
         zoom={11}
         scrollWheelZoom={false}
       >
@@ -140,12 +146,35 @@ const Map = () => {
                 <Marker
                 // Use a ternary condition to display different icons if the name matches
                   position={[event.location.latitude, event.location.longitude]}
-                  icon={(event.name === markerSelected) ? icon6 : icon5}
+                  icon={(event.name === markerSelected) ? icon8 : icon7}
                   key={event.id}
                 >
                   <Popup>
                     <Link to={`/event/${event.id}`}>
                       {event.name}
+                    </Link>
+                  </Popup>
+                </Marker>
+              ))}
+            </FeatureGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay
+          // I get the name of the page to show or hide the markers
+            checked={main === 'professional'}
+            name="Events"
+          >
+            <FeatureGroup>
+              {professionals.map((professional) => (
+                <Marker
+                // Use a ternary condition to display different icons if the name matches
+                  position={[professional.location.latitude, professional.location.longitude]}
+                  icon={(professional.name === markerSelected) ? icon6 : icon5}
+                  key={professional.id}
+                >
+                  <Popup>
+                    <Link to={`/professional/${professional.id}`}>
+                      {professional.name}
                     </Link>
                   </Popup>
                 </Marker>
