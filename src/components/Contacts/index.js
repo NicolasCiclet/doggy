@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Button, Form, TextArea, Message,
 } from 'semantic-ui-react';
+import { validate } from 'react-email-validator';
 import {
   contactFormMail, contactFormMessage, contactFormName, contactSendMail, isMessageSend,
 } from '../../actions/message';
@@ -12,6 +13,9 @@ const Contacts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const messageSend = useSelector((state) => state.message.isMessageSend);
+  const mailAdresse = useSelector((state) => state.message.contactMail);
+
+  validate(mailAdresse);
 
   return (
     <>
@@ -34,7 +38,9 @@ const Contacts = () => {
           <Form onSubmit={(event) => {
             event.preventDefault();
             console.log('submit !');
-            dispatch(contactSendMail());
+            if ((validate(mailAdresse))) {
+              dispatch(contactSendMail());
+            }
           }}
           >
             <Form.Input
@@ -48,6 +54,10 @@ const Contacts = () => {
             <Form.Input
               label="Email"
               placeholder="joe@schmoe.com"
+              // I use a ternary condition to show or hide the error message
+              error={validate(mailAdresse) ? false : {
+                content: 'Merci d\'entrer un email valide',
+              }}
               onChange={(event) => {
                 dispatch(contactFormMail(event.target.value));
               }}
