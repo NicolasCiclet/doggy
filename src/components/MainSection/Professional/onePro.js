@@ -21,6 +21,7 @@ const OnePro = (
       onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image
+        className="card-image"
         src={`${url}assets/images/${picture}`}
         wrapped
         ui={false}
