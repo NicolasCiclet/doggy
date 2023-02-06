@@ -186,6 +186,7 @@ const userMiddleware = (store) => (next) => (action) => {
           } = response.data.result[0];
           const { latitude, longitude } = response.data.result[0].location;
           const { nbrAnimal } = response.data.result;
+          const { nbrUnreadMessage } = response.data.result;
 
           store.dispatch(displayInfoConnectedUser(
             bio,
@@ -202,6 +203,7 @@ const userMiddleware = (store) => (next) => (action) => {
             latitude,
             longitude,
             nbrAnimal,
+            nbrUnreadMessage,
           ));
         })
         .catch((error) => {

@@ -203,6 +203,7 @@ export const displayInfoConnectedUser = (
   latitude,
   longitude,
   nbrAnimal,
+  nbrUnreadMessage,
 ) => ({
   type: DISPLAY_INFO_CONNECTED_USER,
   bio: bio,
@@ -219,6 +220,7 @@ export const displayInfoConnectedUser = (
   latitude: latitude,
   longitude: longitude,
   nbrAnimal: nbrAnimal,
+  nbrUnreadMessage: nbrUnreadMessage,
 });
 
 export const isMessFormOpened = () => ({
