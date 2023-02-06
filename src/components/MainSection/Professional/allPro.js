@@ -24,7 +24,7 @@ const AllPro = () => {
       {/* // je boucle sur les noms de categories */}
       <select>
         {allNamesCat.map((names) => (
-          <option value="grapefruit">{names}</option>
+          <option key={names} value={names}>{names}</option>
         ))}
       </select>
       {/* // Fin du code Marine -------------------------------------------------*/}
