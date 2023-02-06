@@ -145,7 +145,7 @@ const Map = () => {
               {events.map((event) => (
                 <Marker
                 // Use a ternary condition to display different icons if the name matches
-                  position={[event.location.latitude, event.location.longitude]}
+                  position={[event.itinerary.location.latitude, event.itinerary.location.longitude]}
                   icon={(event.name === markerSelected) ? icon8 : icon7}
                   key={event.id}
                 >
@@ -162,7 +162,7 @@ const Map = () => {
           <LayersControl.Overlay
           // I get the name of the page to show or hide the markers
             checked={main === 'professional'}
-            name="professionals"
+            name="Professionals"
           >
             <FeatureGroup>
               {professionals.map((professional) => (
