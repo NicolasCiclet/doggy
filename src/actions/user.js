@@ -222,8 +222,9 @@ export const displayInfoConnectedUser = (
   nbrAnimal: nbrAnimal,
 });
 
-export const isMessFormOpened = () => ({
+export const isMessFormOpened = (bool) => ({
   type: IS_MESS_FORM_OPENED,
+  value: bool,
 });
 
 export const displayLoader = (bool) => ({

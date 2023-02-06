@@ -1,0 +1,56 @@
+.conversation {
+  width: 50%;
+  cursor: pointer;
+
+  margin: 1rem auto;
+  background-color:#EFEDEC;
+  box-shadow: 1px 2px 4px black;
+  border: 2px solid black;
+  padding: 1.5em;
+  border-radius: 10px;
+}
+
+.one-conversation {
+
+  .one-message {
+    color: #fff;
+    font-size: 0.8rem;
+    .sent, .received {
+      padding: 0.7rem;
+      border-radius: 5px;
+      width: 50%;
+      position: relative;
+
+      
+    }
+    .sent:before, .received:before {
+      content: ''; // required for the element to be displayed
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      position: absolute;
+    }
+
+    .sent {
+      margin: 1.5rem auto 1.5rem 1rem;
+      // margin-right: auto;
+      background-color: #87BB71;
+    }
+    .received {
+      margin: 1.5rem 1rem 1.5rem auto;
+      background-color: #95C2EC;
+    }
+
+    .sent:before {
+      border-bottom: 10px solid #87BB71;
+      // positioning in relation to the message
+      left: 15px;
+      top: -9px;
+    }
+    .received:before {
+      border-bottom: 10px solid #95C2EC;
+      // positioning in relation to the message
+      right: 15px;
+      top: -9px;
+    }
+  }
+}

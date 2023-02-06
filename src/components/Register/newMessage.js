@@ -4,25 +4,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { Button, Form, Message, TextArea } from 'semantic-ui-react';
 import { isMessageSend, postUsermessage, userSendMessage } from '../../actions/message';
+import { isMessFormOpened } from '../../actions/user';
 
 import './message.scss';
 
 // New Message FORM
 const NewMessage = ({ idUser, nameUser }) => {
   const dispatch = useDispatch();
-  const messageSend = useSelector((state) => state.dog.isMessageSend);
+  const messageSend = useSelector((state) => state.message.isMessageSend);
   return (
     <>
-      {/* success message when dogCreate is true */}
+      {/* success message when messageSend is true */}
       {messageSend && (
-        <Form success className="register-success">
+        // I add an ID to get priority on the semantic's css
+        <Form success className="register-success" id="message-success">
           <Message
             success
             header="Message envoyé avec succès"
             content={`${nameUser} sera notifié`}
             onDismiss={() => {
-              dispatch(isMessageSend());
-              // Navigate('/profile');
+              dispatch(isMessageSend(false));
+              dispatch(isMessFormOpened(false));
             }}
           />
         </Form>

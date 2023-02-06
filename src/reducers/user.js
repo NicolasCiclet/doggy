@@ -248,7 +248,7 @@ const userReducer = (state = initialState, action = {}) => {
     case IS_MESS_FORM_OPENED:
       return {
         ...state,
-        messFormOpen: !state.messFormOpen,
+        messFormOpen: action.value,
       };
 
       // To display or hidden loader

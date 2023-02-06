@@ -1,7 +1,7 @@
 @use 'src/styles/vars';
 
 // style for Mobil
-.new-message{
+.new-message, #message-success {
   text-align: center;
   box-shadow: 1px 2px 4px black;
   border-radius: 7px;
@@ -48,7 +48,7 @@
 
 // Breackpoint for tablet
 @media (min-width: 480px){
-  .new-message{
+  .new-message, #message-success {
     position: fixed;
     right: 25%;
     width: 50%;
@@ -57,7 +57,7 @@
 
 // Breackpoint for desktop
 @media (min-width: 1000px){
-  .new-message{
+  .new-message, #message-success {
     position: fixed;
     right: 25%;
   }
