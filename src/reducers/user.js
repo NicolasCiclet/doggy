@@ -36,7 +36,7 @@ const initialState = {
   lngNewUser: 6.129,
   nbrAnimal: '',
   isCityFind: true,
-  nbrUnreadMessage: 3,
+  nbrUnreadMessage: 0,
 
   userCreate: false,
 
@@ -243,6 +243,7 @@ const userReducer = (state = initialState, action = {}) => {
         latNewUser: action.latitude,
         lngNewUser: action.longitude,
         nbrAnimal: action.nbrAnimal,
+        nbrUnreadMessage: action.nbrUnreadMessage,
       };
 
       // To display new message form
