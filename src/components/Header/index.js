@@ -10,6 +10,8 @@ import { changeMain, showError } from '../../actions/nav';
 function Header() {
   const dispatch = useDispatch();
   const logged = useSelector((state) => state.user.logged);
+  const userPicture = useSelector((state) => state.user.pictureNewUser);
+  const url = useSelector((state) => state.nav.url);
 
   return (
 
@@ -50,6 +52,7 @@ function Header() {
             <Link to="/profile">
               <span className="header-nav">Profil</span>
             </Link>
+            <img className="welcome-user-photo" src={`${url}assets/images/${userPicture}`} alt="user" />
           </>
         )}
       </div>

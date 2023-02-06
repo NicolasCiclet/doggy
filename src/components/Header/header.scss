@@ -2,15 +2,21 @@
 
 // Mobil first
 .header-main{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   text-align: center;
   width: 100%;
   min-height: 30vh;
   background-image: url('./header_bandeau.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+  .welcome-user-photo{
+    width: 70px;
+    border-radius: 50px;
+    border: 2px vars.$lightColor solid;
+  }
 
   .header-logo{
     font-weight: bold;
@@ -42,6 +48,7 @@
     }
   }
 }
+
 
 // Breackpoint for tablet
 @media (min-width: 480px){

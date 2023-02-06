@@ -10,7 +10,7 @@ const initialState = {
   category: '',
 
   // To open or close the filter window
-  showFilter: true,
+  showFilter: false,
 };
 
 const proReducer = (state = initialState, action = {}) => {
