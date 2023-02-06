@@ -36,6 +36,7 @@ const initialState = {
   lngNewUser: 6.129,
   nbrAnimal: '',
   isCityFind: true,
+  nbrUnreadMessage: 3,
 
   userCreate: false,
 

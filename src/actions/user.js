@@ -143,7 +143,6 @@ export const submitLogin = () => ({
 export const saveAuthData = (token) => ({
   type: SAVE_AUTH_DATA,
   token: token,
-  // isLogged: isLogged,
 });
 
 export const updateSettingsField = (identifier, newValue) => ({

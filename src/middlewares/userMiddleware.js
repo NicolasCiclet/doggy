@@ -35,10 +35,6 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
 
-          // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
-          // dans le state => dispatch une action
-          // (attention au nommage de la variable, pas "action" pour ne pas masquer le
-          // paramètre qui porte le même nom) pour le message de bienvenu
           const actionToDispatch = saveAuthData(
             response.data.token,
           );
