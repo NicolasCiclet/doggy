@@ -9,6 +9,7 @@ const AllConversations = () => {
   const dispatch = useDispatch();
   const showConversation = useSelector((state) => state.message.activeConversation);
   const allConversations = useSelector((state) => state.message.allConversationsApi);
+  const idUser = useSelector((state) => state.user.idNewUser);
   console.log(allConversations);
   return (
     <div className="profil-section" id="mes-messages">
@@ -16,7 +17,6 @@ const AllConversations = () => {
         <h1 className="profil-h1">Mes messages</h1>
       </div>
       <div className="profil-main-message">
-        <img className="profil-message" src={logoMail} alt="message" />
         {allConversations.map((conversation) => (
           <>
             <p
@@ -26,10 +26,11 @@ const AllConversations = () => {
                 console.log(conversation.id);
                 // dispatch(getOneConversation());
               }}
-              className="conversation"
+              className={conversation.id == showConversation ? 'conversation-open' : 'conversation'}
               key={conversation.id}
             >
-              - {conversation.title}
+              <img className="logo-mail" src={logoMail} alt="message" />
+              {conversation.users[1].nickname}
             </p>
             {(showConversation == conversation.id)
             && <OneConversation {...conversation} messages={conversation.messages} />}
