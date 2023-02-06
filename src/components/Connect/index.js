@@ -45,6 +45,7 @@ const Connect = () => {
 
   return (
     <>
+      {!isLogged && (
       <div className="settings">
         {/* // This form appears, when a connection error is returned */}
         {errorConnexion && <h1 className="settings-title-error">Veuillez vérifier vos identifiants</h1>}
@@ -87,6 +88,8 @@ const Connect = () => {
           <button type="submit" className="settings-submit">Login</button>
         </form>
       </div>
+      )}
+      
       {/* <MainSection /> */}
     </>
   );

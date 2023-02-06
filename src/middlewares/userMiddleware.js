@@ -1,11 +1,14 @@
 import axios from 'axios';
+import { getAllEvents } from '../actions/event';
+import { getAllItineraries } from '../actions/itinerary';
+import { getAllPro } from '../actions/pro';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
 
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
   GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS,
-  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut,
+  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers,
 
 } from '../actions/user';
 
@@ -15,7 +18,7 @@ const userMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case SUBMIT_LOGIN:
-      store.dispatch(displayLoader());
+      store.dispatch(displayLoader(true));
 
       axios.post(
         `${url}api/login_check`,
@@ -31,7 +34,6 @@ const userMiddleware = (store) => (next) => (action) => {
       )
         .then((response) => {
           console.log(response);
-          store.dispatch(displayLoader());
 
           // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
           // dans le state => dispatch une action
@@ -42,13 +44,18 @@ const userMiddleware = (store) => (next) => (action) => {
           );
           store.dispatch(actionToDispatch);
           store.dispatch(getUserInfo());
+          store.dispatch(getAllPro());
+          store.dispatch(getAllItineraries());
+          store.dispatch(getAllusers());
+          store.dispatch(getAllEvents());
 
           // We store in our storage the token
           localStorage.setItem('UserToken', response.data.token);
+          store.dispatch(displayLoader(false));
         })
         .catch((error) => {
           console.log(error);
-          store.dispatch(displayLoader());
+          store.dispatch(displayLoader(false));
           store.dispatch(errorConnexion());
         });
 
@@ -243,7 +250,8 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_ALL_USERS:
-      console.log('récupérer tous les users');
+      // console.log('récupérer tous les users');
+      store.dispatch(displayLoader(true));
 
       axios.get(
         `${url}api/users/family`,
@@ -254,11 +262,13 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
+          store.dispatch(displayLoader(false));
           const allUsers = response.data.results;
           console.log(allUsers);
           store.dispatch(stockUsers(allUsers));
         })
         .catch((error) => {
+          store.dispatch(displayLoader(false));
           console.log(error);
         });
 
