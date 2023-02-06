@@ -1,5 +1,5 @@
 .loader {
-  width: 50%;
+  width: 60%;
   margin: auto;
   position: relative;
   text-align: center;
@@ -13,5 +13,19 @@
     bottom: 8%;
     left: 20%;
     right: 20%;
+  }
+}
+
+// Breackpoint for tablet
+@media (min-width: 480px){
+  .loader {
+    width: 40%;
+  }
+}
+
+// Breackpoint for desktop
+@media (min-width: 1000px){
+  .loader {
+    width: 30%;
   }
 }

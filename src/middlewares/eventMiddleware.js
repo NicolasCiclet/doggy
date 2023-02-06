@@ -118,7 +118,7 @@ const eventMiddleware = (store) => (next) => (action) => {
 
     case GET_ALL_EVENTS:
 
-      store.dispatch(displayLoader());
+      store.dispatch(displayLoader(true));
 
       axios.get(
         `${url}api/events`,
@@ -129,7 +129,7 @@ const eventMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          store.dispatch(displayLoader());
+          store.dispatch(displayLoader(false));
           console.log(response.data.results);
           console.log('all events recup');
           const allEvents = response.data.results;
@@ -137,7 +137,7 @@ const eventMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          store.dispatch(displayLoader());
+          store.dispatch(displayLoader(false));
         });
 
       break;

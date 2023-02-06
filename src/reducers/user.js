@@ -255,7 +255,7 @@ const userReducer = (state = initialState, action = {}) => {
     case DISPLAY_LOADER:
       return {
         ...state,
-        dislpayLoader: !state.dislpayLoader,
+        dislpayLoader: action.value,
       };
 
     // To stock all users of the BDD in the state
