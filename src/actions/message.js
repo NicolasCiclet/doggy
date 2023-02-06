@@ -4,6 +4,9 @@ export const CONTACT_FORM_NAME = 'CONTACT_FORM_NAME';
 export const CONTACT_FORM_MESSAGE = 'CONTACT_FORM_MESSAGE';
 export const CONTACT_FORM_RESET = 'CONTACT_FORM_RESET';
 
+// To send a mail from contacts page
+export const CONTACT_SEND_MAIL = 'CONTACT_SEND_MAIL';
+
 // To add infos from user message form
 export const USER_SEND_MESSAGE = 'USER_SEND_MESSAGE';
 
@@ -28,6 +31,10 @@ export const contactFormMessage = (newValue) => ({
 });
 export const contactFormReset = () => ({
   type: CONTACT_FORM_RESET,
+});
+
+export const contactSendMail = () => ({
+  type: CONTACT_SEND_MAIL,
 });
 
 // To add infos from user message form
