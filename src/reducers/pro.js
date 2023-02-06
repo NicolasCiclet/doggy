@@ -1,8 +1,16 @@
-import { STOCK_ALL_CATEGORIES, STOCK_ALL_PRO } from '../actions/pro';
+import {
+  STOCK_ALL_CATEGORIES, STOCK_ALL_PRO, SHOW_PRO_FILTER, CHANGE_PRO_CATEGORY,
+} from '../actions/pro';
 
 const initialState = {
   professionalsApi: [],
   categoriesApi: [],
+
+  // filter on category name
+  category: '',
+
+  // To open or close the filter window
+  showFilter: true,
 };
 
 const proReducer = (state = initialState, action = {}) => {
@@ -17,6 +25,18 @@ const proReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         categoriesApi: action.categories,
+      };
+
+    case CHANGE_PRO_CATEGORY:
+      return {
+        ...state,
+        category: action.category,
+      };
+
+    case SHOW_PRO_FILTER:
+      return {
+        ...state,
+        showFilter: !state.showFilter,
       };
 
     default:
