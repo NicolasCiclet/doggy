@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { GET_ALL_CATEGORIES, GET_ALL_PRO, stockAllCategories, stockAllPro } from '../actions/pro';
+import {
+  GET_ALL_CATEGORIES, GET_ALL_PRO, stockAllCategories, stockAllPro,
+} from '../actions/pro';
 
 const proMiddleware = (store) => (next) => (action) => {
   // eslint-disable-next-line prefer-destructuring
