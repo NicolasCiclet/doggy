@@ -226,8 +226,9 @@ export const isMessFormOpened = () => ({
   type: IS_MESS_FORM_OPENED,
 });
 
-export const displayLoader = () => ({
+export const displayLoader = (bool) => ({
   type: DISPLAY_LOADER,
+  value: bool,
 });
 
 export const getAllusers = () => ({

@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
   GET_ALL_CATEGORIES, GET_ALL_PRO, stockAllCategories, stockAllPro,
 } from '../actions/pro';
+import { displayLoader } from '../actions/user';
 
 const proMiddleware = (store) => (next) => (action) => {
   // eslint-disable-next-line prefer-destructuring
@@ -9,7 +10,8 @@ const proMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case GET_ALL_PRO:
-      console.log('il faut faire appel à l API Ninja');
+      // console.log('il faut faire appel à l API Ninja');
+      store.dispatch(displayLoader(true));
 
       // I send the request
       axios.get(
@@ -24,12 +26,14 @@ const proMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response.data.results);
           console.log('professionals ok');
+          store.dispatch(displayLoader(false));
           store.dispatch(stockAllPro(response.data.results));
         })
 
       // What to do in case of error
         .catch((error) => {
           console.log(error, 'pas de pro');
+          store.dispatch(displayLoader(false));
         })
 
       // to do in any case
