@@ -35,10 +35,6 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
 
-          // on veut aller enregistrer le pseudo, le token et l'info qu'on est connecté
-          // dans le state => dispatch une action
-          // (attention au nommage de la variable, pas "action" pour ne pas masquer le
-          // paramètre qui porte le même nom) pour le message de bienvenu
           const actionToDispatch = saveAuthData(
             response.data.token,
           );
@@ -190,6 +186,7 @@ const userMiddleware = (store) => (next) => (action) => {
           } = response.data.result[0];
           const { latitude, longitude } = response.data.result[0].location;
           const { nbrAnimal } = response.data.result;
+          const { nbrUnreadMessage } = response.data.result;
 
           store.dispatch(displayInfoConnectedUser(
             bio,
@@ -206,6 +203,7 @@ const userMiddleware = (store) => (next) => (action) => {
             latitude,
             longitude,
             nbrAnimal,
+            nbrUnreadMessage,
           ));
         })
         .catch((error) => {

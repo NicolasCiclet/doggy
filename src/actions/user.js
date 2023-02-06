@@ -143,7 +143,6 @@ export const submitLogin = () => ({
 export const saveAuthData = (token) => ({
   type: SAVE_AUTH_DATA,
   token: token,
-  // isLogged: isLogged,
 });
 
 export const updateSettingsField = (identifier, newValue) => ({
@@ -204,6 +203,7 @@ export const displayInfoConnectedUser = (
   latitude,
   longitude,
   nbrAnimal,
+  nbrUnreadMessage,
 ) => ({
   type: DISPLAY_INFO_CONNECTED_USER,
   bio: bio,
@@ -220,6 +220,7 @@ export const displayInfoConnectedUser = (
   latitude: latitude,
   longitude: longitude,
   nbrAnimal: nbrAnimal,
+  nbrUnreadMessage: nbrUnreadMessage,
 });
 
 export const isMessFormOpened = (bool) => ({
