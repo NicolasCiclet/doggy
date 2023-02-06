@@ -38,7 +38,6 @@ const AllPro = () => {
 
   return (
     <div className="all-users">
-
       <h2 className="cards_title">Les professionels proches de chez vous</h2>
       {!filter && (
       <Button
