@@ -17,7 +17,7 @@ const OneUser = (
     <Card
       className="card"
       // when user mouse enter or leave card, action is dispatched, and maker on map zoom
-      onMouseEnter={() => dispatch(isSelected(lastname))}
+      onMouseEnter={() => dispatch(isSelected(id))}
       onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image

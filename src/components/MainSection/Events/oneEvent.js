@@ -9,7 +9,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneEvent = (
   {
-    id, eventDate, name, picture,
+    id, eventDate, name, picture, description
   },
 ) => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const OneEvent = (
   return (
     <Card
       className="card"
-      onMouseEnter={() => dispatch(isSelected(name))}
+      onMouseEnter={() => dispatch(isSelected(description))}
       onMouseLeave={() => dispatch(isSelected(''))}
     >
       <Image src={`${url}assets/images/${picture}`} wrapped ui={false} />
@@ -50,6 +50,7 @@ OneEvent.propTypes = {
   picture: PropTypes.string.isRequired,
   eventDate: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default OneEvent;

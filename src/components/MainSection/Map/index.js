@@ -123,7 +123,7 @@ const Map = () => {
                 <Marker
                 // Use a ternary condition to display different icons if the name matches
                   position={[user.location.latitude, user.location.longitude]}
-                  icon={(user.lastname === markerSelected) ? icon3 : icon2}
+                  icon={(user.id === markerSelected) ? icon3 : icon2}
                   key={user.id}
                 >
                   <Popup>
@@ -146,7 +146,7 @@ const Map = () => {
                 <Marker
                 // Use a ternary condition to display different icons if the name matches
                   position={[event.itinerary.location.latitude, event.itinerary.location.longitude]}
-                  icon={(event.name === markerSelected) ? icon8 : icon7}
+                  icon={(event.description === markerSelected) ? icon8 : icon7}
                   key={event.id}
                 >
                   <Popup>
