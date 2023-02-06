@@ -1,6 +1,7 @@
 // == Import
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import headerLogo from './header_logo.svg';
 import './header.scss';
 import { logOut } from '../../actions/user';
@@ -11,6 +12,7 @@ function Header() {
   const dispatch = useDispatch();
   const logged = useSelector((state) => state.user.logged);
   const userPicture = useSelector((state) => state.user.pictureNewUser);
+  const unreadMsg = useSelector((state) => state.user.nbrUnreadMessage);
   const url = useSelector((state) => state.nav.url);
 
   return (
@@ -52,7 +54,14 @@ function Header() {
             <Link to="/profile">
               <span className="header-nav">Profil</span>
             </Link>
-            <img className="welcome-user-photo" src={`${url}assets/images/${userPicture}`} alt="user" />
+            <div className="welcome-user">
+              <img className="welcome-user-photo" src={`${url}assets/images/${userPicture}`} alt="user" />
+              {unreadMsg > 0 && (
+                <HashLink smooth to="/profile#mes-messages">
+                  <div className="unreadMessage">{unreadMsg}</div>
+                </HashLink>
+              )}
+            </div>
           </>
         )}
       </div>
