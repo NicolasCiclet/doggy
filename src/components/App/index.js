@@ -28,6 +28,7 @@ import Loader from '../MainSection/Loader';
 import ProPage from '../MainSection/Professional/proPage';
 import ItineraryPage from '../MainSection/Itineraries/itineraryPage';
 import Error from '../Error';
+import { getRandomEvent } from '../../actions/event';
 
 // == Composant
 function App() {
@@ -37,6 +38,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRandomUserInfo());
+    dispatch(getRandomEvent());
   }, []);
   return (
     // Here is the main div, with all components

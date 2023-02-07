@@ -4,12 +4,14 @@ import {
   STOCK_CONNECTED_EVENTS, STOCK_USER_EVENTS, NEW_EVENT_CREATED, STOCK_ALL_EVENTS,
   STOCK_ID_UPDATE_EVENT, NEW_EVENT_DELETED, CHANGE_EVENT_DIFFICULTY, SHOW_EVENT_FILTER,
   CHANGE_EVENT_ITINERARY,
+  DISPLAY_RANDOM_EVENT,
 } from '../actions/event';
 
 const initialState = {
   eventsToDisplay: events,
   // all events
   eventsApi: [],
+  randomEventsToDisplay: [],
 
   connectedEvents: [],
   watchEvents: [],
@@ -130,6 +132,12 @@ const eventReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         showFilter: !state.showFilter,
+      };
+
+    case DISPLAY_RANDOM_EVENT:
+      return {
+        ...state,
+        randomEventsToDisplay: action.value,
       };
 
     default:
