@@ -6,6 +6,7 @@ import headerLogo from './header_logo.svg';
 import './header.scss';
 import { logOut } from '../../actions/user';
 import { changeMain, showError } from '../../actions/nav';
+import { logoutMessage } from '../../actions/message';
 
 // == Composant
 function Header() {
@@ -46,6 +47,8 @@ function Header() {
                   // At Logout we delete the token in localStorage
                   dispatch(logOut());
                   localStorage.removeItem('UserToken');
+                  // deletes messages
+                  dispatch(logoutMessage());
                 }}
               >
                 Déconnexion
