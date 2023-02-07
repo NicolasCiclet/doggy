@@ -5,9 +5,7 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import imageParDefaut from 'src/data/femme_chien1.jpg';
+import { useSelector } from 'react-redux';
 
 import './random.scss';
 
@@ -15,8 +13,6 @@ const RandomUser = () => {
   // const users = useSelector((state) => state.user.usersToDisplay);
   const users = useSelector((state) => state.user.randomUsersToDisplay);
   const url = useSelector((state) => state.nav.url);
-  
-
   // const dispatch = useDispatch();
   // console.log(user);
   // console.log(useSelector((state) => state.user.usersToDisplay));

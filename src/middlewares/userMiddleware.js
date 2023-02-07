@@ -215,7 +215,7 @@ const userMiddleware = (store) => (next) => (action) => {
     case GET_RANDOM_USER_INFO:
       console.log('RANDOM USER API BACK');
       axios.get(
-        `${url}api/users/random/3`,
+        `${url}api/users/random/4`,
         // {
         //   headers: {
         //     Authorization: `Bearer ${store.getState().user.token}`,

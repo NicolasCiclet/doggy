@@ -36,6 +36,9 @@
         width: calc((100%/3) - 1em);
         margin: 0.5rem;
 
+        .image {
+          max-width: 500px;
+        }
         .content {
           font-size: 0.8rem;
           padding: 0.7rem 0.4rem;
