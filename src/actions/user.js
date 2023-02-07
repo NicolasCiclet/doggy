@@ -67,6 +67,9 @@ export const CHANGE_SEXE_USER = 'CHANGE_SEXE_USER';
 // To open the filter window
 export const SHOW_USER_FILTER = 'SHOW_USER_FILTER';
 
+export const UPDATE_UNREAD_MESSAGE = 'UPDATE_UNREAD_MESSAGE';
+export const STOCK_UPDATE_UNREAD = 'STOCK_UPDATE_UNREAD';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -262,4 +265,14 @@ export const changeSexeUser = (gender) => ({
 
 export const showUserFilter = () => ({
   type: SHOW_USER_FILTER,
+});
+
+// call back to have the number of unread messages
+export const updateUnreadMessage = () => ({
+  type: UPDATE_UNREAD_MESSAGE,
+});
+// update of the number of unread messages on state
+export const stockupdateUnread = (newValue) => ({
+  type: STOCK_UPDATE_UNREAD,
+  value: newValue,
 });

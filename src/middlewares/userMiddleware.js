@@ -8,7 +8,7 @@ import {
 
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
   GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS,
-  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers,
+  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers, UPDATE_UNREAD_MESSAGE, stockupdateUnread,
 
 } from '../actions/user';
 
@@ -267,6 +267,28 @@ const userMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           store.dispatch(displayLoader(false));
+          console.log(error);
+        });
+
+      break;
+
+    case UPDATE_UNREAD_MESSAGE:
+      axios.get(
+        `${url}api/users/current`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response.data);
+          console.log('UnreadMessage mis a jour');
+          const { nbrUnreadMessage } = response.data.result;
+
+          store.dispatch(stockupdateUnread(nbrUnreadMessage));
+        })
+        .catch((error) => {
           console.log(error);
         });
 
