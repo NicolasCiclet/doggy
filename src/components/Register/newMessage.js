@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
-import { Button, Form, Message, TextArea } from 'semantic-ui-react';
+import {
+  Button, Form, Message, TextArea, Icon,
+} from 'semantic-ui-react';
 import { isMessageSend, postUsermessage, userSendMessage } from '../../actions/message';
 import { isMessFormOpened } from '../../actions/user';
 
@@ -50,10 +51,23 @@ const NewMessage = ({ idUser, nameUser }) => {
                 }}
               />
               {/* Input for submit */}
-              <Form.Input
-                control={Button}
-                content="Envoyer"
-              />
+              <Button control={Button} animated="fade">
+                <Button.Content visible>Valider</Button.Content>
+                <Button.Content hidden>Valider</Button.Content>
+              </Button>
+              <Button
+                animated
+                color="red"
+                onClick={() => {
+                  window.history.back();
+                }}
+              >
+                {/* // cancel button and return to previous page */}
+                <Button.Content visible>Annuler</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="arrow left" />
+                </Button.Content>
+              </Button>
             </Form>
 
           </div>
