@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
-  CONTACT_SEND_MAIL, isMessageSend, POST_USER_MESSAGE, contactFormReset,
+  GET_ALL_CONVERSATIONS, isMessageSend, POST_USER_MESSAGE, stockAllConversations,
+  CONTACT_SEND_MAIL, contactFormReset,
 } from '../actions/message';
 
 const messageMiddleware = (store) => (next) => (action) => {
@@ -9,7 +10,7 @@ const messageMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case POST_USER_MESSAGE:
-      console.log('appel api back messages');
+      console.log('envoi d\'un message au back');
 
       // I send the request
       axios.post(
@@ -30,7 +31,37 @@ const messageMiddleware = (store) => (next) => (action) => {
           console.log(response);
           console.log('message envoyé');
           // const allMessages = response.data.results;
-          store.dispatch(isMessageSend());
+          store.dispatch(isMessageSend(true));
+        })
+        // What to do in case of error
+        .catch((error) => {
+          console.log(error);
+          console.log('conversation non trouvé');
+        })
+
+        // to do in any case
+        .finally(() => {
+        });
+
+      break;
+
+    case GET_ALL_CONVERSATIONS:
+      console.log('reception des conversations du back');
+
+      // I send the request
+      axios.get(
+        `${url}api/users/conversations/messages/`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+      // Wait for the response
+        .then((response) => {
+          console.log(response.data.conversations);
+          console.log('conversations recu');
+          store.dispatch(stockAllConversations(response.data.conversations));
         })
         // What to do in case of error
         .catch((error) => {

@@ -15,11 +15,13 @@ import Userdelete from './Userdelete';
 import Dogdelete from './Dogdelete';
 import Eventdelete from './Eventdelete';
 
-import conversation from './conversation.svg';
+// import conversation from './conversation.svg';
 import editButton from './edit.svg';
 import deleteButton from './delete.svg';
 import './profil.scss';
 import './nav.css';
+import AllConversations from './Message/allConversations';
+import { getAllConversations } from '../../actions/message';
 
 // faire une requete api get/id qui va récupérer les info du user et des animaux,
 // conversation et events associés dans la BDD
@@ -32,7 +34,7 @@ const Profil = () => {
   const showBurgerMenu = useSelector((state) => state.user.showLink);
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
-  console.log(isLogged);
+  // console.log(isLogged);
   // To know if a dog, a event or a user as been deleted
   const dogDeleted = useSelector((state) => state.dog.dogDeleted);
   const eventDeleted = useSelector((state) => state.event.eventDeleted);
@@ -43,6 +45,7 @@ const Profil = () => {
     if (isLogged) {
       dispatch(getConnectedAnimals());
       dispatch(getConnectedEvents());
+      dispatch(getAllConversations());
     }
     else {
       navigate('/');
@@ -66,7 +69,7 @@ const Profil = () => {
   // console.log(events);
 
   const animals = useSelector((state) => state.dog.connectedAnimals);
-  console.log(animals);
+  // console.log(animals);
 
   const url = useSelector((state) => state.nav.url);
 
@@ -246,17 +249,18 @@ const Profil = () => {
           </NavLink>
         </div>
       </div>
-      <div className="profil-section" id="mes-messages">
-        {/* Aller chercher dans la BDD les conversations et faire un map dessus, pour chaque
-        conversation afficher le logo et le titre */}
-        <div className="profil-header">
-          <h1 className="profil-h1">Mes messages</h1>
-        </div>
-        <div className="profil-main-message">
-          <img className="profil-message" src={conversation} alt="message" />
-          <a href="" className="conversation">Conversation avec User X</a>
-        </div>
+      {/* <div className="profil-section" id="mes-messages"> */}
+      {/* Aller chercher dans la BDD les conversations et faire un map dessus, pour chaque
+      conversation afficher le logo et le titre */}
+      {/* <div className="profil-header">
+        <h1 className="profil-h1">Mes messages</h1>
       </div>
+      <div className="profil-main-message">
+        <img className="profil-message" src={conversation} alt="message" />
+        <a href="" className="conversation">Conversation avec User X</a>
+      </div>
+    </div> */}
+      <AllConversations />
       <div className="profil-section" id="mes-événements">
         {/* Aller chercher dans la BDD les événements liés à l'utilisateur
         et faire un map dessus */}

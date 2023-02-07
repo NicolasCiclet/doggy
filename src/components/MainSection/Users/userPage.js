@@ -61,7 +61,7 @@ const UserPage = () => {
               type="button"
               className="userboard-contact"
               href=""
-              onClick={() => dispatch(isMessFormOpened())}
+              onClick={() => dispatch(isMessFormOpened(true))}
             >
               {!isFormOpen ? 'Me Contacter' : 'Annuler'}
             </button>
