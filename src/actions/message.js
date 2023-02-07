@@ -19,13 +19,13 @@ export const IS_MESSAGE_SEND = 'IS_MESSAGE_SEND';
 // To show or hide only One Conversation
 export const SHOW_ONE_CONVERSATION = 'SHOW_ONE_CONVERSATION';
 
-// To get all Conversations form back
+// To get all Conversations from back
 export const GET_ALL_CONVERSATIONS = 'GET_ALL_CONVERSATIONS';
 
 // To stock all Conversations on state
 export const STOCK_ALL_CONVERSATIONS = 'STOCK_ALL_CONVERSATIONS';
 
-// To get one Conversation form back
+// To get one Conversation from back
 export const GET_ONE_CONVERSATION = 'GET_ONE_CONVERSATION';
 
 // To stock one Conversation on state
@@ -33,6 +33,15 @@ export const STOCK_ONE_CONVERSATION = 'STOCK_ONE_CONVERSATION';
 
 // To show active Conversation
 export const ACTIVE_CONVERSATION = 'ACTIVE_CONVERSATION';
+
+// To use patch request to tell the back that all messages are read
+export const PATCH_READ_MESSAGES = 'PATCH_READ_MESSAGES';
+
+// To stock unreadMessage
+export const STOCK_UNREAD_MESSAGES = 'STOCK_UNREAD_MESSAGES';
+
+// deletes messages
+export const LOGOUT_MESSAGE = 'LOGOUT_MESSAGE';
 
 // To add infos from contact form
 export const contactFormName = (newValue) => ({
@@ -79,7 +88,7 @@ export const showOneConversation = () => ({
   // value: bool,
 });
 
-// To get all Conversations form back
+// To get all Conversations from back
 export const getAllConversations = () => ({
   type: GET_ALL_CONVERSATIONS,
 });
@@ -90,7 +99,7 @@ export const stockAllConversations = (newValue) => ({
   value: newValue,
 });
 
-// To get one Conversation form back
+// To get one Conversation from back
 export const getOneConversation = () => ({
   type: GET_ONE_CONVERSATION,
 });
@@ -105,4 +114,20 @@ export const stockOneConversation = (newValue) => ({
 export const activeConversation = (newValue) => ({
   type: ACTIVE_CONVERSATION,
   value: newValue,
+});
+
+// To use patch request to tell the back that all messages are read
+export const patchreadMessages = () => ({
+  type: PATCH_READ_MESSAGES,
+});
+
+// To stock unreadMessage
+export const stockUnreadMessages = (newValue) => ({
+  type: STOCK_UNREAD_MESSAGES,
+  value: newValue,
+});
+
+// deletes messages
+export const logoutMessage = () => ({
+  type: LOGOUT_MESSAGE,
 });
