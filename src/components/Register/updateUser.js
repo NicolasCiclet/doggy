@@ -41,7 +41,6 @@ const UpdateUser = () => {
   const firstname = useSelector((state) => state.user.firstnameNewUser);
   const city = useSelector((state) => state.user.cityNewUser);
   const nickname = useSelector((state) => state.user.usernameNewUser);
-  const birthdate = useSelector((state) => state.user.birthNewUser);
   const bio = useSelector((state) => state.user.bioNewUser);
   const mail = useSelector((state) => state.user.mailNewUser);
   const phone = useSelector((state) => state.user.phoneNewUser);
@@ -92,25 +91,35 @@ const UpdateUser = () => {
           {/* with Form.group we have input on the same line or 1 input by line with responsive */}
           <Form.Group widths="equal">
             <Form.Input
+              required
               label="Nom"
               placeholder={lastname}
-              // width={5}
               onChange={(event) => {
                 dispatch(addLastnameNewUser(event.target.value));
               }}
             />
             <Form.Input
+              required
               label="Prénom"
               placeholder={firstname}
-              // width={5}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
               }}
             />
+          </Form.Group>
+          <Form.Group widths="equal">
             <Form.Input
+              required
+              label="Nom d'utilisateur"
+              placeholder={nickname}
+              onChange={(event) => {
+                dispatch(addUsernameNewUser(event.target.value));
+              }}
+            />
+            <Form.Input
+              required
               label="Ville"
               placeholder={city}
-              // width={5}
               error={cityFind ? false : {
                 content: 'Ville introuvable, merci d\'indiquer une autre ville',
               }}
@@ -121,17 +130,9 @@ const UpdateUser = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
-              label="Nom d'utilisateur"
-              placeholder={nickname}
-              width={5}
-              onChange={(event) => {
-                dispatch(addUsernameNewUser(event.target.value));
-              }}
-            />
-            <Form.Input
+              required
               label="Email"
               placeholder={mail}
-              width={6}
               // I use a ternary condition to show or hide the error message
               error={validate(mailUser) ? false : {
                 content: 'Merci d\'entrer un email valide',
@@ -143,7 +144,6 @@ const UpdateUser = () => {
             <Form.Input
               label="Téléphone"
               placeholder={phone}
-              width={5}
               // Only numbers are allowed
               onKeyPress={(event) => {
                 if (!/[0-9]/.test(event.key)) {
@@ -155,9 +155,9 @@ const UpdateUser = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
-              label="Nouveau mot de passe"
+              required
+              label="Mot de passe"
               placeholder="Mot de passe"
-              width={4}
               type="password"
               error={(passwordRegex.test(passwordUser)) ? false : {
                 content: '6 caractères minimum dont 1 minuscule, 1 majuscule et 1 chiffre',
@@ -167,9 +167,9 @@ const UpdateUser = () => {
               }}
             />
             <Form.Input
+              required
               label="Confirmation Mot de passe"
               placeholder="Confirmez votre mot de passe"
-              width={4}
               type="password"
               error={(checkedPasswordUser === passwordUser) ? false : {
                 content: 'Vérifiez votre mot de passe',
@@ -178,26 +178,23 @@ const UpdateUser = () => {
                 dispatch(checkedPasswordNewUser(event.target.value));
               }}
             />
-            <Form.Input
-              label="Photo"
-              // placeholder="Photo"
-              width={7}
-              type="file"
-              onChange={(event) => {
-                dispatch(addPictureNewUser(event.target.files[0]));
-                console.log(event.target.files[0]);
-              }}
-            />
           </Form.Group>
+          <Form.Input
+            label="Photo"
+            // placeholder="Photo"
+            width={7}
+            type="file"
+            onChange={(event) => {
+              dispatch(addPictureNewUser(event.target.files[0]));
+              console.log(event.target.files[0]);
+            }}
+          />
           <Form.Group widths="equal">
             <Form.Input
               control={Select}
               options={genderOptions}
               label="Genre"
               placeholder="Genre"
-              width={8}
-              // search
-              // searchInput={{ id: 'form-select-control-gender' }}
               // Find solution here https://stackoverflow.com/questions/68496963/how-to-passe-value-from-dropdown-made-by-semantic-ui-in-react
               onChange={(event, result) => {
                 // console.log(result.value);
@@ -206,8 +203,7 @@ const UpdateUser = () => {
             />
             <Form.Input
               label="Date de naissance"
-              placeholder={birthdate}
-              width={8}
+              placeholder="Date de naissance"
               type="date"
               onChange={(event) => {
                 dispatch(addBirthNewUser(event.target.value));

@@ -25,6 +25,7 @@ const UserRegister = () => {
 
   const userCreate = useSelector((state) => state.user.userCreate);
   const mailUser = useSelector((state) => state.user.mailNewUser);
+  // const nickenameUser = useSelector((state) => state.user.usernameNewUser);
   const passwordUser = useSelector((state) => state.user.passwordNewUser);
   const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);

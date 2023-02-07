@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { HashLink } from 'react-router-hash-link';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
@@ -70,6 +71,9 @@ const Profil = () => {
 
   const animals = useSelector((state) => state.dog.connectedAnimals);
   // console.log(animals);
+
+  // Conversion de la date et l'heure dans le bon format d'affichage
+  const frenchDate = moment(birthdate).locale('fr').format('LL');
 
   const url = useSelector((state) => state.nav.url);
 
@@ -148,7 +152,7 @@ const Profil = () => {
               </div>
               <div className="info-block">
                 <h3 className="profil-info-title">Birthdate:</h3>
-                <span className="profil-info">{birthdate}</span>
+                <span className="profil-info">{frenchDate}</span>
               </div>
               <div className="info-block">
                 <h3 className="profil-info-title">Gender:</h3>
