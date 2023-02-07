@@ -28,6 +28,9 @@ const EventPage = () => {
           </div>
           <div className="eventboard-main-infos">
 
+            <h2 className="eventboard-info-title">Lieu:</h2>
+            <span className="eventboard-info">{event.itinerary.name}</span>
+
             <h2 className="eventboard-info-title">Description:</h2>
             <span className="eventboard-info">{event.description}</span>
 

@@ -9,7 +9,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneEvent = (
   {
-    id, eventDate, name, picture, description
+    id, eventDate, name, picture, description,
   },
 ) => {
   const dispatch = useDispatch();

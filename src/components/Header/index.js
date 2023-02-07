@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import headerLogo from './header_logo.svg';
+import headerLogo from './loggo_chris.png';
 import './header.scss';
 import { logOut } from '../../actions/user';
 import { changeMain, showError } from '../../actions/nav';
@@ -27,8 +27,9 @@ function Header() {
         }}
       >
         <div className="header-logo">
-          <h1>dO'ggy</h1>
+          <span>d</span>
           <img className="header-logo-img" src={headerLogo} alt="header logo" />
+          <span>ggy</span>
         </div>
       </Link>
       <div className="header-nav">

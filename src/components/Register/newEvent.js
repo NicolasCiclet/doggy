@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Button, Form, Message, Select, TextArea,
+  Button, Form, Message, Select, TextArea, Icon,
 } from 'semantic-ui-react';
 import {
   dateNewEvent, describNewEvent, newEventCreated, placeNewEvent,
@@ -102,10 +102,23 @@ const NewEvent = () => {
             }}
           />
           {/* Input for submit */}
-          <Form.Input
-            control={Button}
-            content="Valider"
-          />
+          <Button control={Button} animated="fade">
+            <Button.Content visible>Valider</Button.Content>
+            <Button.Content hidden>Valider</Button.Content>
+          </Button>
+          <Button
+            animated
+            color="red"
+            onClick={() => {
+              window.history.back();
+            }}
+          >
+            {/* // cancel button and return to previous page */}
+            <Button.Content visible>Annuler</Button.Content>
+            <Button.Content hidden>
+              <Icon name="arrow left" />
+            </Button.Content>
+          </Button>
         </Form>
 
       </div>

@@ -9,7 +9,7 @@ const LegalMentions = () => (
         Bourriquen Marine
       </p>
       <p className="mention-content-p">
-        Niclet Nicolas
+        Ciclet Nicolas
       </p>
       <p className="mention-content-p">
         Rialland Christophe
