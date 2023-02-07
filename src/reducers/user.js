@@ -10,6 +10,7 @@ import {
   IS_MESS_FORM_OPENED, DISPLAY_RANDOM_USER_INFO, DISPLAY_LOADER, STOCK_USERS,
   STOCK_ID_WATCHED_USER, ERROR_CONNEXION, USER_DELETED, CHANGE_SEXE_USER,
   SHOW_USER_FILTER,
+  STOCK_UPDATE_UNREAD,
 } from '../actions/user';
 
 const initialState = {
@@ -317,6 +318,12 @@ const userReducer = (state = initialState, action = {}) => {
         showFilter: !state.showFilter,
       };
 
+      // update of the number of unread messages
+    case STOCK_UPDATE_UNREAD:
+      return {
+        ...state,
+        nbrUnreadMessage: action.value,
+      };
     default:
       return state;
   }
