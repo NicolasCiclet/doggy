@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Button, Form, Select, TextArea,
+  Button, Form, Select, TextArea, Icon,
 } from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
 import { getCityApi } from '../../actions/city';
@@ -196,11 +196,23 @@ const UserRegister = () => {
             }}
           />
           <Form.Checkbox label="J'accepte les termes et conditions" />
-          <Form.Input
-            required
-            control={Button}
-            content="Valider"
-          />
+          <Button control={Button} animated="fade">
+            <Button.Content visible>Valider</Button.Content>
+            <Button.Content hidden>Valider</Button.Content>
+          </Button>
+          <Button
+            animated
+            color="red"
+            onClick={() => {
+              window.history.back();
+            }}
+          >
+            {/* // cancel button and return to previous page */}
+            <Button.Content visible>Annuler</Button.Content>
+            <Button.Content hidden>
+              <Icon name="arrow left" />
+            </Button.Content>
+          </Button>
         </Form>
 
       </div>
