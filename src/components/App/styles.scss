@@ -2,6 +2,10 @@
 .app {
   width: 100%;
   margin: 1em auto;
+
+  border: 14px solid #0000;
+    border-radius: 25px;
+    background: linear-gradient(#e0e0e0,rgb(255 255 255 / 50%)) padding-box, linear-gradient(#bebebe,rgb(255 255 255 / 50%)) border-box;
 }
 
 // Breackpoint for tablet
