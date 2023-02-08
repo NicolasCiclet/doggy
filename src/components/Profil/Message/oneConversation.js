@@ -1,3 +1,4 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,7 +11,10 @@ const OneConversation = ({ id, messages }) => {
     <div className="one-conversation">
       {messages.map((message) => (
         <div className="one-message">
-          <p className={message.author.id == idUser ? 'sent' : 'received'}>{message.content}</p>
+          <p className={message.author.id == idUser ? 'sent' : 'received'}>
+            {message.content} <span className="message-date">{moment(message.createdAt).locale('fr').format('LLLL')}</span>
+          </p>
+          {/* <p className="message-date">{moment(message.createdAt).locale('fr').format('LLLL')}</p> */}
         </div>
       ))}
     </div>

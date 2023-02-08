@@ -50,14 +50,22 @@
   .one-message {
     color: #fff;
     font-size: 0.8rem;
+    position: relative;
+
+    // date and time
+    .message-date {
+      color: black;
+      position: absolute;
+      right: 5px;
+      bottom: -15px;
+      font-size: 0.6rem;
+    }
 
     .sent, .received {
       padding: 0.7rem;
       border-radius: 5px;
       width: 50%;
       position: relative;
-
-      
     }
     .sent:before, .received:before {
       content: ''; // required for the element to be displayed

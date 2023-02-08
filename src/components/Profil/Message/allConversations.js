@@ -4,6 +4,7 @@ import logoMail from '../conversation.svg';
 import OneConversation from './oneConversation';
 
 import './conversation.scss';
+import { updateUnreadMessage } from '../../../actions/user';
 
 const AllConversations = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const AllConversations = () => {
                 console.log(conversation);
                 dispatch(patchreadMessages());
                 dispatch(getAllConversations());
+                dispatch(updateUnreadMessage());
               }}
               className={conversation.id == showConversation ? 'conversation-open' : 'conversation'}
               key={conversation.id}

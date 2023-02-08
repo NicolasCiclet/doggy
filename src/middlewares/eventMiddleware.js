@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   DELETE_EVENT, SUBMIT_FORM_NEW_EVENT, SUBMIT_FORM_UPDATE_EVENT, GET_CONNECTED_EVENTS,
   stockConnectedEvents, GET_ALL_EVENTS, stockUserEvents, GET_USER_EVENTS, newEventCreated,
-  stockAllEvents, newEventDeleted,
+  stockAllEvents, newEventDeleted, GET_RANDOM_EVENT, displayRandomEvent,
 } from '../actions/event';
 import { displayLoader } from '../actions/user';
 
@@ -156,6 +156,26 @@ const eventMiddleware = (store) => (next) => (action) => {
           const userEvents = response.data.events;
           console.log(userEvents);
           store.dispatch(stockUserEvents(userEvents));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
+    case GET_RANDOM_EVENT:
+
+      axios.get(
+        `${url}api/events/random/4`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response.data.results);
+          store.dispatch(displayRandomEvent(response.data.results));
         })
         .catch((error) => {
           console.log(error);

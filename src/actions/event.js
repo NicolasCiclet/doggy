@@ -47,6 +47,11 @@ export const CHANGE_EVENT_ITINERARY = 'CHANGE_EVENT_ITINERARY';
 // To open the filter window
 export const SHOW_EVENT_FILTER = 'SHOW_EVENT_FILTER';
 
+// To get RANDOM event information for carousel, from api back
+export const GET_RANDOM_EVENT = 'GET_RANDOM_EVENT';
+// To put RANDOM event information for carousel, in state
+export const DISPLAY_RANDOM_EVENT = 'DISPLAY_RANDOM_EVENT';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -137,4 +142,13 @@ export const changeEventItinerary = (itinerary) => ({
 
 export const showEventFilter = () => ({
   type: SHOW_EVENT_FILTER,
+});
+
+export const getRandomEvent = () => ({
+  type: GET_RANDOM_EVENT,
+});
+
+export const displayRandomEvent = (value) => ({
+  type: DISPLAY_RANDOM_EVENT,
+  value: value,
 });
