@@ -128,7 +128,7 @@ const Map = () => {
                 >
                   <Popup>
                     <Link to={`/user/${user.id}`}>
-                      {user.firstname} <br /> {user.nickname}
+                      {user.nickname}
                     </Link>
                   </Popup>
                 </Marker>
@@ -174,7 +174,7 @@ const Map = () => {
                 >
                   <Popup>
                     <Link to={`/professional/${professional.id}`}>
-                      {professional.name}
+                      {professional.name} <br /> {professional.category.name}
                     </Link>
                   </Popup>
                 </Marker>

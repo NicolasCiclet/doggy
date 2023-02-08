@@ -8,7 +8,7 @@ import {
 
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
   GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS,
-  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers, UPDATE_UNREAD_MESSAGE, stockupdateUnread,
+  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers, UPDATE_UNREAD_MESSAGE, stockupdateUnread, GET_LAST_USER, stockLastUser,
 
 } from '../actions/user';
 
@@ -287,6 +287,26 @@ const userMiddleware = (store) => (next) => (action) => {
           const { nbrUnreadMessage } = response.data.result;
 
           store.dispatch(stockupdateUnread(nbrUnreadMessage));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      break;
+
+    case GET_LAST_USER:
+      axios.get(
+        `${url}api/users/last/1`,
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
+      )
+        .then((response) => {
+          console.log(response.data);
+          console.log('dernier user recu');
+          store.dispatch(stockLastUser(response.data.results[0]));
         })
         .catch((error) => {
           console.log(error);

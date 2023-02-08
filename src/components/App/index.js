@@ -23,7 +23,7 @@ import UpdateDog from '../Register/updateDog';
 import UpdateEvent from '../Register/updateEvent';
 import UserPage from '../MainSection/Users/userPage';
 import EventPage from '../MainSection/Events/eventPage';
-import { getRandomUserInfo } from '../../actions/user';
+import { getLastUser, getRandomUserInfo } from '../../actions/user';
 import Loader from '../MainSection/Loader';
 import ProPage from '../MainSection/Professional/proPage';
 import ItineraryPage from '../MainSection/Itineraries/itineraryPage';
@@ -39,6 +39,7 @@ function App() {
   useEffect(() => {
     dispatch(getRandomUserInfo());
     dispatch(getRandomEvent());
+    dispatch(getLastUser());
   }, []);
   return (
     // Here is the main div, with all components

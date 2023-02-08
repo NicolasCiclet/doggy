@@ -296,7 +296,7 @@ const Profil = () => {
                     </div>
                     <div className="info-block">
                       <h3 className="profil-info-title">Date:</h3>
-                      <span className="profil-info">{onEvent.eventDate}</span>
+                      <span className="profil-info">{moment(onEvent.eventDate).locale('fr').format('LLLL')}</span>
                     </div>
                     <div className="info-block-line">
                       <h3 className="profil-info-title">Description:</h3>

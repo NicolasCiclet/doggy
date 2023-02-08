@@ -70,6 +70,10 @@ export const SHOW_USER_FILTER = 'SHOW_USER_FILTER';
 export const UPDATE_UNREAD_MESSAGE = 'UPDATE_UNREAD_MESSAGE';
 export const STOCK_UPDATE_UNREAD = 'STOCK_UPDATE_UNREAD';
 
+// the last user
+export const GET_LAST_USER = 'GET_LAST_USER';
+export const STOCK_LAST_USER = 'STOCK_LAST_USER';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -274,5 +278,15 @@ export const updateUnreadMessage = () => ({
 // update of the number of unread messages on state
 export const stockupdateUnread = (newValue) => ({
   type: STOCK_UPDATE_UNREAD,
+  value: newValue,
+});
+
+// the last user
+export const getLastUser = () => ({
+  type: GET_LAST_USER,
+});
+
+export const stockLastUser = (newValue) => ({
+  type: STOCK_LAST_USER,
   value: newValue,
 });

@@ -15,8 +15,8 @@ import './register.scss';
 
 // options for the input select gender
 const genderOptions = [
-  { text: 'Homme', value: 'male' },
-  { text: 'Femme', value: 'female' },
+  { text: 'Homme', value: 'Homme' },
+  { text: 'Femme', value: 'Femme' },
 ];
 
 const UserRegister = () => {

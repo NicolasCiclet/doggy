@@ -12,21 +12,23 @@ function Welcome() {
   const userCreate = useSelector((state) => state.user.userCreate);
   // I create my array with all my users and an empty object for my lastUser
   const users = useSelector((state) => state.user.usersToDisplay);
-  let lastUser = {};
+  const lastUser = useSelector((state) => state.user.lastUser);
+  const url = useSelector((state) => state.nav.url);
+  // let lastUser = {};
 
-  // function to find the last user registered, with all the users in argument
-  function findMaxId(allUsers) {
-    // console.log(allUsers);
-    // I select the max id in my array
-    const maxId = (Math.max(...allUsers.map((user) => user.id)));
-    // console.log(maxId);
-    // I find the user that has the max id : he is the last user registered
-    lastUser = allUsers.find((user) => user.id === maxId);
-    // console.log(result);
-    return lastUser;
-  }
+  // // function to find the last user registered, with all the users in argument
+  // function findMaxId(allUsers) {
+  //   // console.log(allUsers);
+  //   // I select the max id in my array
+  //   const maxId = (Math.max(...allUsers.map((user) => user.id)));
+  //   // console.log(maxId);
+  //   // I find the user that has the max id : he is the last user registered
+  //   lastUser = allUsers.find((user) => user.id === maxId);
+  //   // console.log(result);
+  //   return lastUser;
+  // }
 
-  findMaxId(users);
+  // findMaxId(users);
 
   return (
     <>
@@ -64,7 +66,7 @@ function Welcome() {
         </div>
         <div className="welcome-newUser">
           <aside className="welcome-newUser-content">Bienvenue à {lastUser.firstname}, notre dernier membre inscrit !</aside>
-          <img className="welcome-newUser-avatar" src={lastUser.userPicture} alt="New user avatar" />
+          <img className="welcome-newUser-avatar" src={`${url}assets/images/${lastUser.picture}`} alt="New user avatar" />
         </div>
       </div>
     </>

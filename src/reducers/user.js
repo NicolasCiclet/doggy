@@ -11,6 +11,7 @@ import {
   STOCK_ID_WATCHED_USER, ERROR_CONNEXION, USER_DELETED, CHANGE_SEXE_USER,
   SHOW_USER_FILTER,
   STOCK_UPDATE_UNREAD,
+  STOCK_LAST_USER,
 } from '../actions/user';
 
 const initialState = {
@@ -73,6 +74,9 @@ const initialState = {
   contactName: '',
   contactMail: '',
   contactMessage: '',
+
+  // The last user
+  lastUser: [],
 
 };
 
@@ -324,6 +328,13 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         nbrUnreadMessage: action.value,
       };
+
+    case STOCK_LAST_USER:
+      return {
+        ...state,
+        lastUser: action.value,
+      };
+
     default:
       return state;
   }
