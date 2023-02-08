@@ -26,7 +26,7 @@ const Contacts = () => {
             success
             header="Message envoyé avec succès"
             onDismiss={() => {
-              dispatch(isMessageSend());
+              dispatch(isMessageSend(false));
               navigate('/contact');
             }}
           />

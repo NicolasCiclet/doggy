@@ -78,7 +78,7 @@ const Map = () => {
         key={latUser}
         center={center}
         // center={[45.8692, 6.129]}
-        zoom={11}
+        zoom={10}
         scrollWheelZoom={false}
       >
         <ChangeView center={center} />

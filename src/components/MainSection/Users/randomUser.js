@@ -22,7 +22,7 @@ const RandomUser = () => {
       <Carousel
       // Options
         autoPlay
-        interval={4000}
+        interval={3000}
         infiniteLoop
         showThumbs={false}
         // thumbWidth={80}

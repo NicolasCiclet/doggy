@@ -220,11 +220,11 @@ const userMiddleware = (store) => (next) => (action) => {
       console.log('RANDOM USER API BACK');
       axios.get(
         `${url}api/users/random/4`,
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${store.getState().user.token}`,
-        //   },
-        // },
+        {
+          headers: {
+            Authorization: `Bearer ${store.getState().user.token}`,
+          },
+        },
       )
         .then((response) => {
           console.log(response.data.results);

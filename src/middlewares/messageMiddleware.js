@@ -100,8 +100,8 @@ const messageMiddleware = (store) => (next) => (action) => {
           console.log(response);
           console.log('message envoyé');
           // const allMessages = response.data.results;
-          store.dispatch(contactFormReset());
-          store.dispatch(isMessageSend());
+          // store.dispatch(contactFormReset());
+          store.dispatch(isMessageSend(true));
         })
         // What to do in case of error
         .catch((error) => {

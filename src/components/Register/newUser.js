@@ -16,8 +16,9 @@ import Loader from '../MainSection/Loader';
 
 // options for the input select gender
 const genderOptions = [
-  { text: 'Homme', value: 'Homme' },
   { text: 'Femme', value: 'Femme' },
+  { text: 'Homme', value: 'Homme' },
+  { text: 'Autre', value: 'Autre' },
 ];
 
 const UserRegister = () => {
