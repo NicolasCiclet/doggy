@@ -12,6 +12,7 @@ import {
   addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser,
 } from '../../actions/user';
 import './register.scss';
+import Loader from '../MainSection/Loader';
 
 // options for the input select gender
 const genderOptions = [
@@ -29,6 +30,8 @@ const UserRegister = () => {
   const passwordUser = useSelector((state) => state.user.passwordNewUser);
   const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);
+
+  const loader = useSelector((state) => state.user.dislpayLoader);
 
   useEffect(() => {
     if (userCreate) {
@@ -51,6 +54,7 @@ const UserRegister = () => {
 
   return (
     <>
+      {loader && (<Loader />)}
       {/* the form is visible only if userCreate is false */}
       {!userCreate && (
       <div className="register">

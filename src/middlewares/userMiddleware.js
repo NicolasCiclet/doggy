@@ -8,7 +8,7 @@ import {
 
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
   GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS,
-  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers, UPDATE_UNREAD_MESSAGE, stockupdateUnread, GET_LAST_USER, stockLastUser,
+  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers, UPDATE_UNREAD_MESSAGE, stockupdateUnread, GET_LAST_USER, stockLastUser, connexionFormReset,
 
 } from '../actions/user';
 
@@ -58,6 +58,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_FORM_NEW_USER:
+      store.dispatch(displayLoader(true));
 
       axios.post(
         `${url}api/users/`,
@@ -86,9 +87,12 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(addNewUser());
+          store.dispatch(connexionFormReset());
+          store.dispatch(displayLoader(false));
         })
         .catch((error) => {
           console.log(error);
+          store.dispatch(displayLoader(false));
         });
 
       break;

@@ -74,6 +74,8 @@ export const STOCK_UPDATE_UNREAD = 'STOCK_UPDATE_UNREAD';
 export const GET_LAST_USER = 'GET_LAST_USER';
 export const STOCK_LAST_USER = 'STOCK_LAST_USER';
 
+export const CONNEXION_FORM_RESET = 'CONNEXION_FORM_RESET';
+
 // User actions
 export const addNewUser = () => ({
   type: ADD_NEW_USER,
@@ -289,4 +291,8 @@ export const getLastUser = () => ({
 export const stockLastUser = (newValue) => ({
   type: STOCK_LAST_USER,
   value: newValue,
+});
+
+export const connexionFormReset = () => ({
+  type: CONNEXION_FORM_RESET,
 });

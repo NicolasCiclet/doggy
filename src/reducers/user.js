@@ -12,6 +12,7 @@ import {
   SHOW_USER_FILTER,
   STOCK_UPDATE_UNREAD,
   STOCK_LAST_USER,
+  CONNEXION_FORM_RESET,
 } from '../actions/user';
 
 const initialState = {
@@ -333,6 +334,13 @@ const userReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         lastUser: action.value,
+      };
+
+    case CONNEXION_FORM_RESET:
+      return {
+        ...state,
+        mailNewUser: '',
+        passwordNewUser: '',
       };
 
     default:
