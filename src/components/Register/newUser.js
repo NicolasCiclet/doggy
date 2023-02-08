@@ -157,7 +157,7 @@ const UserRegister = () => {
               }}
             />
           </Form.Group>
-          <Form.Input
+          {/* <Form.Input
             label="Photo"
             // placeholder="Photo"
             width={7}
@@ -166,7 +166,7 @@ const UserRegister = () => {
               dispatch(addPictureNewUser(event.target.files[0]));
               console.log(event.target.files[0]);
             }}
-          />
+          /> */}
           <Form.Group widths="equal">
             <Form.Input
               control={Select}

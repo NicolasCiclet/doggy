@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { activeConversation, getAllConversations, getOneConversation, patchreadMessages, showOneConversation, stockIdConversation } from '../../../actions/message';
+import { activeConversation, getAllConversations, patchreadMessages } from '../../../actions/message';
 import logoMail from '../conversation.svg';
 import OneConversation from './oneConversation';
 
@@ -11,8 +11,7 @@ const AllConversations = () => {
   const showConversation = useSelector((state) => state.message.activeConversation);
   const allConversations = useSelector((state) => state.message.allConversationsApi);
   const unreadMessages = useSelector((state) => state.message.unreadMessages);
-  const userNickname = useSelector((state) => state.user.usernameNewUser);
-
+  // const userNickname = useSelector((state) => state.user.usernameNewUser);
 
   return (
     <div className="profil-section" id="mes-messages">
