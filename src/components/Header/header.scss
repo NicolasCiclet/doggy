@@ -12,6 +12,8 @@
   background-image: url('./header_bandeau.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   .header-nav a{
     display: block;
@@ -78,7 +80,7 @@
 // Breackpoint for tablet
 @media (min-width: 480px){
   .header-main{
-    border-radius: 10px;
+    // border-radius: 10px;
   }
 }
 

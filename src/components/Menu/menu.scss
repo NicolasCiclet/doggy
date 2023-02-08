@@ -3,11 +3,12 @@
 // Mobil first
 .menu {
   display: flex;
-  background-color: vars.$lightColor;
+  // background-color: vars.$lightColor;
+  background-color: #cfcfcf;
   padding: 0.6rem 0.3rem;
   align-items: center;
   justify-content: space-around;
-  margin: 1rem 0;
+  // margin: 1rem 0;
 
   .menu-para {
     color: vars.$mainColor;
