@@ -286,10 +286,8 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response.data);
-          console.log('UnreadMessage mis a jour');
+          // Get the number of unread messages from the user
           const { nbrUnreadMessage } = response.data.result;
-
           store.dispatch(stockupdateUnread(nbrUnreadMessage));
         })
         .catch((error) => {

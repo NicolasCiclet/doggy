@@ -89,6 +89,7 @@ const Map = () => {
         zoom={10}
         scrollWheelZoom // true by default, can use ={false}
       >
+        {/* to update the map position */}
         <ChangeView center={center} />
         {/* Displays on the map the data source and the url */}
         <TileLayer

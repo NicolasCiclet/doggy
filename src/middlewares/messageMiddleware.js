@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {
   GET_ALL_CONVERSATIONS, isMessageSend, POST_USER_MESSAGE, stockAllConversations,
-  CONTACT_SEND_MAIL, contactFormReset, stockUnreadMessages, PATCH_READ_MESSAGES,
+  CONTACT_SEND_MAIL, stockUnreadMessages, PATCH_READ_MESSAGES,
 } from '../actions/message';
 
 const messageMiddleware = (store) => (next) => (action) => {
@@ -48,7 +48,7 @@ const messageMiddleware = (store) => (next) => (action) => {
       break;
 
     case GET_ALL_CONVERSATIONS:
-      console.log('reception des conversations du back');
+      // console.log('reception des conversations du back');
 
       // I send the request
       axios.get(
@@ -68,8 +68,8 @@ const messageMiddleware = (store) => (next) => (action) => {
         })
         // What to do in case of error
         .catch((error) => {
-          console.log(error);
-          console.log('conversation non trouvé');
+          // console.log(error);
+          // console.log('conversation non trouvé');
         })
 
         // to do in any case
