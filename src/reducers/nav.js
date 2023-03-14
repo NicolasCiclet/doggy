@@ -1,8 +1,9 @@
 import { CHANGE_MAIN, SHOW_ERROR } from '../actions/nav';
 
 const initialState = {
-  // url de l'api de Christophe
-  url: 'http://christophe-rialland.vpnuser.lan/doggy/public/',
+  // url of Christophe's local server
+  // url: 'http://christophe-rialland.vpnuser.lan/doggy/public/',
+  url: 'https://www.doggy.wf/',
 
   // To display the differents mains section
   main: '',

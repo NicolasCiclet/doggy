@@ -3,15 +3,21 @@ import {
   FeatureGroup, LayersControl, MapContainer, Marker, Popup, TileLayer, useMap,
 } from 'react-leaflet';
 
-// import module L for the creation of icons
+// Import the Leaflet module and store it in the "L" variable.
+// Now we can access Leaflet functions and properties. L.map(), L.marker(), L.icon() etc.
 import L from 'leaflet';
 
+// Import of different markers
 import markerIconYellow from 'src/data/marker-icon-yellow.png';
 import markerIconRed from 'src/data/marker-icon-red.png';
 import markerIconBlack from 'src/data/marker-icon-black.png';
 import markerIconBlue from 'src/data/marker-icon-blue.png';
-import { useDispatch, useSelector } from 'react-redux';
+import markerDog from 'src/data/dog.svg';
+
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import 'leaflet/dist/leaflet.css';
 
 // Icon creation
 const icon1 = L.icon({
@@ -29,6 +35,10 @@ const icon2 = L.icon({
 const icon3 = L.icon({
   iconUrl: markerIconRed,
   iconSize: [45, 53],
+});
+const icon9 = L.icon({
+  iconUrl: markerDog,
+  iconSize: [35, 45],
 });
 const icon5 = L.icon({
   iconUrl: markerIconBlack,
@@ -54,22 +64,20 @@ const Map = () => {
   const professionals = useSelector((state) => state.pro.professionalsApi);
   const markerSelected = useSelector((state) => state.map.nameSelected);
 
-  // Get the location to zoom on the user
+  // Center the map on the user
   const latUser = useSelector((state) => state.user.latNewUser);
   const lngUser = useSelector((state) => state.user.lngNewUser);
   const center = [latUser, lngUser];
 
+  // "setView" allows to update the map position.
   const ChangeView = () => {
     const map = useMap();
     map.setView(center);
-    // console.log('centre de la map');
     return null;
   };
 
-  // I get the name of the page to show or hide the markers
+  // I get the section name, to display its markers
   const main = useSelector((state) => state.nav.main);
-
-  // const isLogged = useSelector((state) => state.user.logged);
 
   return (
     <div className="map-main">
@@ -79,31 +87,55 @@ const Map = () => {
         center={center}
         // center={[45.8692, 6.129]}
         zoom={10}
-        scrollWheelZoom={false}
+        scrollWheelZoom // true by default, can use ={false}
       >
         <ChangeView center={center} />
-        {/* Used to load and display tile layers on the map */}
+        {/* Displays on the map the data source and the url */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {/* display a button to show or hide the markers */}
+        {/* displays a list of layers to show the markers */}
         <LayersControl position="topright">
 
+          {/* LayersControl.Overlay create a checkbox in the layer list of the LayersControl component */}
+          <LayersControl.Overlay
+            // Position of the current user
+            checked
+            name="Me"
+          >
+            <Marker
+              position={center}
+              icon={icon9}
+            >
+              {/* when clicking on the marker */}
+              <Popup>
+                Ma position
+              </Popup>
+            </Marker>
+          </LayersControl.Overlay>
+
+          {/* *********************
+            Itinerary section
+          ********************* */}
           <LayersControl.Overlay
           // I get the name of the page to show or hide the markers
             checked={main === 'itinerary'}
             name="Itineraries"
           >
+            {/* <FeatureGroup> is used to group multiple components into a single layer. */}
             <FeatureGroup>
-              {/* I map on events to display all markers */}
+              {/* I map on itineraries to display all markers */}
               {itineraries.map((itinerary) => (
                 <Marker
+                // Exemple from the documentation <Marker position={[51.505, -0.09]}>
                   position={[itinerary.location.latitude, itinerary.location.longitude]}
-                  icon={(itinerary.name === markerSelected) ? icon4 : icon1}
+                  // I use a ternary condition. if the condition is true it will display icon3, if it's wrong icon1
+                  icon={(itinerary.name === markerSelected) ? icon3 : icon1}
                   key={itinerary.id}
                 >
                   <Popup>
+                    {/* On clicking, we arrive on the specific page */}
                     <Link to={`/itinerary/${itinerary.id}`}>
                       {itinerary.name}
                     </Link>
@@ -113,17 +145,18 @@ const Map = () => {
             </FeatureGroup>
           </LayersControl.Overlay>
 
+          {/* *********************
+            Meeting section
+          ********************* */}
           <LayersControl.Overlay
-          // I get the name of the page to show or hide the markers
             checked={main === 'meeting'}
             name="Users"
           >
             <FeatureGroup>
               {users.map((user) => (
                 <Marker
-                // Use a ternary condition to display different icons if the name matches
                   position={[user.location.latitude, user.location.longitude]}
-                  icon={(user.id === markerSelected) ? icon3 : icon2}
+                  icon={(user.id === markerSelected) ? icon4 : icon2}
                   key={user.id}
                 >
                   <Popup>
@@ -136,17 +169,18 @@ const Map = () => {
             </FeatureGroup>
           </LayersControl.Overlay>
 
+          {/* *********************
+            Event section
+          ********************* */}
           <LayersControl.Overlay
-          // I get the name of the page to show or hide the markers
             checked={main === 'event'}
             name="Events"
           >
             <FeatureGroup>
               {events.map((event) => (
                 <Marker
-                // Use a ternary condition to display different icons if the name matches
                   position={[event.itinerary.location.latitude, event.itinerary.location.longitude]}
-                  icon={(event.description === markerSelected) ? icon8 : icon7}
+                  icon={(event.description === markerSelected) ? icon6 : icon7}
                   key={event.id}
                 >
                   <Popup>
@@ -159,17 +193,18 @@ const Map = () => {
             </FeatureGroup>
           </LayersControl.Overlay>
 
+          {/* *********************
+            Professional section
+          ********************* */}
           <LayersControl.Overlay
-          // I get the name of the page to show or hide the markers
             checked={main === 'professional'}
             name="Professionals"
           >
             <FeatureGroup>
               {professionals.map((professional) => (
                 <Marker
-                // Use a ternary condition to display different icons if the name matches
                   position={[professional.location.latitude, professional.location.longitude]}
-                  icon={(professional.name === markerSelected) ? icon6 : icon5}
+                  icon={(professional.name === markerSelected) ? icon8 : icon5}
                   key={professional.id}
                 >
                   <Popup>
@@ -183,7 +218,6 @@ const Map = () => {
           </LayersControl.Overlay>
 
         </LayersControl>
-
       </MapContainer>
     </div>
   );

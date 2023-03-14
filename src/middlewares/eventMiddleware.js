@@ -17,7 +17,8 @@ const eventMiddleware = (store) => (next) => (action) => {
       console.log('envoi requete creation event');
 
       axios.post(
-        'http://christophe-rialland.vpnuser.lan/doggy/public/api/events/',
+        // 'http://christophe-rialland.vpnuser.lan/doggy/public/api/events/',
+        `${url}api/events`,
         {
           name: store.getState().event.titleNewEvent,
           description: store.getState().event.describNewEvent,

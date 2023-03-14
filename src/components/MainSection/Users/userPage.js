@@ -21,6 +21,7 @@ const UserPage = () => {
   const isFormOpen = useSelector((state) => state.user.messFormOpen);
   // I checked if the user is connected
   const isLogged = useSelector((state) => state.user.logged);
+  const url = useSelector((state) => state.nav.url);
 
   useEffect(() => {
     if (isLogged) {
@@ -47,7 +48,7 @@ const UserPage = () => {
         </div>
         <div className="userboard-main">
           <div className="userboard-main-photo">
-            <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${user.picture}`} alt="user" />
+            <img className="userboard-photo" src={`${url}assets/images/${user.picture}`} alt="user" />
           </div>
           <div className="userboard-main-infos">
 
@@ -78,7 +79,7 @@ const UserPage = () => {
           { userAnimals.map((animal) => (
             <div key={animal.id} className="userboard-main">
               <div className="userboard-main-photo">
-                <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${animal.picture}`} alt="animal" />
+                <img className="userboard-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
               </div>
               <div className="userboard-main-infos">
 
@@ -104,7 +105,7 @@ const UserPage = () => {
             <>
               <div key={event.id} className="userboard-main">
                 <div className="userboard-main-photo">
-                  <img className="userboard-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${event.picture}`} alt="evenement" />
+                  <img className="userboard-photo" src={`${url}assets/images/${event.picture}`} alt="evenement" />
                 </div>
                 <div className="userboard-main-infos">
 

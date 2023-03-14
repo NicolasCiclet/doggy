@@ -24,12 +24,12 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  position: fixed;
+  position: absolute;
   right: -100vw;
-  bottom: 0;
+  top: 0;
   width: 0;
   height: 100vh;
-  padding: 2rem;
+  padding: 5rem 2rem;
   visibility: hidden;
   background-color: black;
   transition: all .6s ease-out;
@@ -39,6 +39,7 @@
   width: 200px;
   right: 0;
   visibility: visible;
+  top: 0;
 }
 
 /* Afficher petite barre sous les links */
