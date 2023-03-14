@@ -55,7 +55,6 @@ const UserRegister = () => {
 
   return (
     <>
-      {loader && (<Loader />)}
       {/* the form is visible only if userCreate is false */}
       {!userCreate && (
       <div className="register">

@@ -65,7 +65,7 @@ function Welcome() {
           </p>
         </div>
         <div className="welcome-newUser">
-          <aside className="welcome-newUser-content">Bienvenue à {lastUser.firstname}, notre dernier membre inscrit !</aside>
+          <aside className="welcome-newUser-content">Bienvenue à {lastUser.firstname}, notre dernier membre inscrit&nbsp;!</aside>
           <img className="welcome-newUser-avatar" src={`${url}assets/images/${lastUser.picture}`} alt="New user avatar" />
         </div>
       </div>

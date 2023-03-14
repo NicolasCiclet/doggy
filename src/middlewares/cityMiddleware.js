@@ -5,7 +5,10 @@ import {
 } from '../actions/user';
 
 // API Key
-const APIkey = 'lnxoBaBa1sbt/fQXBRsqqQ==w2DBgrQ5Mka1ykiE';
+// Clef API de Marine
+// const APIkey = 'lnxoBaBa1sbt/fQXBRsqqQ==w2DBgrQ5Mka1ykiE';
+// Clef API de Nico
+const APIkey = 'P6LZJ0byeAIlu7MHoyCptQ==vWW1G3Q1v3pVJqtX';
 const cityMiddleware = (store) => (next) => (action) => {
   const city = store.getState().user.cityNewUser;
 
@@ -15,7 +18,8 @@ const cityMiddleware = (store) => (next) => (action) => {
 
       // I send the request
       axios.get(
-        `https://api.api-ninjas.com/v1/geocoding?city=${city}&country=France`,
+        // `https://api.api-ninjas.com/v1/geocoding?city=${city}&country=France`,
+        `https://api.api-ninjas.com/v1/geocoding?city=${city}`,
         {
           headers: { 'X-Api-Key': APIkey },
         },

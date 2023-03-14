@@ -39,6 +39,7 @@ const Profil = () => {
   // To know if a dog, a event or a user as been deleted
   const dogDeleted = useSelector((state) => state.dog.dogDeleted);
   const eventDeleted = useSelector((state) => state.event.eventDeleted);
+  const url = useSelector((state) => state.nav.url);
 
   // If the user is connected, I get his info in BDD using his email
 
@@ -74,8 +75,6 @@ const Profil = () => {
 
   // Conversion de la date et l'heure dans le bon format d'affichage
   const frenchDate = moment(birthdate).locale('fr').format('LL');
-
-  const url = useSelector((state) => state.nav.url);
 
   return (
     <div className="profil">
@@ -287,7 +286,7 @@ const Profil = () => {
               <div key={onEvent.id} className="profil-header">
                 <div className="profil-main">
                   <div className="profil-main-photo">
-                    <img className="profil-photo" src={`http://christophe-rialland.vpnuser.lan/doggy/public/assets/images/${onEvent.picture}`} alt="evenement" />
+                    <img className="profil-photo" src={`${url}assets/images/${onEvent.picture}`} alt="evenement" />
                   </div>
                   <div className="profil-main-infos">
                     <div className="info-block">
