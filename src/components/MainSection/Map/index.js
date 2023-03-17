@@ -103,7 +103,7 @@ const Map = () => {
           <LayersControl.Overlay
             // Position of the current user
             checked
-            name="Me"
+            name="Moi"
           >
             <Marker
               position={center}
@@ -122,7 +122,7 @@ const Map = () => {
           <LayersControl.Overlay
           // I get the name of the page to show or hide the markers
             checked={main === 'itinerary'}
-            name="Itineraries"
+            name="Itinéraires"
           >
             {/* <FeatureGroup> is used to group multiple components into a single layer. */}
             <FeatureGroup>
@@ -151,7 +151,7 @@ const Map = () => {
           ********************* */}
           <LayersControl.Overlay
             checked={main === 'meeting'}
-            name="Users"
+            name="Utilisateurs"
           >
             <FeatureGroup>
               {users.map((user) => (
@@ -175,7 +175,7 @@ const Map = () => {
           ********************* */}
           <LayersControl.Overlay
             checked={main === 'event'}
-            name="Events"
+            name="Evénements"
           >
             <FeatureGroup>
               {events.map((event) => (
@@ -199,7 +199,7 @@ const Map = () => {
           ********************* */}
           <LayersControl.Overlay
             checked={main === 'professional'}
-            name="Professionals"
+            name="Professionnels"
           >
             <FeatureGroup>
               {professionals.map((professional) => (

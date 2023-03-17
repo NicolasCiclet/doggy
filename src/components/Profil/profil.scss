@@ -29,6 +29,10 @@ width: 100%;
         .button{
           width:27px;
           margin-left: 0.4rem;
+
+          &:hover {
+            cursor: pointer;
+          }
         }
       }
 

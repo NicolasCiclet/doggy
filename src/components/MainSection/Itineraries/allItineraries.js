@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Card, Form, Checkbox, Button,
 } from 'semantic-ui-react';
@@ -10,13 +11,21 @@ import '../main-section.scss';
 
 const AllItineraries = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLogged = useSelector((state) => state.user.logged);
+
   useEffect(() => {
-    dispatch(getAllItineraries());
-  }, []);
+    if (isLogged) {
+      dispatch(getAllItineraries());
+    }
+    else {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   // All initeraries
   let itineraries = useSelector((state) => state.itinerary.itinerariesApi);
-  console.log(itineraries);
+  // console.log(itineraries);
 
   // To open ou close the filter window
   const filter = useSelector((state) => state.itinerary.showFilter);
@@ -27,7 +36,7 @@ const AllItineraries = () => {
   if (difficulty !== '') {
     // eslint-disable-next-line max-len
     itineraries = itineraries.filter((itinerary) => (itinerary.difficulty.name === difficulty));
-    console.log(itineraries);
+    // console.log(itineraries);
   }
 
   return (

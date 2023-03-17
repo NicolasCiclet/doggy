@@ -21,7 +21,7 @@ const LegalMentions = () => (
       </p>
       <h2 className="mention-content-h2">Propriété intellectuelle :</h2>
       <p className="mention-content-p">
-        Toutes les images utilisées lors de ce projet sont soit libre de droit
+        Toutes les images utilisées lors de ce projet sont soit libres de droit
         soit appartenant aux éditeurs du site.
       </p>
       <h2 className="mention-content-h2">Mentions relatives à l’hébergement du site :</h2>

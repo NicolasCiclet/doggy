@@ -134,7 +134,7 @@ const Profil = () => {
             </div>
             <div className="profil-main-infos">
               <div className="info-block">
-                <h3 className="profil-info-title">Nickname:</h3>
+                <h3 className="profil-info-title">Pseudo:</h3>
                 <span className="profil-info">{nickname}</span>
               </div>
               <div className="info-block">
@@ -142,23 +142,23 @@ const Profil = () => {
                 <span className="profil-info">{mail}</span>
               </div>
               <div className="info-block">
-                <h3 className="profil-info-title">Phone:</h3>
+                <h3 className="profil-info-title">Téléphone:</h3>
                 <span className="profil-info">{phone}</span>
               </div>
               <div className="info-block">
-                <h3 className="profil-info-title">City:</h3>
+                <h3 className="profil-info-title">Ville:</h3>
                 <span className="profil-info">{city}</span>
               </div>
               <div className="info-block">
-                <h3 className="profil-info-title">Birthdate:</h3>
+                <h3 className="profil-info-title">Date de naissance:</h3>
                 <span className="profil-info">{frenchDate}</span>
               </div>
               <div className="info-block">
-                <h3 className="profil-info-title">Gender:</h3>
+                <h3 className="profil-info-title">Genre:</h3>
                 <span className="profil-info">{gender}</span>
               </div>
               <div className="info-block-line">
-                <h3 className="profil-info-title">Bio:</h3>
+                <h3 className="profil-info-title">Description:</h3>
                 <span className="profil-info">{bio}</span>
               </div>
             </div>

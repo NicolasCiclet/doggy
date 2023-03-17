@@ -43,7 +43,7 @@ const About = () => (
       </p>
       <p className="about-content-p">
         Les propriétaires de chiens désireux d'en rencontrer d'autres, d'étendre leurs connaissances
-        en chemins de balade, ou à la recherche de professionnels du monde animal.
+        en chemins de balade ou à la recherche de professionnels du monde animal.
       </p>
     </div>
     <div className="about-photo">

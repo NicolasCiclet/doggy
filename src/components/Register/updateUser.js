@@ -17,6 +17,7 @@ import './register.scss';
 const genderOptions = [
   { text: 'Homme', value: 'male' },
   { text: 'Femme', value: 'female' },
+  { text: 'Autre', value: 'autre' },
 ];
 
 const UpdateUser = () => {

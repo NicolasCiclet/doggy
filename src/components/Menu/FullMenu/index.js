@@ -28,14 +28,14 @@ const FullMenu = () => {
         to="/event"
         onClick={() => dispatch(changeMain('event'))}
       >
-        Evènement
+        Evénement
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
         to="/professional"
         onClick={() => dispatch(changeMain('professional'))}
       >
-        Professionel
+        Professionnel
       </NavLink>
     </>
   );
