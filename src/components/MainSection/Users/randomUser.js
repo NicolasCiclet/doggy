@@ -18,7 +18,7 @@ const RandomUser = () => {
   // console.log(useSelector((state) => state.user.usersToDisplay));
   return (
     <div className="random">
-      <h1>Rencontrez d'autres passionnés</h1>
+      <h1>Rencontrez d'autres passionné(e)s</h1>
       <Carousel
       // Options
         autoPlay

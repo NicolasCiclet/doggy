@@ -8,7 +8,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneUser = (
   {
-    firstname, city, picture, dog, dogPicture, id, lastname,
+    firstname, city, picture, dog, dogPicture, id,
   },
 ) => {
   const dispatch = useDispatch();
@@ -48,7 +48,6 @@ const OneUser = (
 
 OneUser.propTypes = {
   firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
   city: PropTypes.string.isRequired,
   picture: PropTypes.string,
   dogPicture: PropTypes.string,

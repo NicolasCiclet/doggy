@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Card, Button, Form, Select, Checkbox,
 } from 'semantic-ui-react';
@@ -10,10 +11,18 @@ import OnePro from './onePro';
 
 const AllPro = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLogged = useSelector((state) => state.user.logged);
+
   useEffect(() => {
-    dispatch(getAllPro());
-    dispatch(getAllCategories());
-  }, []);
+    if (isLogged) {
+      dispatch(getAllPro());
+      dispatch(getAllCategories());
+    }
+    else {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   let professionals = useSelector((state) => state.pro.professionalsApi);
 
@@ -33,12 +42,12 @@ const AllPro = () => {
   if (category !== '') {
     // eslint-disable-next-line max-len
     professionals = professionals.filter((professional) => (professional.category.name === category));
-    console.log(professionals);
+    // console.log(professionals);
   }
 
   return (
     <div className="all-users">
-      <h2 className="cards_title">Les professionels proches de chez vous</h2>
+      <h2 className="cards_title">Les professionnels proches de chez vous</h2>
       {!filter && (
       <Button
         className="filter-button"
@@ -47,7 +56,7 @@ const AllPro = () => {
           dispatch(showProFilter());
         }}
       >
-        Filtres
+        Filtre
       </Button>
       )}
       {filter && (

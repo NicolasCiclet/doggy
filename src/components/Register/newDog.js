@@ -133,7 +133,7 @@ const DogRegister = () => {
               animated
               color="red"
               onClick={() => {
-                window.history.back();
+                navigate('/');
               }}
             >
               {/* // cancel button and return to previous page */}

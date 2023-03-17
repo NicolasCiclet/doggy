@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { findUser } from '../../../selectors/user';
 
@@ -9,7 +10,16 @@ const ProPage = () => {
   const url = useSelector((state) => state.nav.url);
   // This function has been created for user, but it can be used in the same way for another entity
   const professional = useSelector((state) => findUser(state.pro.professionalsApi, id));
-  console.log(professional);
+  // console.log(professional);
+
+  const navigate = useNavigate();
+  const isLogged = useSelector((state) => state.user.logged);
+
+  useEffect(() => {
+    if (!isLogged) {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   return (
     <div className="eventboard">

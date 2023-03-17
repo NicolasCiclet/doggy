@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
 import './footer.scss';
+import backLogo from './loggo_chris.png';
 
 const Footer = () => (
   <div className="footer-main">
+    <Link to="/back">
+      <img className="backLogo" src={backLogo} alt="header logo" />
+    </Link>
     <Link
       to="/about"
       onClick={() => {
@@ -16,7 +20,7 @@ const Footer = () => (
       <span className="footer-link">A propos</span>
     </Link>
     <Link to="/contact">
-      <span className="footer-link">Contacts</span>
+      <span className="footer-link">Contact</span>
     </Link>
     <Link
       to="/mentions"

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Card, Button, Checkbox, Form, Select,
 } from 'semantic-ui-react';
@@ -12,10 +13,18 @@ import OneEvent from './oneEvent';
 
 const AllEvents = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLogged = useSelector((state) => state.user.logged);
+
   useEffect(() => {
-    dispatch(getAllEvents());
-    dispatch(getAllItineraries());
-  }, []);
+    if (isLogged) {
+      dispatch(getAllEvents());
+      dispatch(getAllItineraries());
+    }
+    else {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   let events = useSelector((state) => state.event.eventsApi);
 
@@ -28,7 +37,7 @@ const AllEvents = () => {
   if (difficulty !== '') {
     // eslint-disable-next-line max-len
     events = events.filter((event) => (event.itinerary.difficulty.name === difficulty));
-    console.log(events);
+    // console.log(events);
   }
 
   // To filter on itinerary of event :
@@ -41,16 +50,16 @@ const AllEvents = () => {
 
   // Get the selected itinerary name from his id
   const itineraryId = useSelector((state) => (state.event.itinerary));
-  console.log(itineraryId);
+  // console.log(itineraryId);
   // eslint-disable-next-line max-len
   const selectedItinerary = useSelector((state) => findUser(state.itinerary.itinerariesApi, itineraryId));
-  console.log(selectedItinerary);
+  // console.log(selectedItinerary);
 
   // filter on itineraries by difficulty
   if (itineraryId !== '') {
     // eslint-disable-next-line max-len
     events = events.filter((event) => (event.itinerary.name === selectedItinerary.name));
-    console.log(events);
+    // console.log(events);
   }
 
   return (

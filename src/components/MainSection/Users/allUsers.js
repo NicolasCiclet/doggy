@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   Card, Form, Checkbox, Button,
 } from 'semantic-ui-react';
@@ -7,13 +8,18 @@ import { getAllusers, changeSexeUser, showUserFilter } from '../../../actions/us
 import OneUser from './oneUser';
 
 const AllUsers = () => {
-  // Get all users in the BDD
-  // const users = useSelector((state) => state.user.usersToDisplay);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLogged = useSelector((state) => state.user.logged);
+
   useEffect(() => {
-    dispatch(getAllusers());
-  }, []);
+    if (isLogged) {
+      dispatch(getAllusers());
+    }
+    else {
+      navigate('/');
+    }
+  }, [isLogged]);
 
   // All users
   let users = useSelector((state) => state.user.usersApi);
@@ -34,7 +40,7 @@ const AllUsers = () => {
 
   return (
     <div className="all-users">
-      <h2 className="cards_title">Les amis potentiels proches de chez vous</h2>
+      <h2 className="cards_title">Les ami(e)s potentiel(le)s proches de chez vous</h2>
 
       {!filter && (
       <Button

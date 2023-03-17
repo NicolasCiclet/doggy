@@ -43,9 +43,6 @@ const UserPage = () => {
     <div className="userboard">
       <div className="userboard-leftsection">
         {/* Afficher les infos du user connecté */}
-        <div className="userboard-header">
-          <h1 className="userboard-h1">Moi</h1>
-        </div>
         <div className="userboard-main">
           <div className="userboard-main-photo">
             <img className="userboard-photo" src={`${url}assets/images/${user.picture}`} alt="user" />
