@@ -4,9 +4,9 @@ import backLogo from './loggo_chris.png';
 
 const Footer = () => (
   <div className="footer-main">
-    <Link to="/back">
+    <a href="/back">
       <img className="backLogo" src={backLogo} alt="header logo" />
-    </Link>
+    </a>
     <Link
       to="/about"
       onClick={() => {
