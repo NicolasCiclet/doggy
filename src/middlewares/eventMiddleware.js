@@ -18,7 +18,7 @@ const eventMiddleware = (store) => (next) => (action) => {
 
       axios.post(
         // 'http://christophe-rialland.vpnuser.lan/doggy/public/api/events/',
-        `${url}api/events`,
+        `${url}api/events/`,
         {
           name: store.getState().event.titleNewEvent,
           description: store.getState().event.describNewEvent,
@@ -122,7 +122,7 @@ const eventMiddleware = (store) => (next) => (action) => {
       store.dispatch(displayLoader(true));
 
       axios.get(
-        `${url}api/events`,
+        `${url}api/events/`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,

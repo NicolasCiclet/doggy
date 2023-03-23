@@ -68,7 +68,7 @@ const Profil = () => {
   const id = useSelector((state) => state.user.idNewUser);
 
   const events = useSelector((state) => state.event.connectedEvents);
-  // console.log(events);
+  console.log(events);
 
   const animals = useSelector((state) => state.dog.connectedAnimals);
   // console.log(animals);

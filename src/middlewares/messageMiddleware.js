@@ -52,7 +52,7 @@ const messageMiddleware = (store) => (next) => (action) => {
 
       // I send the request
       axios.get(
-        `${url}api/users/conversations/messages/`,
+        `${url}api/users/conversations/messages`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,

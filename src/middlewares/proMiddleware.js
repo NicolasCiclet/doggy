@@ -15,7 +15,7 @@ const proMiddleware = (store) => (next) => (action) => {
 
       // I send the request
       axios.get(
-        `${url}api/professionals`,
+        `${url}api/professionals/`,
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
