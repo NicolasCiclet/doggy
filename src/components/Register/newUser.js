@@ -32,8 +32,6 @@ const UserRegister = () => {
   const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);
 
-  const loader = useSelector((state) => state.user.dislpayLoader);
-
   useEffect(() => {
     if (userCreate) {
       navigate('/');

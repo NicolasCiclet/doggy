@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react';
 import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, updateDog,
-  addPersonnalityNewDog, addSterilizedNewDog, stockIdUpdateDog, newDogCreated,
+  addPersonnalityNewDog, addSterilizedNewDog, stockIdUpdateDog, newDogCreated, dogFromUpdateInput,
 } from '../../actions/dog';
 import { findUser } from '../../selectors/user';
 
@@ -30,6 +30,9 @@ const UpdateDog = () => {
   // This function has been created for user, but it can be used in the same way for another entity
   const currentAnimal = useSelector((state) => findUser(state.dog.connectedAnimals, id));
   // console.log(currentAnimal);
+  const {
+    name, breed, personnality, gender, birth, sterilized,
+  } = currentAnimal;
 
   const dogName = useSelector((state) => state.dog.nameNewDog);
   const dogCreate = useSelector((state) => state.dog.newDogCreated);
@@ -40,6 +43,9 @@ const UpdateDog = () => {
   useEffect(() => {
     if (isLogged) {
       dispatch(stockIdUpdateDog(currentAnimal.id));
+
+      // add current dog's values in state for update form
+      dispatch(dogFromUpdateInput(name, breed, personnality, gender, birth, sterilized));
     }
     else {
       navigate('/');
@@ -75,6 +81,7 @@ const UpdateDog = () => {
             <Form.Input
               label="Nom"
               placeholder={currentAnimal.name}
+              defaultValue={currentAnimal.name}
               width={5}
               onChange={(event) => {
                 // console.log(`change : ${event.target.value}`);
@@ -84,6 +91,7 @@ const UpdateDog = () => {
             <Form.Input
               label="Race"
               placeholder={currentAnimal.species}
+              defaultValue={currentAnimal.species}
               width={5}
               onChange={(event) => {
                 dispatch(addBreedNewDog(event.target.value));
@@ -95,6 +103,7 @@ const UpdateDog = () => {
               label="Personnalité"
               control={TextArea}
               placeholder={currentAnimal.personality}
+              defaultValue={currentAnimal.personality}
               width={8}
               onChange={(event) => {
                 dispatch(addPersonnalityNewDog(event.target.value));
@@ -105,10 +114,9 @@ const UpdateDog = () => {
               options={genderOptions}
               label="Genre"
               placeholder="Genre"
+              defaultValue={currentAnimal.gender}
               width={8}
-              // search
               onChange={(event, result) => {
-                // console.log(`change : ${event.target.value}`);
                 dispatch(addGenderNewDog(result.value));
               }}
             />
@@ -117,6 +125,7 @@ const UpdateDog = () => {
             <Form.Input
               label="Date de naissance"
               placeholder="Date de naissance"
+              defaultValue={currentAnimal.birthdate}
               width={8}
               type="date"
               onChange={(event) => {
@@ -128,11 +137,9 @@ const UpdateDog = () => {
               options={sterilizedOptions}
               label="Stérilisé ?"
               placeholder="Stérilisé"
+              defaultValue={currentAnimal.sterilized}
               width={8}
-              // search
-              // searchInput={{ id: 'form-select-control-gender' }}
               onChange={(event, result) => {
-                // console.log(event, result);
                 dispatch(addSterilizedNewDog(result.value));
               }}
             />

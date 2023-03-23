@@ -36,6 +36,12 @@ export const STOCK_ID_UPDATE_DOG = 'STOCK_ID_UPDATE_DOG';
 // To change the value of dog gender in the state
 export const CHANGE_SEXE_DOG = 'CHANGE_SEXE_DOG';
 
+// add value current dog, in value newdog when updateDog form is open
+export const DOG_FROM_UPDATE_INPUT = 'DOG_FROM_UPDATE_INPUT';
+
+// reset all dog's values in state
+export const RESET_DOG_VALUE = 'RESET_DOG_VALUE';
+
 // Dog actions
 export const addNameNewDog = (value) => ({
   type: ADD_NAME_NEW_DOG,
@@ -117,4 +123,20 @@ export const newDogDeleted = () => ({
 export const changeSexeDog = (gender) => ({
   type: CHANGE_SEXE_DOG,
   gender: gender,
+});
+
+// add value current dog, in value newdog when updateDog form is open
+export const dogFromUpdateInput = (name, breed, personnality, gender, birth, sterilized) => ({
+  type: DOG_FROM_UPDATE_INPUT,
+  name: name,
+  breed: breed,
+  personnality: personnality,
+  gender: gender,
+  birth: birth,
+  sterilized: sterilized,
+});
+
+// reset all dog's values in state
+export const resetDogValue = () => ({
+  type: RESET_DOG_VALUE,
 });

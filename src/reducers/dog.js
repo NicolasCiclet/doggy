@@ -2,7 +2,7 @@ import {
   SHOW_DELETE_DOG, ADD_BIRTH_NEW_DOG, ADD_BREED_NEW_DOG, ADD_GENDER_NEW_DOG,
   ADD_NAME_NEW_DOG, ADD_PERSONNALITY_NEW_DOG, ADD_STERILIZED_NEW_DOG, STOCK_CONNECTED_ANIMALS,
   STOCK_USER_ANIMALS, STOCK_ID_UPDATE_DOG,
-  NEW_DOG_CREATED, NEW_DOG_DELETED, CHANGE_SEXE_DOG,
+  NEW_DOG_CREATED, NEW_DOG_DELETED, CHANGE_SEXE_DOG, DOG_FROM_UPDATE_INPUT, RESET_DOG_VALUE,
 } from '../actions/dog';
 
 const initialState = {
@@ -116,6 +116,29 @@ const dogReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         dogGender: action.gender,
+      };
+
+      // add current dog's values in state for update form
+    case DOG_FROM_UPDATE_INPUT:
+      return {
+        ...state,
+        nameNewDog: action.name,
+        breedNewDog: action.breed,
+        personnalityNewDog: action.personnality,
+        genderNewDog: action.gender,
+        birthNewDog: action.birth,
+        sterilizedNewDog: action.sterilized,
+      };
+
+    case RESET_DOG_VALUE:
+      return {
+        ...state,
+        nameNewDog: '',
+        breedNewDog: '',
+        personnalityNewDog: '',
+        genderNewDog: '',
+        birthNewDog: '',
+        sterilizedNewDog: '',
       };
 
     default:
