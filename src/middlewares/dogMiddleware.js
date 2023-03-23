@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import {
   UPDATE_DOG, DELETE_DOG, ADD_NEW_DOG, GET_CONNECTED_ANIMALS, stockConnectedAnimals,
-  GET_USER_ANIMALS, stockUserAnimals, newDogCreated, newDogDeleted,
+  GET_USER_ANIMALS, stockUserAnimals, newDogCreated, newDogDeleted, resetDogValue,
 } from '../actions/dog';
 
 const dogMiddleware = (store) => (next) => (action) => {
@@ -16,7 +16,7 @@ const dogMiddleware = (store) => (next) => (action) => {
       console.log('demande d\'ajout du chien');
 
       axios.post(
-        `${url}api/animals/`,
+        `${url}api/animals`,
         {
           name: store.getState().dog.nameNewDog,
           species: store.getState().dog.breedNewDog,
@@ -25,11 +25,11 @@ const dogMiddleware = (store) => (next) => (action) => {
           personality: store.getState().dog.personnalityNewDog,
           sterilized: store.getState().dog.sterilizedNewDog,
           picture: 'animals/default.png',
+          // picture: store.getState().dog.pictureNewDog,
         },
         {
           headers: {
             Authorization: `Bearer ${store.getState().user.token}`,
-            'Content-Type': 'application/json',
           },
         },
       )
@@ -95,6 +95,11 @@ const dogMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
+        })
+
+        // reset all dog's values in state
+        .finally(() => {
+          store.dispatch(resetDogValue());
         });
 
       break;

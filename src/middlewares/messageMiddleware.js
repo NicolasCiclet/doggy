@@ -30,15 +30,15 @@ const messageMiddleware = (store) => (next) => (action) => {
       )
       // Wait for the response
         .then((response) => {
-          console.log(response);
-          console.log('message envoyé');
+          // console.log(response);
+          // console.log('message envoyé');
           // const allMessages = response.data.results;
           store.dispatch(isMessageSend(true));
         })
         // What to do in case of error
         .catch((error) => {
-          console.log(error);
-          console.log('conversation non trouvé');
+          // console.log(error);
+          // console.log('conversation non trouvé');
         })
 
         // to do in any case
@@ -115,9 +115,9 @@ const messageMiddleware = (store) => (next) => (action) => {
 
       break;
 
+    // tell to the back that the messages are read with the conversation's id
     case PATCH_READ_MESSAGES:
-      console.log('on notifie le back que les mess sont lus');
-
+      // console.log('on notifie le back que les mess sont lus');
       // I send the request
       axios.put(
         `${url}api/conversations/${idConversation}/read`,
@@ -135,14 +135,11 @@ const messageMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           console.log('message lu bien recu par le back');
-          // const allMessages = response.data.results;
-          // store.dispatch(contactFormReset());
         })
         // What to do in case of error
         .catch((error) => {
           console.log(error);
           console.log('message lu non recu par le back');
-          // todo je dispatch une action qui me dis le nombre de mess lus
         })
 
         // to do in any case

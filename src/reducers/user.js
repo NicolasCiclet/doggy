@@ -1,4 +1,4 @@
-import users from 'src/data/userForTest';
+// import users from 'src/data/userForTest';
 import {
   SHOW_LINK, SAVE_AUTH_DATA, ADD_BIO_NEW_USER, ADD_BIRTH_NEW_USER,
   ADD_CITY_NEW_USER, ADD_FIRSTNAME_NEW_USER, ADD_GENDER_NEW_USER,
@@ -16,7 +16,7 @@ import {
 } from '../actions/user';
 
 const initialState = {
-  usersToDisplay: users,
+  // usersToDisplay: users,
 
   randomUsersToDisplay: [],
 
@@ -35,8 +35,12 @@ const initialState = {
   mailNewUser: '',
   phoneNewUser: '',
   pictureNewUser: [],
-  latNewUser: 45.8692,
-  lngNewUser: 6.129,
+  // Annecy
+  // latNewUser: 45.8692,
+  // lngNewUser: 6.129,
+  // Paris
+  latNewUser: 48.8666,
+  lngNewUser: 2.3333,
   nbrAnimal: '',
   isCityFind: true,
   nbrUnreadMessage: 0,
@@ -181,8 +185,8 @@ const userReducer = (state = initialState, action = {}) => {
         // on passe en status connecté
         logged: true,
         // sécurité : on efface les identifiants dans le state dès qu'on n'en a plus besoin
-        mailNewuser: '',
-        passwordNewUser: '',
+        mailNewUser: '',
+        // passwordNewUser: '',
       };
 
     case UPDATE_SETTINGS_FIELD:
@@ -224,6 +228,7 @@ const userReducer = (state = initialState, action = {}) => {
         lngNewUser: 6.129,
         isCityFind: true,
         nbrUnreadMessage: 0,
+        errorConnexion: false,
       };
 
     // Pour afficher le menu burger dans le page profil

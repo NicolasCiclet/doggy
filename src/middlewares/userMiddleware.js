@@ -5,10 +5,10 @@ import { getAllPro } from '../actions/pro';
 
 import {
   DELETE_USER, SUBMIT_LOGIN, saveAuthData, SUBMIT_FORM_NEW_USER, LOGOUT, addNewUser,
-
   SUBMIT_FORM_UPDATE_USER, GET_USER_INFO, displayInfoConnectedUser,
   GET_RANDOM_USER_INFO, displayRandomUserInfo, displayLoader, GET_ALL_USERS,
-  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers, UPDATE_UNREAD_MESSAGE, stockupdateUnread, GET_LAST_USER, stockLastUser, connexionFormReset,
+  stockUsers, getUserInfo, errorConnexion, userDeleted, logOut, getAllusers,
+  UPDATE_UNREAD_MESSAGE, stockupdateUnread, GET_LAST_USER, stockLastUser, connexionFormReset,
 
 } from '../actions/user';
 
