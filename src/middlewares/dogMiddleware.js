@@ -16,7 +16,7 @@ const dogMiddleware = (store) => (next) => (action) => {
       console.log('demande d\'ajout du chien');
 
       axios.post(
-        `${url}api/animals`,
+        `${url}api/animals/`,
         {
           name: store.getState().dog.nameNewDog,
           species: store.getState().dog.breedNewDog,
@@ -33,15 +33,15 @@ const dogMiddleware = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
-          console.log(response);
-          console.log('chien ajouté avec succes');
+        .then(() => {
+          // console.log(response);
+          // console.log('chien ajouté avec succes');
           // Use to add a success message
           store.dispatch(newDogCreated());
         })
         .catch((error) => {
           console.log(error);
-          console.log('erreur le chien n\'a pas été ajouté');
+          // console.log('erreur le chien n\'a pas été ajouté');
         });
 
       break;
@@ -87,8 +87,8 @@ const dogMiddleware = (store) => (next) => (action) => {
           },
         },
       )
-        .then((response) => {
-          console.log(response);
+        .then(() => {
+          // console.log(response);
           console.log('chien modifié avec succes');
           // Use to add a success message
           store.dispatch(newDogCreated());
