@@ -15,7 +15,7 @@
     }
 
     .welcome-message-content{
-      font-size: 0.9rem;
+      font-size: 1rem;
       text-align: center;
     }
   }
@@ -23,11 +23,11 @@
   .welcome-newUser{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 
     .welcome-newUser-content{
       color : vars.$mainColor;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
       font-weight: bold;
       text-align: right;
     }
@@ -42,41 +42,55 @@
 }
 
 // Breackpoint for tablet
-@media (min-width: 480px){
-  .welcome{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+// @media (min-width: 480px){
+//   .welcome{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
 
-    .welcome-message{
-      margin: 1rem 1rem 1rem 0;
-      padding: 0 5rem;
-      width: 70%;
-    }
+//     .welcome-message{
+//       margin: 1rem 1rem 1rem 0;
+//       padding: 0 5rem;
+//       width: 70%;
+//     }
 
-    .welcome-newUser{
-      width: 30%;
-      padding-right: 1rem;
+//     .welcome-newUser{
+//       width: 30%;
+//       padding-right: 1rem;
 
-      .welcome-newUser-content{
-        margin-right: 0.5rem;
-      }
-    }
-  }
+//       .welcome-newUser-content{
+//         margin-right: 0.5rem;
+//       }
+//     }
+//   }
 
-}
+// }
 
 // Breackpoint for desktop
 @media (min-width: 1000px){
   .welcome{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     .welcome-message{
+      margin: 1rem 1rem 1rem 0;
+      padding: 0 2rem;
+      width: 60%;
       .welcome-message-title{
         font-size: 1.5rem;
         margin-bottom: 1rem;
       }
       .welcome-message-content{
         font-size: 1.1rem;
+      }
+    }
+    .welcome-newUser{
+      width: 33%;
+      padding-right: 1rem;
+
+      .welcome-newUser-content{
+        margin-right: 0.5rem;
       }
     }
     .welcome-newUser{

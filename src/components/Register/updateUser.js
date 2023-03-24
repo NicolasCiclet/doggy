@@ -14,11 +14,11 @@ import {
 import './register.scss';
 
 // options for the input select gender
-const genderOptions = [
-  { text: 'Homme', value: 'male' },
-  { text: 'Femme', value: 'female' },
-  { text: 'Autre', value: 'autre' },
-];
+// const genderOptions = [
+//   { text: 'Homme', value: 'male' },
+//   { text: 'Femme', value: 'female' },
+//   { text: 'Autre', value: 'autre' },
+// ];
 
 const UpdateUser = () => {
   const dispatch = useDispatch();
@@ -33,8 +33,8 @@ const UpdateUser = () => {
 
   const userCreate = useSelector((state) => state.user.userCreate);
   const mailUser = useSelector((state) => state.user.mailNewUser);
-  const passwordUser = useSelector((state) => state.user.passwordNewUser);
-  const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
+  // const passwordUser = useSelector((state) => state.user.passwordNewUser);
+  // const checkedPasswordUser = useSelector((state) => state.user.checkedPasswordNewUser);
   const cityFind = useSelector((state) => state.user.isCityFind);
 
   // To get connected user infos that are save in the state
@@ -53,7 +53,7 @@ const UpdateUser = () => {
   (?=.*[0-9]) at least 1 numeric character
   (?=.{6,}) 6 characters or longer
   */
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
+  // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
 
   // Validate is come from react-email-validator and use a regex to check mail.
   validate(mailUser);
@@ -84,7 +84,7 @@ const UpdateUser = () => {
 
           // OnSubmit, mail and password are checked with an and condition.
           // Only if the condition is true, we send a request to the api
-          if ((validate(mailUser)) && (passwordRegex.test(passwordUser))) {
+          if (validate(mailUser)) {
             dispatch(updateCityApi());
           }
         }}
@@ -92,17 +92,19 @@ const UpdateUser = () => {
           {/* with Form.group we have input on the same line or 1 input by line with responsive */}
           <Form.Group widths="equal">
             <Form.Input
-              required
+              // required
               label="Nom"
               placeholder={lastname}
+              defaultValue={lastname}
               onChange={(event) => {
                 dispatch(addLastnameNewUser(event.target.value));
               }}
             />
             <Form.Input
-              required
+              // required
               label="Prénom"
               placeholder={firstname}
+              defaultValue={firstname}
               onChange={(event) => {
                 dispatch(addFirstnameNewUser(event.target.value));
               }}
@@ -110,17 +112,19 @@ const UpdateUser = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
-              required
+              // required
               label="Nom d'utilisateur"
               placeholder={nickname}
+              defaultValue={nickname}
               onChange={(event) => {
                 dispatch(addUsernameNewUser(event.target.value));
               }}
             />
             <Form.Input
-              required
+              // required
               label="Ville"
               placeholder={city}
+              defaultValue={city}
               error={cityFind ? false : {
                 content: 'Ville introuvable, merci d\'indiquer une autre ville',
               }}
@@ -131,9 +135,10 @@ const UpdateUser = () => {
           </Form.Group>
           <Form.Group widths="equal">
             <Form.Input
-              required
+              // required
               label="Email"
               placeholder={mail}
+              defaultValue={mail}
               // I use a ternary condition to show or hide the error message
               error={validate(mailUser) ? false : {
                 content: 'Merci d\'entrer un email valide',
@@ -145,6 +150,7 @@ const UpdateUser = () => {
             <Form.Input
               label="Téléphone"
               placeholder={phone}
+              defaultValue={phone}
               // Only numbers are allowed
               onKeyPress={(event) => {
                 if (!/[0-9]/.test(event.key)) {
@@ -154,7 +160,7 @@ const UpdateUser = () => {
               }}
             />
           </Form.Group>
-          <Form.Group widths="equal">
+          {/* <Form.Group widths="equal">
             <Form.Input
               required
               label="Mot de passe"
@@ -179,8 +185,8 @@ const UpdateUser = () => {
                 dispatch(checkedPasswordNewUser(event.target.value));
               }}
             />
-          </Form.Group>
-          <Form.Input
+          </Form.Group> */}
+          {/* <Form.Input
             label="Photo"
             // placeholder="Photo"
             width={7}
@@ -189,8 +195,8 @@ const UpdateUser = () => {
               dispatch(addPictureNewUser(event.target.files[0]));
               console.log(event.target.files[0]);
             }}
-          />
-          <Form.Group widths="equal">
+          /> */}
+          {/* <Form.Group widths="equal">
             <Form.Input
               control={Select}
               options={genderOptions}
@@ -198,7 +204,6 @@ const UpdateUser = () => {
               placeholder="Genre"
               // Find solution here https://stackoverflow.com/questions/68496963/how-to-passe-value-from-dropdown-made-by-semantic-ui-in-react
               onChange={(event, result) => {
-                // console.log(result.value);
                 dispatch(addGenderNewUser(result.value));
               }}
             />
@@ -210,11 +215,12 @@ const UpdateUser = () => {
                 dispatch(addBirthNewUser(event.target.value));
               }}
             />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Input
             label="Un petit mot sur vous..."
             control={TextArea}
             placeholder={bio}
+            defaultValue={bio}
             onChange={(event) => {
               dispatch(addBioNewUser(event.target.value));
             }}
