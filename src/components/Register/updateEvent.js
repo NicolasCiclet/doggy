@@ -71,6 +71,7 @@ const NewEvent = () => {
           <Form.Input
             label="Titre"
             placeholder={currentEvent.name}
+            defaultValue={currentEvent.name}
             onChange={(event) => {
               dispatch(titleNewEvent(event.target.value));
             }}
@@ -102,6 +103,7 @@ const NewEvent = () => {
             label="Description de l'événement"
             control={TextArea}
             placeholder={currentEvent.description}
+            defaultValue={currentEvent.description}
             onChange={(event) => {
               dispatch(describNewEvent(event.target.value));
             }}

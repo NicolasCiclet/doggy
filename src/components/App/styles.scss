@@ -1,8 +1,8 @@
 // Mobil first
 .app {
-  width: 100%;
+  width: 95vw;
   margin: 1em auto;
-
+  min-width: 350px;
   border: 14px solid #0000;
     border-radius: 25px;
     background: linear-gradient(#dadada,rgb(255 255 255 / 100%)) padding-box, linear-gradient(#CFCFCF,rgb(255 255 255 / 100%)) border-box;
@@ -11,7 +11,7 @@
 // Breackpoint for tablet
 @media (min-width: 480px){
   .app {
-    width: 700px;
+    width: 90vw;
     margin: 1em auto;
   }
 }
@@ -19,9 +19,16 @@
 // Breackpoint for desktop
 @media (min-width: 1000px){
   .app {
-    width: 1000px;
+    width: 80vw;
     margin: 1em auto;
     display: flex;
     flex-wrap: wrap;
+  }
+}
+
+// Breackpoint for desktop
+@media (min-width: 1200px){
+  .app {
+    width: 70vw;
   }
 }

@@ -154,7 +154,7 @@ const userMiddleware = (store) => (next) => (action) => {
           phone: store.getState().user.phoneNewUser,
           email: store.getState().user.mailNewUser,
           password: store.getState().user.passwordNewUser,
-          picture: 'users/default.png',
+          picture: store.getState().user.pictureNewUser,
         },
         {
           headers: {
