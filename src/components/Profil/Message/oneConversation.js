@@ -5,12 +5,14 @@ import { useSelector } from 'react-redux';
 
 const OneConversation = ({ messages }) => {
   const idUser = useSelector((state) => state.user.idNewUser);
+  // sort messages by date
+  const messageOrderByDate = messages.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
   return (
     <div className="one-conversation">
-      {messages.map((message) => (
+      {messageOrderByDate.map((message) => (
         <div className="one-message">
           {/* allows to classify messages as received or sent */}
-          <p className={message.author.id == idUser ? 'sent' : 'received'}>
+          <p className={message.author.id === idUser ? 'sent' : 'received'}>
             {message.content} <span className="message-date">{moment(message.createdAt).locale('fr').format('LLLL')}</span>
           </p>
         </div>
