@@ -45,6 +45,7 @@ const Connect = () => {
 
   return (
     <>
+      <MainSection />
       {!isLogged && (
       <div className="settings">
         {/* // This form appears, when a connection error is returned */}
@@ -60,7 +61,7 @@ const Connect = () => {
         >
           <Field
             identifier="email"
-            placeholder="cestlamour@laplage.net"
+            placeholder="tobby@doggy.fr"
             label="E-mail"
             value={emailValue}
             changeField={(identifier, newValue) => {
@@ -89,7 +90,7 @@ const Connect = () => {
         </form>
       </div>
       )}
-      
+
       {/* <MainSection /> */}
     </>
   );

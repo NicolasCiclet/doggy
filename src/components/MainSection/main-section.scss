@@ -10,10 +10,20 @@
     
     .map-main {
       width: 100%;
-      
       margin: 1rem 0;
-      // position: sticky;
-      // top: 5px;
+      position: relative;
+
+      .reset-center {
+        position: absolute;
+        top: 85px;
+        left: 12px;
+        z-index: 450;
+        width: 30px;
+        background: white;
+        border: 2px solid #898989a8;
+        padding: 0.2rem;
+        cursor: pointer;
+      }
     
       .leaflet-container {
         width: 100%;
@@ -129,7 +139,6 @@ h2{
       width: 43%; 
 
       .map-main {
-        padding-left: 0.5rem;
         // Map is always visible with sticky position
         position: sticky;
         top: 5px;

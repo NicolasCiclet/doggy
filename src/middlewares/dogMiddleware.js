@@ -41,7 +41,7 @@ const dogMiddleware = (store) => (next) => (action) => {
         })
         .catch((error) => {
           console.log(error);
-          // console.log('erreur le chien n\'a pas été ajouté');
+          console.log('erreur le chien n\'a pas été ajouté');
         });
 
       break;

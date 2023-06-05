@@ -13,11 +13,13 @@ import markerIconRed from 'src/data/marker-icon-red.png';
 import markerIconBlack from 'src/data/marker-icon-black.png';
 import markerIconBlue from 'src/data/marker-icon-blue.png';
 import markerDog from 'src/data/dog.svg';
+import resetButton from 'src/data/reset.svg';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import 'leaflet/dist/leaflet.css';
+import { userLocDefaut, userLocReset } from '../../../actions/map';
 
 // Icon creation
 const icon1 = L.icon({
@@ -67,13 +69,25 @@ const Map = () => {
   // Center the map on the user
   const latUser = useSelector((state) => state.user.latNewUser);
   const lngUser = useSelector((state) => state.user.lngNewUser);
-  const center = [latUser, lngUser];
+  const center2 = [latUser, lngUser];
 
+  const latToDisplay = useSelector((state) => state.map.latSelected);
+  const lngToDisplay = useSelector((state) => state.map.lngSelected);
+
+  const center = [latToDisplay, lngToDisplay];
+
+  const dispatch = useDispatch();
   // "setView" allows to update the map position.
-  const ChangeView = () => {
+  // eslint-disable-next-line react/prop-types
+  const ChangeView = ({ newCenter }) => {
     const map = useMap();
-    map.setView(center);
+    map.setView(newCenter);
     return null;
+  };
+
+  // to focus on the user
+  const resetPosition = () => {
+    dispatch(userLocDefaut(latUser, lngUser));
   };
 
   // I get the section name, to display its markers
@@ -81,6 +95,18 @@ const Map = () => {
 
   return (
     <div className="map-main">
+      <img
+        src={resetButton}
+        alt="reset"
+        className="reset-center"
+        onClick={() => {
+          dispatch(userLocReset());
+          // I had to put a delay before the 2nd function for the map to center again.
+          setTimeout(() => {
+            resetPosition();
+          }, 10);
+        }}
+      />
       {/* default position of the map */}
       <MapContainer
         key={latUser}
@@ -90,7 +116,7 @@ const Map = () => {
         scrollWheelZoom // true by default, can use ={false}
       >
         {/* to update the map position */}
-        <ChangeView center={center} />
+        <ChangeView newCenter={center} />
         {/* Displays on the map the data source and the url */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -106,7 +132,7 @@ const Map = () => {
             name="Moi"
           >
             <Marker
-              position={center}
+              position={center2}
               icon={icon9}
             >
               {/* when clicking on the marker */}

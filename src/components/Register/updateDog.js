@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react';
 import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, updateDog,
-  addPersonnalityNewDog, addSterilizedNewDog, stockIdUpdateDog, newDogCreated, dogFromUpdateInput,
+  addPersonnalityNewDog, addSterilizedNewDog, stockIdUpdateDog, newDogCreated, dogFromUpdateInput, resetDogValue,
 } from '../../actions/dog';
 import { findUser } from '../../selectors/user';
 
@@ -54,6 +54,11 @@ const UpdateDog = () => {
     }
   }, [isLogged]);
 
+  const handleFormSubmit = () => {
+    dispatch(updateDog());
+    dispatch(resetDogValue());
+  };
+
   return (
     <>
       {/* success message when dogCreate is true */}
@@ -72,12 +77,7 @@ const UpdateDog = () => {
       <div className="register">
         <h1>Modifier {currentAnimal.name}</h1>
 
-        <Form onSubmit={(event) => {
-          event.preventDefault();
-          console.log('submit !');
-          dispatch(updateDog());
-        }}
-        >
+        <Form>
 
           <Form.Group widths="equal">
             <Form.Input
@@ -151,7 +151,7 @@ const UpdateDog = () => {
               control={Button}
               content="Valider"
             /> */}
-            <Button control={Button} animated="fade">
+            <Button control={Button} animated="fade" onClick={handleFormSubmit}>
               <Button.Content visible>Valider</Button.Content>
               <Button.Content hidden>Valider</Button.Content>
             </Button>
@@ -160,6 +160,7 @@ const UpdateDog = () => {
               color="red"
               onClick={() => {
                 window.history.back();
+                dispatch(resetDogValue());
               }}
             >
               {/* // cancel button and return to previous page */}

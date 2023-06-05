@@ -1,17 +1,24 @@
+/* eslint-disable max-len */
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { activeConversation, getAllConversations, patchreadMessages } from '../../../actions/message';
+import logoResponse from 'src/data/response.svg';
+import { activeConversation, getAllConversations, logoutCurrentMessage, patchreadMessages } from '../../../actions/message';
 import logoMail from '../conversation.svg';
 import OneConversation from './oneConversation';
 
 import './conversation.scss';
-import { updateUnreadMessage } from '../../../actions/user';
+import { isRepFormOpened, updateUnreadMessage } from '../../../actions/user';
+import NewResponse from '../../Register/newResponse';
 
 // Component with all conversations
 const AllConversations = () => {
   const dispatch = useDispatch();
   const allConversations = useSelector((state) => state.message.allConversationsApi);
+  // console.log(allConversations);
   const unreadMessages = useSelector((state) => state.message.unreadMessages);
+
+  // const isRepOpen = useSelector((state) => state.user.repFormOpen);
+  const [isRepOpen, setIsRepOpen] = useState(allConversations.map(() => false));
 
   // each element of the new array will be initialized to false
   const [isOpen, setIsOpen] = useState(allConversations.map(() => false));
@@ -24,6 +31,12 @@ const AllConversations = () => {
     newOpenState[index] = !isOpen[index];
     // we update the state of isOpen
     setIsOpen(newOpenState);
+  };
+
+  const handleRepClick = (index) => {
+    const newOpenState = [...isRepOpen];
+    newOpenState[index] = !isRepOpen[index];
+    setIsRepOpen(newOpenState);
   };
 
   return (
@@ -58,8 +71,34 @@ const AllConversations = () => {
               {unreadMessages[conversation.id].nbrUnreadMessage > 0 && (
               <div className="unreadMessage">{unreadMessages[conversation.id].nbrUnreadMessage}</div>
               )}
-
             </p>
+            {isOpen[index]
+              && (
+              <div
+                className="response-section"
+              >
+                <img className="logo-response" src={logoResponse} alt="response" />
+                <span
+                  className={isRepOpen[index] ? 'span-cancel' : 'span-rep'}
+                  onClick={() => {
+                    handleRepClick(index);
+                    dispatch(logoutCurrentMessage());
+                  }}
+                >{isRepOpen[index] ? 'Annuler' : 'Répondre'}
+                </span>
+
+                {isRepOpen[index]
+                && (
+                <NewResponse
+                  idUser={conversation.users[1].id}
+                  nameUser={conversation.users[1].nickname}
+                  index={index}
+                  handleRepClick={handleRepClick}
+                />
+                )}
+
+              </div>
+              )}
             {/* if isOpen[index] is true, the conversation is displayed */}
             {isOpen[index]
             // I use a spread operator to distribute all the properties

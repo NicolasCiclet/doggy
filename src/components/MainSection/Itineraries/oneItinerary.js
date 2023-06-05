@@ -10,7 +10,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneItinerary = (
   {
-    difficulty, id, length, name, picture
+    difficulty, id, length, name, picture, location,
   },
 ) => {
   const dispatch = useDispatch();
@@ -19,8 +19,8 @@ const OneItinerary = (
   return (
     <Card
       className="card"
-      onMouseEnter={() => dispatch(isSelected(name))}
-      onMouseLeave={() => dispatch(isSelected(''))}
+      onMouseEnter={() => dispatch(isSelected(name, location.latitude, location.longitude))}
+      onMouseLeave={() => dispatch(isSelected('', location.latitude, location.longitude))}
     >
       <Image src={`${url}assets/images/${picture}`} wrapped ui={false} />
       <Card.Content>
@@ -50,6 +50,7 @@ OneItinerary.propTypes = {
   length: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
   difficulty: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default OneItinerary;

@@ -5,39 +5,32 @@
   text-align: center;
   box-shadow: 1px 2px 4px black;
   border-radius: 7px;
-  padding: 1rem 1rem 1rem 1rem;
-  margin: 1rem;
   font-size: 1.2rem;
   background-color: white;
   position: fixed;
-  top: 25%;
-  right: 5%;
+  top: 10%;
+  right: calc(50% - 150px);
+  z-index: 10;
   
   
   .register {
     margin: auto;
-    background-color:#EFEDEC;
+    background-color:#cccccc;
     box-shadow: 1px 2px 4px black;
-    padding: 1rem;
+    padding: .5rem;
     border-radius: 10px;
     border: 2px solid black;
-    width: 70%;
-    min-width: 400px;
-      // font-size: 1.2em;
+    width: 300px;
   
     .ui .button {
       background-color: vars.$darkColor;
       color: #fff;
-    }
-    &-success {
-      margin: 1rem auto;
-      width: 50%;
-      text-align: center;
+      font-size: 0.8rem;
     }
   
     h1 {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin-bottom: .5rem;
       font-weight: bold;
       font-size: 1.2rem;
       text-shadow: 1px 2px 2px grey;
@@ -46,19 +39,29 @@
   }
 }
 
+#rep-success {
+  width: 300px;
+  text-align: center;
+}
+
 // Breackpoint for tablet
 @media (min-width: 480px){
   .new-message, #message-success {
-    position: fixed;
-    right: 25%;
-    width: 50%;
+    right: calc(50% - 200px);
+
+    .register {
+      width: 400px;
+    }
+
+  }
+  #message-success {
+    width: 400px;
   }
 }
 
 // Breackpoint for desktop
 @media (min-width: 1000px){
-  .new-message, #message-success {
-    position: fixed;
-    right: 25%;
+  .new-response, #message-success {
+
   }
 }

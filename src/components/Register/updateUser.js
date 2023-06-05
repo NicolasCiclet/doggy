@@ -9,7 +9,7 @@ import { updateCityApi } from '../../actions/city';
 import {
   addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser,
   addGenderNewUser, addLastnameNewUser, addMailNewUser, addNewUser, addPasswordNewUser,
-  addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser,
+  addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser, resetUserValue,
 } from '../../actions/user';
 import './register.scss';
 
@@ -58,6 +58,15 @@ const UpdateUser = () => {
   // Validate is come from react-email-validator and use a regex to check mail.
   validate(mailUser);
   // console.log(validate(mailUser));
+
+  const handleFormSubmit = () => {
+    // OnSubmit, mail and password are checked with an and condition.
+    // Only if the condition is true, we send a request to the api
+    if (validate(mailUser)) {
+      dispatch(updateCityApi());
+      dispatch(resetUserValue());
+    }
+  };
 
   return (
     <>
@@ -226,7 +235,7 @@ const UpdateUser = () => {
             }}
           />
 
-          <Button control={Button} animated="fade">
+          <Button control={Button} animated="fade" onClick={handleFormSubmit}>
             <Button.Content visible>Valider</Button.Content>
             <Button.Content hidden>Valider</Button.Content>
           </Button>
@@ -235,6 +244,7 @@ const UpdateUser = () => {
             color="red"
             onClick={() => {
               window.history.back();
+              dispatch(resetUserValue());
             }}
           >
             {/* // cancel button and return to previous page */}

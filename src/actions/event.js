@@ -52,6 +52,9 @@ export const GET_RANDOM_EVENT = 'GET_RANDOM_EVENT';
 // To put RANDOM event information for carousel, in state
 export const DISPLAY_RANDOM_EVENT = 'DISPLAY_RANDOM_EVENT';
 
+// reset all event's values in state
+export const RESET_EVENT_VALUE = 'RESET_EVENT_VALUE';
+
 export const titleNewEvent = (value) => ({
   type: TITLE_NEW_EVENT,
   newValue: value,
@@ -151,4 +154,9 @@ export const getRandomEvent = () => ({
 export const displayRandomEvent = (value) => ({
   type: DISPLAY_RANDOM_EVENT,
   value: value,
+});
+
+// reset all event's values in state
+export const resetEventValue = () => ({
+  type: RESET_EVENT_VALUE,
 });

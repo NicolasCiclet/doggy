@@ -252,17 +252,7 @@ const Profil = () => {
           </NavLink>
         </div>
       </div>
-      {/* <div className="profil-section" id="mes-messages"> */}
-      {/* Aller chercher dans la BDD les conversations et faire un map dessus, pour chaque
-      conversation afficher le logo et le titre */}
-      {/* <div className="profil-header">
-        <h1 className="profil-h1">Mes messages</h1>
-      </div>
-      <div className="profil-main-message">
-        <img className="profil-message" src={conversation} alt="message" />
-        <a href="" className="conversation">Conversation avec User X</a>
-      </div>
-    </div> */}
+
       <AllConversations />
       <div className="profil-section" id="mes-événements">
         {/* Aller chercher dans la BDD les événements liés à l'utilisateur

@@ -5,7 +5,7 @@ import {
 } from 'semantic-ui-react';
 import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, addNewDog,
-  addPersonnalityNewDog, addSterilizedNewDog, newDogCreated,
+  addPersonnalityNewDog, addSterilizedNewDog, newDogCreated, resetDogValue,
 } from '../../actions/dog';
 
 import './register.scss';
@@ -26,6 +26,11 @@ const DogRegister = () => {
   const dogName = useSelector((state) => state.dog.nameNewDog);
   const dogCreate = useSelector((state) => state.dog.newDogCreated);
 
+  const handleFormSubmit = () => {
+    dispatch(addNewDog());
+    dispatch(resetDogValue());
+  };
+
   return (
     <>
       {/* success message when dogCreate is true */}
@@ -45,12 +50,7 @@ const DogRegister = () => {
       <div className="register">
         <h1>Ajouter un chien</h1>
 
-        <Form onSubmit={(event) => {
-          event.preventDefault();
-          console.log('submit !');
-          dispatch(addNewDog());
-        }}
-        >
+        <Form>
 
           <Form.Group widths="equal">
             <Form.Input
@@ -121,22 +121,21 @@ const DogRegister = () => {
             />
           </Form.Group>
           <Form.Group>
-            {/* <Form.Input
-              control={Button}
-              content="Valider"
-            /> */}
-            <Button control={Button} animated="fade">
+            <Button control={Button} animated="fade" onClick={handleFormSubmit}>
               <Button.Content visible>Valider</Button.Content>
               <Button.Content hidden>Valider</Button.Content>
             </Button>
+
+            {/* // cancel button and return to previous page */}
             <Button
               animated
               color="red"
               onClick={() => {
-                navigate('/');
+                // navigate('/');
+                window.history.back();
+                dispatch(resetDogValue());
               }}
             >
-              {/* // cancel button and return to previous page */}
               <Button.Content visible>Annuler</Button.Content>
               <Button.Content hidden>
                 <Icon name="arrow left" />

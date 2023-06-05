@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getAllEvents } from '../actions/event';
 import { getAllItineraries } from '../actions/itinerary';
+import { userLocDefaut } from '../actions/map';
 import { getAllPro } from '../actions/pro';
 
 import {
@@ -209,6 +210,8 @@ const userMiddleware = (store) => (next) => (action) => {
             nbrAnimal,
             nbrUnreadMessage,
           ));
+
+          store.dispatch(userLocDefaut(latitude, longitude));
         })
         .catch((error) => {
           console.log(error);

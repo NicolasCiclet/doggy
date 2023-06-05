@@ -43,6 +43,7 @@ export const DISPLAY_RANDOM_USER_INFO = 'DISPLAY_RANDOM_USER_INFO';
 export const DISPLAY_INFO_CONNECTED_USER = 'DISPLAY_INFO_CONNECTED_USER';
 // To change display message form
 export const IS_MESS_FORM_OPENED = 'IS_MESS_FORM_OPENED';
+export const IS_REP_FORM_OPENED = 'IS_REP_FORM_OPENED';
 
 // action to get all users of the BDD
 export const GET_ALL_USERS = 'GET_ALL_USERS';
@@ -75,6 +76,9 @@ export const GET_LAST_USER = 'GET_LAST_USER';
 export const STOCK_LAST_USER = 'STOCK_LAST_USER';
 
 export const CONNEXION_FORM_RESET = 'CONNEXION_FORM_RESET';
+
+// reset all user's values in state
+export const RESET_USER_VALUE = 'RESET_USER_VALUE';
 
 // User actions
 export const addNewUser = () => ({
@@ -232,9 +236,13 @@ export const displayInfoConnectedUser = (
   nbrUnreadMessage: nbrUnreadMessage,
 });
 
-export const isMessFormOpened = (bool) => ({
+export const isMessFormOpened = () => ({
   type: IS_MESS_FORM_OPENED,
-  value: bool,
+});
+
+export const isRepFormOpened = (index, bool) => ({
+  type: IS_REP_FORM_OPENED,
+  payload: { index, bool },
 });
 
 export const displayLoader = (bool) => ({
@@ -295,4 +303,9 @@ export const stockLastUser = (newValue) => ({
 
 export const connexionFormReset = () => ({
   type: CONNEXION_FORM_RESET,
+});
+
+// reset all user's values in state
+export const resetUserValue = () => ({
+  type: RESET_USER_VALUE,
 });

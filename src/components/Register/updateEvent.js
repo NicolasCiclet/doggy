@@ -6,7 +6,7 @@ import {
 } from 'semantic-ui-react';
 import {
   dateNewEvent, describNewEvent, newEventCreated, placeNewEvent, submitFormUpdateEvent,
-  titleNewEvent, stockIdUpdateEvent,
+  titleNewEvent, stockIdUpdateEvent, resetEventValue,
 } from '../../actions/event';
 import { findUser } from '../../selectors/user';
 import { getAllItineraries } from '../../actions/itinerary';
@@ -44,6 +44,11 @@ const NewEvent = () => {
     { text: place.name, value: place.id }
   ));
 
+  const handleFormSubmit = () => {
+    dispatch(submitFormUpdateEvent());
+    dispatch(resetEventValue());
+  };
+
   return (
     <>
       {/* success message when eventCreate is true */}
@@ -61,12 +66,7 @@ const NewEvent = () => {
       )}
       <div className="register">
         <h1>Modifier mon évènement</h1>
-        <Form onSubmit={(event) => {
-          event.preventDefault();
-          console.log('update evenement submit');
-          dispatch(submitFormUpdateEvent());
-        }}
-        >
+        <Form>
           {/* Input for title */}
           <Form.Input
             label="Titre"
@@ -109,7 +109,7 @@ const NewEvent = () => {
             }}
           />
           {/* Input for submit */}
-          <Button control={Button} animated="fade">
+          <Button control={Button} animated="fade" onClick={handleFormSubmit}>
             <Button.Content visible>Valider</Button.Content>
             <Button.Content hidden>Valider</Button.Content>
           </Button>
@@ -118,6 +118,7 @@ const NewEvent = () => {
             color="red"
             onClick={() => {
               window.history.back();
+              dispatch(resetEventValue());
             }}
           >
             {/* // cancel button and return to previous page */}

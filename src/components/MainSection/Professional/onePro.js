@@ -8,7 +8,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OnePro = (
   {
-    city, picture, id, name, category,
+    city, picture, id, name, category, location,
   },
 ) => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const OnePro = (
     <Card
       className="card"
       // when user mouse enter or leave card, action is dispatched, and maker on map zoom
-      onMouseEnter={() => dispatch(isSelected(name))}
-      onMouseLeave={() => dispatch(isSelected(''))}
+      onMouseEnter={() => dispatch(isSelected(name, location.latitude, location.longitude))}
+      onMouseLeave={() => dispatch(isSelected('', location.latitude, location.longitude))}
     >
       <Image
         className="card-image"
@@ -52,6 +52,7 @@ OnePro.propTypes = {
   picture: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   category: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default OnePro;

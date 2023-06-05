@@ -7,8 +7,7 @@
   border: 2px solid black;
   padding: 1.5em;
   border-radius: 10px;
-  width: 70%;
-  min-width: 80vw;
+  width: 90%;
     // font-size: 1.2em;
 
 
@@ -45,9 +44,9 @@
 }
 
 // Breackpoint for tablet
-@media (min-width: 480px){
+@media (min-width: 1000px){
   .register {
-    min-width: 70%;
+    width: 70%;
   }
 }
 

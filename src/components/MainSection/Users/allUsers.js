@@ -23,7 +23,7 @@ const AllUsers = () => {
 
   // All users
   let users = useSelector((state) => state.user.usersApi);
-  // console.log(users);
+  console.log(users);
 
   // To open ou close the filter window
   const filter = useSelector((state) => state.user.showFilter);

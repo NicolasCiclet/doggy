@@ -43,6 +43,9 @@ export const STOCK_UNREAD_MESSAGES = 'STOCK_UNREAD_MESSAGES';
 // deletes messages
 export const LOGOUT_MESSAGE = 'LOGOUT_MESSAGE';
 
+// deletes current message
+export const LOGOUT_CURRENT_MESSAGE = 'LOGOUT_CURRENT_MESSAGE';
+
 // To add infos from contact form
 export const contactFormName = (newValue) => ({
   type: CONTACT_FORM_NAME,
@@ -127,7 +130,12 @@ export const stockUnreadMessages = (newValue) => ({
   value: newValue,
 });
 
-// deletes messages
+// deletes all messages
 export const logoutMessage = () => ({
   type: LOGOUT_MESSAGE,
+});
+
+// deletes current message
+export const logoutCurrentMessage = () => ({
+  type: LOGOUT_CURRENT_MESSAGE,
 });

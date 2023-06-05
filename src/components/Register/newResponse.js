@@ -4,15 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Button, Form, Message, TextArea,
 } from 'semantic-ui-react';
-import { isMessageSend, logoutCurrentMessage, postUsermessage, userSendMessage } from '../../actions/message';
-import { isMessFormOpened } from '../../actions/user';
+import {
+  getAllConversations, isMessageSend, logoutCurrentMessage, postUsermessage, userSendMessage,
+} from '../../actions/message';
 
 import './mess-response.scss';
 
 // New Message FORM
-const NewMessage = ({ idUser, nameUser }) => {
+const NewResponse = ({
+  idUser, nameUser, handleRepClick, index,
+}) => {
   const dispatch = useDispatch();
   const messageSend = useSelector((state) => state.message.isMessageSend);
+  const handleFormSubmit = () => {
+    // console.log('new message send');
+    dispatch(postUsermessage());
+    dispatch(logoutCurrentMessage());
+  };
+
   return (
     <>
       {/* success message when messageSend is true */}
@@ -21,11 +30,13 @@ const NewMessage = ({ idUser, nameUser }) => {
         <Form success className="register-success" id="message-success">
           <Message
             success
-            header="Message envoyé avec succès"
+            header="Message envoyé"
             content={`${nameUser} sera notifié(e)`}
             onDismiss={() => {
               dispatch(isMessageSend(false));
-              dispatch(isMessFormOpened());
+              handleRepClick(index);
+              // displays the new message immediately
+              dispatch(getAllConversations());
             }}
           />
         </Form>
@@ -33,13 +44,8 @@ const NewMessage = ({ idUser, nameUser }) => {
       {!messageSend && (
         <section className="new-message">
           <div className="register">
-            <h1>Envoyer un message à {nameUser}</h1>
-            <Form onSubmit={(event) => {
-              event.preventDefault();
-              dispatch(postUsermessage());
-              dispatch(logoutCurrentMessage());
-            }}
-            >
+            <h1>Répondre à {nameUser}</h1>
+            <Form>
 
               {/* Input for description */}
               <Form.Input
@@ -50,10 +56,11 @@ const NewMessage = ({ idUser, nameUser }) => {
                   dispatch(userSendMessage(event.target.value, idUser));
                 }}
               />
+
               {/* Input for submit */}
-              <Button control={Button} animated="fade">
-                <Button.Content visible>Valider</Button.Content>
-                <Button.Content hidden>Valider</Button.Content>
+              <Button control={Button} animated="fade" onClick={handleFormSubmit}>
+                <Button.Content visible>Envoyer</Button.Content>
+                <Button.Content hidden>Envoyer</Button.Content>
               </Button>
 
             </Form>
@@ -65,9 +72,11 @@ const NewMessage = ({ idUser, nameUser }) => {
   );
 };
 
-NewMessage.propTypes = {
+NewResponse.propTypes = {
   idUser: PropTypes.number.isRequired,
   nameUser: PropTypes.number.isRequired,
+  handleRepClick: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
-export default NewMessage;
+export default NewResponse;

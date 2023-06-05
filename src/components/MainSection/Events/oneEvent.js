@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +10,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneEvent = (
   {
-    id, eventDate, name, picture, description,
+    id, eventDate, name, picture, description, itinerary,
   },
 ) => {
   const dispatch = useDispatch();
@@ -21,8 +22,8 @@ const OneEvent = (
   return (
     <Card
       className="card"
-      onMouseEnter={() => dispatch(isSelected(description))}
-      onMouseLeave={() => dispatch(isSelected(''))}
+      onMouseEnter={() => dispatch(isSelected(description, itinerary.location.latitude, itinerary.location.longitude))}
+      onMouseLeave={() => dispatch(isSelected('', itinerary.location.latitude, itinerary.location.longitude))}
     >
       <Image src={`${url}assets/images/${picture}`} wrapped ui={false} />
       <Card.Content>
@@ -51,6 +52,7 @@ OneEvent.propTypes = {
   eventDate: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
+  itinerary: PropTypes.object.isRequired,
 };
 
 export default OneEvent;

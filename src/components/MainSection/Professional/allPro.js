@@ -25,6 +25,7 @@ const AllPro = () => {
   }, [isLogged]);
 
   let professionals = useSelector((state) => state.pro.professionalsApi);
+  // console.log(professionals);
 
   const categories = useSelector((state) => state.pro.categoriesApi);
   // console.log(categories);

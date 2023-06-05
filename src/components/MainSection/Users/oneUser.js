@@ -8,7 +8,7 @@ import { isSelected } from '../../../actions/map';
 // I get the props from the spread operator
 const OneUser = (
   {
-    firstname, city, picture, dog, dogPicture, id,
+    firstname, city, picture, dog, dogPicture, id, location,
   },
 ) => {
   const dispatch = useDispatch();
@@ -17,8 +17,8 @@ const OneUser = (
     <Card
       className="card"
       // when user mouse enter or leave card, action is dispatched, and maker on map zoom
-      onMouseEnter={() => dispatch(isSelected(id))}
-      onMouseLeave={() => dispatch(isSelected(''))}
+      onMouseEnter={() => dispatch(isSelected(id, location.latitude, location.longitude))}
+      onMouseLeave={() => dispatch(isSelected('', location.latitude, location.longitude))}
     >
       <Image
         src={`${url}assets/images/${picture}`}
@@ -53,6 +53,7 @@ OneUser.propTypes = {
   dogPicture: PropTypes.string,
   dog: PropTypes.string,
   id: PropTypes.number.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 OneUser.defaultProps = {

@@ -10,6 +10,7 @@ import NewMessage from '../../Register/newMessage';
 import './user-page.scss';
 import { getUserAnimals } from '../../../actions/dog';
 import { getUserEvents } from '../../../actions/event';
+import { logoutCurrentMessage } from '../../../actions/message';
 
 // I get the props from the spread operator
 const UserPage = () => {
@@ -59,7 +60,10 @@ const UserPage = () => {
               type="button"
               className="userboard-contact"
               href=""
-              onClick={() => dispatch(isMessFormOpened(true))}
+              onClick={() => {
+                dispatch(isMessFormOpened());
+                dispatch(logoutCurrentMessage());
+              }}
             >
               {!isFormOpen ? 'Me Contacter' : 'Annuler'}
             </button>

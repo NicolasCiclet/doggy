@@ -9,10 +9,9 @@ import { getCityApi } from '../../actions/city';
 import {
   addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser,
   addGenderNewUser, addLastnameNewUser, addMailNewUser, addPasswordNewUser,
-  addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser,
+  addPhoneNewUser, addUsernameNewUser, checkedPasswordNewUser, resetUserValue,
 } from '../../actions/user';
 import './register.scss';
-import Loader from '../MainSection/Loader';
 
 // options for the input select gender
 const genderOptions = [
@@ -51,6 +50,15 @@ const UserRegister = () => {
   validate(mailUser);
   // console.log(validate(mailUser));
 
+  const handleFormSubmit = () => {
+    // OnSubmit, mail and password are checked with an and condition.
+    // Only if the condition is true, we send a request to the api
+    if ((validate(mailUser)) && (passwordRegex.test(passwordUser))) {
+      dispatch(getCityApi());
+      dispatch(resetUserValue());
+    }
+  };
+
   return (
     <>
       {/* the form is visible only if userCreate is false */}
@@ -58,16 +66,8 @@ const UserRegister = () => {
       <div className="register">
         <h1>Création de compte</h1>
 
-        <Form onSubmit={(event) => {
-          event.preventDefault();
+        <Form>
 
-          // OnSubmit, mail and password are checked with an and condition.
-          // Only if the condition is true, we send a request to the api
-          if ((validate(mailUser)) && (passwordRegex.test(passwordUser))) {
-            dispatch(getCityApi());
-          }
-        }}
-        >
           {/* with Form.group we have input on the same line or 1 input by line with responsive */}
           <Form.Group widths="equal">
             <Form.Input
@@ -112,7 +112,7 @@ const UserRegister = () => {
             <Form.Input
               required
               label="Email"
-              placeholder="joe@schmoe.com"
+              placeholder="tobby@doggy.fr"
               // I use a ternary condition to show or hide the error message
               error={validate(mailUser) ? false : {
                 content: 'Merci d\'entrer un email valide',
@@ -199,7 +199,7 @@ const UserRegister = () => {
             }}
           />
           <Form.Checkbox label="J'accepte les termes et conditions" />
-          <Button control={Button} animated="fade">
+          <Button control={Button} animated="fade" onClick={handleFormSubmit}>
             <Button.Content visible>Valider</Button.Content>
             <Button.Content hidden>Valider</Button.Content>
           </Button>
@@ -208,6 +208,7 @@ const UserRegister = () => {
             color="red"
             onClick={() => {
               window.history.back();
+              dispatch(resetUserValue());
             }}
           >
             {/* // cancel button and return to previous page */}

@@ -6,6 +6,7 @@ import {
 } from 'semantic-ui-react';
 import {
   dateNewEvent, describNewEvent, newEventCreated, placeNewEvent,
+  resetEventValue,
   submitFormNewEvent, titleNewEvent,
 } from '../../actions/event';
 
@@ -36,6 +37,11 @@ const NewEvent = () => {
     { text: place.name, value: place.id }
   ));
 
+  const handleFormSubmit = () => {
+    dispatch(submitFormNewEvent());
+    dispatch(resetEventValue());
+  };
+
   return (
     <>
       {/* success message when eventCreate is true */}
@@ -54,12 +60,8 @@ const NewEvent = () => {
       )}
       <div className="register">
         <h1>Ajouter un évènement</h1>
-        <Form onSubmit={(event) => {
-          event.preventDefault();
-          console.log('new evenement submit');
-          dispatch(submitFormNewEvent());
-        }}
-        >
+
+        <Form>
           {/* Input for title */}
           <Form.Input
             required
@@ -102,7 +104,7 @@ const NewEvent = () => {
             }}
           />
           {/* Input for submit */}
-          <Button control={Button} animated="fade">
+          <Button control={Button} animated="fade" onClick={handleFormSubmit}>
             <Button.Content visible>Valider</Button.Content>
             <Button.Content hidden>Valider</Button.Content>
           </Button>
@@ -110,6 +112,7 @@ const NewEvent = () => {
             animated
             color="red"
             onClick={() => {
+              dispatch(resetEventValue());
               window.history.back();
             }}
           >

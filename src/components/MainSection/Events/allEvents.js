@@ -27,6 +27,7 @@ const AllEvents = () => {
   }, [isLogged]);
 
   let events = useSelector((state) => state.event.eventsApi);
+  // console.log(events);
 
   // To open ou close the filter window
   const filter = useSelector((state) => state.event.showFilter);

@@ -30,7 +30,7 @@
 .conversation-open {
   width: 50%;
   cursor: pointer;
-
+  position: relative;
   margin: 1rem 3rem;
   background-color:#EFEDEC;
   box-shadow: 1px 2px 4px #87BB71;
@@ -43,7 +43,56 @@
   .logo-mail {
     margin-right: 1rem;
   }
+
 }
+
+.response-section {
+  display: flex;
+  align-items: center;
+
+  .logo-response {
+    width: 30px;
+  }
+  
+  .span-rep, .span-cancel {
+    font-size: .9rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+
+  .span-rep {
+    animation: color-rep 1.3s ease-in-out infinite;
+  }
+
+  .span-cancel {
+    animation: color-cancel 1.3s ease-in-out infinite;
+  }
+
+  @keyframes color-rep {
+    0% {
+      color: black;
+    }
+    50% {
+      color: #87bb71;
+    }
+    100% {
+      color: black;
+    }
+  }
+
+  @keyframes color-cancel {
+    0% {
+      color: black;
+    }
+    50% {
+      color: #da3114;
+    }
+    100% {
+      color: black;
+    }
+  }
+}
+
 
 .one-conversation {
 

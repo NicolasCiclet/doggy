@@ -1,7 +1,7 @@
 import {
   ACTIVE_CONVERSATION,
   CONTACT_FORM_MAIL, CONTACT_FORM_MESSAGE, CONTACT_FORM_NAME, CONTACT_FORM_RESET,
-  IS_MESSAGE_SEND, LOGOUT_MESSAGE, SHOW_ONE_CONVERSATION, STOCK_ALL_CONVERSATIONS,
+  IS_MESSAGE_SEND, LOGOUT_CURRENT_MESSAGE, LOGOUT_MESSAGE, SHOW_ONE_CONVERSATION, STOCK_ALL_CONVERSATIONS,
   STOCK_ONE_CONVERSATION, STOCK_UNREAD_MESSAGES, USER_SEND_MESSAGE,
 } from '../actions/message';
 
@@ -101,6 +101,13 @@ const messageReducer = (state = initialState, action = {}) => {
         oneConversationApi: [],
         activeConversation: '',
         unreadMessages: [],
+      };
+
+    case LOGOUT_CURRENT_MESSAGE:
+      return {
+        ...state,
+        userNewMessage: '',
+        userId: '',
       };
 
     default:

@@ -5,6 +5,7 @@ import {
   STOCK_ID_UPDATE_EVENT, NEW_EVENT_DELETED, CHANGE_EVENT_DIFFICULTY, SHOW_EVENT_FILTER,
   CHANGE_EVENT_ITINERARY,
   DISPLAY_RANDOM_EVENT,
+  RESET_EVENT_VALUE,
 } from '../actions/event';
 
 const initialState = {
@@ -138,6 +139,15 @@ const eventReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         randomEventsToDisplay: action.value,
+      };
+
+    case RESET_EVENT_VALUE:
+      return {
+        ...state,
+        titleNewEvent: '',
+        dateNewEvent: '',
+        placeNewEvent: '',
+        describNewEvent: '',
       };
 
     default:

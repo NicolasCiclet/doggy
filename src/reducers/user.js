@@ -13,6 +13,8 @@ import {
   STOCK_UPDATE_UNREAD,
   STOCK_LAST_USER,
   CONNEXION_FORM_RESET,
+  IS_REP_FORM_OPENED,
+  RESET_USER_VALUE,
 } from '../actions/user';
 
 const initialState = {
@@ -63,6 +65,7 @@ const initialState = {
 
   // change display of new message form
   messFormOpen: false,
+  repFormOpen: false,
 
   dislpayLoader: false,
 
@@ -279,7 +282,13 @@ const userReducer = (state = initialState, action = {}) => {
     case IS_MESS_FORM_OPENED:
       return {
         ...state,
-        messFormOpen: action.value,
+        messFormOpen: !state.messFormOpen,
+      };
+
+    case IS_REP_FORM_OPENED:
+      return {
+        ...state,
+        repFormOpen: !state.repFormOpen,
       };
 
       // To display or hidden loader
@@ -346,6 +355,18 @@ const userReducer = (state = initialState, action = {}) => {
         ...state,
         mailNewUser: '',
         passwordNewUser: '',
+      };
+
+    case RESET_USER_VALUE:
+      return {
+        ...state,
+        lastnameNewUser: '',
+        firstnameNewUser: '',
+        cityNewUser: '',
+        usernameNewUser: '',
+        bioNewUser: '',
+        mailNewUser: '',
+        phoneNewUser: '',
       };
 
     default:
