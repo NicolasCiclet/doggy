@@ -45,12 +45,17 @@
       justify-content: space-between;
 
       .card {
-        width: calc((100%/3) - 1em);
-        margin: 0.5rem;
+        width: calc((100%/3) - .3rem);
+        margin: 0.5rem 0;
         transition: transform .2s;
 
         .image {
           max-width: 500px;
+
+          img {
+            max-height: 170px;
+            object-fit: cover;
+          }
         }
         .content {
           font-size: 0.8rem;
@@ -123,6 +128,22 @@ h2{
 
     .filter-option{
       width: 25%;
+    }
+  }
+}
+
+// Breackpoint
+
+@media (min-width: 600px){
+  .mainSection {
+    &-users {
+      .ui.three.cards {
+
+        .card {
+          width: calc((100%/3) - 1rem);
+          margin: 0.5rem;
+        }
+      }
     }
   }
 }

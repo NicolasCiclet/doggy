@@ -20,8 +20,8 @@
     background-color: vars.$mainColor;
     color: #fff;
     border-radius: 5px;
-    padding: 0.5rem;
-    font-size: 0.8rem;
+    padding: .5rem .2rem;
+    font-size: 0.7rem;
     font-weight: bold;
     box-shadow: 1px 2px 4px black;
 
@@ -38,8 +38,14 @@
 
 // Breackpoint for tablet
 @media (min-width: 480px){
-  .menu{
+  .menu {
     border-radius: 5px;
+
+    .menu-link {
+      padding: 0.5rem;
+      font-size: 0.8rem;
+  
+    }
   }
 }
 

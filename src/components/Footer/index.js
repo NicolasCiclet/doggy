@@ -4,7 +4,7 @@ import backLogo from './loggo_chris.png';
 
 const Footer = () => (
   <div className="footer-main">
-    <a href="/back">
+    <a href="https://www.doggy.wf/back">
       <img className="backLogo" src={backLogo} alt="header logo" />
     </a>
     <Link
