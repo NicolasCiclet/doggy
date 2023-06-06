@@ -6,6 +6,7 @@ import {
   CHANGE_EVENT_ITINERARY,
   DISPLAY_RANDOM_EVENT,
   RESET_EVENT_VALUE,
+  EVENT_FROM_UPDATE_INPUT,
 } from '../actions/event';
 
 const initialState = {
@@ -139,6 +140,15 @@ const eventReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         randomEventsToDisplay: action.value,
+      };
+
+      // add current dog's values in state for update form
+    case EVENT_FROM_UPDATE_INPUT:
+      return {
+        ...state,
+        titleNewEvent: action.title,
+        dateNewEvent: action.date,
+        describNewEvent: action.describ,
       };
 
     case RESET_EVENT_VALUE:

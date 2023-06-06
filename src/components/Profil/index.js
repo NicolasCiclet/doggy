@@ -23,6 +23,7 @@ import './profil.scss';
 import './nav.css';
 import AllConversations from './Message/allConversations';
 import { getAllConversations } from '../../actions/message';
+import useCountdown from '../CountDown';
 
 // faire une requete api get/id qui va récupérer les info du user et des animaux,
 // conversation et events associés dans la BDD
@@ -68,13 +69,32 @@ const Profil = () => {
   const id = useSelector((state) => state.user.idNewUser);
 
   const events = useSelector((state) => state.event.connectedEvents);
-  console.log(events);
+  // console.log(events);
 
   const animals = useSelector((state) => state.dog.connectedAnimals);
   // console.log(animals);
 
   // Conversion de la date et l'heure dans le bon format d'affichage
   const frenchDate = moment(birthdate).locale('fr').format('LL');
+
+  // Use component useCountdown for all success messages.
+
+  const countdown = useCountdown(
+    4,
+    dogDeleted || eventDeleted,
+    () => {
+      if (dogDeleted) {
+        dispatch(newDogDeleted());
+        navigate('/profile');
+        // dispatch(resetDogValue());
+      }
+      else if (eventDeleted) {
+        dispatch(newEventDeleted());
+        navigate('/profile');
+        // dispatch(resetEventValue());
+      }
+    },
+  );
 
   return (
     <div className="profil">
@@ -186,6 +206,7 @@ const Profil = () => {
             <Message
               success
               header="Animal supprimé avec succès"
+              content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
               onDismiss={() => {
                 dispatch(newDogDeleted());
                 navigate('/profile');
@@ -193,56 +214,54 @@ const Profil = () => {
             />
           </Form>
         )}
-        {!dogDeleted && (
-          <>
-            { animals.map((animal) => (
-              <div key={animal.id} className="profil-header">
-                <div className="profil-main">
-                  <div className="profil-main-photo">
-                    <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
-                  </div>
-                  <div className="profil-main-infos">
-                    <div className="info-block">
-                      <h3 className="profil-info-title">Nom:</h3>
-                      <span className="profil-info">{animal.name}</span>
-                    </div>
-                    <div className="info-block">
-                      <h3 className="profil-info-title">Race:</h3>
-                      <span className="profil-info">{animal.species}</span>
-                    </div>
-                    <div className="info-block">
-                      <h3 className="profil-info-title">Sexe:</h3>
-                      <span className="profil-info">{animal.gender}</span>
-                    </div>
-                    <div className="info-block">
-                      <h3 className="profil-info-title">Stérilisé:</h3>
-                      <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
-                    </div>
-                    <div className="info-block-line">
-                      <h3 className="profil-info-title">Personnalité:</h3>
-                      <span className="profil-info">{animal.personality}</span>
-                    </div>
-                  </div>
+
+        { animals.map((animal) => (
+          <div key={animal.id} className="profil-header">
+            <div className="profil-main">
+              <div className="profil-main-photo">
+                <img className="profil-photo" src={`${url}assets/images/${animal.picture}`} alt="animal" />
+              </div>
+              <div className="profil-main-infos">
+                <div className="info-block">
+                  <h3 className="profil-info-title">Nom:</h3>
+                  <span className="profil-info">{animal.name}</span>
                 </div>
-                <div className="profil-buttons">
-                  <Link to={`/profile/update/animal/${animal.id}`}>
-                    <img className="button" src={editButton} alt="edit" />
-                  </Link>
-                  <img
-                    className="button"
-                    src={deleteButton}
-                    alt="delete"
-                    onClick={() => {
-                      dispatch(stockIdUpdateDog(animal.id));
-                      dispatch(showDeleteDog());
-                    }}
-                  />
-                  <Dogdelete />
+                <div className="info-block">
+                  <h3 className="profil-info-title">Race:</h3>
+                  <span className="profil-info">{animal.species}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Sexe:</h3>
+                  <span className="profil-info">{animal.gender}</span>
+                </div>
+                <div className="info-block">
+                  <h3 className="profil-info-title">Stérilisé:</h3>
+                  <span className="profil-info">{animal.sterilized ? 'oui' : 'non'}</span>
+                </div>
+                <div className="info-block-line">
+                  <h3 className="profil-info-title">Personnalité:</h3>
+                  <span className="profil-info">{animal.personality}</span>
                 </div>
               </div>
-            ))}
-          </>
-        )}
+            </div>
+            <div className="profil-buttons">
+              <Link to={`/profile/update/animal/${animal.id}`}>
+                <img className="button" src={editButton} alt="edit" />
+              </Link>
+              <img
+                className="button"
+                src={deleteButton}
+                alt="delete"
+                onClick={() => {
+                  dispatch(stockIdUpdateDog(animal.id));
+                  dispatch(showDeleteDog());
+                }}
+              />
+              <Dogdelete />
+            </div>
+          </div>
+        ))}
+
         <div className="new-event">
           <NavLink
             className={({ isActive }) => (isActive ? 'menu-link menu-link--active' : 'menu-link')}
@@ -263,6 +282,7 @@ const Profil = () => {
             <Message
               success
               header="Evenement supprimé avec succès"
+              content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
               onDismiss={() => {
                 dispatch(newEventDeleted());
                 navigate('/profile');

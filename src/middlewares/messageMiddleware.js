@@ -61,7 +61,7 @@ const messageMiddleware = (store) => (next) => (action) => {
       )
       // Wait for the response
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           // console.log('conversations recu');
           store.dispatch(stockAllConversations(response.data.conversations));
           store.dispatch(stockUnreadMessages(response.data.conversationUnreadMessages));

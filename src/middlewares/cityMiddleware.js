@@ -14,12 +14,11 @@ const cityMiddleware = (store) => (next) => (action) => {
 
   switch (action.type) {
     case GET_CITY_API:
-      console.log('il faut faire appel à l API Ninja');
+      console.log('appel à l API City');
 
       // I send the request
       axios.get(
-        // `https://api.api-ninjas.com/v1/geocoding?city=${city}&country=France`,
-        `https://api.api-ninjas.com/v1/geocoding?city=${city}`,
+        `https://api.api-ninjas.com/v1/city?name=${city}&country=FR`,
         {
           headers: { 'X-Api-Key': APIkey },
         },
@@ -47,11 +46,12 @@ const cityMiddleware = (store) => (next) => (action) => {
 
     // the same action that GET_CITY_API but call action submitFormUpdateUser avec un requete PUT
     case UPDATE_CITY_API:
-      console.log('il faut faire appel à l API Ninja');
+      console.log('appel à l API City');
+      console.log(APIkey);
 
       // I send the request
       axios.get(
-        `https://api.api-ninjas.com/v1/geocoding?city=${city}&country=France`,
+        `https://api.api-ninjas.com/v1/city?name=${city}&country=FR`,
         {
           headers: { 'X-Api-Key': APIkey },
         },

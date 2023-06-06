@@ -12,6 +12,7 @@ import {
 
 import './register.scss';
 import { getAllItineraries } from '../../actions/itinerary';
+import useCountdown from '../CountDown';
 
 // New Event FORM
 const NewEvent = () => {
@@ -37,8 +38,16 @@ const NewEvent = () => {
     { text: place.name, value: place.id }
   ));
 
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, eventCreate, () => {
+    dispatch(newEventCreated());
+    navigate('/profile');
+    dispatch(resetEventValue());
+  });
+
   const handleFormSubmit = () => {
     dispatch(submitFormNewEvent());
+    // navigate('/profile');
   };
 
   return (
@@ -48,8 +57,8 @@ const NewEvent = () => {
         <Form success className="register-success">
           <Message
             success
-            header="Evènement ajouté avec succès"
-            content={`Nouvel évènement ${eventName}`}
+            header={`Nouvel évènement ${eventName}`}
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(newEventCreated());
               navigate('/profile');
@@ -58,6 +67,8 @@ const NewEvent = () => {
           />
         </Form>
       )}
+
+      {!eventCreate && (
       <div className="register">
         <h1>Ajouter un évènement</h1>
 
@@ -125,6 +136,7 @@ const NewEvent = () => {
         </Form>
 
       </div>
+      )}
     </>
   );
 };

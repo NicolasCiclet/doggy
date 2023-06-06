@@ -6,12 +6,14 @@ import {
 } from 'semantic-ui-react';
 import {
   dateNewEvent, describNewEvent, newEventCreated, placeNewEvent, submitFormUpdateEvent,
-  titleNewEvent, stockIdUpdateEvent, resetEventValue,
+  titleNewEvent, stockIdUpdateEvent, resetEventValue, eventFromUpdateInput,
 } from '../../actions/event';
 import { findUser } from '../../selectors/user';
 import { getAllItineraries } from '../../actions/itinerary';
 
 import './register.scss';
+import useCountdown from '../CountDown';
+import { useState } from 'react';
 
 // New Event FORM
 const NewEvent = () => {
@@ -19,7 +21,12 @@ const NewEvent = () => {
   const { id } = useParams();
   // This function has been created for user, but it can be used in the same way for another entity
   const currentEvent = useSelector((state) => findUser(state.event.connectedEvents, id));
-  // console.log(currentEvent);
+  console.log(currentEvent);
+
+  // destructuring for all properties of currentEvent
+  const {
+    name, eventDate, description,
+  } = currentEvent;
 
   const isLogged = useSelector((state) => state.user.logged);
   const eventCreate = useSelector((state) => state.event.newEventCreated);
@@ -31,6 +38,7 @@ const NewEvent = () => {
     if (isLogged) {
       dispatch(stockIdUpdateEvent(currentEvent.id));
       dispatch(getAllItineraries());
+      dispatch(eventFromUpdateInput(name, eventDate, description));
     }
     else {
       navigate('/');
@@ -44,9 +52,19 @@ const NewEvent = () => {
     { text: place.name, value: place.id }
   ));
 
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, eventCreate, () => {
+    dispatch(newEventCreated());
+    navigate('/profile');
+    dispatch(resetEventValue());
+  });
+
   const handleFormSubmit = () => {
     dispatch(submitFormUpdateEvent());
   };
+
+  const [placeError, setPlaceError] = useState(false);
+  console.log(placeError);
 
   return (
     <>
@@ -56,6 +74,7 @@ const NewEvent = () => {
           <Message
             success
             header={`${eventName} modifié avec succès`}
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(newEventCreated());
               navigate('/profile');
@@ -64,6 +83,8 @@ const NewEvent = () => {
           />
         </Form>
       )}
+      {/* the form is visible only if eventCreate is false */}
+      {!eventCreate && (
       <div className="register">
         <h1>Modifier mon évènement</h1>
         <Form>
@@ -87,13 +108,17 @@ const NewEvent = () => {
           />
           {/* Input for place */}
           <Form.Input
+            required
             control={Select}
             options={placeOptions}
+            defaultValue={currentEvent.description}
             label="Lieu"
             placeholder="Lieu"
+            error={placeError ? false : { content: placeError }}
             onChange={(event, result) => {
               // console.log(`change : ${event.target.value}`);
               dispatch(placeNewEvent(result.value));
+              setPlaceError(Number.isNaN(parseInt(result.value, 10)));
             }}
           />
 
@@ -130,6 +155,7 @@ const NewEvent = () => {
         </Form>
 
       </div>
+      )}
     </>
   );
 };

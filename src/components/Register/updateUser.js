@@ -1,24 +1,18 @@
+/* eslint-disable max-len */
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import {
-  Button, Form, Message, Select, TextArea, Icon,
+  Button, Form, Message, TextArea, Icon,
 } from 'semantic-ui-react';
 import { validate } from 'react-email-validator';
 import { updateCityApi } from '../../actions/city';
 import {
-  addBioNewUser, addBirthNewUser, addCityNewUser, addFirstnameNewUser,
-  addGenderNewUser, addLastnameNewUser, addMailNewUser, addNewUser, addPasswordNewUser,
-  addPhoneNewUser, addPictureNewUser, addUsernameNewUser, checkedPasswordNewUser, resetUserValue,
+  addBioNewUser, addCityNewUser, addFirstnameNewUser, addLastnameNewUser, addMailNewUser, addNewUser,
+  addPhoneNewUser, addUsernameNewUser, getUserInfo,
 } from '../../actions/user';
 import './register.scss';
-
-// options for the input select gender
-// const genderOptions = [
-//   { text: 'Homme', value: 'male' },
-//   { text: 'Femme', value: 'female' },
-//   { text: 'Autre', value: 'autre' },
-// ];
+import useCountdown from '../CountDown';
 
 const UpdateUser = () => {
   const dispatch = useDispatch();
@@ -59,6 +53,13 @@ const UpdateUser = () => {
   validate(mailUser);
   // console.log(validate(mailUser));
 
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, userCreate, () => {
+    dispatch(addNewUser());
+    console.log('nb 1');
+    navigate('/profile');
+  });
+
   const handleFormSubmit = () => {
     // OnSubmit, mail and password are checked with an and condition.
     // Only if the condition is true, we send a request to the api
@@ -69,16 +70,17 @@ const UpdateUser = () => {
 
   return (
     <>
-      {/* success message when eventCreate is true */}
+      {/* success message */}
       {userCreate && (
         <Form success className="register-success">
           <Message
             success
             header="Profil modifié avec succès"
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(addNewUser());
+              console.log('nb 2');
               navigate('/profile');
-              dispatch(resetUserValue());
             }}
           />
         </Form>
@@ -88,16 +90,7 @@ const UpdateUser = () => {
       <div className="register">
         <h1>Mise à jour du profil</h1>
 
-        <Form onSubmit={(event) => {
-          event.preventDefault();
-
-          // OnSubmit, mail and password are checked with an and condition.
-          // Only if the condition is true, we send a request to the api
-          if (validate(mailUser)) {
-            dispatch(updateCityApi());
-          }
-        }}
-        >
+        <Form>
           {/* with Form.group we have input on the same line or 1 input by line with responsive */}
           <Form.Group widths="equal">
             <Form.Input
@@ -243,8 +236,10 @@ const UpdateUser = () => {
             animated
             color="red"
             onClick={() => {
-              window.history.back();
-              dispatch(resetUserValue());
+              dispatch(getUserInfo());
+              setTimeout(() => {
+                window.history.back();
+              }, 500);
             }}
           >
             {/* // cancel button and return to previous page */}
