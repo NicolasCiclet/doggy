@@ -64,7 +64,6 @@ const UpdateUser = () => {
     // Only if the condition is true, we send a request to the api
     if (validate(mailUser)) {
       dispatch(updateCityApi());
-      dispatch(resetUserValue());
     }
   };
 
@@ -79,6 +78,7 @@ const UpdateUser = () => {
             onDismiss={() => {
               dispatch(addNewUser());
               navigate('/profile');
+              dispatch(resetUserValue());
             }}
           />
         </Form>

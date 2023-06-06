@@ -46,7 +46,6 @@ const NewEvent = () => {
 
   const handleFormSubmit = () => {
     dispatch(submitFormUpdateEvent());
-    dispatch(resetEventValue());
   };
 
   return (
@@ -60,6 +59,7 @@ const NewEvent = () => {
             onDismiss={() => {
               dispatch(newEventCreated());
               navigate('/profile');
+              dispatch(resetEventValue());
             }}
           />
         </Form>

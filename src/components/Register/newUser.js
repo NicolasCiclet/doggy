@@ -55,7 +55,6 @@ const UserRegister = () => {
     // Only if the condition is true, we send a request to the api
     if ((validate(mailUser)) && (passwordRegex.test(passwordUser))) {
       dispatch(getCityApi());
-      dispatch(resetUserValue());
     }
   };
 

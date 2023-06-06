@@ -1,7 +1,7 @@
 // import
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Message } from 'semantic-ui-react';
-import { addNewUser, userDeleted } from '../../actions/user';
+import { addNewUser, resetUserValue, userDeleted } from '../../actions/user';
 import './welcome.scss';
 
 // == Composant Welcome : this purpose is to display a welcome message and the last user registered
@@ -41,6 +41,7 @@ function Welcome() {
             content="Vous pouvez maintenant vous connecter"
             onDismiss={() => {
               dispatch(addNewUser());
+              dispatch(resetUserValue());
             }}
           />
         </Form>

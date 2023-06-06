@@ -11,6 +11,7 @@ import {
 import { findUser } from '../../selectors/user';
 
 import './register.scss';
+import { useState } from 'react';
 
 const sterilizedOptions = [
   { text: 'Oui', value: true },
@@ -54,9 +55,34 @@ const UpdateDog = () => {
     }
   }, [isLogged]);
 
+  const [countdown, setCountdown] = useState(5); // Time remaining in seconds
+
+  // countdown to closing sentence
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (dogCreate) {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [dogCreate]);
+
+  // countdown to success message closure
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (dogCreate) {
+        dispatch(newDogCreated());
+        navigate('/profile');
+        dispatch(resetDogValue());
+      }
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [dogCreate]);
+
   const handleFormSubmit = () => {
     dispatch(updateDog());
-    dispatch(resetDogValue());
   };
 
   return (
@@ -67,11 +93,14 @@ const UpdateDog = () => {
         <Message
           success
           header={`${dogName} modifié avec succès`}
+          content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
           onDismiss={() => {
             dispatch(newDogCreated());
             navigate('/profile');
+            dispatch(resetDogValue());
           }}
         />
+
       </Form>
       )}
       <div className="register">

@@ -28,7 +28,6 @@ const DogRegister = () => {
 
   const handleFormSubmit = () => {
     dispatch(addNewDog());
-    dispatch(resetDogValue());
   };
 
   return (
@@ -43,6 +42,7 @@ const DogRegister = () => {
           onDismiss={() => {
             dispatch(newDogCreated());
             navigate('/profile');
+            dispatch(resetDogValue());
           }}
         />
       </Form>

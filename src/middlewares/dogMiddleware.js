@@ -99,7 +99,7 @@ const dogMiddleware = (store) => (next) => (action) => {
 
         // reset all dog's values in state
         .finally(() => {
-          store.dispatch(resetDogValue());
+          // store.dispatch(resetDogValue());
         });
 
       break;
