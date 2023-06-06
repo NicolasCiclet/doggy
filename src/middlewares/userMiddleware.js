@@ -88,6 +88,7 @@ const userMiddleware = (store) => (next) => (action) => {
         .then((response) => {
           console.log(response);
           store.dispatch(addNewUser());
+          console.log('nb 5');
           store.dispatch(connexionFormReset());
           store.dispatch(displayLoader(false));
         })
@@ -137,7 +138,7 @@ const userMiddleware = (store) => (next) => (action) => {
       break;
 
     case SUBMIT_FORM_UPDATE_USER:
-      console.log('requete put');
+      // console.log('requete put');
       axios.put(
         `${url}api/users/current`,
         {
@@ -164,9 +165,10 @@ const userMiddleware = (store) => (next) => (action) => {
         },
       )
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           console.log('user well modified');
           store.dispatch(addNewUser());
+          console.log('nb 6');
         })
         .catch((error) => {
           console.log(error);

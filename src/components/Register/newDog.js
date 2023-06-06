@@ -7,6 +7,7 @@ import {
   addBirthNewDog, addBreedNewDog, addGenderNewDog, addNameNewDog, addNewDog,
   addPersonnalityNewDog, addSterilizedNewDog, newDogCreated, resetDogValue,
 } from '../../actions/dog';
+import useCountdown from '../CountDown';
 
 import './register.scss';
 
@@ -26,6 +27,13 @@ const DogRegister = () => {
   const dogName = useSelector((state) => state.dog.nameNewDog);
   const dogCreate = useSelector((state) => state.dog.newDogCreated);
 
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, dogCreate, () => {
+    dispatch(newDogCreated());
+    navigate('/profile');
+    dispatch(resetDogValue());
+  });
+
   const handleFormSubmit = () => {
     dispatch(addNewDog());
   };
@@ -37,8 +45,8 @@ const DogRegister = () => {
       <Form success className="register-success">
         <Message
           success
-          header="Chien ajouté avec succès"
-          content={`Bienvenue ${dogName}`}
+          header={`Bienvenue ${dogName}`}
+          content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
           onDismiss={() => {
             dispatch(newDogCreated());
             navigate('/profile');

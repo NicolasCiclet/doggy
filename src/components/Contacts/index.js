@@ -8,6 +8,7 @@ import {
   contactFormMail, contactFormMessage, contactFormName, contactSendMail, isMessageSend,
 } from '../../actions/message';
 import './contacts.scss';
+import useCountdown from '../CountDown';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,12 @@ const Contacts = () => {
 
   validate(mailAdresse);
 
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, messageSend, () => {
+    dispatch(isMessageSend(false));
+    navigate('/contact');
+  });
+
   return (
     <>
       {/* success message when message is send */}
@@ -25,6 +32,7 @@ const Contacts = () => {
           <Message
             success
             header="Message envoyé avec succès"
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(isMessageSend(false));
               navigate('/contact');

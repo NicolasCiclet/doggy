@@ -1,34 +1,37 @@
 // import
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Form, Message } from 'semantic-ui-react';
 import { addNewUser, resetUserValue, userDeleted } from '../../actions/user';
+import useCountdown from '../CountDown';
 import './welcome.scss';
 
 // == Composant Welcome : this purpose is to display a welcome message and the last user registered
 function Welcome() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userDelete = useSelector((state) => state.user.userDeleted);
   const name = useSelector((state) => state.user.usernameNewUser);
   const userCreate = useSelector((state) => state.user.userCreate);
   // I create my array with all my users and an empty object for my lastUser
-  const users = useSelector((state) => state.user.usersToDisplay);
   const lastUser = useSelector((state) => state.user.lastUser);
   const url = useSelector((state) => state.nav.url);
-  // let lastUser = {};
 
-  // // function to find the last user registered, with all the users in argument
-  // function findMaxId(allUsers) {
-  //   // console.log(allUsers);
-  //   // I select the max id in my array
-  //   const maxId = (Math.max(...allUsers.map((user) => user.id)));
-  //   // console.log(maxId);
-  //   // I find the user that has the max id : he is the last user registered
-  //   lastUser = allUsers.find((user) => user.id === maxId);
-  //   // console.log(result);
-  //   return lastUser;
-  // }
-
-  // findMaxId(users);
+  const countdown = useCountdown(
+    4,
+    userCreate || userDelete,
+    () => {
+      if (userCreate) {
+        dispatch(addNewUser());
+        console.log('nb 3');
+        navigate('/profile');
+      }
+      else if (userDelete) {
+        dispatch(userDeleted());
+        navigate('/profile');
+      }
+    },
+  );
 
   return (
     <>
@@ -37,11 +40,11 @@ function Welcome() {
         <Form success className="register-success">
           <Message
             success
-            header={`Inscription Réussie - Bienvenue ${name}`}
-            content="Vous pouvez maintenant vous connecter"
+            header={`Bienvenue ${name}, vous pouvez vous connecter`}
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(addNewUser());
-              dispatch(resetUserValue());
+              console.log('nb 4');
             }}
           />
         </Form>
@@ -51,6 +54,7 @@ function Welcome() {
           <Message
             success
             header="Profil supprimé avec succès"
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(userDeleted());
             }}

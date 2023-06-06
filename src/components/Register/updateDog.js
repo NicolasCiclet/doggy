@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -11,7 +12,7 @@ import {
 import { findUser } from '../../selectors/user';
 
 import './register.scss';
-import { useState } from 'react';
+import useCountdown from '../CountDown';
 
 const sterilizedOptions = [
   { text: 'Oui', value: true },
@@ -55,31 +56,12 @@ const UpdateDog = () => {
     }
   }, [isLogged]);
 
-  const [countdown, setCountdown] = useState(5); // Time remaining in seconds
-
-  // countdown to closing sentence
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (dogCreate) {
-        setCountdown((prevCountdown) => prevCountdown - 1);
-      }
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [dogCreate]);
-
-  // countdown to success message closure
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (dogCreate) {
-        dispatch(newDogCreated());
-        navigate('/profile');
-        dispatch(resetDogValue());
-      }
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, [dogCreate]);
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, dogCreate, () => {
+    dispatch(newDogCreated());
+    navigate('/profile');
+    dispatch(resetDogValue());
+  });
 
   const handleFormSubmit = () => {
     dispatch(updateDog());
@@ -92,7 +74,7 @@ const UpdateDog = () => {
       <Form success className="register-success">
         <Message
           success
-          header={`${dogName} modifié avec succès`}
+          header={`${dogName} mis à jour`}
           content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
           onDismiss={() => {
             dispatch(newDogCreated());
@@ -100,9 +82,10 @@ const UpdateDog = () => {
             dispatch(resetDogValue());
           }}
         />
-
       </Form>
       )}
+
+      {!dogCreate && (
       <div className="register">
         <h1>Modifier {currentAnimal.name}</h1>
 
@@ -202,6 +185,7 @@ const UpdateDog = () => {
         </Form>
 
       </div>
+      )}
 
     </>
   );

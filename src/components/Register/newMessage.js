@@ -6,6 +6,7 @@ import {
 } from 'semantic-ui-react';
 import { isMessageSend, logoutCurrentMessage, postUsermessage, userSendMessage } from '../../actions/message';
 import { isMessFormOpened } from '../../actions/user';
+import useCountdown from '../CountDown';
 
 import './mess-response.scss';
 
@@ -13,6 +14,13 @@ import './mess-response.scss';
 const NewMessage = ({ idUser, nameUser }) => {
   const dispatch = useDispatch();
   const messageSend = useSelector((state) => state.message.isMessageSend);
+
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, messageSend, () => {
+    dispatch(isMessageSend(false));
+    dispatch(isMessFormOpened());
+  });
+
   return (
     <>
       {/* success message when messageSend is true */}
@@ -21,8 +29,8 @@ const NewMessage = ({ idUser, nameUser }) => {
         <Form success className="register-success" id="message-success">
           <Message
             success
-            header="Message envoyé avec succès"
-            content={`${nameUser} sera notifié(e)`}
+            header={`Message envoyé à ${nameUser}`}
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(isMessageSend(false));
               dispatch(isMessFormOpened());

@@ -7,6 +7,7 @@ import {
 import {
   getAllConversations, isMessageSend, logoutCurrentMessage, postUsermessage, userSendMessage,
 } from '../../actions/message';
+import useCountdown from '../CountDown';
 
 import './mess-response.scss';
 
@@ -16,6 +17,15 @@ const NewResponse = ({
 }) => {
   const dispatch = useDispatch();
   const messageSend = useSelector((state) => state.message.isMessageSend);
+
+  // Use component useCountdown for all success messages.
+  const countdown = useCountdown(4, messageSend, () => {
+    dispatch(isMessageSend(false));
+    handleRepClick(index);
+    // displays the new message immediately
+    dispatch(getAllConversations());
+  });
+
   const handleFormSubmit = () => {
     // console.log('new message send');
     dispatch(postUsermessage());
@@ -30,8 +40,8 @@ const NewResponse = ({
         <Form success className="register-success" id="message-success">
           <Message
             success
-            header="Message envoyé"
-            content={`${nameUser} sera notifié(e)`}
+            header={`Message envoyé à ${nameUser}`}
+            content={`Cette fenêtre se fermera dans ${countdown} seconde${countdown > 1 ? 's' : ''}.`}
             onDismiss={() => {
               dispatch(isMessageSend(false));
               handleRepClick(index);
