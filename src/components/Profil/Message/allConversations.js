@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable max-len */
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -7,7 +8,7 @@ import logoMail from '../conversation.svg';
 import OneConversation from './oneConversation';
 
 import './conversation.scss';
-import { isRepFormOpened, updateUnreadMessage } from '../../../actions/user';
+import { updateUnreadMessage } from '../../../actions/user';
 import NewResponse from '../../Register/newResponse';
 
 // Component with all conversations
@@ -46,7 +47,7 @@ const AllConversations = () => {
       </div>
       <div className="profil-main-message">
         {allConversations.map((conversation, index) => (
-          <>
+          <div key={conversation.id}>
             <p
               onClick={() => {
                 // sends to state the conversation's id
@@ -103,7 +104,7 @@ const AllConversations = () => {
             {isOpen[index]
             // I use a spread operator to distribute all the properties
             && <OneConversation {...conversation} messages={conversation.messages} />}
-          </>
+          </div>
         ))}
       </div>
     </div>

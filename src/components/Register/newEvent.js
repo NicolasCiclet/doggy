@@ -47,7 +47,6 @@ const NewEvent = () => {
 
   const handleFormSubmit = () => {
     dispatch(submitFormNewEvent());
-    // navigate('/profile');
   };
 
   return (
@@ -115,7 +114,7 @@ const NewEvent = () => {
             }}
           />
           {/* Input for submit */}
-          <Button control={Button} animated="fade" onClick={handleFormSubmit}>
+          <Button control="button" animated="fade" onClick={handleFormSubmit}>
             <Button.Content visible>Valider</Button.Content>
             <Button.Content hidden>Valider</Button.Content>
           </Button>

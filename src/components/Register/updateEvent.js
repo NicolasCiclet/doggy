@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {
   Button, Form, Message, Select, TextArea, Icon,
 } from 'semantic-ui-react';
+import moment from 'moment';
 import {
   dateNewEvent, describNewEvent, newEventCreated, placeNewEvent, submitFormUpdateEvent,
   titleNewEvent, stockIdUpdateEvent, resetEventValue, eventFromUpdateInput,
@@ -13,7 +14,6 @@ import { getAllItineraries } from '../../actions/itinerary';
 
 import './register.scss';
 import useCountdown from '../CountDown';
-import { useState } from 'react';
 
 // New Event FORM
 const NewEvent = () => {
@@ -31,6 +31,7 @@ const NewEvent = () => {
   const isLogged = useSelector((state) => state.user.logged);
   const eventCreate = useSelector((state) => state.event.newEventCreated);
   const eventName = useSelector((state) => state.event.titleNewEvent);
+  const checkPlace = useSelector((state) => state.event.placeNewEvent);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -63,8 +64,8 @@ const NewEvent = () => {
     dispatch(submitFormUpdateEvent());
   };
 
-  const [placeError, setPlaceError] = useState(false);
-  console.log(placeError);
+  // converts the date into the correct format to appear by default in form update
+  const formattedEventDate = moment(currentEvent.eventDate).format('YYYY-MM-DDTHH:mm');
 
   return (
     <>
@@ -100,8 +101,8 @@ const NewEvent = () => {
           {/* Inputs for time */}
           <Form.Input
             label="Date"
-            placeholder="Date"
             type="datetime-local"
+            defaultValue={formattedEventDate}
             onChange={(event) => {
               dispatch(dateNewEvent(event.target.value));
             }}
@@ -114,11 +115,10 @@ const NewEvent = () => {
             defaultValue={currentEvent.description}
             label="Lieu"
             placeholder="Lieu"
-            error={placeError ? false : { content: placeError }}
+            error={(checkPlace === '') ? { content: 'test' } : false}
             onChange={(event, result) => {
               // console.log(`change : ${event.target.value}`);
               dispatch(placeNewEvent(result.value));
-              setPlaceError(Number.isNaN(parseInt(result.value, 10)));
             }}
           />
 
@@ -134,7 +134,7 @@ const NewEvent = () => {
             }}
           />
           {/* Input for submit */}
-          <Button control={Button} animated="fade" onClick={handleFormSubmit}>
+          <Button control="button" animated="fade" onClick={handleFormSubmit}>
             <Button.Content visible>Valider</Button.Content>
             <Button.Content hidden>Valider</Button.Content>
           </Button>

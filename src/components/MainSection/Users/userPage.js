@@ -103,7 +103,7 @@ const UserPage = () => {
             <h1 className="userboard-h1">Mes événements</h1>
           </div>
           { userEvents.map((event) => (
-            <>
+            <div key={event.id}>
               <div key={event.id} className="userboard-main">
                 <div className="userboard-main-photo">
                   <img className="userboard-photo" src={`${url}assets/images/${event.picture}`} alt="evenement" />
@@ -120,7 +120,7 @@ const UserPage = () => {
               </div>
               <h3 className="userboard-info-title">Description:</h3>
               <span className="userboard-info">{event.description}</span>
-            </>
+            </div>
           ))}
 
         </div>

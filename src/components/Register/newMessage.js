@@ -59,7 +59,7 @@ const NewMessage = ({ idUser, nameUser }) => {
                 }}
               />
               {/* Input for submit */}
-              <Button control={Button} animated="fade">
+              <Button control="button" animated="fade">
                 <Button.Content visible>Valider</Button.Content>
                 <Button.Content hidden>Valider</Button.Content>
               </Button>
