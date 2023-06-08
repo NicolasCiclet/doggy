@@ -26,6 +26,7 @@ const DogRegister = () => {
   const navigate = useNavigate();
   const dogName = useSelector((state) => state.dog.nameNewDog);
   const dogCreate = useSelector((state) => state.dog.newDogCreated);
+  const nbrAnimal = useSelector((state) => state.user.nbrAnimal);
 
   // Use component useCountdown for all success messages.
   const countdown = useCountdown(4, dogCreate, () => {
@@ -55,11 +56,11 @@ const DogRegister = () => {
         />
       </Form>
       )}
+
+      {!dogCreate && (
       <div className="register">
         <h1>Ajouter un chien</h1>
-
         <Form>
-
           <Form.Group widths="equal">
             <Form.Input
               required
@@ -139,8 +140,12 @@ const DogRegister = () => {
               animated
               color="red"
               onClick={() => {
-                // navigate('/');
-                window.history.back();
+                if (nbrAnimal === 0) {
+                  navigate('/');
+                }
+                else {
+                  window.history.back();
+                }
                 dispatch(resetDogValue());
               }}
             >
@@ -151,9 +156,8 @@ const DogRegister = () => {
             </Button>
           </Form.Group>
         </Form>
-
       </div>
-
+      )}
     </>
   );
 };

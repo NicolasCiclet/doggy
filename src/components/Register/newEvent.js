@@ -47,7 +47,6 @@ const NewEvent = () => {
 
   const handleFormSubmit = () => {
     dispatch(submitFormNewEvent());
-    // navigate('/profile');
   };
 
   return (

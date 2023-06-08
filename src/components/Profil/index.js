@@ -53,7 +53,15 @@ const Profil = () => {
     else {
       navigate('/');
     }
-  }, [isLogged, dogDeleted, eventDeleted]);
+  }, [isLogged]);
+
+  useEffect(() => {
+    dispatch(getConnectedAnimals());
+  }, [dogDeleted]);
+
+  useEffect(() => {
+    dispatch(getConnectedEvents());
+  }, [eventDeleted]);
 
   // To get connected user infos that are save in the state
   const lastname = useSelector((state) => state.user.lastnameNewUser);
