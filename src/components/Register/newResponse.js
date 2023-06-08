@@ -68,7 +68,7 @@ const NewResponse = ({
               />
 
               {/* Input for submit */}
-              <Button control={Button} animated="fade" onClick={handleFormSubmit}>
+              <Button control="button" animated="fade" onClick={handleFormSubmit}>
                 <Button.Content visible>Envoyer</Button.Content>
                 <Button.Content hidden>Envoyer</Button.Content>
               </Button>
@@ -84,7 +84,7 @@ const NewResponse = ({
 
 NewResponse.propTypes = {
   idUser: PropTypes.number.isRequired,
-  nameUser: PropTypes.number.isRequired,
+  nameUser: PropTypes.string.isRequired,
   handleRepClick: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
 };

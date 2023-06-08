@@ -198,7 +198,7 @@ const UserRegister = () => {
             }}
           />
           <Form.Checkbox label="J'accepte les termes et conditions" />
-          <Button control={Button} animated="fade" onClick={handleFormSubmit}>
+          <Button control="button" animated="fade" onClick={handleFormSubmit}>
             <Button.Content visible>Valider</Button.Content>
             <Button.Content hidden>Valider</Button.Content>
           </Button>

@@ -130,7 +130,7 @@ const DogRegister = () => {
             />
           </Form.Group>
           <Form.Group>
-            <Button control={Button} animated="fade" onClick={handleFormSubmit}>
+            <Button control="button" animated="fade" onClick={handleFormSubmit}>
               <Button.Content visible>Valider</Button.Content>
               <Button.Content hidden>Valider</Button.Content>
             </Button>

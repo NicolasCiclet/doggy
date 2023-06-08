@@ -79,7 +79,7 @@ const Contacts = () => {
               }}
             />
 
-            <Button control={Button} animated="fade">
+            <Button control="button" animated="fade">
               <Button.Content visible>Envoyer</Button.Content>
               <Button.Content hidden>Envoyer</Button.Content>
             </Button>
